@@ -23,11 +23,6 @@ R software can be used for all of these things.
 # The pre exercise code runs code to initialize the user's workspace.
 # You can use it to load packages, initialize datasets and draw a plot in the viewer
 
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
 ```
 
 *** =sct
@@ -36,7 +31,7 @@ ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
 
 msg_bad <- "That is not correct!"
 msg_success <- "Exactly! R can do all of these things."
-test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_correct))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
