@@ -35,19 +35,25 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
-## More movies
+## R as a Calculator
 
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
+In this exercise, we'll see how R can be used to perform simple arithmetic tasks.
 
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
+Some arithmetic symbols you can use in R code include: + - / * sqrt() ^ pi
+
+For example, if I want to cube '4', I would type 4^3 into the console.
+I can also assign the value '4' to 'x' by typing `x <- 4` into the console. Then I could get the cube of 'x' with `x^3`.
+If I want to assign a list of numbers (ex. 1, 2, 3, 4) to `x` I can type `x <- c(1, 2, 3, 4)` into the console and `x^3` would produce a vector of 4 values `[1, 8, 27, 64]` 
 
 *** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
+- Find the area of a circle whose radius is 7
+- Create a vector `y` that is a list of whole numbers 1-5 then use the `sqrt()` function to get the square root of those numbers.
+- Create another vector `x` that takes on values 6,7,8,9,10.
+- Find x*y
+- Find `x^2 + y^2`
 
 *** =hint
-- Use `str()` for the first instruction.
+- The area of a circle is: Area = pi*radius^2
 - For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
 - For the plot, use `plot(x = ..., y = ..., col = ...)`.
 
@@ -63,9 +69,9 @@ rm(Movies)
 
 *** =sample_code
 ```{r}
-# movie_selection is available in your workspace
+# Use R as a calculator to find the area of a circle 
 
-# Check out the structure of movie_selection
+# Define y using the c() function, then get the square root of y.
 
 
 # Select movies that have a rating of 5 or higher: good_movies
