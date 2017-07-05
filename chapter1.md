@@ -121,3 +121,71 @@ test_error()
 
 success_msg("Good work!")
 ```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4ea9b80fa0
+## Generating Numbers
+
+We can also use R to generate numbers and lists.
+
+The `seq()` function generates a sequence of numbers. If I want a sequence of number 1 through 20, I can type `seq(1, 20)` into my console. Try this. We can also use the `by = ` arguement to get a different sequence. Type `seq(1:20, by = 0.5) and notice how the output has changed.
+
+*** =instructions
+- Use the `seq()` function to generate of list of numbers from -10 to 10, increasing by 1. Assign this vector to `x` using the `c()` function.
+- Create another sequence of numbers -10 to 10 but this time, increment by 2. Assign this vector to `y` again using the `c()` function. 
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:766b6a5af5
+## Graphing data in R
+
+In this exercise, you will practice using simple graphical functions in R to visualize data.
+
+In it's most basic form, the plot() function will generate a plot of the x and y values that have been passed through it. The result is a basic scatter plot, but we can make it look nicer by specifying more arguements such as color and point type.
+
+You can use the help function ?plot 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
