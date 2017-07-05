@@ -31,7 +31,7 @@ R software can be used for all of these things.
 
 msg_bad <- "That is not correct!"
 msg_success <- "Exactly! R can do all of these things."
-test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_correct))
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
