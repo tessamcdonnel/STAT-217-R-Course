@@ -5,18 +5,18 @@ attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:10124e5c35
-## A really bad movie
+## Getting Started with R
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+What can R be used for?
 
 *** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
+- Graphing data
+- Analyzing data
+- Calculations
+- All of the above
 
 *** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
+R software can be used for all of these things.
 
 *** =pre_exercise_code
 ```{r}
@@ -35,8 +35,8 @@ ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
 msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+msg_success <- "Exactly! R can do all of these things."
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
