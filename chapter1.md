@@ -30,13 +30,46 @@ R software can be used for all of these things.
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
-msg_bad <- "That is not correct!"
+msg_bad <- "That is not correct"
 msg_success <- "Exactly! R can do all of these things."
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 ```
 
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8902293ef6
+## How to use DataCamp
+
+The upper right portion of your screen is the script editor: this is where you will be typing your R code to answer the questions. When you press the 'Submit Answer' button, every line of code is interpreted and executed by R and you will get a message that says whether or not your code was correct. 
+
+Below the script is the R Console: you can use this to execute R commands and test your R code for correctness before you submit it. 
+
+The # symbol lets you comment on your code and R does not try to process it.
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# This is were you will be writing your code
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:77ff5d2cfd
 ## Getting Started with R
 
