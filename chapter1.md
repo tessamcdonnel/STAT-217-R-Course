@@ -47,13 +47,14 @@ Below the script is the R Console: you can use this to execute R commands and te
 
 The # symbol lets you comment on your code and R does not try to process it.
 
-*** =instructions
-
+*** =instructions 
+This exercise is only meant to help you get set up with DataCamp so there is no coding task.
+Just click 'Submit Answer' to continue to the next exercise.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+# This is were you will be writing your code
 ```
 
 *** =sample_code
@@ -63,7 +64,7 @@ The # symbol lets you comment on your code and R does not try to process it.
 
 *** =solution
 ```{r}
-
+# This is were you will be writing your code
 ```
 
 *** =sct
@@ -72,9 +73,6 @@ The # symbol lets you comment on your code and R does not try to process it.
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:77ff5d2cfd
 ## Getting Started with R
-
-The upper right portion of your screen is the script editor: this is where you will be typing your R code to answer the questions. When you press the 'Submit Answer' button, every line of code is interpreted and executed by R and you will get a message that says whether or not your code was correct. Below the script is the R Console: you can use this to execute R commands and test your R code for correctness before you submit it. The # symbol lets you comment on your code and R does not try to process it.
-
 
 
 The best way to learn R programming is to actually practice typing yourself. 
@@ -92,11 +90,7 @@ You should be very excited!
 ```{r}
 
 ```
-*** =sample_code
-```{r}
 
-# This is where you will be writing your code.
-```
 
 *** =sct
 ```{r}
@@ -104,6 +98,7 @@ msg_bad <- "Well, it will hopefully grow on you!"
 msg_success <- "Good answer!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
 ## Using R as a Calculator
 
@@ -171,11 +166,6 @@ pi*7^2
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-
-test_object("x")
-test_object("y")
-success_msg("Nice!")
 
 
 test_error()
