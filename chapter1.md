@@ -45,7 +45,7 @@ The upper right portion of your screen is the script editor: this is where you w
 
 Below the script is the R Console: you can use this to execute R commands and test your R code for correctness before you submit it. 
 
-The # symbol lets you comment on your code and R does not try to process it.
+The # symbol lets you comment on your code without R processing it.
 
 *** =instructions 
 This exercise is only meant to help you get set up with DataCamp so there is no coding task.
@@ -70,9 +70,6 @@ Just click 'Submit Answer' to continue to the next exercise.
 *** =sct
 ```{r}
 
-test_error()
-
-success_msg("Good work!")
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:77ff5d2cfd
 ## Getting Started with R
@@ -97,7 +94,7 @@ You should be very excited!
 
 *** =sct
 ```{r}
-msg_bad <- "Well, it will hopefully grow on you!"
+msg_bad <- "Well, hopefully it will grow on you!"
 msg_success <- "Good answer!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 ```
@@ -109,10 +106,15 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 In this exercise, we'll see how R can be used to perform simple arithmetic tasks.
 
 Some arithmetic operators you can use in R code include:
+
 Addition: `+`
+
 Subtraction: `-` 
+
 Division: `/` 
+
 Multiplication: `*` 
+
 Exponentiation: `^`
 
 For example, if I want to cube '4', I would type 4^3 into the console.
@@ -120,8 +122,8 @@ For example, if I want to cube '4', I would type 4^3 into the console.
 Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more precise measure.
 
 *** =instructions
-- In the editor, type `4^9` to calculate four to the power of nine.
-- In the editor, type `pi*7^2` to find the area of a circle whose radius is 7
+- In the script, type `4^9` to calculate four to the power of nine.
+- In the script, type `pi*7^2` to find the area of a circle whose radius is 7
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 - The area of a circle is: `Area = pi*radius^2`
@@ -181,10 +183,15 @@ success_msg("Good work!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:b19e862406
 ## Using the sqrt() Function
 
-Being able to use the square root function in R is 
+Like any other calculator, R has the ability to take the square root of non-negative numbers.
+
+We will be calculating the square root a lot in this class so knowing this R function is really handy.
+
 
 *** =instructions
-
+- Type `sqrt(9)` into the bottom right panel (R Console) to find the square root of 9. This should return 3.
+- In the script, use the `sqrt()` function to find the square root of 9659.
+- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate the  
 *** =hint
 
 *** =pre_exercise_code
@@ -194,18 +201,22 @@ Being able to use the square root function in R is
 
 *** =sample_code
 ```{r}
-
+# Find the square root of 9659 using sqrt()
 ```
 
 *** =solution
 ```{r}
-
+# Find the square root of 9659 using sqrt()
+sqrt(9659)
 ```
 
 *** =sct
 ```{r}
+test_error()
 
+success_msg("Good work!")
 ```
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6f441f4fb9
 ## Basic Data Types in R
 
