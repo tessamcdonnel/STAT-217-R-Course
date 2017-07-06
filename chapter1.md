@@ -196,13 +196,14 @@ In it's most basic form, the plot() function will generate a plot of the x and y
 
 You can use the help function ?plot to find more graphing parameters.
 
+
 *** =instructions
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-plot(mtcars$mpg, mtcars$wt)
+
 ```
 
 *** =sample_code
