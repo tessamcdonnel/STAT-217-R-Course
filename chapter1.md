@@ -70,6 +70,9 @@ Just click 'Submit Answer' to continue to the next exercise.
 *** =sct
 ```{r}
 
+test_error()
+
+success_msg("Good work!")
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:77ff5d2cfd
 ## Getting Started with R
