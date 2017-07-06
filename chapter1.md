@@ -100,6 +100,7 @@ Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more 
 *** =pre_exercise_code
 ```{r}
 
+
 ```
 
 *** =sample_code
@@ -151,9 +152,34 @@ success_msg("Good work!")
 
 
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:b19e862406
+## Using the sqrt() Function
 
+Being able to use the square root function in R is 
 
+*** =instructions
 
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6f441f4fb9
 ## Basic Data Types in R
 
