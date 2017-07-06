@@ -5,7 +5,7 @@ attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:10124e5c35
-## Getting Started with R
+## What is R ?
 
 
 What can R be used for?
@@ -35,12 +35,38 @@ msg_success <- "Exactly! R can do all of these things."
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
-## R as a Calculator
 
-The best way to learn R programming is to actually type it out yourself. 
-So, Lets start coding!
-The upper right portion of your screen is the script editor: this is where you will be typing your R code to answer the questions. When you press the 'Submit Answer' button, every line of code is interpreted and executed by R and you will get a message that says whether or not your code was correct. Below the script is the R Console: you can use this to execute R commands and test your R code for correctness before you submit it. The # symbol lets you comment on your code such that R does not try to process it.
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:77ff5d2cfd
+## Getting Started with R
+
+The upper right portion of your screen is the script editor: this is where you will be typing your R code to answer the questions. When you press the 'Submit Answer' button, every line of code is interpreted and executed by R and you will get a message that says whether or not your code was correct. Below the script is the R Console: you can use this to execute R commands and test your R code for correctness before you submit it. The # symbol lets you comment on your code and R does not try to process it.
+
+The best way to learn R programming is to actually practice typing yourself. 
+So, lets start coding!
+
+Are you excited to dive into the exhilarating world of R Programming?!
+
+*** =instructions
+- Yes
+- No
+
+*** =hint
+You should be very excited!
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Well, it will hopefully grow on you"
+msg_success <- "Good answer!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
+## Using R as a Calculator
+
 
 In this exercise, we'll see how R can be used to perform simple arithmetic tasks.
 
