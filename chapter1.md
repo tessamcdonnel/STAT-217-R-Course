@@ -57,6 +57,11 @@ You should be very excited!
 ```{r}
 
 ```
+*** =sample_code
+```{r}
+
+# This is where you will be writing your code.
+```
 
 *** =sct
 ```{r}
