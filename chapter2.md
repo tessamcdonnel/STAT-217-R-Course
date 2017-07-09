@@ -259,3 +259,48 @@ sum(mtcars$gear)
 ```{r}
 test_function("sum", args = "x")
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:6bc90b9c68
+## Graphing Data: the Basics
+
+Numeric summaries like the mean and standard deviation are helpful when trying to understand a dataset but a visual display can provide more insight. 
+
+To create a basic plot in R, use the `plot()` function with the form:
+
+`plot(x = dataset$var1 , y = dataset$var2)`
+
+For this exercise, we are going to visualize the relationship between two variables in `mtcars`:
+
+x = *weight* of car (wt) 
+
+y = *miles per gallon* (mpg)
+
+
+
+*** =instructions
+- Use the `plot()` function to create a scatterplot of `wt` by `mpg`.
+- After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
+
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# type plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
+```
+
+*** =solution
+```{r}
+# type plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
+plot(x = mtcars$wt, y = mtcars$mpg)
+```
+
+*** =sct
+```{r}
+
+```
