@@ -119,7 +119,7 @@ Exponentiation: `^`
 
 For example, if I want to cube '4', I would type 4^3 into the console.
 
-Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more precise measure.
+Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more accurate measure.
 
 *** =instructions
 - In the script, type `4^9` to calculate four to the power of nine.
