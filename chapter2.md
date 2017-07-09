@@ -114,7 +114,9 @@ test_student_typed("mtcars$wt")
 
 We can also use arithetic operators on variables. 
 
-For example, if I want to add two variables together, i would type `dataset$var1 + dataset$var2`. If I want to save this sum as a new variable, I would assign it to a name `dataset$newvar <- dataset$var1 + dataset$var2`.
+For example, if I want to add two variables together, i would type `dataset$var1 + dataset$var2`. 
+
+If I want to save this sum as a new variable, I would assign it to a name `dataset$newvar <- dataset$var1 + dataset$var2`.
 
 In this exercise, we will be creating a new variable *density of car* named `density`. 
 
@@ -225,12 +227,16 @@ test_function("sd", args = "x")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:59b987e2d7
-## Using < > != == to make Comparisons
+## Using the sum() function
 
+Another useful built-in function that R has is the `sum()` function. 
 
+The `sum()` function adds what you put into the parenthesis.
+
+For example, if I wanted to find the total *weight* of the mtcars, I would type `sum(mtcars$wt)`.
 
 *** =instructions
-
+- the dataset `mtcars` contains the variable `gear` which represents the number of forward gears. Use the `sum()` function to find the total number of gears.
 *** =hint
 
 *** =pre_exercise_code
@@ -240,15 +246,16 @@ test_function("sd", args = "x")
 
 *** =sample_code
 ```{r}
-
+# Find total number of gears using sum() 
 ```
 
 *** =solution
 ```{r}
-
+# Find total number of gears using sum() 
+sum(mtcars$gear)
 ```
 
 *** =sct
 ```{r}
-
+test_function("sum", args = "x")
 ```
