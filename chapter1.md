@@ -223,9 +223,13 @@ success_msg("Good work!")
 The four basic data types we will be working with in this course are:
 
 Numeric: numbers with decimals like `3.1` or `22.0`
+
 Integers: natural numbers like `-9` and `4`, integers are also numeric data.
+
 Logical: boolean values (`TRUE` or `FALSE`)
+
 Character: texts and words ("this is character data")
+
 
 Note: all character data should be wrapped in "".
 
