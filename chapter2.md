@@ -291,7 +291,7 @@ y = *miles per gallon* (mpg)
 
 *** =sample_code
 ```{r}
-#type:  plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
+#type plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
 ```
 
 *** =solution
