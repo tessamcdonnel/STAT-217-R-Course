@@ -191,8 +191,9 @@ We will be calculating the square root a lot in this class so knowing this R fun
 *** =instructions
 - Type `sqrt(9)` into the bottom right panel (R Console) to find the square root of 9. This should return 3.
 - In the script, use the `sqrt()` function to find the square root of 9659.
-- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate the  
+- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate ... *insert test stat*
 *** =hint
+R uses PEMDAS order of operations like you would use in any math class.
 
 *** =pre_exercise_code
 ```{r}
