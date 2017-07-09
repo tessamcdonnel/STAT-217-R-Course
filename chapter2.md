@@ -55,5 +55,9 @@ names(mtcars)
 test_function("head", args = "x")
 success_msg("Nice job!")
 
+test_function("tail", args = "x")
+success_msg("Good work!")
+
+test_function("names", args = "x")
 success_msg("Good work!")
 ```
