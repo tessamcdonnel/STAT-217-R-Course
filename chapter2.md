@@ -108,3 +108,50 @@ mtcars$wt
 ```{r}
 test_student_typed("mtcars$wt")
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
+## Working with Variables
+
+We can also use arithetic operators on variables. 
+
+For example, if I want to add two variables together, i would type `dataset$var1 + dataset$var2`. If I want to save this sum as a new variable, I would assign it to a name `dataset$newvar <- dataset$var1 + dataset$var2`.
+
+In this exercise, we will be creating a new variable *density of car* named `density`. 
+
+The mtcars data set is alrady in your work space. The variables you will need to access to create a *density* variable are *displacement* named `disp` and *weight* named `wt`.
+
+For simplicity, we will let:
+
+*density = weight/displacement*
+
+*** =instructions
+- Use the formula `dataset$density <- dataset$var1 / dataset$var2` to create a density variable.
+- Use the `names()` function on `mtcars` to make sure that `density` was added to the variables.
+*** =hint
+substitute `mtcars` for dataset
+*** =pre_exercise_code
+```{r}
+mtcars
+```
+
+*** =sample_code
+```{r}
+# Create *density* variable for mtcars
+mtcars$density <- 
+
+# Use names() to check if *density* was added
+```
+
+*** =solution
+```{r}
+# Create *density* variable for mtcars
+mtcars$density <- mtcars$wt / mtcars$disp
+
+# Use names() to check if *density* was added
+names(mtcars)
+```
+
+*** =sct
+```{r}
+test_object("mtcars$density")
+```
