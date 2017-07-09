@@ -331,8 +331,9 @@ Right now the plot of `mtcars$wt` vs. `mtcars$mpg` has ugly axis names. In this 
 
 *** =instructions
 - Create the plot from the last exercise `plot(x = mtcars$wt, y = mtcars$mpg)` but this time add axis labels. 
+
 - The new x-axis label should be `"Weight"`, y-axis label should be `"Miles Per Gallon"` and the title should be `"Mtcars: Weight by MPG"`.
-- 
+
 *** =hint
 Make sure to wrap the labels in "" because they are words.
 *** =pre_exercise_code
@@ -350,11 +351,10 @@ plot(x = mtcars$wt, y = mtcars$mpg)
 ```{r}
 # Use plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title") with specified labels
 
-plot(x = mtcars$wt , y = mtcars$mpg, xlab = "Weight", ylab = "Miles Per Gallon", main = "Mtcars: Weight by PMG") with specified labels
-
+plot(x = mtcars$wt , y = mtcars$mpg, xlab = "Weight", ylab = "Miles Per Gallon", main = "Mtcars: Weight by PMG")
 ```
 
 *** =sct
 ```{r}
-
+test_function("plot", args = c("x", "y", "xlab", "ylab", "main"))
 ```
