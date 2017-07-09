@@ -291,13 +291,67 @@ y = *miles per gallon* (mpg)
 
 *** =sample_code
 ```{r}
-# type plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
+#type:  plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
 ```
 
 *** =solution
 ```{r}
 # type plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
 plot(x = mtcars$wt, y = mtcars$mpg)
+```
+
+*** =sct
+```{r}
+test_function("plot", args = c("x", "y"))
+success_msg("Good work! From the plot we can see that as weight increases, mpg decreases. This makes sense because bigger cars usually have less miles to the gallon.")
+
+
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:d0401021d4
+## Adding axis labels to graphs 
+
+In this exercise, you will learn how to clean up a graph by adding axis labels and a title.
+
+Some arguements to specify in the `plot()` function:
+
+`xlab = "x name"` : labels the x-asix "x name"
+
+`ylab = "y name"` : labels the y-asix "y name"
+
+`main = "title of plot"` : gives a title to the entire plot "title of plot"
+
+To add labels to a plot use the form:
+
+`plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title")`
+
+Right now the plot of `mtcars$wt` vs. `mtcars$mpg` has ugly axis names. In this exercise, we will change the axis names so the plot looks less messy.
+
+*** =instructions
+- Create the plot from the last exercise `plot(x = mtcars$wt, y = mtcars$mpg)` but this time add axis labels. 
+- The new x-axis label should be `"Weight"`, y-axis label should be `"Miles Per Gallon"` and the title should be `"Mtcars: Weight by MPG"`.
+- 
+*** =hint
+Make sure to wrap the labels in "" because they are words.
+*** =pre_exercise_code
+```{r}
+mtcars
+plot(x = mtcars$wt, y = mtcars$mpg)
+```
+
+*** =sample_code
+```{r}
+# Use plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title") with specified labels
+```
+
+*** =solution
+```{r}
+# Use plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title") with specified labels
+
+plot(x = mtcars$wt , y = mtcars$mpg, xlab = "Weight", ylab = "Miles Per Gallon", main = "Mtcars: Weight by PMG") with specified labels
+
 ```
 
 *** =sct
