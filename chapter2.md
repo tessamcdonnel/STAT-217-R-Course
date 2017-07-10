@@ -167,10 +167,44 @@ test_student_typed("names(mtcars)")
 
 
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:938ccd0b92
+## Creating Logical Data
 
+Recall in Lab 1 when we reviewed the different types of data.
 
+*Logical* data only takes on two values (TRUE or FALSE) where `TRUE` has the value of 1 and `FALSE` has the value of 0.
 
+We can create *logical* data with comparisons like greater than `>`, less than `<`, and inequallity `!=`
 
+A logical expression using the *greater than* symbol should follow the format:
+
+dataset$var1 > dataset$var2
+
+This command will return a list of `TRUE` and `FALSE` values.
+*** =instructions
+- Find which cars in `mtcars` have greater `drat` than `wt`
+- Use the sum() function to evaluate the total number of `TRUE` results
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:f759511088
 ## Using the summary() function
 
