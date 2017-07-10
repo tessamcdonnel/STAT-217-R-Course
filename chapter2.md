@@ -205,7 +205,7 @@ summary(mtcars)
 
 *** =sct
 ```{r}
-test_function("summary", args = "x")
+
 
 
 ```
