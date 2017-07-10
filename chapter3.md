@@ -38,38 +38,12 @@ str(mtcars)
 
 
 
-
-
-
-
 *** =sct
 ```{r}
 test_student_typed("str(mtcars)")
 ```
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ef8bf46853
-## Quick Review of Variable Types
-
-Is a `factor` coded variable an example of a *quantitative* variable or a *categorical* variable?
-
-*** =instructions
-- Quantitative
-- Categorical
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-msg_bad <- "That's incorrect. A factor variable is a categorical variable!"
-msg_success <- "Good answer!"
-
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
-```
 --- type:NormalExercise lang:r xp:100 skills:1 key:53e494b387
 ## Changing Variable Types
 
@@ -79,13 +53,13 @@ Take a look at the `mtcars` dataset by typing `?mtcars` into the R Console.
 
 R thinks the *Transmission* variable (am) is 'numeric' but really it should be coded as 'factor' because it only takes on values 0 and 1 *(0 = automatic, 1 = manual)*. 
 
-In this exercise we are going to recode the `am` variable to a factor.
+In this exercise we are going to recode the `am` variable from a numeric to a factor variable type.
 
 
 *** =instructions
 - Copy this code to your R script: `mtcars$am <- factor(mtcars$am, labels = c("automatic", "manual"))`
-- Use the `str()` function on `mtcars` to make sure the `am` variable was correctly recoded to a factor variable
-
+- Use the `str()` function on `mtcars` 
+- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `am` variable was correctly recoded to a factor variable
 *** =hint
 
 *** =pre_exercise_code
@@ -111,6 +85,29 @@ str(mtcars)
 *** =sct
 ```{r}
 
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ee655438c8
+## Quick Review of Variable Types
+
+Is a `factor` coded variable an example of a *quantitative* variable or a *categorical* variable?
+
+*** =instructions
+- Quantitative
+- Categorical
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That's incorrect. A factor variable is a categorical variable!"
+msg_success <- "Good answer!"
+
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
