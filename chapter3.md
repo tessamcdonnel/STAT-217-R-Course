@@ -111,7 +111,7 @@ str(mtcars)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
-## Using R Functions To Find Statistics
+## Using R Functions To Summarize Quantitative Variables
 
 
 In this exercise, you will learn how to use some of the R built-in functions to obtain statistics of your data set. Here are a few very common functions:
@@ -170,9 +170,131 @@ test_function("sd", args = "x")
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
-## Graphing Histograms in R
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:c7db7fdc55
+## Summarizing categorical Variables
+
+Use table(dataset$variable) to see frequency of occurences at each level of the categorical variable
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:9fc43281cb
+## Contingency Tables
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
+## Visualizing Quantitative Data in R
+
+Histogram-
+Boxplot-
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b65646dd8a
+## Visualizing Categorical Data in R
+
+Barplot
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c6f71ca0bd
+## Visualizing Relationships between 2 Quantitative Variables
+
+plot
 
 *** =instructions
 
