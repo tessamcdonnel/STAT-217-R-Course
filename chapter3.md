@@ -122,7 +122,7 @@ In this exercise, you will learn how to use some of the R built-in functions to 
 
 `sd(dataset$variable)`: gives you the standard deviation of a specific quantitative variable
 
-`summary(dataset$variable)`: gives a few summary statistics of a specific quantitative variable
+`iqr(dataset$variable)`: gives you the interquartile range of a specific quantitative variable
 
 The dataset we've been working with `mtcars` is already in your workspace.
 
@@ -166,4 +166,34 @@ sd(mtcars$wt)
 test_function("mean", args = "x")
 test_function("median", args = "x")
 test_function("sd", args = "x")
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
+## Graphing Histograms in R
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```
