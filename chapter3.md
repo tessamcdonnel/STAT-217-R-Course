@@ -127,9 +127,9 @@ In this exercise, you will learn how to use some of the R built-in functions to 
 The dataset we've been working with `mtcars` is already in your workspace.
 
 *** =instructions
-- Find the mean *weight* of the `mtcars` dataset using `mean()`.
-- Find the median *weight* of `mtcars` using `median()`.
-- Find the standard deviation of the `mtcars` `wt` variable.
+- Find the mean *weight* of the `mtcars` dataset using `mean()` function.
+- Find the median *weight* of `mtcars` using `median()` function.
+- Find the standard deviation of the *weight* variable in `mtcars` using the `sd()` function.
 
 *** =hint
 substitute `mtcars` for dataset
@@ -176,6 +176,10 @@ test_function("sd", args = "x")
 
 To summarize categorical variables, we can use the `table()` function to see the frequency of occurences at each level of the categorical variable.
 
+To create a table, use the form:
+
+`table(dataset$categ_var)`
+
 *** =instructions
 
 *** =hint
@@ -207,7 +211,11 @@ To summarize categorical variables, we can use the `table()` function to see the
 
 A contingency table is used to summarize the relationship betweeen categorical variables. 
 
-In this exercise we will create a contingency table by cross-classifying two variables using the `table()` function.
+In this exercise we will create a contingency table by cross-classifying two variables using the `table()` function with the form:
+
+`table(dataset$var1, dataset$var2)`
+
+Note: The variable listed first (var1) will go along the rows and the variable listed second (var2) will go along the columns.
 
 *** =instructions
 
@@ -338,7 +346,9 @@ If we have two quantitative variables, we can visualize their relationship with 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
 ## Visualizing Quantitative Variables by Groups
 
-Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. To do this, we can use the `boxplot()` function of the form:
+Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
+
+To do this, we can use the `boxplot()` function of the form:
 
 `boxplot(dataset$quant_var ~ dataset$categ_var)`
 
