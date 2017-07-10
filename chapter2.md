@@ -169,60 +169,43 @@ test_student_typed("names(mtcars)")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f759511088
-## Using R functions to find Statistics
+## Using the summary() function
 
-In this exercise, you will learn how to use some of the R built-in functions to obtain statistics of your data set. Here are a few very common functions:
+In this exercise, you will learn how to use the R built-in function `summary()` to obtain statistics of your data set. 
 
-`mean(dataset$variable)`: gives you the mean of a specific quantitative variable
+`summary(dataset)`: gives a few summary statistics of all variables in dataset
 
-`median(dataset$variable)`: gives you the median of a specific quantitative variable
 
-`sd(dataset$variable)`: gives you the standard deviation of a specific quantitative variable
-
-`summary(dataset$variable)`: gives a few summary statistics of a specific quantitative variable
+`summary(dataset$variable)`: gives a few summary statistics of a specific variable in dataset
 
 The dataset we've been working with `mtcars` is already in your workspace.
 
 *** =instructions
-- Find the mean *weight* of the `mtcars` dataset using `mean()`.
-- Find the median *weight* of `mtcars` using `median()`.
-- Find the standard deviation of the `mtcars` `wt` variable.
+- Use the `summary()` function on the entire `mtcars` dataset.
 
 *** =hint
 substitute `mtcars` for dataset
 
 *** =pre_exercise_code
 ```{r}
-mtcars
+
 ```
 
 *** =sample_code
 ```{r}
-# Find the mean weight (wt) of mtcars 
-
-# Find the median weight (wt) of mtcars
-
-# Find the standard deviation of the weight (wt) of mtcars.
+# Use summary() on mtcars to get summary statistics of the entire mtcars dataset
 ```
 
 *** =solution
 ```{r}
+# Use summary() on mtcars to get summary statistics of the entire mtcars dataset
+summary(mtcars)
 
-# Find the mean weight (wt) of mtcars 
-mean(mtcars$wt)
-
-# Find the median weight (wt) of mtcars
-median(mtcars$wt)
-
-# Find the standard deviation of the weight (wt) of mtcars.
-sd(mtcars$wt)
 ```
 
 *** =sct
 ```{r}
-test_function("mean", args = "x")
-test_function("median", args = "x")
-test_function("sd", args = "x")
+test_function("summary", args = "x")
 
 
 ```
