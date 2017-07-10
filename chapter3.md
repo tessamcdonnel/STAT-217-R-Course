@@ -177,7 +177,7 @@ test_function("sd", args = "x")
 --- type:NormalExercise lang:r xp:100 skills:1 key:c7db7fdc55
 ## Summarizing categorical Variables
 
-Use table(dataset$variable) to see frequency of occurences at each level of the categorical variable
+To summarize categorical variables, we can use the `table()` function to see the frequency of occurences at each level of the categorical variable.
 
 *** =instructions
 
@@ -208,6 +208,9 @@ Use table(dataset$variable) to see frequency of occurences at each level of the 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9fc43281cb
 ## Contingency Tables
 
+A contingency table is used to summarize the relationship betweeen categorical variables. 
+
+In this exercise we will create a contingency table by cross-classifying two variables using the `table()` function.
 
 *** =instructions
 
@@ -234,9 +237,15 @@ Use table(dataset$variable) to see frequency of occurences at each level of the 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
 ## Visualizing Quantitative Data in R
+The two main visualizations of quantitative data are:
 
-Histogram-
-Boxplot-
+*Histogram* - represents the distribution of quantitative data
+
+- use `hist(dataset$variable)` to create a histogram
+
+*Boxplot* - used to visualize the variation of quantitative data
+
+- use `boxplot(dataset$variable)` to create a boxplot
 
 *** =instructions
 
@@ -266,7 +275,11 @@ Boxplot-
 --- type:NormalExercise lang:r xp:100 skills:1 key:b65646dd8a
 ## Visualizing Categorical Data in R
 
-Barplot
+The most common way to visualize categorical variables is by creating a *barplot*.
+
+To do this in R, use the form:
+
+`barplot(table(dataset$categ_var))`
 
 *** =instructions
 
@@ -297,7 +310,42 @@ Barplot
 --- type:NormalExercise lang:r xp:100 skills:1 key:c6f71ca0bd
 ## Visualizing Relationships between 2 Quantitative Variables
 
-plot
+If we have two quantitative variables, we can visualize their relationship with the `plot()` function. 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
+## Visualizing Quantitative Variables by Groups
+
+Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. To do this, we can use the `boxplot()` function of the form:
+
+`boxplot(dataset$quant_var ~ dataset$categ_var)`
+
+This will produce side by side boxplots.
 
 *** =instructions
 
