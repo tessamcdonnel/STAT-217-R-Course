@@ -176,14 +176,15 @@ test_function("sd", args = "x")
 
 To summarize categorical variables, we can use the `table()` function to see the frequency of occurences at each level of the categorical variable.
 
-To create a table, use the form:
+To create a table, use the format:
 
 `table(dataset$categ_var)`
 
 *** =instructions
-
+- summarize the *number of cylinders* variable `cyl` in the mtcars data set using the `table()` function
+- Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-
+Use the format from the lesson with mtcars instead of dataset, and cyl instead of categ_var
 *** =pre_exercise_code
 ```{r}
 
@@ -191,17 +192,18 @@ To create a table, use the form:
 
 *** =sample_code
 ```{r}
-
+# Type table(dataset$categ_var) with specified dataset and variable to get a table summary
 ```
 
 *** =solution
 ```{r}
-
+# Type table(dataset$categ_var) with specified dataset and variable to get a table summary
+table(mtcars$cyl)
 ```
 
 *** =sct
 ```{r}
-
+test_student_typed("table(mtcars$cyl")
 ```
 
 
@@ -218,8 +220,9 @@ In this exercise we will create a contingency table by cross-classifying two var
 Note: The variable listed first (var1) will go along the rows and the variable listed second (var2) will go along the columns.
 
 *** =instructions
-
+- Create a contingency table of `mtcars` with categorical variables `gear` and `carb`
 *** =hint
+Use the format from the lesson with mtcars instead of dataset, gear instead of var1, and carb instead of var2
 
 *** =pre_exercise_code
 ```{r}
@@ -228,17 +231,18 @@ Note: The variable listed first (var1) will go along the rows and the variable l
 
 *** =sample_code
 ```{r}
-
+# Create contingency table with variables `gear` and `carb`
 ```
 
 *** =solution
 ```{r}
-
+# Create contingency table with variables `gear` and `carb`
+table(mtcars$gear, mtcars$carb)
 ```
 
 *** =sct
 ```{r}
-
+test_student_typed("table(mtcars$gear, mtcars$carb)")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
 ## Visualizing Quantitative Data in R
@@ -253,7 +257,8 @@ The two main visualizations of quantitative data are:
 - use `boxplot(dataset$variable)` to create a boxplot
 
 *** =instructions
-
+- Create a histogram of the *weight* variable (wt) from the `mtcars` dataset using the `hist()` function
+- Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
 *** =pre_exercise_code
@@ -263,17 +268,17 @@ The two main visualizations of quantitative data are:
 
 *** =sample_code
 ```{r}
-
+# Create Histogram of mpg variable with hist() function
 ```
 
 *** =solution
 ```{r}
-
+hist(mtcars$wt)
 ```
 
 *** =sct
 ```{r}
-
+test_function("hist", args = "x")
 ```
 
 
@@ -282,12 +287,13 @@ The two main visualizations of quantitative data are:
 
 The most common way to visualize categorical variables is by creating a *barplot*.
 
-To do this in R, use the form:
+To do this in R, use the format:
 
 `barplot(table(dataset$categ_var))`
 
 *** =instructions
-
+- Create a barplot of the categorical variable *transmission* named `am` from the `mtcars` dataset
+- Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
 *** =pre_exercise_code
@@ -297,17 +303,17 @@ To do this in R, use the form:
 
 *** =sample_code
 ```{r}
-
+# Create barplot of the `am` variable in mtcars
 ```
 
 *** =solution
 ```{r}
-
+barplot(table(mtcars$am))
 ```
 
 *** =sct
 ```{r}
-
+test_student_typed("barplot(table(mtcars$am))")
 ```
 
 
@@ -348,7 +354,7 @@ If we have two quantitative variables, we can visualize their relationship with 
 
 Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
 
-To do this, we can use the `boxplot()` function of the form:
+To do this, we can use the `boxplot()` function of the format:
 
 `boxplot(dataset$quant_var ~ dataset$categ_var)`
 
@@ -356,8 +362,12 @@ This will produce side by side boxplots.
 
 *** =instructions
 
-*** =hint
+Create side-by-side boxplots to compare *weights* `wt` of cars in the `mtcars` data set by *number of cylinders* `cyl`
 
+
+
+*** =hint
+Use format in the lesson with quant_var = wt and categ_var = cyl
 *** =pre_exercise_code
 ```{r}
 
@@ -365,15 +375,17 @@ This will produce side by side boxplots.
 
 *** =sample_code
 ```{r}
-
+# Create side-by-side boxplots with quant_var = wt and categ_var = cyl
 ```
 
 *** =solution
 ```{r}
+# Create side-by-side boxplots with quant_var = wt and categ_var = cyl
 
+boxplot(mtcars$wt ~ mtcars$cyl)
 ```
 
 *** =sct
 ```{r}
-
+test_student_typed("boxplot(mtcars$wt ~ mtcars$cyl)")
 ```
