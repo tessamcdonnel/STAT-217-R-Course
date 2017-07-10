@@ -9,11 +9,14 @@ If we want to know the *types of variables* in our data set, we can type the com
 
 This will return all of the variable names as well as their type (i.e. numeric, factor, integer). 
 
-*Categorical* variables will be will be `factor` variable types and *quantitative* variables will be `numeric` and `integer`.
+*Categorical* variables will be will be `factor` variable types.
+
+*Quantitative* variables will be `numeric` and `integer` variable types.
 
 For this lab, we will continue to use the dataset `mtcars` from lab 2. 
 *** =instructions
 - Use the `str()` function to find the variable types of `mtcars`
+- Click the 'Submit Answer' Button and take a look at the R output in the console.
 
 *** =hint
 
