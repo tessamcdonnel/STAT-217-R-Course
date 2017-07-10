@@ -166,3 +166,4 @@ sd(mtcars$wt)
 test_function("mean", args = "x")
 test_function("median", args = "x")
 test_function("sd", args = "x")
+```
