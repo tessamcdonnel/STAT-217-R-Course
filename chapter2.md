@@ -9,11 +9,14 @@ In this exercise, you will learn how to identify fundamental attributes of a dat
 
 One of R's built-in data sets is called `mtcars`. This data set is already in your workspace so if you type  `mtcars` into your R console, the entire data will come up in the output.
 
-Sometimes the data can be very long so instead of viewing the entire thing, we can get a jist of the data by typing `head(dataset)` to get the first 6 entries or `tail(dataset)` to get the last 6 entries. 
+Sometimes the data can be very long so instead of viewing the entire thing, we can type:
 
-If we just want to know the variables in the data set, we can type `names(dataset)` into the console.
+- `head(dataset)` to get the first 6 entries or
+- `tail(dataset)` to get the last 6 entries. 
 
-If we want to know the dimensions of a dataset (ie. how many variables and entries) use the `dim(dataset)` function.
+If we want to know the variable (column) names in the data set, we can type `names(dataset)` into the console.
+
+If we want to know the dimensions of a dataset (ie. how many variables and subjects) use the `dim(dataset)` function.
 
 *** =instructions
 - Use the `head()` function to get the first 6 entries of the mtcars data set
@@ -110,7 +113,7 @@ test_student_typed("mtcars$wt")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
-## Working with Variables
+## Working with Variables **this needs work
 
 We can also use arithetic operators on variables. 
 
@@ -248,7 +251,7 @@ test_function("sum", args = "x")
 
 Numeric summaries like the mean and standard deviation are helpful when trying to understand a dataset but a visual display can provide more insight. 
 
-To create a basic plot in R, use the `plot()` function with the form:
+To create a basic plot in R, use the `plot()` function in the format:
 
 `plot(x = dataset$var1 , y = dataset$var2)`
 
@@ -300,13 +303,11 @@ In this exercise, you will learn how to clean up a graph by adding axis labels a
 
 Some arguements to specify in the `plot()` function:
 
-`xlab = "x name"` : labels the x-asix "x name"
+- `xlab = "x"` : labels the x-axis "x"
+- `ylab = "y"` : labels the y-axis "y"
+- `main = "title"` : gives a title to the entire plot "title"
 
-`ylab = "y name"` : labels the y-asix "y name"
-
-`main = "title of plot"` : gives a title to the entire plot "title of plot"
-
-To add labels to a plot use the form:
+To add labels to a plot use the format:
 
 `plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title")`
 
