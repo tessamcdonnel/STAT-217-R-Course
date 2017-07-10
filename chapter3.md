@@ -323,8 +323,23 @@ test_student_typed("barplot(table(mtcars$am))")
 
 If we have two quantitative variables, we can visualize their relationship with the `plot()` function. 
 
-*** =instructions
+The format to make a basic scatterplot is:
 
+`plot(x = dataset$var1 , y = dataset$var2)`
+
+There is another built-in R dataset called `women` which contains heights and weights of 15 women. 
+
+This data set is already in your workspace so if you type  `mtcars` into your R console, the entire data will come up in the output.
+
+For this exercise, we are going to visualize the relationship between the two variables in `women`:
+
+x = `height` 
+
+y = `weight`
+
+*** =instructions
+- Use the `plot()` function to create a scatterplot of `height` by `weight`.
+- After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
 
 *** =pre_exercise_code
@@ -334,17 +349,18 @@ If we have two quantitative variables, we can visualize their relationship with 
 
 *** =sample_code
 ```{r}
-
+# Use plot() to create scatterplot of height by weight
 ```
 
 *** =solution
 ```{r}
-
+plot(x = women$height, y = women$weight)
 ```
 
 *** =sct
 ```{r}
-
+test_function("plot", args = c("x", "y"))
+success_msg("Good work! From the plot we can see that as height increases, weight decreases.")
 ```
 
 
