@@ -51,7 +51,7 @@ As you can see from the last exercise, each variable in `mtcars` is coded as num
 
 Take a look at the `mtcars` dataset by typing `?mtcars` into the R Console. 
 
-R thinks the *Transmission* variable (am) is 'numeric' but really it should be coded as 'factor' because it only takes on values 0 and 1 *(0 = automatic, 1 = manual)*. 
+R thinks the *Transmission* variable `am` is 'numeric' but really it should be coded as 'factor' because it is a categorical variable. The `am` variable only takes on two values *(0 = automatic, 1 = manual)*. 
 
 In this exercise we are going to recode the `am` variable from a numeric to a factor variable type.
 
@@ -111,7 +111,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
-## Using R Functions To Summarize Quantitative Variables
+## Summarizing Qauntitative Variables
 
 
 In this exercise, you will learn how to use some of the R built-in functions to obtain statistics of your data set. Here are a few very common functions:

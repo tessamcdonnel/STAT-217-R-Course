@@ -14,10 +14,14 @@ description : Distribution of Sample Proportions and Confidence Intervals for Po
 *** =pre_exercise_code
 ```{r}
 
+
 ```
 
 *** =sample_code
 ```{r}
+![](image.jpg)
+
+
 
 ```
 
