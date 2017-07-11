@@ -247,25 +247,41 @@ table(my_sample)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0e23913548
-## <<<New Exercise>>>
+## Confidence Intervals for Population Proportion
 
+Assume that the population proportion of children with peanut allergies is unknown so we obtained a random sample. 
 
+Finding the sample proportion is okay but adding a margin of error gives us much more insight.
+
+In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the true proportion of children who are allergic to peanuts *(population proportion)*.
+
+Note: The equation in the *plots* panel is the formula for a 95% confidence interval for a population proportion.
 *** =instructions
-
+- Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data.
 *** =hint
+Use the formula in the *plots* panel with p = 0.15, and n = 50
 
 *** =pre_exercise_code
 ```{r}
+plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 0, expression(hat(p) %+-% 1.96 * sqrt(frac(hat(p)*(1-hat(p)), n))), cex = 2)
 
 ```
 
 *** =sample_code
 ```{r}
+#Lower confidence bound
 
+#Upper confidence bound
 ```
 
 *** =solution
 ```{r}
+#Lower confidence bound
+0.15 - 1.96 * sqrt((.15*.85)/50)
+
+#Upper confidence bound
+0.15 + 1.96 * sqrt((.15*.85)/50)
 
 ```
 
