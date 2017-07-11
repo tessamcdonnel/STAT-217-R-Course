@@ -167,7 +167,8 @@ test_function("sample", args = c("x", "size"))
 
 *** =pre_exercise_code
 ```{r}
-
+plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 0, expression(sd == sqrt(frac(p*(1-p), n))))
 ```
 
 *** =sample_code

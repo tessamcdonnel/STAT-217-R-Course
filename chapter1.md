@@ -187,28 +187,36 @@ Like any other calculator, R has the ability to take the square root of non-nega
 
 We will be calculating the square root a lot in this class so knowing this R function is really handy.
 
+If I want to take the square root of 9, I would type `sqrt(9)` and it would return 3.
 
 *** =instructions
-- Type `sqrt(9)` into the bottom right panel (R Console) to find the square root of 9. This should return 3.
 - In the script, use the `sqrt()` function to find the square root of 9659.
-- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate ... *insert test stat*
+- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate the expression in the upper right hand *plots*. This evaluates to 3.16.
 *** =hint
 R uses PEMDAS order of operations like you would use in any math class.
 
 *** =pre_exercise_code
 ```{r}
+plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 0, expression(frac((0.6 - 0.5), sqrt(0.25/1000))), cex = 4)
 
 ```
 
 *** =sample_code
 ```{r}
 # Find the square root of 9659 using sqrt()
+
+# Evaluate the expression in the plots panel 
+
 ```
 
 *** =solution
 ```{r}
 # Find the square root of 9659 using sqrt()
 sqrt(9659)
+
+# Evaluate the expression in the plots panel 
+(0.6-0.5) / sqrt(0.25/1000)
 ```
 
 *** =sct
