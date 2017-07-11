@@ -129,7 +129,7 @@ In this exercise, you will create a random sample of 75 from the `weight` variab
 - use the `sd()` function to find the standard deviation of `my_sample`
 - use the `hist()` function on `my_sample`
 - click 'Submit Answer' and look at the R output.
-- How do these values compare to the *population*?
+- How do these values compare to the *population mean*?
 *** =hint
 For the first instruction, use the format `sample(dataset$variable, #)`
 
