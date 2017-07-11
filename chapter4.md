@@ -18,41 +18,43 @@ To take a random sample of a variable use the format:
 `sample(dataset$variable, number)`
 
 
-In this exercise we'll be using another built-in R dataset called `ChickWeight` which contains data from an experiment on the effect of diet on chicks. 
+In this exercise we'll be using another built-in R dataset called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
 
-- There are 4 variables in the data set: `weight`, `Time`, `Chick`, and `Diet`.
-- This data set is already in your workspace so if you type  `ChickWeight` into your R console, the entire data will come up in the output.
+- there are 3 variables in this data set: `had_early_risk`, `regimen`, and `allergic`.
+- there are 628 subjects 
+- `peanut_allergy` is already in your workspace
 
 
 *** =instructions
-- take a random sample of 25 from the variable `weight` in the `ChickWeight` dataset
-- take a random sample of 50 from the variable `Diet` in the `ChickWeight` dataset
+- take a random sample of 25 from the variable `allergic` in the `peanut_allergy` dataset
+- take a random sample of 50 from the variable `regimen` in the `peanut_allergy` dataset
 *** =hint
-For the 1st instruction, follow the format in the lesson but use ChickWeight$weight and 25
+For the 1st instruction, follow the format in the lesson but use peanut_allergy$allergic and 25
 
-For the 2nd instruction, follow the format in the lesson but use ChickWeight$Diet and 50
+For the 2nd instruction, follow the format in the lesson but use peanut_allergy$regimen and 50
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 
 ```
 
 *** =sample_code
 ```{r}
-# take a random sample of 25 from the variable weight
+# take a random sample of 25 from the allergic variable
 
 
-# take a random sample of 50 from the variable Diet
+# take a random sample of 50 from the regimen variable
 
 ```
 
 *** =solution
 ```{r}
-# take a random sample of 25 from the variable weight
-sample(ChickWeight$weight, 25)
+# take a random sample of 25 from the allergic variable
+sample(peanut_allergy$allergic, 25)
 
-# take a random sample of 50 from the variable Diet
-sample(ChickWeight$Diet, 50)
+# take a random sample of 50 from the regimen variable
+sample(peanut_allergy$regimen, 50)
 ```
 
 *** =sct
@@ -68,25 +70,25 @@ In this exercise, we are going to take two random samples and assign them to obj
 
 Note: Remember that after we create an object (i.e. sample1 and sample2) we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 *** =instructions
-- take a random sample of 20 from the variable `Diet` in the `ChickWeight` dataset, assign this sample to `sample1`
+- take a random sample of 20 from the variable `allergic` in the `peanut_allergy` dataset, assign this sample to `sample1`
 - take another random sample of 20 from the same variable, but assign this sample to `sample2`
 - After clicking 'Submit Answer', look at the contents of `sample1` and `sample2`. Are they the same?
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 ```
 
 *** =sample_code
 ```{r}
-# take a random sample of 20 from the variable Diet
+# take a random sample of 20 from the variable allergic
 sample1 <- 
 
 sample1
 
-# take another random sample of 20 from the variable Diet
+# take another random sample of 20 from the variable allergic
 sample2 <- 
 
 sample2
@@ -94,14 +96,14 @@ sample2
 
 *** =solution
 ```{r}
-# take a random sample of 20 from the variable Diet
-sample1 <- sample(ChickWeight$Diet, 20)
+# take a random sample of 20 from the variable allergic
+sample1 <- sample(peanut_allergy$allergic, 20)
 
 
 sample1
 
-# take another random sample of 20 from the variable Diet
-sample2 <- sample(ChickWeight$Diet, 20)
+# take another random sample of 20 from the variable allergic
+sample2 <- sample(peanut_allergy$allergic, 20)
 
 
 sample2
@@ -117,19 +119,20 @@ test_function("sample", args = c("x", "size"))
 
 You probably noticed that two samples you took (of the same variable and size) were not the same. 
 
-This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 *Diet* the values will be different.
+This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 from `allergic` the values will be different.
 
-One way to control this is using `set.seed(number)` function. If you type this before creating your random sample, your sample won't change every time you Run or Knit it.
+One way to control this is using `set.seed(number)` function. If you type this before creating your random sample, your sample won't change every time you Knit it.
 
 Note: *Any* number can go inside the `set.seed()` function
 *** =instructions
 - type `set.seed(1234)` in the R Script
-- now, take a random sample of 20 from the `Diet` variable in the `ChickWeight` dataset
+- now, take a random sample of 20 from the `allergic` variable in the `peanut_allergy` dataset
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
 
+source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 ```
 
@@ -137,7 +140,7 @@ Note: *Any* number can go inside the `set.seed()` function
 ```{r}
 # Type set.seed(1234)
 
-# take a random sample of 20 chick Diets 
+# take a random sample of 20 from the allergic variable 
 ```
 
 *** =solution
@@ -145,8 +148,8 @@ Note: *Any* number can go inside the `set.seed()` function
 # Type set.seed(1234)
 set.seed(1234)
 
-# take a random sample of 20 from `Diets` 
-sample(ChickWeight$Diet, 20)
+# take a random sample of 20 from the allergic variable 
+sample(peanut_allergy$allergic, 20)
 ```
 
 *** =sct
@@ -160,18 +163,15 @@ test_function("sample", args = c("x", "size"))
 --- type:NormalExercise lang:r xp:100 skills:1 key:b86b269872
 ## Population Proportions
 
-In this exercise we'll be using another built-in R dataset called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
-
-- there are 3 variables in this data set: `had_early_risk`, `regimen`, and `allergic`.
-- there are 628 subjects 
-- `peanut_allergy` is already in your workspace
+For this exercise, you are going to find the *population proportion* of children who developed an allergic reation to peanuts.
 
 We will treat this data set as the entire population of interest.
 
-For this exercise, you are going to find the *population proportion* of children who developed an allergic reation to peanuts.
+
 
 *** =instructions
 - Use the `table()` function to get an appropriate summary of the `allergic` variable in `peanut_allergy`
+- Click the 'Submit Anser' button and look at the R output
 - Use R as a calculator to find the proportion of children who were allergic to peanuts
 
 *** =hint
@@ -214,10 +214,13 @@ In this exercise, you will create a random sample of 50 from the `allergic` vari
 - use the `sample()` function to create a sample of 50 from the `allergic` variable, assign this sample to `my_sample`
 - use the `table()` function on `my_sample`
 - click 'Submit Answer' but look at the R output to find how many children were allergic in `my_sample`
-- Divide the number of children who reported *yes* to `allergic` by the total number
+- find the sample proportion of allergic children
 - How does this compare to the *population proportion*?
 *** =hint
 For the first instruction, use the format sample(dataset$variable, #)
+
+For the last instruction, divide the number of children who were allergic by the total number of children in the sample
+
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -255,16 +258,19 @@ Finding the sample proportion is okay but adding a margin of error gives us much
 
 In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the true proportion of children who are allergic to peanuts *(population proportion)*.
 
-Note: The equation in the *plots* panel is the formula for a 95% confidence interval for a population proportion.
+Note: The equation in the *plots* panel is the formula for a confidence interval for a population proportion.
 *** =instructions
-- Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data.
+Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data.
+
+Note that the *z* critical value is 1.96 for a 95% confidence interval.
+
 *** =hint
 Use the formula in the *plots* panel with p = 0.15, and n = 50
 
 *** =pre_exercise_code
 ```{r}
 plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 0, expression(hat(p) %+-% 1.96 * sqrt(frac(hat(p)*(1-hat(p)), n))), cex = 2)
+text(0, 0, expression(hat(p) %+-% z ^ {"*"} * sqrt(frac(hat(p)*(1-hat(p)), n))), cex = 3)
 
 ```
 
