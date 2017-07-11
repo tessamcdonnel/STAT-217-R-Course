@@ -327,18 +327,15 @@ The format to make a basic scatterplot is:
 
 `plot(x = dataset$var1 , y = dataset$var2)`
 
-There is another built-in R dataset called `women` which contains heights and weights of 15 women. 
 
-This data set is already in your workspace so if you type  `mtcars` into your R console, the entire data will come up in the output.
+For this exercise, we are going to visualize the relationship between `wt` and `mpg` in the `mtcars` dataset:
 
-For this exercise, we are going to visualize the relationship between the two variables in `women`:
+x = `wt` 
 
-x = `height` 
-
-y = `weight`
+y = `mpg`
 
 *** =instructions
-- Use the `plot()` function to create a scatterplot of `height` by `weight`.
+- Use the `plot()` function to create a scatterplot of `wt` by `mpg`.
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
 
@@ -349,18 +346,18 @@ y = `weight`
 
 *** =sample_code
 ```{r}
-# Use plot() to create scatterplot of height by weight
+# Use plot() to create scatterplot of weight (wt) and mpg
 ```
 
 *** =solution
 ```{r}
-plot(x = women$height, y = women$weight)
+plot(x = mtcars$wt, y = mtcars$mpg)
 ```
 
 *** =sct
 ```{r}
 test_function("plot", args = c("x", "y"))
-success_msg("Good work! From the plot we can see that as height increases, weight decreases.")
+success_msg("Good work! From the plot we can see that as weight increases, mpg decreases. This makes sense because large cars usually have less gas mileage")
 ```
 
 
