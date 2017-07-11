@@ -171,7 +171,7 @@ We will treat this data set as the entire population of interest.
 
 *** =instructions
 - Use the `table()` function to get an appropriate summary of the `allergic` variable in `peanut_allergy`
-- Click the 'Submit Anser' button and look at the R output
+- Click the 'Submit Answer' button and look at the R output
 - Use R as a calculator to find the proportion of children who were allergic to peanuts
 
 *** =hint
@@ -266,6 +266,8 @@ Note that the *z* critical value is 1.96 for a 95% confidence interval.
 
 *** =hint
 Use the formula in the *plots* panel with p = 0.15, and n = 50
+
+Find 'upper bound' and 'lower bound' seperately
 
 *** =pre_exercise_code
 ```{r}
