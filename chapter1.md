@@ -138,15 +138,7 @@ Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more 
 
 *** =sample_code
 ```{r}
-# Example of Addition
-5+10
 
-# Example of division and subtraction
-(10 - 5) / 3
-
-# Use R as a calculator to find four to the power of nine.
-
-# Use R as a calculator to find the area of a circle (pi*r^2)
 
 
 
@@ -154,17 +146,7 @@ Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more 
 
 *** =solution
 ```{r}
-# Example of Addition
-5+10
 
-# Example of division and subtraction
-(10 - 5) / 3
-
-# Use R as a calculator to find four to the power of nine.
-4^9
-
-# Use R as a calculator to find the area of a circle (pi*r^2)
-pi*7^2
 
 ```
 
