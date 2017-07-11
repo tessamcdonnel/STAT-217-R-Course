@@ -124,7 +124,7 @@ Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more 
 *** =instructions
 - In the script, type `4^9` to calculate four to the power of nine.
 - In the script, type `pi*7^2` to find the area of a circle whose radius is 7
-- Click the 'Submit Answer' Button and take a look at the R output in the console.
+- Click the 'Submit Answer' Button and take a look at the R output in the console (bottom right panel).
 *** =hint
 - The area of a circle is: `Area = pi*radius^2`
 - Type your code in the upper right box
@@ -152,12 +152,7 @@ Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more 
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
-
-test_error()
-
-success_msg("Good work!")
 ```
 
 
