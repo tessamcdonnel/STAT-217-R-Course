@@ -345,23 +345,31 @@ success_msg("Good work!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:766b6a5af5
 
 
-
-
-
-
 ## Graphing data in R
 
 In this exercise, you will practice using simple graphical functions in R to visualize data.
 
-In it's most basic form, the plot() function will generate a plot of the x and y values that have been passed through it. The result is a basic scatter plot, but we can make it look nicer by specifying more arguements such as color and point type.
+In it's most basic form, the `plot()` function will generate a scatterplot of the x and y values that have been passed through it. 
 
-You can use the help function ?plot to find more graphing parameters.
+The format to make a basic scatterplot is:
 
+`plot(x = dataset$var1 , y = dataset$var2)`
+
+R has a built-in dataset called `women` which contains heights and weights of 15 women. 
+
+This data set is already in your workspace so if you type  `women` into your R console, the entire data will come up in the output.
+
+For this exercise, we are going to visualize the relationship between the two variables in `women`:
+
+x = `height` 
+
+y = `weight`
 
 *** =instructions
-
+- Use the `plot()` function to create a scatterplot of `height` by `weight`.
+- After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
-
+Follow the format in the lesson with `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`
 *** =pre_exercise_code
 ```{r}
 
@@ -369,18 +377,16 @@ You can use the help function ?plot to find more graphing parameters.
 
 *** =sample_code
 ```{r}
-
+# Use plot() to create scatterplot of height by weight
 ```
 
 *** =solution
 ```{r}
-
+plot(x = women$height, y = women$weight)
 ```
 
 *** =sct
 ```{r}
-
+test_function("plot", args = c("x", "y"))
+success_msg("Good work! From the plot we can see that as height increases, weight decreases.")
 ```
-
-
--
