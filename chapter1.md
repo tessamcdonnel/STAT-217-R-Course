@@ -195,7 +195,7 @@ R uses PEMDAS order of operations like you would use in any math class.
 *** =pre_exercise_code
 ```{r}
 plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 0, expression(frac((0.6 - 0.5), sqrt(0.25/1000))), cex = 4)
+text(0, 0, expression(frac((0.6 - 0.5), sqrt(0.25/1000))), cex = 2)
 
 ```
 

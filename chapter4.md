@@ -18,7 +18,7 @@ To take a random sample of a variable use the format:
 `sample(dataset$variable, number)`
 
 
-In this exerceise we'll using another built-in R dataset called `ChickWeight` which contains data from an experiment on the effect of diet on chicks. 
+In this exercise we'll be using another built-in R dataset called `ChickWeight` which contains data from an experiment on the effect of diet on chicks. 
 
 - There are 4 variables in the data set: `weight`, `Time`, `Chick`, and `Diet`.
 - This data set is already in your workspace so if you type  `ChickWeight` into your R console, the entire data will come up in the output.
@@ -68,8 +68,8 @@ In this exercise, we are going to take two random samples and assign them to obj
 
 Note: Remember that after we create an object (i.e. sample1 and sample2) we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 *** =instructions
-- take a random sample of 30 from the variable `weight` in the `ChickWeight` dataset, assign this sample to `sample1`
-- take another random sample of 30 from the same variable, but assign this sample to `sample2`
+- take a random sample of 20 from the variable `Diet` in the `ChickWeight` dataset, assign this sample to `sample1`
+- take another random sample of 20 from the same variable, but assign this sample to `sample2`
 - After clicking 'Submit Answer', look at the contents of `sample1` and `sample2`. Are they the same?
 *** =hint
 
@@ -81,12 +81,12 @@ Note: Remember that after we create an object (i.e. sample1 and sample2) we need
 
 *** =sample_code
 ```{r}
-# take a random sample of 30 from the variable allergic
+# take a random sample of 20 from the variable Diet
 sample1 <- 
 
 sample1
 
-# take another random sample of 30 from the variable allergic
+# take another random sample of 20 from the variable Diet
 sample2 <- 
 
 sample2
@@ -94,14 +94,14 @@ sample2
 
 *** =solution
 ```{r}
-# take a random sample of 30 from the variable allergic
-sample1 <- sample(ChickWeight$weight, 30)
+# take a random sample of 20 from the variable Diet
+sample1 <- sample(ChickWeight$Diet, 20)
 
 
 sample1
 
-# take another random sample of 30 from the variable allergic
-sample2 <- sample(ChickWeight$weight, 30)
+# take another random sample of 20 from the variable Diet
+sample2 <- sample(ChickWeight$Diet, 20)
 
 
 sample2
@@ -117,14 +117,14 @@ test_function("sample", args = c("x", "size"))
 
 You probably noticed that two samples you took (of the same variable and size) were not the same. 
 
-This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 30 *weights* the values will be different.
+This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 *Diet* the values will be different.
 
 One way to control this is using `set.seed(number)` function. If you type this before creating your random sample, your sample won't change every time you Run or Knit it.
 
 Note: *Any* number can go inside the `set.seed()` function
 *** =instructions
 - type `set.seed(1234)` in the R Script
-- now, take a random sample of 30 from the `weight` variable in the `ChickWeight` dataset
+- now, take a random sample of 20 from the `Diet` variable in the `ChickWeight` dataset
 *** =hint
 
 *** =pre_exercise_code
@@ -137,7 +137,7 @@ Note: *Any* number can go inside the `set.seed()` function
 ```{r}
 # Type set.seed(1234)
 
-# take a random sample of 30 chick weights 
+# take a random sample of 20 chick Diets 
 ```
 
 *** =solution
@@ -145,8 +145,8 @@ Note: *Any* number can go inside the `set.seed()` function
 # Type set.seed(1234)
 set.seed(1234)
 
-# take a random sample of 30 from `allergic` 
-sample(ChickWeight$weight, 30)
+# take a random sample of 20 from `Diets` 
+sample(ChickWeight$Diet, 20)
 ```
 
 *** =sct
@@ -158,6 +158,95 @@ test_function("sample", args = c("x", "size"))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b86b269872
+## Population Proportions
+
+In this exercise we'll be using another built-in R dataset called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
+
+- there are 3 variables in this data set: `had_early_risk`, `regimen`, and `allergic`.
+- there are 628 subjects 
+- `peanut_allergy` is already in your workspace
+
+We will treat this data set as the entire population of interest.
+
+For this exercise, you are going to find the *population proportion* of children who developed an allergic reation to peanuts.
+
+*** =instructions
+- Use the `table()` function to get an appropriate summary of the `allergic` variable in `peanut_allergy`
+- Use R as a calculator to find the proportion of children who were allergic to peanuts
+
+*** =hint
+The correct format to summarize a categorical variable is table(dataset$variable).
+
+For the last instruction, divide the number of children who were allergic by the total number of children
+*** =pre_exercise_code
+```{r}
+source("https://www.openintro.org/stat/data/peanut_allergy.R")
+```
+
+*** =sample_code
+```{r}
+# Create a table of the `allergic` variable in the `peanut_allergy` dataset
+
+# Find the proportion of children who were allergic
+```
+
+*** =solution
+```{r}
+# Create a table of the `allergic` variable in the `peanut_allergy` dataset
+table(peanut_allergy$allergic)
+
+# Find the proportion of children who were allergic
+
+```
+
+*** =sct
+```{r}
+test_function("table", args = "...")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:38ce97a2e8
+## Sample Proportions
+
+Most of the time we don't know what the *population proportion* is, but we can estimate this value with a random sample. 
+
+In this exercise, you will create a random sample of 50 from the `allergic` variable in the dataset `peanut_allergy` and then compare the *sample proportion* of allergic children to the *population proportion* you found in the last exercise.
+*** =instructions
+- use the `sample()` function to create a sample of 50 from the `allergic` variable, assign this sample to `my_sample`
+- use the `table()` function on `my_sample`
+- click 'Submit Answer' but look at the R output to find how many children were allergic in `my_sample`
+- Divide the number of children who reported *yes* to `allergic` by the total number
+- How does this compare to the *population proportion*?
+*** =hint
+For the first instruction, use the format sample(dataset$variable, #)
+*** =pre_exercise_code
+```{r}
+source("https://www.openintro.org/stat/data/peanut_allergy.R")
+
+```
+
+*** =sample_code
+```{r}
+# Use the format sample(dataset$variable, #) to get a sample of 50 from the `allergic` variable
+my_sample <- 
+
+# Type table(my_sample) to see how many children were allergic
+```
+
+*** =solution
+```{r}
+# Use the format sample(dataset$variable, #) to get a sample of 50 from the `allergic` variable
+my_sample <- sample(peanut_allergy$allergic, 50)
+
+# Type table(my_sample) to see how many children were allergic
+table(my_sample)
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:0e23913548
 ## <<<New Exercise>>>
 
 
@@ -167,8 +256,7 @@ test_function("sample", args = c("x", "size"))
 
 *** =pre_exercise_code
 ```{r}
-plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 0, expression(sd == sqrt(frac(p*(1-p), n))))
+
 ```
 
 *** =sample_code
