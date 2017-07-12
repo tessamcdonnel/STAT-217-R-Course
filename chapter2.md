@@ -165,6 +165,40 @@ test_student_typed("names(mtcars)")
 
 
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:59b987e2d7
+## Using the sum() function
+
+Another useful built-in function that R has is the `sum()` function. 
+
+The `sum()` function adds what you put into the parenthesis.
+
+For example, if I wanted to find the total *weight* of the mtcars, I would type `sum(mtcars$wt)`.
+
+*** =instructions
+- the dataset `mtcars` contains the variable `gear` which represents the number of forward gears. Use the `sum()` function to find the total number of gears.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Find total number of gears using sum() 
+```
+
+*** =solution
+```{r}
+# Find total number of gears using sum() 
+sum(mtcars$gear)
+```
+
+*** =sct
+```{r}
+test_function("sum", args = "x")
+```
+
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:938ccd0b92
@@ -245,39 +279,6 @@ summary(mtcars)
 
 
 
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:59b987e2d7
-## Using the sum() function
-
-Another useful built-in function that R has is the `sum()` function. 
-
-The `sum()` function adds what you put into the parenthesis.
-
-For example, if I wanted to find the total *weight* of the mtcars, I would type `sum(mtcars$wt)`.
-
-*** =instructions
-- the dataset `mtcars` contains the variable `gear` which represents the number of forward gears. Use the `sum()` function to find the total number of gears.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-# Find total number of gears using sum() 
-```
-
-*** =solution
-```{r}
-# Find total number of gears using sum() 
-sum(mtcars$gear)
-```
-
-*** =sct
-```{r}
-test_function("sum", args = "x")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6bc90b9c68

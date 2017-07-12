@@ -18,7 +18,7 @@ To take a random sample of a variable use the format:
 `sample(dataset$variable, number)`
 
 
-In this exercise we'll be using another built-in R dataset called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
+In this exercise we'll be using a dataset called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
 
 - there are 3 variables in this data set: `had_early_risk`, `regimen`, and `allergic`.
 - there are 628 subjects 
@@ -262,13 +262,14 @@ Note: The equation in the *plots* panel is the formula for a confidence interval
 *** =instructions
 Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data.
 
-Note that the *z* critical value is 1.96 for a 95% confidence interval.
+Note that the z* critical value is 1.96 for a 95% confidence interval.
 
 *** =hint
 Use the formula in the *plots* panel with p = 0.15, and n = 50
 
 Find 'upper bound' and 'lower bound' seperately
 
+When multiplying two things together use an asterisk (*)
 *** =pre_exercise_code
 ```{r}
 plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
