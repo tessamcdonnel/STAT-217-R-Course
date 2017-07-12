@@ -1,5 +1,5 @@
 ---
-title       : Lab 3 * change data sets to cdc
+title       : Lab 3 
 description : Summarizing and Visualizing Data
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
