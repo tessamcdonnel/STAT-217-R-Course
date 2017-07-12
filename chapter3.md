@@ -13,10 +13,13 @@ This will return all of the variable names as well as their type (i.e. numeric, 
 
 *Quantitative* variables will be `numeric` and `integer` variable types.
 
-For this lab, we will use a dataset called `cdc` which contains data on health factors of people in the United States. 
+For this lab, we will use a dataset called `cdc` which contains data on the health of people in the United States.
+
+- there are 9 variables in the dataset
+- there are 20,000 subjects
+- this dataset is already in your workspace so if you type `cdc` into your console, the data will come up in the output
+
 *** =instructions
-- Use the `str()` function to find the variable types of `mtcars`
-- Click the 'Submit Answer' Button and take a look at the R output in the console.
 
 - Use the `str()` function to find the variable types of `cdc`
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
@@ -30,13 +33,13 @@ source("https://www.openintro.org/stat/data/cdc.R")
 
 *** =sample_code
 ```{r}
-# Find the variable types of mtcars
+# Find the variable types of cdc
 ```
 
 *** =solution
 ```{r}
-# Find the variable types of mtcars
-str(mtcars)
+# Find the variable types of cdc
+str(cdc)
 ```
 
 
@@ -50,39 +53,42 @@ test_function("str", args = "object")
 --- type:NormalExercise lang:r xp:100 skills:1 key:53e494b387
 ## Changing Variable Types
 
-As you can see from the last exercise, each variable in `mtcars` is coded as numeric, but this is incorrect.
+You may have noticed from the previous exercise that the `smoke100` variable is coded as numeric, but this is incorrect.
 
-Take a look at the `mtcars` dataset by typing `?mtcars` into the R Console. 
 
-R thinks the *Transmission* variable `am` is 'numeric' but really it should be coded as 'factor' because it is a categorical variable. The `am` variable only takes on two values *(0 = automatic, 1 = manual)*. 
+R thinks that the `smoke100` variable is 'numeric' (because it takes on values 0 and 1) but really it should be coded as 'factor' because it is a **categorical variable**. 
 
-In this exercise we are going to recode the `am` variable from a numeric to a factor variable type.
+`smoke100` only takes on two values *(1 = respondent has smoked at least 100 cigarettes in their life, 0 = otherwise)*. 
+
+In this exercise we are going to recode the `smoke100` variable from a numeric to a factor variable type.
 
 
 *** =instructions
-- Copy this code to your R script: `mtcars$am <- factor(mtcars$am, labels = c("automatic", "manual"))`
-- Use the `str()` function on `mtcars` 
-- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `am` variable was correctly recoded to a factor variable
+- Copy this code to your R script: `cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))`
+- Use the `str()` function on `cdc` 
+- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `smoke100` variable was correctly recoded to a factor variable
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
 
 ```
 
 *** =sample_code
 ```{r}
-# Type the code from the 'Instructions' box to change the *am* variable to a factor variable
+# Type the code from the 'Instructions' box to change the *smoke100* variable to a factor variable
 
-# Use the str() function on mtcars
+# Use the str() function on cdc
 ```
 
 *** =solution
 ```{r}
-# Type the code from the 'Instructions' box to change the *am* variable to a factor variable
-mtcars$am <- factor(mtcars$am, labels = c("automatic", "manual"))
+# Type the code from the 'Instructions' box to change the *smoke100* variable to a factor variable
+cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+
 # Use the str() function on mtcars
-str(mtcars)
+str(cdc)
 ```
 
 *** =sct
@@ -128,41 +134,44 @@ In this exercise, you will learn how to use some of the R built-in functions to 
 
 `iqr(dataset$variable)`: gives you the interquartile range of a specific quantitative variable
 
-The dataset we've been working with `mtcars` is already in your workspace.
+The dataset we've been working with `cdc` is already in your workspace.
+
+The variable `weight` is the respondents weight in *pounds*.
 
 *** =instructions
-- Find the mean *weight* of the `mtcars` dataset using `mean()` function.
-- Find the median *weight* of `mtcars` using `median()` function.
-- Find the standard deviation of the *weight* variable in `mtcars` using the `sd()` function.
+- Find the mean `weight` of the `cdc` dataset using the `mean()` function.
+- Find the median `weight` of `cdc` dataset using the `median()` function.
+- Find the standard deviation of the `weight` variable in `cdc` using the `sd()` function.
 
 *** =hint
-substitute `mtcars` for dataset
+substitute `cdc` for dataset
 
 *** =pre_exercise_code
 ```{r}
-mtcars
+source("https://www.openintro.org/stat/data/cdc.R")
+
 ```
 
 *** =sample_code
 ```{r}
-# Find the mean weight (wt) of mtcars 
+# Find the mean weight of cdc
 
-# Find the median weight (wt) of mtcars
+# Find the median weight of cdc
 
-# Find the standard deviation of the weight (wt) of mtcars.
+# Find the standard deviation of the weight of cdc
 ```
 
 *** =solution
 ```{r}
 
-# Find the mean weight (wt) of mtcars 
-mean(mtcars$wt)
+# Find the mean weight of cdc
+mean(cdc$weight)
 
-# Find the median weight (wt) of mtcars
-median(mtcars$wt)
+# Find the median weight of cdc
+median(cdc$weight)
 
-# Find the standard deviation of the weight (wt) of mtcars.
-sd(mtcars$wt)
+# Find the standard deviation of the weight of cdc
+sd(cdc$weight)
 ```
 
 *** =sct
@@ -185,12 +194,14 @@ To create a table, use the format:
 `table(dataset$categ_var)`
 
 *** =instructions
-- summarize the *number of cylinders* variable `cyl` in the mtcars data set using the `table()` function
+- summarize the `smoke100` variable in the `cdc` dataset using the `table()` function.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-Use the format from the lesson with `mtcars` instead of dataset, and `cyl` instead of categ_var
+Use the format from the lesson with `cdc` instead of dataset, and `smoke100` instead of categ_var
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
+cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 ```
 
@@ -202,7 +213,7 @@ Use the format from the lesson with `mtcars` instead of dataset, and `cyl` inste
 *** =solution
 ```{r}
 # Type table(dataset$categ_var) with specified dataset and variable to get a table summary
-table(mtcars$cyl)
+table(cdc$smoke100)
 ```
 
 *** =sct
@@ -224,25 +235,29 @@ In this exercise we will create a contingency table by cross-classifying two var
 
 Note: The variable listed first (var1) will go along the rows and the variable listed second (var2) will go along the columns.
 
+The variable `genhlth` is a categorical variable indicating general health.
+
 *** =instructions
-- Create a contingency table of `mtcars` with categorical variables `gear` and `carb`
+- Create a contingency table with variables `genhlth` and `smoke100` from the `cdc` dataset
 *** =hint
-Use the format from the lesson with mtcars instead of dataset, gear instead of var1, and carb instead of var2
+Use the format from the lesson with `cdc` instead of dataset, `genhlth` instead of var1, and `smoke100` instead of var2
 
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
+cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 ```
 
 *** =sample_code
 ```{r}
-# Create contingency table with variables `gear` and `carb`
+# Create contingency table with variables `genhlth` and `smoke100`
 ```
 
 *** =solution
 ```{r}
-# Create contingency table with variables `gear` and `carb`
-table(mtcars$gear, mtcars$carb)
+# Create contingency table with variables `genhlth` and `smoke100`
+table(cdc$genhlth, cdc$smoke100)
 ```
 
 *** =sct
@@ -262,23 +277,24 @@ The two main visualizations of quantitative data are:
 - use `boxplot(dataset$variable)` to create a boxplot
 
 *** =instructions
-- Create a histogram of the *weight* variable (wt) from the `mtcars` dataset using the `hist()` function
+- Create a histogram of the `weight` variable from the `cdc` dataset using the `hist()` function
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
 
 ```
 
 *** =sample_code
 ```{r}
-# Create Histogram of mpg variable with hist() function
+# Create Histogram of weight variable with hist() function
 ```
 
 *** =solution
 ```{r}
-hist(mtcars$wt)
+hist(cdc$weight)
 ```
 
 *** =sct
@@ -297,28 +313,35 @@ To do this in R, use the format:
 `barplot(table(dataset$categ_var))`
 
 *** =instructions
-- Create a barplot of the categorical variable *transmission* named `am` from the `mtcars` dataset
+- Create a barplot of the categorical variable `smoke100` from the `cdc` dataset
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
+cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 ```
 
 *** =sample_code
 ```{r}
-# Create barplot of the `am` variable in mtcars
+# Create barplot of the smoke100 variable in cdc dataset
+
+
+
 ```
 
 *** =solution
 ```{r}
-barplot(table(mtcars$am))
+# Create barplot of the smoke100 variable in cdc dataset
+
+barplot(table(cdc$smoke100))
 ```
 
 *** =sct
 ```{r}
-test_student_typed("barplot(table(mtcars$am))")
+test_student_typed("barplot(table(cdc$smoke100))")
 ```
 
 
@@ -333,36 +356,41 @@ The format to make a basic scatterplot is:
 `plot(x = dataset$var1 , y = dataset$var2)`
 
 
-For this exercise, we are going to visualize the relationship between `wt` and `mpg` in the `mtcars` dataset:
+For this exercise, we are going to visualize the relationship between `weight` and `height` in the `cdc` dataset:
 
-x = `wt` 
+x = `weight` 
 
-y = `mpg`
+y = `height`
 
 *** =instructions
-- Use the `plot()` function to create a scatterplot of `wt` by `mpg`.
+- Use the `plot()` function to create a scatterplot of `weight` and `height`.
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
 
 ```
 
 *** =sample_code
 ```{r}
-# Use plot() to create scatterplot of weight (wt) and mpg
+# Use plot() to create scatterplot of weight and height
+
+
 ```
 
 *** =solution
 ```{r}
-plot(x = mtcars$wt, y = mtcars$mpg)
+# Use plot() to create scatterplot of weight and height
+
+plot(x = cdc$weight, y = cdc$height)
 ```
 
 *** =sct
 ```{r}
 test_function("plot", args = c("x", "y"))
-success_msg("Good work! From the plot we can see that as weight increases, mpg decreases. This makes sense because large cars usually have less gas mileage")
+
 ```
 
 
@@ -380,30 +408,33 @@ This will produce side by side boxplots.
 
 *** =instructions
 
-Create side-by-side boxplots to compare *weights* `wt` of cars in the `mtcars` data set by *number of cylinders* `cyl`
+Create side-by-side boxplots to compare the `weight` of respondents in the `cdc` dataset by whether or not they are/were a smoker `smoke100`.
 
 
 
 *** =hint
-Use format in the lesson with `wt` = `quant_var`, `mtcars` = `dataset`, `cyl` = `categ_var`
+Use format in the lesson with `weight` = `quant_var`, `cdc` = `dataset`, `smoke100` = `categ_var`
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
+cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+
 
 ```
 
 *** =sample_code
 ```{r}
-# Create side-by-side boxplots with quant_var = wt and categ_var = cyl
+# Create side-by-side boxplots with quant_var = weight and categ_var = smoke100
 ```
 
 *** =solution
 ```{r}
-# Create side-by-side boxplots with quant_var = wt and categ_var = cyl
+# Create side-by-side boxplots with quant_var = weight and categ_var = smoke100
 
-boxplot(mtcars$wt ~ mtcars$cyl)
+boxplot(cdc$weight ~ cdc$smoke100)
 ```
 
 *** =sct
 ```{r}
-test_student_typed("boxplot(mtcars$wt ~ mtcars$cyl)")
+test_student_typed("boxplot(cdc$weight ~ cdc$smoke100)")
 ```
