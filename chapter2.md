@@ -351,6 +351,7 @@ Right now the plot of `mtcars$wt` vs. `mtcars$mpg` has ugly axis names. In this 
 - Create the plot from the last exercise `plot(x = mtcars$wt, y = mtcars$mpg)` but this time add axis labels. 
 
 - The new x-axis label should be `"Weight"`, y-axis label should be `"Miles Per Gallon"` and the title should be `"Mtcars: Weight by MPG"`.
+- Click the 'Submit Answer' button and take a look at the new plot. So much Better!
 
 *** =hint
 Make sure to wrap the labels in "" because they are words.

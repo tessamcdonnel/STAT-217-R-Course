@@ -40,7 +40,7 @@ str(mtcars)
 
 *** =sct
 ```{r}
-test_student_typed("str(mtcars)")
+test_function("str", args = "object")
 ```
 
 
@@ -85,6 +85,7 @@ str(mtcars)
 *** =sct
 ```{r}
 
+test_function("str", args = "object")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ee655438c8
@@ -184,7 +185,7 @@ To create a table, use the format:
 - summarize the *number of cylinders* variable `cyl` in the mtcars data set using the `table()` function
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-Use the format from the lesson with mtcars instead of dataset, and cyl instead of categ_var
+Use the format from the lesson with `mtcars` instead of dataset, and `cyl` instead of categ_var
 *** =pre_exercise_code
 ```{r}
 
@@ -203,7 +204,8 @@ table(mtcars$cyl)
 
 *** =sct
 ```{r}
-test_student_typed("table(mtcars$cyl")
+test_function("table", args = "...")
+
 ```
 
 
@@ -242,7 +244,7 @@ table(mtcars$gear, mtcars$carb)
 
 *** =sct
 ```{r}
-test_student_typed("table(mtcars$gear, mtcars$carb)")
+test_function("table", args = "...")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
 ## Visualizing Quantitative Data in R
@@ -380,7 +382,7 @@ Create side-by-side boxplots to compare *weights* `wt` of cars in the `mtcars` d
 
 
 *** =hint
-Use format in the lesson with quant_var = wt and categ_var = cyl
+Use format in the lesson with `wt` = `quant_var`, `mtcars` = `dataset`, `cyl` = `categ_var`
 *** =pre_exercise_code
 ```{r}
 

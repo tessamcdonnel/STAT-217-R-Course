@@ -195,7 +195,7 @@ R uses PEMDAS order of operations like you would use in any math class.
 *** =pre_exercise_code
 ```{r}
 plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 0, expression(frac((0.6 - 0.5), sqrt(0.25/1000))), cex = 2)
+text(0, 0, expression(frac((0.6 - 0.5), sqrt(0.25/1000))), cex = 4)
 
 ```
 
@@ -218,7 +218,7 @@ sqrt(9659)
 
 *** =sct
 ```{r}
-test_error()
+test_function("sqrt", args = "x")
 
 success_msg("Good work!")
 ```
@@ -261,8 +261,6 @@ msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:4ea9b80fa0
-
-
 
 
 ## Generating Numbers
