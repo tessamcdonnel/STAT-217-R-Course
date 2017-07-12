@@ -1,5 +1,5 @@
 ---
-title       : Lab 3
+title       : Lab 3 * change data sets to cdc
 description : Summarizing and Visualizing Data
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
@@ -13,15 +13,18 @@ This will return all of the variable names as well as their type (i.e. numeric, 
 
 *Quantitative* variables will be `numeric` and `integer` variable types.
 
-For this lab, we will continue to use the dataset `mtcars` from lab 2. 
+For this lab, we will use a dataset called `cdc` which contains data on health factors of people in the United States. 
 *** =instructions
 - Use the `str()` function to find the variable types of `mtcars`
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 
+- Use the `str()` function to find the variable types of `cdc`
+- Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
 
 ```
 

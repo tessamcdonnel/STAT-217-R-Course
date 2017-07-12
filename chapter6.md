@@ -12,7 +12,7 @@ description : One-sample t-test
 Before testing a hypothesis with a t-test, we need to make sure that a t-test is applicable.
 
 *get a good data set with an exciting quantitative variable*
-
+Use cdc$weight if worst comes to worst.
 Examine distribution of that variable:
 - mean
 - sd
