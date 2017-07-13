@@ -70,7 +70,7 @@ In this exercise, we are going to take two random samples and assign them to obj
 
 Note: Remember that after we create an object (i.e. sample1 and sample2) we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 *** =instructions
-- take a random sample of 20 from the variable `allergic` in the `peanut_allergy` dataset, assign this sample to `sample1`
+- take a random sample of 20 from the variable `allergic` in the `peanut_allergy` dataset, assign this to `sample1`
 - take another random sample of 20 from the same variable, but assign this sample to `sample2`
 - After clicking 'Submit Answer', look at the contents of `sample1` and `sample2`. Are they the same?
 *** =hint
@@ -119,9 +119,9 @@ test_function("sample", args = c("x", "size"))
 
 You probably noticed that two samples you took (of the same variable and size) were not the same. 
 
-This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 from `allergic` the values will be different.
+This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 from `allergic`, the values will be different.
 
-One way to control this is using `set.seed(number)` function. If you type this before creating your random sample, your sample won't change every time you Knit it.
+Sometimes we want to keep the **same** random sample because it gets confusing when the values change every time you Knit it. To do this, we use the `set.seed(number)` function. If you type this **before** creating your random sample, your sample will be the same random sample every time you Knit it.
 
 Note: *Any* number can go inside the `set.seed()` function
 *** =instructions
@@ -211,7 +211,7 @@ Most of the time we don't know what the *population proportion* is, but we can e
 
 In this exercise, you will create a random sample of 50 from the `allergic` variable in the dataset `peanut_allergy` and then compare the *sample proportion* of allergic children to the *population proportion* you found in the last exercise.
 *** =instructions
-- use the `sample()` function to create a sample of 50 from the `allergic` variable, assign this sample to `my_sample`
+- use the `sample()` function to create a sample of 50 from the `allergic` variable, assign this to `my_sample`
 - use the `table()` function on `my_sample`
 - click 'Submit Answer' but look at the R output to find how many children were allergic in `my_sample`
 - find the sample proportion of allergic children
@@ -274,6 +274,8 @@ When multiplying two things together use an asterisk (*)
 ```{r}
 plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
 text(0, 0, expression(hat(p) %+-% z ^ {"*"} * sqrt(frac(hat(p)*(1-hat(p)), n))), cex = 3)
+
+
 
 ```
 

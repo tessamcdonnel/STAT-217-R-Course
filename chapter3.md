@@ -1,5 +1,5 @@
 ---
-title       : Lab 3 
+title       : Lab 3 *figure out how to get mosaic in here
 description : Summarizing and Visualizing Data
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
@@ -121,27 +121,23 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
-## Summarizing Qauntitative Variables
+## Summarizing Quantitative Variables
+
+In this exercise, you will practice using the `favstats()` function from the *mosaic* package in R. This function will return the `min`, `max`, `mean`, `sd` and a few other numerical summaries of a quantitative variable.
+
+To use the `favstats()` function, use the format:
+`library(mosaic)`
+`favstats(dataset$quant_var)`
 
 
-In this exercise, you will learn how to use some of the R built-in functions to obtain statistics of your data set. Here are a few very common functions:
-
-`mean(dataset$variable)`: gives you the mean of a specific quantitative variable
-
-`median(dataset$variable)`: gives you the median of a specific quantitative variable
-
-`sd(dataset$variable)`: gives you the standard deviation of a specific quantitative variable
-
-`iqr(dataset$variable)`: gives you the interquartile range of a specific quantitative variable
-
-The dataset we've been working with `cdc` is already in your workspace.
+The dataset we've been working with (`cdc`) and the *mosaic* package are already in your workspace.
 
 The variable `weight` is the respondents weight in *pounds*.
 
 *** =instructions
-- Find the mean `weight` of the `cdc` dataset using the `mean()` function.
-- Find the median `weight` of `cdc` dataset using the `median()` function.
-- Find the standard deviation of the `weight` variable in `cdc` using the `sd()` function.
+- Find the mean `weight` of the `cdc` dataset using the `favstats()` function.
+- Find the median `weight` of `cdc` dataset using the `favstats()` function.
+- Find the standard deviation of the `weight` variable in `cdc` using the `favstats()` function.
 
 *** =hint
 substitute `cdc` for dataset
@@ -155,6 +151,8 @@ source("https://www.openintro.org/stat/data/cdc.R")
 *** =sample_code
 ```{r}
 # Find the mean weight of cdc
+# load the mosaic package
+library(mosaic)
 
 # Find the median weight of cdc
 

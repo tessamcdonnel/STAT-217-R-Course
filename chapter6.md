@@ -265,3 +265,51 @@ msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:92b47e8ff4
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r eval=FALSE}
+# Calculate 3 * 4
+3 * 4
+
+# Calculate 8 + 15
+
+
+```
+
+*** =solution
+```{r eval=FALSE}
+# Calculate 3 * 4
+3 * 4
+
+# Calculate 8 + 15
+8 + 15
+```
+
+*** =sct
+```{r eval=FALSE}
+test_output_contains("12", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
+
+test_student_typed("3 * 4", not_typed_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
+
+test_output_contains("23", incorrect_msg = "Make sure to add a line of R code, that calculates the sum of 8 and 15. Do not start the line with a `#`, otherwise, your R code will not be executed!")
+
+test_student_typed("8 + 15", not_typed_msg = "Make sure to add a line of R code, that calculates the sum of 8 and 15. Do not start the line with a `#`, otherwise, your R code will not be executed!")
+
+success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
+```

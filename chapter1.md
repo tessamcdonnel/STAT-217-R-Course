@@ -121,7 +121,7 @@ For example, if I want to cube '4', I would type 4^3 into the console.
 Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more accurate measure.
 
 *** =instructions
-- In the script, type `4^9` to calculate four to the power of nine.
+- In the script, type `4^3` to calculate four to the power of three.
 - In the script, type `pi*7^2` to find the area of a circle whose radius is 7
 - Click the 'Submit Answer' Button and take a look at the R output in the console (bottom right panel).
 *** =hint
@@ -139,12 +139,12 @@ Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more 
 ```{r}
 
 # Example of Addition
-5+10
+5 + 10
 
 # Example of division and subtraction
-(10 - 5) / 3
+(10 - 5) / 2
 
-# Use R as a calculator to find four to the power of nine.
+# Use R as a calculator to find four to the power of three.
 
 # Use R as a calculator to find the area of a circle (pi*r^2)
 
@@ -157,13 +157,13 @@ Note: R recognizes `pi` as 3.14159... so use `pi` instead of 3.14 to get a more 
 ```{r}
 
 # Example of Addition
-5+10
+5 + 10
 
 # Example of division and subtraction
-(10 - 5) / 3
+(10 - 5) / 2
 
-# Use R as a calculator to find four to the power of nine.
-4^9
+# Use R as a calculator to find four to the power of three
+4^3
 
 # Use R as a calculator to find the area of a circle (pi*r^2)
 pi*7^2
@@ -172,7 +172,16 @@ pi*7^2
 
 *** =sct
 ```{r}
+test_output_contains("15", incorrect_msg = "Do not remove the line of R code that calculates the sum of 5 and 10. Instead, just do the last 2 questions")
 
+
+test_output_contains("2.5", incorrect_msg = "Do not remove the line of R code that calculates (10 - 5) / 2. Instead, just do the last 2 questions")
+
+test_output_contains("64", incorrect_msg = "Make sure to add a line of R code, that calculates 4 to the power of 3. Do not start the line with a `#`, otherwise, your R code will not be executed!")
+
+test_student_typed("pi*7^2", not_typed_msg = "Make sure to add a line of R code, that calculates the area of a circle with radiu=7. Do not start the line with a `#`, otherwise, your R code will not be executed!")
+
+success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
 ```
 
 
