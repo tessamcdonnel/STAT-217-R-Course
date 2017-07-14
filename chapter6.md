@@ -204,6 +204,31 @@ t.test(x = cdc$height, mu = 70, conf.level = 0.90)
 test_function("t.test", args = c("x", "mu", "conf.level"))
 
 ```
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
+## Check for Understanding
+
+If I want to construct a 95% confidence interval on the hypothesis in the *plots* panel, what is the correct R command?
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 3, expression(paste("Ho:", mu, "=5")), cex = 3)
+text(0, -3, expression(paste("Ha:", mu, ">5")), cex = 3)
+
+
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:2a8c8123f8
 ## Factors that effect the test conclusion
 
