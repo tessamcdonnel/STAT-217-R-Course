@@ -56,7 +56,7 @@ test_function("str", args = "object")
 You may have noticed from the previous exercise that the `smoke100` variable is coded as numeric, but this is incorrect.
 
 
-R thinks that the `smoke100` variable is 'numeric' (because it takes on values 0 and 1) but really it should be coded as 'factor' because it is a **categorical variable**. 
+R thinks that the `smoke100` variable is 'numeric' but really it should be coded as 'factor' because it is a **categorical variable**. 
 
 `smoke100` only takes on two values *(1 = respondent has smoked at least 100 cigarettes in their life, 0 = otherwise)*. 
 
