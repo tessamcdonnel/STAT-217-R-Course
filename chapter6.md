@@ -378,7 +378,7 @@ Which argument should we specify in the t.test function to do a one sided Ha in 
 ```{r}
 msg_bad <- "That is not correct"
 msg_success <- "Exactly!"
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
 
