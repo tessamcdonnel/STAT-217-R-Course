@@ -145,14 +145,13 @@ substitute `cdc` for dataset
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/cdc.R")
-
+library(mosaic)
 ```
 
 *** =sample_code
 ```{r}
 # Find the mean weight of cdc
 # load the mosaic package
-library(mosaic)
 
 # Find the median weight of cdc
 
