@@ -74,24 +74,23 @@ For this exercise, you are going to find the *population distribution* of the qu
 
 We will treat the `ChickWeight` dataset as the entire population of interest.
 
+The mosaic package is already in your workspace.
 *** =instructions
-- use the `mean()` function to find the mean `weight` of the population of chicks in `ChickWeight`
-- use the `sd()` function to find the standard deviation of chick `weight`
-- use the `hist()` function to create a histogram of chick `weight`
+- use the `favstats()` function to get summary statistics of `weight` from the `ChickWeight` dataset.
+- use the `hist()` function to create a histogram of `weight`.
 - Click the 'Submit Answer' button and look at the R output
 *** =hint
-- Remember, to find the mean use format `mean(dataset$variable)`
-- This is the same for `sd()` and `hist()`
+- Remember, to find summary statistics use format `favstats(dataset$variable)`.
+- To get a histogram, use `hist(dataset$variable)`
 *** =pre_exercise_code
 ```{r}
-
+library(mosaic)
 ```
 
 *** =sample_code
 ```{r}
-# Find the mean weight of chicks in the population (dataset)
+# Find summary statistics of chick weights
 
-# Find the standard deviation of weight for chicks in the population (dataset)
 
 # Create a histogram of chick weights
 
@@ -99,11 +98,8 @@ We will treat the `ChickWeight` dataset as the entire population of interest.
 
 *** =solution
 ```{r}
-# Find the mean weight of chicks in the population (dataset)
-mean(ChickWeight$weight)
-
-# Find the standard deviation of weight for chicks in the population (dataset)
-sd(ChickWeight$weight)
+# Find summary statistics of chick weights
+favstats(ChickWeight$weight)
 
 # Create a histogram of chick weights
 hist(ChickWeight$weight)
@@ -112,8 +108,7 @@ hist(ChickWeight$weight)
 
 *** =sct
 ```{r}
-test_function("mean", args = "x")
-test_function("sd", args = "x")
+test_function("favstats", args = "x")
 test_function("hist", args = "x")
 ```
 
@@ -123,20 +118,23 @@ test_function("hist", args = "x")
 Most of the time we don't know what the *population mean* is, but we can **estimate** this value with a random sample. 
 
 In this exercise, you will create a random sample of 75 from the `weight` variable in the `ChickWeight` dataset and then compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
+
+The mosaic package is already in your workspace.
+
 *** =instructions
 - use `sample()` to take a sample of 75 from the `weight` variable, assign this to `my_sample`
-- use the `mean()` function to find the mean of `my_sample`
-- use the `sd()` function to find the standard deviation of `my_sample`
+- use the `favstats()` function to find the mean and standard deviation of `my_sample`
 - use the `hist()` function on `my_sample`
 - click 'Submit Answer' and look at the R output.
 - How do these values compare to the *population mean*?
 *** =hint
-For the first instruction, use the format `sample(dataset$variable, #)`
+For the first instruction, use the format `sample(dataset$variable, #)`.
 
-Type `mean(my_sample)`, `sd(my_sample)`, and  `hist(my_sample)` for other instructions.
+
+
 *** =pre_exercise_code
 ```{r}
-
+library(mosaic)
 
 ```
 
@@ -145,9 +143,9 @@ Type `mean(my_sample)`, `sd(my_sample)`, and  `hist(my_sample)` for other instru
 # Use the format sample(dataset$variable, #) to get a sample of 75 from the `weight` variable
 my_sample <- 
 
-# Find the mean of your new sample
+# Find the mean and standard deviation of your new sample with favstats() 
 
-# Find the sd of your new sample
+
 
 # Create a histogram of your new sample
 
@@ -158,11 +156,9 @@ my_sample <-
 # Use the format sample(dataset$variable, #) to get a sample of 75 from the `weight` variable
 my_sample <- sample(ChickWeight$weight, 75)
 
-# Find the mean of your new sample
-mean(my_sample)
+# Find the mean and standard deviation of your new sample with favstats() 
+favstats(my_sample)
 
-# Find the sd of your new sample
-sd(my_sample)
 
 # Create a histogram of your new sample
 hist(my_sample)
@@ -171,10 +167,14 @@ hist(my_sample)
 
 *** =sct
 ```{r}
-test_function("sample", args = c("x", "size"))
-test_function("mean", args = "x")
-test_function("sd", args = "x")
-test_function("hist", args = "x")
+
+
+
+test_student_typed("sample(ChickWeight$weight, 75)", not_typed_msg = "To create an object called my_sample, type sample(ChickWeight$weight, 75).")
+
+test_student_typed("favstats(my_sample)", not_typed_msg = "Remember, my_sample is just a sample from the weight variable so to get summary statistics use favstats(my_sample).")
+
+test_student_typed("hist(my_sample)", not_typed_msg = "Remember, my_sample is just a sample from the weight variable so to get a histogram use hist(my_sample).")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d7a8f825e2

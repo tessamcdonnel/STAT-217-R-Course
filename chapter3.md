@@ -1,5 +1,5 @@
 ---
-title       : Lab 3 *figure out how to get mosaic in here
+title       : Lab 3 
 description : Summarizing and Visualizing Data
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
@@ -126,18 +126,16 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 In this exercise, you will practice using the `favstats()` function from the *mosaic* package in R. This function will return the `min`, `max`, `mean`, `sd` and a few other numerical summaries of a quantitative variable.
 
 To use the `favstats()` function, use the format:
-`library(mosaic)`
 `favstats(dataset$quant_var)`
 
 
 The dataset we've been working with (`cdc`) and the *mosaic* package are already in your workspace.
 
-The variable `weight` is the respondents weight in *pounds*.
 
 *** =instructions
 - Find summary statistics of the `weight` variable in the `cdc` dataset using the `favstats()` function.
-- Find summary statistics of the `height` variable in the `cdc` dataset using the `favstats()` function.
-- Find the standard deviation of the `weight` variable in `cdc` using the `favstats()` function.
+- Find summary statistics of the `height` variable in `cdc` using the `favstats()` function.
+- Find summary statistics of the `age` variable in `cdc` using the `favstats()` function.
 
 *** =hint
 substitute `cdc` for dataset
@@ -150,32 +148,36 @@ library(mosaic)
 
 *** =sample_code
 ```{r}
-# Find the mean weight of cdc
-# load the mosaic package
+# Use the favstats() function to explore weight in the cdc dataset 
 
-# Find the median weight of cdc
 
-# Find the standard deviation of the weight of cdc
+# Use the favstats() function to explore height in the cdc dataset 
+
+
+# Use the favstats() function to explore age in the cdc dataset 
+
+
 ```
 
 *** =solution
 ```{r}
 
-# Find the mean weight of cdc
-mean(cdc$weight)
+# Use the favstats() function to explore weight in the cdc dataset 
+favstats(cdc$weight)
 
-# Find the median weight of cdc
-median(cdc$weight)
+# Use the favstats() function to explore height in the cdc dataset 
+favstats(cdc$height)
 
-# Find the standard deviation of the weight of cdc
-sd(cdc$weight)
+# Use the favstats() function to explore age in the cdc dataset 
+favstats(cdc$age)
+
+
 ```
 
 *** =sct
 ```{r}
-test_function("mean", args = "x")
-test_function("median", args = "x")
-test_function("sd", args = "x")
+test_function("favstats", args = "x")
+
 ```
 
 
