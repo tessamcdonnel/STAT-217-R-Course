@@ -135,8 +135,8 @@ The dataset we've been working with (`cdc`) and the *mosaic* package are already
 The variable `weight` is the respondents weight in *pounds*.
 
 *** =instructions
-- Find the mean `weight` of the `cdc` dataset using the `favstats()` function.
-- Find the median `weight` of `cdc` dataset using the `favstats()` function.
+- Find summary statistics of the `weight` variable in the `cdc` dataset using the `favstats()` function.
+- Find summary statistics of the `height` variable in the `cdc` dataset using the `favstats()` function.
 - Find the standard deviation of the `weight` variable in `cdc` using the `favstats()` function.
 
 *** =hint
