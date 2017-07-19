@@ -60,8 +60,9 @@ hist(cdc$age)
 
 *** =sct
 ```{r}
-test_function("favstats", args = "x")
-test_function("hist", args = "x")
+test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the cdc dataset and 'age' variable")
+
+test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the cdc dataset and 'age' variable")
 ```
 
 
@@ -112,211 +113,10 @@ t.test(x = cdc$age, mu = 40)
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu"))
+test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis!")
 
 
 ```
-
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:eeccda0836
-## One-sided Hypothesis Tests
-
-Sometimes we a have a one-sided alternative hypothesis (For example, the alternative is less than the null hypothesis). 
-
-The `t.test()` function can still do this, but we have to specify additional arguments.
-
-To specify a one-sided alternative, use the format:
-
-`t.test(x = dataset$variable, mu = null_hyp, alternative = "")`
-
-
-If our alternative hypothesis is *less than*, use:
-`alternative = "less"`
-
-If our alternative hypothesis is *greater than*, use:
-`alternative = "greater"`
-
-
-
-
-*** =instructions
-Use the `t.test()` function to carry out a one sample t-test to determine if the population mean `age` is **greater than** the 40 on average.
-*** =hint
-- The code is the same as the last time with the added argument: `alternative = "greater"`
-*** =pre_exercise_code
-```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-
-```
-
-*** =sample_code
-```{r}
-# use the t.test() function to determine if the mean age is significantly greater than 40 
-
-
-```
-
-*** =solution
-```{r}
-# use the t.test() function to determine if the mean age is significantly greater than 40 
-
-t.test(x = cdc$age, mu = 40, alternative = "greater")
-
-```
-
-*** =sct
-```{r}
-test_function("t.test", args = c("x", "alternative", "mu"))
-
-```
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:198408a028
-## Specifying Confidence Levels
-
-We can also change the confidence level by adding the argument: `conf.level = `. 
-
-For example, if I want a 99% confidence interval for the mean `var`, I would type:
-
-`t.test(x = cdc$height, mu = 70, conf.level = 0.99)`
-
-
-*** =instructions
-Use the `t.test()` function to carry out a one sample t-test to determine if the population mean `height` **differs** from null on average and use a 99% confidence interval to estimate the population mean height.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-
-```
-
-*** =sample_code
-```{r}
-# Carry out a t-test and find a 99% confidence interval
-
-```
-
-*** =solution
-```{r}
-# Carry out a t-test and find a 99% confidence interval
-t.test(x = cdc$height, mu = 70, conf.level = 0.99)
-```
-
-*** =sct
-```{r}
-test_function("t.test", args = c("x", "mu", "conf.level"))
-
-```
-
-
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:5d2e26a906
-## Check for Understanding...
-
-The `cdc` dataset has a variable called `wtdesire` which records the weight the subjects *wish* they were.
-
-For this exercise, test the hypothesis in the plots panel with mu = mean of `wtdesire`
-
-*** =instructions
-- Use the `t.test()` function to test the hypothesis in the *plots* panel and construct a 90% confidence interval.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 3, expression(paste("Ho:", mu, "=5")), cex = 2)
-text(0, -3, expression(paste("Ha:", mu, ">5")), cex = 2)
-source("https://www.openintro.org/stat/data/cdc.R")
-
-```
-
-*** =sample_code
-```{r}
-# Use t.test to perform a t test on the hypothesis in the plots panel
-
-
-```
-
-*** =solution
-```{r}
-# Use t.test to perform a t test on the hypothesis in the plots panel
-
-```
-
-*** =sct
-```{r}
-
-```
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
-## Check for Understanding
-
-If I want to construct a 90% confidence interval on the hypothesis in the *plots* panel, what is the correct R command?
-*** =instructions
-- t.test(x = dataset$variable, alternative = "greater", conf.level = 0.90)
-- t.test(x = dataset$variable, mu = 5, alternative = "less")
-- t.test(x = dataset$variable, mu = 5, alternative = "greater", conf.level = 0.90)
-- t.test(x = dataset$variable, mu = 5, alternative = "greater", conf.level = 90)
-
-*** =hint
-Remember, the default settings are to perform a 2-sided alternative hypothesis and to calculate a 95% confidence interval.
-
-*** =pre_exercise_code
-```{r}
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 3, expression(paste("Ho:", mu, "=5")), cex = 2)
-text(0, -3, expression(paste("Ha:", mu, ">5")), cex = 2)
-
-
-```
-
-*** =sct
-```{r}
-msg_bad <- "That is not correct. Select the option that tests for a one-sided 'greater than' hypothesis and confidence level of 0.90"
-msg_success <- "Exactly!"
-test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
-
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:2a8c8123f8
-## Factors that effect the test conclusion
-
-`t.test(x = dataset$variable, mu = null_hyp, alternative = alt_hyp, conf.level = %conf)`
-
-- closeness of sample mean and alternative hypothesis
-- one-sided, two-sided
-- alpha
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
-
-
-
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f14e01c77b
@@ -346,10 +146,180 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:eeccda0836
+## One-sided Hypothesis Tests
+
+Sometimes we a have a one-sided alternative hypothesis (For example, the hypothesis in the *plots* panel). 
+
+The `t.test()` function can still do this, but we have to specify an additional argument.
+
+To specify a one-sided alternative, use the format:
+
+`t.test(x = dataset$variable, mu = null_hyp, alternative = "____")`
+
+
+If our alternative hypothesis is *less than*, use:
+
+`alternative = "less"`
+
+If our alternative hypothesis is *greater than*, use:
+
+`alternative = "greater"`
+
+
+
+
+*** =instructions
+Use the `t.test()` function to carry out a one sample t-test to determine if the population mean `age` is **less** than 40 on average.
+*** =hint
+- The code is the same as the last time with the added argument: `alternative = "less"`
+*** =pre_exercise_code
+```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
+plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 3, expression(paste("Ho:", mu, "=40")), cex = 2)
+text(0, -3, expression(paste("Ha:", mu, "<40")), cex = 2)
+```
+
+*** =sample_code
+```{r}
+# use the t.test() function to determine if the mean age is significantly greater than 40 
+
+
+```
+
+*** =solution
+```{r}
+# use the t.test() function to determine if the mean age is significantly greater than 40 
+
+t.test(x = cdc$age, mu = 40, alternative = "less")
+
+```
+
+*** =sct
+```{r}
+test_function("t.test", args = c("x", "alternative", "mu"), incorrect_msg = "Everything is the same as the last exercise except for the added argument. The alternative argument should be equal to 'less'")
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:198408a028
+## Specifying Confidence Levels
+
+We can also change the confidence level by adding the argument: `conf.level = `. 
+
+For example, if I want to test the hypothesis in the *Plots* panel and build a 99% confidence interval for the mean `age`, I would type:
+
+`t.test(x = cdc$age, mu = 40, conf.level = 0.99)`
+
+
+*** =instructions
+Use the `t.test()` function to carry out a one sample t-test to determine if the population mean `age` **differs** from 40 on average and use a **90% confidence interval** to estimate the population mean age.
+*** =hint
+Make sure you specify the confidence level as a proportion. For example, to do a 80% confidence interval add `conf.level = 0.80`. This exercise is asking you to create a 90% confidence interval.
+*** =pre_exercise_code
+```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
+plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 3, expression(paste("Ho: ", "mu ", "= 40")), cex = 2)
+text(0, -3, expression("Ha: mu" != " 40"), cex = 2)
+
+```
+
+*** =sample_code
+```{r}
+# Carry out a t-test and find a 90% confidence interval
+
+```
+
+*** =solution
+```{r}
+# Carry out a t-test and find a 90% confidence interval
+t.test(x = cdc$age, mu = 40, conf.level = 0.90)
+```
+
+*** =sct
+```{r}
+test_function("t.test", args = c("x", "mu", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.90?")
+
+```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5d2e26a906
+## t.test() Practice
+The `cdc` dataset has a variable called `wtdesire` which records the weight the subjects *wish* they were.
+
+For this exercise, test the hypothesis in the plots panel with mu = mean of `wtdesire`.
+
+*** =instructions
+- Use the `t.test()` function to perform a t-test on `wtdesire` for the hypothesis in the *plots* panel and construct a 99% confidence interval.
+*** =hint
+- This is a one-sided test so `alternative="___"` should be called. 
+- Since we want a 99% confidence interval, we need to specify `conf.level = 0.99`.
+*** =pre_exercise_code
+```{r}
+plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 3, expression(paste("Ho:", mu, "=150")), cex = 2)
+text(0, -3, expression(paste("Ha:", mu, ">150")), cex = 2)
+source("https://www.openintro.org/stat/data/cdc.R")
+
+```
+
+*** =sample_code
+```{r}
+# Use t.test to perform a t test on the hypothesis in the plots panel
+
+```
+
+*** =solution
+```{r}
+# Use t.test to perform a t test on the hypothesis in the plots panel
+t.test(x = cdc$wtdesire, mu = 150, alternative = "greater", conf.level = 0.99)
+
+```
+
+*** =sct
+```{r}
+test_function("t.test", args = c("x", "mu", "alternative", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.99 and alternative equal to 'greater'?")
+
+```
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
+## Check for Understanding
+
+If I want to construct a 90% confidence interval on the hypothesis in the *plots* panel, what is the correct R command?
+*** =instructions
+- t.test(x = dataset$variable, alternative = "less", conf.level = 0.90)
+- t.test(x = dataset$variable, mu = 5, alternative = "greater")
+- t.test(x = dataset$variable, mu = 5, alternative = "less", conf.level = 0.90)
+- t.test(x = dataset$variable, mu = 5, alternative = "less", conf.level = 90)
+
+*** =hint
+Remember, the default settings are to perform a 2-sided alternative hypothesis and to calculate a 95% confidence interval.
+
+*** =pre_exercise_code
+```{r}
+plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 3, expression(paste("Ho:", mu, "=5")), cex = 2)
+text(0, -3, expression(paste("Ha:", mu, "<5")), cex = 2)
+
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Select the option that tests for a one-sided 'greater than' hypothesis and confidence level of 0.90"
+msg_success <- "Exactly!"
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+
+```
+
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:45534c5588
-
-
-#### t.test() arguments
+## Quick Check
 
 Which argument should we specify in the t.test function to do a one sided Ha in a one sample t-test?
 
