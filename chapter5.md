@@ -119,7 +119,7 @@ Most of the time we don't know what the *population mean* is, but we can **estim
 
 In this exercise, you will create a random sample of 75 from the `weight` variable in the `ChickWeight` dataset and then compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
 
-The mosaic package is already in your workspace.
+The *mosaic* package is already in your workspace.
 
 *** =instructions
 - use `sample()` to take a sample of 75 from the `weight` variable, assign this to `my_sample`
