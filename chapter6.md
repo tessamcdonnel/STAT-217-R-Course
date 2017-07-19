@@ -120,7 +120,7 @@ test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you subs
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f14e01c77b
-## Check for Understanding
+## Check for Understanding 1
 
 
 The default settings for a t.test function (eg. `t.test(evals$cls_perc_eval,mu=80`) ) are to  perform a _________ alternative hypothesis and to calculate a ______ confidence interval.
@@ -288,7 +288,7 @@ test_function("t.test", args = c("x", "mu", "alternative", "conf.level"), incorr
 
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
-## Check for Understanding
+## Check for Understanding 2
 
 If I want to construct a 90% confidence interval on the hypothesis in the *plots* panel, what is the correct R command?
 *** =instructions
@@ -319,7 +319,7 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:45534c5588
-## Quick Check
+## Check for Understanding 3
 
 Which argument should we specify in the t.test function to do a one sided Ha in a one sample t-test?
 
