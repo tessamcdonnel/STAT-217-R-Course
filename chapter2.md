@@ -158,9 +158,7 @@ names(mtcars)
 
 *** =sct
 ```{r}
-test_object("mtcars$density")
 
-test_student_typed("names(mtcars)")
 ```
 
 
