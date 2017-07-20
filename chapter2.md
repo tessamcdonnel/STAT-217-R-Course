@@ -194,7 +194,6 @@ sum(mtcars$gear)
 
 *** =sct
 ```{r}
-test_function("sum", args = "x")
 ```
 
 
