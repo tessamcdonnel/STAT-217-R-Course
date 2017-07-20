@@ -7,7 +7,7 @@ description : Inference for Quantitative Data
 ## Assumptions for a 2 sample t-test
 #### maybe split this up into 2 slides: Intro to the data, then Assumptions
 
-**find a data set for this!**
+**find a data set for this! Maybe same anorexia data**
 
 The two-sample t-test is used when we want to test whether the difference between groups in a categorical variable is statistically significant.
 
@@ -69,6 +69,9 @@ To do this, use the format:
 
 *** =pre_exercise_code
 ```{r}
+plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+text(0, 3, expression(paste("Ho:", mu [yes], "=", mu [no])), cex = 3)
+text(0, -3, expression(paste("Ha:", mu [yes], "><", mu [no])), cex = 3)
 
 ```
 
@@ -90,19 +93,32 @@ To do this, use the format:
 --- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
 ## Assumptions for Paired t-test
  
+ What if we want to see if the patients weights improved between their `Prewt` and `Postwt`, regardless of their treatment group?
  
+ The pre-weight and post-weight of patients is not independent (because it is measuring the same person) so we have to conduct a **paired** t-test.
+ 
+To perform a paired t-test the data needs to follow these assumptions:
+
+* independent observations
+* difference in weights are normally distributed (or n>30)
+ 
+The independence assumption is met because the *patients* are independent of one another.
+
 - Use the `anorexia` data set from the mass package
 - Explain what the difference between paired and non-paired tests
 - talk about assumptions and how the data meet them
 - create diff between pre and post weight
 
 *** =instructions
-
+- Create a new variable called `diffwt` that measures: `Postwt - Prewt`.
+- Use `favstats()` to explore your new variable `diffwt`.
+- Use the `hist()` function to check if `diffwt` is normally distributed.
+- Click the 'Submit Answer' button and check the output. Are the assumptions met?
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+library(MASS)
 ```
 
 *** =sample_code
