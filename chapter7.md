@@ -166,7 +166,7 @@ t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)
 
 *** =sct
 ```{r}
-
+test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)", not_typed_msg = "Make sure you follow the format from the lesson with the correct data set (schooldays), quant_var (absent) and categ_var (race)")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
