@@ -74,8 +74,9 @@ For this exercise, you are going to find the *population distribution* of the qu
 
 We will treat the `ChickWeight` dataset as the entire population of interest.
 
-The mosaic package is already in your workspace.
+
 *** =instructions
+- Type `library(mosaic)` to load the *mosaic* package into your workspace.
 - use the `favstats()` function to get summary statistics of `weight` from the `ChickWeight` dataset.
 - use the `hist()` function to create a histogram of `weight`.
 - Click the 'Submit Answer' button and look at the R output
@@ -89,6 +90,9 @@ library(mosaic)
 
 *** =sample_code
 ```{r}
+# Load the mosaic package
+
+
 # Find summary statistics of chick weights
 
 
@@ -98,6 +102,9 @@ library(mosaic)
 
 *** =solution
 ```{r}
+# Load the mosaic package
+library(mosaic)
+
 # Find summary statistics of chick weights
 favstats(ChickWeight$weight)
 
@@ -119,9 +126,9 @@ Most of the time we don't know what the *population mean* is, but we can **estim
 
 In this exercise, you will create a random sample of 75 from the `weight` variable in the `ChickWeight` dataset and then compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
 
-The *mosaic* package is already in your workspace.
 
 *** =instructions
+- type `library(mosaic)` to load the *mosaic* package into your workspace
 - use `sample()` to take a sample of 75 from the `weight` variable, assign this to `my_sample`
 - use the `favstats()` function to find the mean and standard deviation of `my_sample`
 - use the `hist()` function on `my_sample`
@@ -140,6 +147,9 @@ library(mosaic)
 
 *** =sample_code
 ```{r}
+# Load the mosaic package
+
+
 # Use the format sample(dataset$variable, #) to get a sample of 75 from the `weight` variable
 my_sample <- 
 
@@ -153,6 +163,9 @@ my_sample <-
 
 *** =solution
 ```{r}
+# Load the mosaic package
+library(mosaic)
+
 # Use the format sample(dataset$variable, #) to get a sample of 75 from the `weight` variable
 my_sample <- sample(ChickWeight$weight, 75)
 

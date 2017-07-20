@@ -129,10 +129,11 @@ To use the `favstats()` function, use the format:
 `favstats(dataset$quant_var)`
 
 
-The dataset we've been working with (`cdc`) and the *mosaic* package are already in your workspace.
+The dataset we've been working with (`cdc`) is already in your workspace.
 
 
 *** =instructions
+- Type `library(mosaic)` to load the *mosaic* package into your workspace.
 - Find summary statistics of the `weight` variable in the `cdc` dataset using the `favstats()` function.
 - Find summary statistics of the `height` variable in `cdc` using the `favstats()` function.
 - Find summary statistics of the `age` variable in `cdc` using the `favstats()` function.
@@ -148,6 +149,9 @@ library(mosaic)
 
 *** =sample_code
 ```{r}
+# Load the mosaic package 
+
+
 # Use the favstats() function to explore weight in the cdc dataset 
 
 
@@ -161,6 +165,8 @@ library(mosaic)
 
 *** =solution
 ```{r}
+# Load the mosaic package 
+library(mosaic)
 
 # Use the favstats() function to explore weight in the cdc dataset 
 favstats(cdc$weight)

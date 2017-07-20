@@ -19,9 +19,9 @@ In this exercise, you will be checking the normality assumption for the `age` va
 
 *The normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped.*
 
-Note: The *mosaic* package is already in your workspace.
 
 *** =instructions
+- Type `library(mosaic)` to load the *mosaic* package into your workspace.
 - Use the `favstats()` function to examine the distribution of `age`.
 - Use the `hist()` function to make sure `age` follows the *normality* assumption.
 *** =hint
@@ -39,6 +39,9 @@ library(mosaic)
 
 *** =sample_code
 ```{r}
+# Load the mosaic package 
+
+
 # Find the summary statistics of age using the favstats() function
 
 # Check for normallity using the hist() function
@@ -48,6 +51,9 @@ library(mosaic)
 
 *** =solution
 ```{r}
+# Load the mosaic package
+library(mosaic)
+
 # Find the summary statistics of `variable` using the favstats() function
 favstats(cdc$age)
 
@@ -223,10 +229,11 @@ Make sure you specify the confidence level as a proportion. For example, to do a
 ```{r}
 source("https://www.openintro.org/stat/data/cdc.R")
 plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 3, expression(paste("Ho: ", "mu ", "= 40")), cex = 2)
-text(0, -3, expression("Ha: mu" != " 40"), cex = 2)
+text(0, 3, expression(paste("Ho: ", mu, "= 40")), cex = 2)
+text(0, -3, expression("Ha: mu"  != " 40"), cex = 2)
 
 ```
+
 
 *** =sample_code
 ```{r}
