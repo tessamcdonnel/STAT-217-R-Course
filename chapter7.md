@@ -8,13 +8,14 @@ description : Inference for Quantitative Data
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe4a8241d4
 ## Two Sample t-test
 
+
+The two-sample t-test is used when we want to test whether the difference between groups in a categorical variable is statistically significant.
+
 To perform a 2 sample t-test, we'll be using a dataset called `schooldays` which contains data on Australian children involved in a sociological study about factors that effect school attendence. 
 
 - there are 5 variables in this data set: `race`, `sex`, `school`, `learner` and `absent`.
 - there are 154 subjects 
 - `schooldays` is already in your workspace
-
-The two-sample t-test is used when we want to test whether the difference between groups in a categorical variable is statistically significant.
 
 Suppose we are interested if the subjects were absent a different amount of times based on their race. 
 
@@ -29,8 +30,8 @@ We can begin by exploring the relationship between `absent` and `race`.
 - Click the 'Submit Answer' button and look at the R output. Do you think this difference is statistically significant?
 
 *** =hint
-- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)`
-- To make a boxplot, use the format: `boxplot(dataset$quant_var ~ dataset$categ_var)`
+- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)`.
+- To make a boxplot, use the format: `boxplot(dataset$quant_var ~ dataset$categ_var)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -172,24 +173,37 @@ test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALS
 --- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
 ## Assumptions for Paired t-test
  
- What if we want to see if the patients weights improved between their `Prewt` and `Postwt`, regardless of their treatment group?
+Suppose we want test whether there is a mean difference between 2 *dependent* sets of observations.
+
+This is a paired t-test where each subject or unit is measured twice, resulting in 2 dependent measurements.
+
+To perform a paired t-test, we'll be using a dataset called `anorexia` which contains weight change data on yound female anorexic patients. 
+
+- there are 3 variables in this data set: `Treat`, `Prewt`, and `Postwt`.
+- there are 72 subjects 
+- `anorexia` is already in your workspace
+
+We want to test whether the patients weights improved between their previous weight `Prewt` and post weight `Postwt`, regardless of their treatment group?
  
- The pre-weight and post-weight of patients is not independent (because it is measuring the same person) so we have to conduct a **paired** t-test.
+The pre-weight and post-weight of patients are not independent (because it is measuring the same person) so we have to conduct a **paired** t-test.
  
-To perform a paired t-test the data needs to follow these assumptions:
+Before we conduct the test, we need to make sure our data follows these assumptions:
 
 * independent observations
 * difference in weights are normally distributed (or n>30)
  
 The independence assumption is met because the *patients* are independent of one another.
 
-- Use the `anorexia` data set from the mass package
-- Explain what the difference between paired and non-paired tests
-- talk about assumptions and how the data meet them
-- create diff between pre and post weight
+In this exercise, you will be checking the normality assumption for the the *difference in weight* in the `anorexia` data set.
+
+
+*Remember, the normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample sizes are larger than 30*
+
+
 
 *** =instructions
-- Create a new variable called `diffwt` that measures: `Postwt - Prewt`.
+- Type `library(mosaic)` to load the *mosaic* package into your workspace.
+- Copy and paste this code to create a new variable called `diffwt` that measures: `Postwt - Prewt`: `anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt`.
 - Use `favstats()` to explore your new variable `diffwt`.
 - Use the `hist()` function to check if `diffwt` is normally distributed.
 - Click the 'Submit Answer' button and check the output. Are the assumptions met?
@@ -198,15 +212,35 @@ The independence assumption is met because the *patients* are independent of one
 *** =pre_exercise_code
 ```{r}
 library(MASS)
+library(mosaic)
 ```
 
 *** =sample_code
 ```{r}
+# Load the mosaic package 
+
+# Create new variable called diffwt that that measures post-weight - pre-weight
+
+# Explore the new variable diffwt
+
+# Create a histogram of diffwt
+
 
 ```
 
 *** =solution
 ```{r}
+# Load the mosaic package 
+library(mosaic)
+
+# Create new variable called diffwt that that measures post-weight - pre-weight
+anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
+
+# Explore the new variable diffwt with the favstats() function
+favstats(anorexia$diffwt)
+
+# Create a histogram of diffwt
+hist(anorexia$diffwt)
 
 ```
 
