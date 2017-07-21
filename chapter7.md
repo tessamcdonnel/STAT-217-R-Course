@@ -170,9 +170,11 @@ t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)
 test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)", not_typed_msg = "Make sure you follow the format from the lesson with the correct data set (schooldays), quant_var (absent) and categ_var (race)")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
-## Assumptions for Paired t-test
- 
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:de76ba4b81
+## Paired t-test
+
 Suppose we want test whether there is a mean difference between 2 *dependent* sets of observations.
 
 This is a paired t-test where each subject or unit is measured twice, resulting in 2 dependent measurements.
@@ -183,30 +185,20 @@ To perform a paired t-test, we'll be using a dataset called `anorexia` which con
 - there are 72 subjects 
 - `anorexia` is already in your workspace
 
-We want to test whether the patients weights improved between their previous weight `Prewt` and post weight `Postwt`, regardless of their treatment group?
- 
 The pre-weight and post-weight of patients are not independent (because it is measuring the same person) so we have to conduct a **paired** t-test.
- 
-Before we conduct the test, we need to make sure our data follows these assumptions:
 
-* independent observations
-* difference in weights are normally distributed (or n>30)
- 
-The independence assumption is met because the *patients* are independent of one another.
+We want to test whether the patients weights improved between their previous weight `Prewt` and post weight `Postwt`, regardless of their treatment group.
 
-In this exercise, you will be checking the normality assumption for the the *difference in weight* in the `anorexia` data set.
+Let's begin by exploring the difference in weights.
 
+First, we need to create a new variable `diffwt` that measures `Postwt - Prewt`.
 
-*Remember, the normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample sizes are larger than 30*
-
-
-
+*Note: Postwt and Prewt are measured in pounds*
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Copy and paste this code to create a new variable called `diffwt` that measures: `Postwt - Prewt`: `anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt`.
+- Copy and paste this code to create `diffwt`: `anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt`.
 - Use `favstats()` to explore your new variable `diffwt`.
-- Use the `hist()` function to check if `diffwt` is normally distributed.
-- Click the 'Submit Answer' button and check the output. Are the assumptions met?
+
 *** =hint
 
 *** =pre_exercise_code
@@ -217,11 +209,63 @@ library(mosaic)
 
 *** =sample_code
 ```{r}
-# Load the mosaic package 
+# load the mosaic package 
 
-# Create new variable called diffwt that that measures post-weight - pre-weight
+# copy and paste code from instruction to create diffwt
 
-# Explore the new variable diffwt
+# explore the new variable diffwt
+
+
+```
+
+*** =solution
+```{r}
+# load the mosaic package 
+library(mosaic)
+
+# copy and paste code from instruction to create diffwt
+anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
+
+# explore the new variable diffwt
+favstats(anorexia$diffwt)
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
+## Assumptions for Paired t-test
+ 
+ 
+Before we conduct the paired t-test, we need to make sure our data follows these assumptions:
+
+* independent observations
+* difference in weights are normally distributed (or n>30)
+ 
+The independence assumption is met because the *patients* are independent of one another.
+
+In this exercise, you will be checking the normality assumption for the the `diffwt` variable in the `anorexia` data set.
+
+
+*Remember, the normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample sizes are larger than 30*
+
+
+
+*** =instructions
+- Use the `hist()` function to check if `diffwt` is normally distributed.
+- Click the 'Submit Answer' button and check the output. Are the assumptions met?
+*** =hint
+To create a histogram use the format: `hist(dataset$variable)`
+
+*** =pre_exercise_code
+```{r}
+library(MASS)
+
+```
+
+*** =sample_code
+```{r}
 
 # Create a histogram of diffwt
 
@@ -230,17 +274,9 @@ library(mosaic)
 
 *** =solution
 ```{r}
-# Load the mosaic package 
-library(mosaic)
-
-# Create new variable called diffwt that that measures post-weight - pre-weight
-anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
-
-# Explore the new variable diffwt with the favstats() function
-favstats(anorexia$diffwt)
-
 # Create a histogram of diffwt
 hist(anorexia$diffwt)
+
 
 ```
 
@@ -254,12 +290,16 @@ hist(anorexia$diffwt)
 --- type:NormalExercise lang:r xp:100 skills:1 key:a852975de3
 ## Paired tests using t.test()
 
-- introduce `paired = TRUE` argument to make it a paired t-test
-- use the anorexia data
-- add hypothesis in plots panel
+We can also use the `t.test()` function to perform a paired sample t-test, but the format is a little diffferent.
+
+Our hypothesis (in the *Plots* panel) it to test whether there is a significant difference between the weights.
+
+To conduct a paired t-test, use the format:
+
+`t.test(dataset$diffwt, mu = 0)`
 
 *** =instructions
-
+- Perform a paired t-test to test whether the mean difference in weight `diffwt` (Post weight - Pre weight) is equal to zero. 
 *** =hint
 
 *** =pre_exercise_code
