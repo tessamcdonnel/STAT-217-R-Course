@@ -70,7 +70,7 @@ The data set `schooldays` is from a random sample so the observations can be tre
 
 In this exercise, you will be checking the normality assumption for the `absent` variable in `schooldays`.
 
-*The normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample sizes are larger than 30*
+*The normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample sizes are larger than 30.*
 
 
 
@@ -120,11 +120,13 @@ hist(schooldays$absent)
 
 *** =sct
 ```{r}
+
 test_student_typed("favstats(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: favstats(dataset$quant_var ~ dataset$categ_var) with the correct data set (schooldays), quant_var (absent) and categ_var (race)")
 
 test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the 'schooldays' dataset and 'absent' variable")
 
 success_msg("Does this data follow the assumptions? Take a look at the R output because you will answer this question in the next exercise.")
+
 ```
 
 
@@ -311,6 +313,7 @@ hist(anorexia$diffwt)
 
 *** =sct
 ```{r}
+
 test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the anorexia dataset and 'diffwt' variable")
 
 
@@ -473,13 +476,14 @@ In this exercise, you will be checking the normality assumption for the `Postwt`
 
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to examine the distribution of `Postwt` by `Treat` in the `anorexia`.
+- Use the `favstats()` function to examine the distribution of `Postwt` by `Treat` in the `anorexia` data set.
 - Use the `hist()` function to check if `Postwt` is normally distributed.
 - Click the 'Submit Answer' button and check the output. Are the assumptions met?
 
 
 *** =hint
-- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)`.
+- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)`
+- To create a histogram, use the format: `hist(dataset$variable)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -514,19 +518,112 @@ hist(anorexia$Postwt)
 test_student_typed("favstats(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: favstats(dataset$quant_var ~ dataset$categ_var) with the correct data set (anorexia), quant_var (Postwt) and categ_var (Treat)")
 
 test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the 'anorexia' dataset and 'Postwt' variable")
+
+success_msg("We can see from the histogram that the post-treatment weights are a little skewed and the sample sizes in each group is less than 30 but for the purposes of this demonstration, we'll conclude that the assumptions are met.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9048bc1deb
 ## Using aov() function to test multiple means
 
+To test if average post-treatment weights `Postwt` differs among the treatment categories, we use the `aov()` function.
+
+Similar structure to the two sample t-test, we list the quantitative variable first, followed by the categorical. We're going to save these in an object so that we can get a summary of the results.
+
+To do this, follow the format: 
+
+`anova.results <- aov(dataset$quant_var ~ dataset$categ_var)`
+
+`summary(anova.results)`
+
+For this exercise, 
+*** =instructions
+- Use the format in the lesson to test if there is a difference in mean `Postwt` among the three `Treat` categories, name these results `anova.results`.
+- Use the `summary()` function to examine `anova.results`.
+- Click 'Submit Answer' and look ANOVA results.
+
+*** =hint
+- Follow the lesson format with correct dataset and variables.
+*** =pre_exercise_code
+```{r}
+library(MASS)
+```
+
+*** =sample_code
+```{r}
+# Use aov() and summary() to carry out an ANOVA
+
+
+```
+
+*** =solution
+```{r}
+# Use aov() and summary() to carry out an ANOVA
+anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
+summary(anova.results)
+```
+
+*** =sct
+```{r}
+success_msg("Great! Now look at the p-value from this test. What is your conclusion?")
+```
+
+
+
+
+
+
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:dbcb0c5a29
+## Quick Check 2
+
+The results from the ANOVA have a p-value = 0.0044. At the alpha = 0.05 level of significance, what is our conclusion?
 
 *** =instructions
+- Reject the null and conclude all of the population means are different.
+- Reject the null and conclude that at least one population mean differs from the others.
+- Fail to reject the null and conclude all of the population means are different.
+- Fail to reject the null and conclude that at least one population mean differs from the others.
 
+*** =hint
+Remember that our null hypothesis is that all of the population means are the same.
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. The p-value is less than alpha = 0.05 so we would reject the null BUT that only tells us that at least one population mean differs from the others."
+msg_success <- "Exactly!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:ccc0750e37
+## Tukey's Pairwise Comparisons
+
+The last exercise only tells us that *at least one* population mean differs from the others but we want to know exactly **which** pairs of means differ! 
+
+To do this we can use use the `TukeyHSD()` function in the format:
+
+`TukeyHSD(anova.results)`
+
+`plot(TukeyHSD(anova.results))`
+
+ 
+Note: `anova.results` is already in your workspace
+
+*** =instructions
+- Re-type the code in the lesson to see which population means are significantly different.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+library(MASS)
+anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
 ```
 
 *** =sample_code
@@ -536,7 +633,9 @@ test_function("hist", args = "x", incorrect_msg = "Make sure you follow the form
 
 *** =solution
 ```{r}
+TukeyHSD(anova.results)
 
+plot(TukeyHSD(anova.results))
 ```
 
 *** =sct
