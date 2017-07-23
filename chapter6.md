@@ -6,12 +6,10 @@ description : One-sample t-test
 --- type:NormalExercise lang:r xp:100 skills:1 key:9c0a9256c3
 ## Assumptions of the t-test
 
-Before testing a hypothesis with a t-test, we need to make sure that our data meets these 4 assumptions:
+Before testing a hypothesis with a t-test, we need to make sure that our data meets these assumptions:
 
-* the variable we're testing is quantitative
 * the observations are independent
-* the variable is normally distributed
-* no extreme outliers
+* the variable is normally distributed (or large sample size)
 
 We'll be using the same dataset from the last lab `cdc`. This data is from a random sample so the observations can be treated as independent.
 
@@ -69,6 +67,8 @@ hist(cdc$age)
 test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the cdc dataset and 'age' variable")
 
 test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the cdc dataset and 'age' variable")
+
+success_msg("Nice! We can see from the histogram that the data is right skewed but since there is a large sample (n=20,000) the normality assumption is met.")
 ```
 
 
