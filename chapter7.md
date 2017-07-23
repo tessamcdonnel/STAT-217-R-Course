@@ -522,6 +522,40 @@ test_function("hist", args = "x", incorrect_msg = "Make sure you follow the form
 success_msg("We can see from the histogram that the post-treatment weights are a little skewed and the sample sizes in each group is less than 30 but for the purposes of this demonstration, we'll conclude that the assumptions are met.")
 ```
 
+
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:5066cc4f99
+## Quick Check: ANOVA
+
+ANOVA is appropriate when we want to...
+
+*** =instructions
+
+- compare two population means
+- test a single population mean
+- examine a population mean of paired measurements
+- compare more than two population means
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct."
+msg_success <- "Exactly!"
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+
+
+```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:9048bc1deb
 ## Using aov() function to test multiple means
 
@@ -640,5 +674,30 @@ plot(TukeyHSD(anova.results))
 
 *** =sct
 ```{r}
+
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:11685d799c
+## Quick Check 3
+
+Examining a histogram of a quantitative variable helps us to determine if a condition is satisfied for valid statistical inference by...
+
+*** =instructions
+- allowing us to evaluate if measurements are paired
+- allowing us to evaluate if observations are independent
+- allowing us to determine if the data follow an approximately normal distribution
+- allowing us to determine if the sample size is large enough
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct."
+msg_success <- "Exactly!"
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 ```
