@@ -15,16 +15,16 @@ This will return all of the variable names as well as their type (i.e. numeric, 
 
 For this lab, we will use a dataset called `cdc` which contains data on the health of people in the United States.
 
-- there are 9 variables in the dataset
+- there are 9 variables in the data set
 - there are 20,000 subjects
-- this dataset is already in your workspace so if you type `cdc` into your console, the data will come up in the output
+- this data set is already in your workspace so if you type `cdc` into your console, the data will come up in the output
 
 *** =instructions
 
-- Use the `str()` function to find the variable types of `cdc`
+- Use the `str()` function to find the variable types of the `cdc` data set.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-
+Follow the format str(dataset) with `cdc` instead of `dataset`.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/cdc.R")
@@ -34,19 +34,23 @@ source("https://www.openintro.org/stat/data/cdc.R")
 *** =sample_code
 ```{r}
 # Find the variable types of cdc
+
+
 ```
 
 *** =solution
 ```{r}
 # Find the variable types of cdc
 str(cdc)
+
+
 ```
 
 
 
 *** =sct
 ```{r}
-test_function("str", args = "object")
+test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with the correct data set!")
 ```
 
 
@@ -55,10 +59,9 @@ test_function("str", args = "object")
 
 You may have noticed from the previous exercise that the `smoke100` variable is coded as numeric, but this is incorrect.
 
+`smoke100` only takes on two values *(1 = respondent has smoked at least 100 cigarettes in their life, 0 = otherwise)*. 
 
 R thinks that the `smoke100` variable is 'numeric' but really it should be coded as 'factor' because it is a **categorical variable**. 
-
-`smoke100` only takes on two values *(1 = respondent has smoked at least 100 cigarettes in their life, 0 = otherwise)*. 
 
 In this exercise we are going to recode the `smoke100` variable from a numeric to a factor variable type.
 
@@ -80,6 +83,8 @@ source("https://www.openintro.org/stat/data/cdc.R")
 # Type the code from the 'Instructions' box to change the *smoke100* variable to a factor variable
 
 # Use the str() function on cdc
+
+
 ```
 
 *** =solution
@@ -87,14 +92,14 @@ source("https://www.openintro.org/stat/data/cdc.R")
 # Type the code from the 'Instructions' box to change the *smoke100* variable to a factor variable
 cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
-# Use the str() function on mtcars
+# Use the str() function on cdc
 str(cdc)
 ```
 
 *** =sct
 ```{r}
 
-test_function("str", args = "object")
+test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with the correct data set!")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ee655438c8
@@ -129,17 +134,17 @@ To use the `favstats()` function, use the format:
 `favstats(dataset$quant_var)`
 
 
-The dataset we've been working with (`cdc`) is already in your workspace.
+The data set we've been working with (`cdc`) is already in your workspace.
 
 
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Find summary statistics of the `weight` variable in the `cdc` dataset using the `favstats()` function.
+- Find summary statistics of the `weight` variable in the `cdc` data set using the `favstats()` function.
 - Find summary statistics of the `height` variable in `cdc` using the `favstats()` function.
 - Find summary statistics of the `age` variable in `cdc` using the `favstats()` function.
 
 *** =hint
-substitute `cdc` for dataset
+Follow the format in the lesson substituting `cdc` for dataset and specified variable for quant_var.
 
 *** =pre_exercise_code
 ```{r}
@@ -152,13 +157,13 @@ library(mosaic)
 # Load the mosaic package 
 
 
-# Use the favstats() function to explore weight in the cdc dataset 
+# Use the favstats() function to explore weight in the cdc data set 
 
 
-# Use the favstats() function to explore height in the cdc dataset 
+# Use the favstats() function to explore height in the cdc data set 
 
 
-# Use the favstats() function to explore age in the cdc dataset 
+# Use the favstats() function to explore age in the cdc data set 
 
 
 ```
@@ -168,13 +173,13 @@ library(mosaic)
 # Load the mosaic package 
 library(mosaic)
 
-# Use the favstats() function to explore weight in the cdc dataset 
+# Use the favstats() function to explore weight in the cdc data set 
 favstats(cdc$weight)
 
-# Use the favstats() function to explore height in the cdc dataset 
+# Use the favstats() function to explore height in the cdc data set 
 favstats(cdc$height)
 
-# Use the favstats() function to explore age in the cdc dataset 
+# Use the favstats() function to explore age in the cdc data set 
 favstats(cdc$age)
 
 
@@ -182,7 +187,12 @@ favstats(cdc$age)
 
 *** =sct
 ```{r}
-test_function("favstats", args = "x")
+test_function("favstats", args = "x", index = 1, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
+
+test_function("favstats", args = "x", index = 2, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
+
+test_function("favstats", args = "x", index = 3, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
+
 
 ```
 
@@ -199,10 +209,10 @@ To create a table, use the format:
 `table(dataset$categ_var)`
 
 *** =instructions
-- summarize the `smoke100` variable in the `cdc` dataset using the `table()` function.
+- summarize the `smoke100` variable in the `cdc` data set using the `table()` function.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-Use the format from the lesson with `cdc` instead of dataset, and `smoke100` instead of categ_var
+Use the format from the lesson with `cdc` instead of dataset, and `smoke100` instead of categ_var.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/cdc.R")
@@ -212,12 +222,14 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 *** =sample_code
 ```{r}
-# Type table(dataset$categ_var) with specified dataset and variable to get a table summary
+# Type table(dataset$categ_var) with specified data set and variable to get a table summary
+
+
 ```
 
 *** =solution
 ```{r}
-# Type table(dataset$categ_var) with specified dataset and variable to get a table summary
+# Type table(dataset$categ_var) with specified data set and variable to get a table summary
 table(cdc$smoke100)
 ```
 
@@ -234,16 +246,16 @@ test_function("table", args = "...")
 
 A contingency table is used to summarize the relationship betweeen categorical variables. 
 
-In this exercise we will create a contingency table by cross-classifying two variables using the `table()` function with the form:
+In this exercise we will create a contingency table by cross-classifying two variables using the `table()` function with the format:
 
 `table(dataset$var1, dataset$var2)`
 
 Note: The variable listed first (var1) will go along the rows and the variable listed second (var2) will go along the columns.
 
-The variable `genhlth` is a categorical variable indicating general health.
+Note: The variable `genhlth` is a categorical variable indicating general health.
 
 *** =instructions
-- Create a contingency table with variables `genhlth` and `smoke100` from the `cdc` dataset
+- Create a contingency table with variables `genhlth` and `smoke100` from the `cdc` data set.
 *** =hint
 Use the format from the lesson with `cdc` instead of dataset, `genhlth` instead of var1, and `smoke100` instead of var2
 
@@ -257,17 +269,21 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 *** =sample_code
 ```{r}
 # Create contingency table with variables `genhlth` and `smoke100`
+
+
 ```
 
 *** =solution
 ```{r}
 # Create contingency table with variables `genhlth` and `smoke100`
 table(cdc$genhlth, cdc$smoke100)
+
+
 ```
 
 *** =sct
 ```{r}
-test_function("table", args = "...")
+test_function("table", args = "...", incorrect_msg = "Use the format from the lesson with `cdc` instead of dataset, `genhlth` instead of var1, and `smoke100` instead of var2")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
 ## Visualizing Quantitative Data in R
@@ -282,7 +298,7 @@ The two main visualizations of quantitative data are:
 - use `boxplot(dataset$variable)` to create a boxplot
 
 *** =instructions
-- Create a histogram of the `weight` variable from the `cdc` dataset using the `hist()` function
+- Create a histogram of the `weight` variable from the `cdc` data set using the `hist()` function.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
@@ -295,16 +311,20 @@ source("https://www.openintro.org/stat/data/cdc.R")
 *** =sample_code
 ```{r}
 # Create Histogram of weight variable with hist() function
+
+
 ```
 
 *** =solution
 ```{r}
+# Create Histogram of weight variable with hist() function
+
 hist(cdc$weight)
 ```
 
 *** =sct
 ```{r}
-test_function("hist", args = "x")
+test_function("hist", args = "x", incorrect_msg = "Follow the format: hist(dataset$variable) with specified dataset and variable.")
 ```
 
 
@@ -318,7 +338,7 @@ To do this in R, use the format:
 `barplot(table(dataset$categ_var))`
 
 *** =instructions
-- Create a barplot of the categorical variable `smoke100` from the `cdc` dataset
+- Create a barplot of the categorical variable `smoke100` from the `cdc` data set.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
@@ -331,7 +351,7 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 *** =sample_code
 ```{r}
-# Create barplot of the smoke100 variable in cdc dataset
+# Create barplot of the smoke100 variable in cdc data set
 
 
 
@@ -346,7 +366,7 @@ barplot(table(cdc$smoke100))
 
 *** =sct
 ```{r}
-test_student_typed("barplot(table(cdc$smoke100))")
+test_student_typed("barplot(table(cdc$smoke100))", not_typed_msg = "Make sure you follow the format in the lesson with 'cdc' instead of 'dataset' and 'smoke100' instead of 'categ_var'")
 ```
 
 
@@ -361,7 +381,7 @@ The format to make a basic scatterplot is:
 `plot(x = dataset$var1 , y = dataset$var2)`
 
 
-For this exercise, we are going to visualize the relationship between `weight` and `height` in the `cdc` dataset:
+For this exercise, we are going to visualize the relationship between `weight` and `height` in the `cdc` data set:
 
 x = `weight` 
 
@@ -394,7 +414,7 @@ plot(x = cdc$weight, y = cdc$height)
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y"))
+test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set and variables")
 
 ```
 
@@ -413,7 +433,7 @@ This will produce side by side boxplots.
 
 *** =instructions
 
-Create side-by-side boxplots to compare the `weight` of respondents in the `cdc` dataset by whether or not they are/were a smoker `smoke100`.
+Create side-by-side boxplots to compare the `weight` of respondents in the `cdc` data set by whether or not they are/were a smoker `smoke100`.
 
 
 
@@ -442,4 +462,6 @@ boxplot(cdc$weight ~ cdc$smoke100)
 *** =sct
 ```{r}
 test_student_typed("boxplot(cdc$weight ~ cdc$smoke100)")
+
+
 ```
