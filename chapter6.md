@@ -162,6 +162,8 @@ Sometimes we a have a one-sided alternative hypothesis (For example, the hypothe
 
 The `t.test()` function can still do this, but we have to specify an additional argument.
 
+$H_0$: $\mu \neq 40$
+
 To specify a one-sided alternative, use the format:
 
 `t.test(x = dataset$variable, mu = null_hyp, alternative = "____")`
