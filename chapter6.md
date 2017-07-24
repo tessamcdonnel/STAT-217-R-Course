@@ -52,7 +52,7 @@ library(mosaic)
 # Load the mosaic package
 library(mosaic)
 
-# Find the summary statistics of `variable` using the favstats() function
+# Find the summary statistics of age using the favstats() function
 favstats(cdc$age)
 
 # Check for normallity using the hist() function
@@ -82,7 +82,7 @@ Suppose we want to:
 
 We can do this in one step with the `t.test()` function in R.
 
-The default settings are to perform a 2-sided alternative hypothesis and to calculate a 95% confidence interval.
+The default settings are to test a 2-sided alternative hypothesis and to calculate a 95% confidence interval.
 
 So, to carry out a one sample t-test for a 2-sided alternative and a 95% confidence interval, use the format:
 
@@ -90,8 +90,10 @@ So, to carry out a one sample t-test for a 2-sided alternative and a 95% confide
 
 
 
+*Note: null_hyp is a placeholder for our null hypothesis; in this exercise you will replace null_hyp with 40.*
+
 *** =instructions
-- Use the `t.test()` function to carry out a one sample t-test to determine if the population mean `age` differs from 40 on average and use a 95% confidence interval to estimate the population mean age.
+- Use the `t.test()` function to determine if the population mean `age` from the `cdc` data set differs from 40 on average and use a 95% confidence interval to estimate the population mean age.
 - click 'Submit Answer' and look at the R output.
 
 *** =hint
@@ -119,7 +121,7 @@ t.test(x = cdc$age, mu = 40)
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis!")
+test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis! In this case we're using the cdc data set, age variable, and null hypothesis equal to 40.")
 
 
 ```
@@ -129,7 +131,7 @@ test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you subs
 ## Check for Understanding 1
 
 
-The default settings for a t.test function (eg. `t.test(evals$cls_perc_eval,mu=80`) ) are to  perform a _________ alternative hypothesis and to calculate a ______ confidence interval.
+The default settings for a t.test function (eg. `t.test(x = cdc$age, mu = 40`) ) are to  perform a _________ alternative hypothesis and to calculate a ______ confidence interval.
 
 *** =instructions
 - two-sided, 90%
@@ -156,7 +158,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:eeccda0836
 ## One-sided Hypothesis Tests
 
-Sometimes we a have a one-sided alternative hypothesis (For example, the hypothesis in the *plots* panel). 
+Sometimes we a have a one-sided alternative hypothesis (For example, the hypothesis in the *Plots* panel is one-sided less than). 
 
 The `t.test()` function can still do this, but we have to specify an additional argument.
 
@@ -183,21 +185,21 @@ Use the `t.test()` function to carry out a one sample t-test to determine if the
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/cdc.R")
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
+plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n', frame = F)
 text(0, 3, expression(paste("Ho:", mu, "=40")), cex = 2)
 text(0, -3, expression(paste("Ha:", mu, "<40")), cex = 2)
 ```
 
 *** =sample_code
 ```{r}
-# use the t.test() function to determine if the mean age is significantly greater than 40 
+# use the t.test() function to determine if the mean age is significantly less than 40 
 
 
 ```
 
 *** =solution
 ```{r}
-# use the t.test() function to determine if the mean age is significantly greater than 40 
+# use the t.test() function to determine if the mean age is significantly less than 40 
 
 t.test(x = cdc$age, mu = 40, alternative = "less")
 
@@ -229,8 +231,8 @@ Make sure you specify the confidence level as a proportion. For example, to do a
 ```{r}
 source("https://www.openintro.org/stat/data/cdc.R")
 plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 3, expression(paste("Ho: ", mu, "= 40")), cex = 2)
-text(0, -3, expression("Ha: mu"  != " 40"), cex = 2)
+text(0, 4, expression(H[o]: mu == 40), cex = 2)
+text(0, 1, expression(H[a]: mu[d] != 40), cex = 2)
 
 ```
 
