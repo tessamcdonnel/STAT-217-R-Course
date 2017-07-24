@@ -18,16 +18,17 @@ If we want to know the variable (column) names in the data set, we can type `nam
 
 If we want to know the dimensions of a dataset (ie. how many variables and subjects) use the `dim(dataset)` function.
 
+Note: `dataset` is just a placeholder for the name of the data set you want to explore. In this exercise, you need to substitute `mtcars` for `dataset`.
 *** =instructions
 - Use the `head()` function to get the first 6 entries of the mtcars data set
 - Use `tail()` to get the last 6 entries.
 - Find the variable names by using the `names()` function.
-- Use `dim()` to find the dimensions of mtcars
+- Use `dim()` to find the dimensions of mtcars.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 
 
 *** =hint
-The data set is named `mtcars` so substitute `mtcars` for `(dataset)`.
+The data set is named `mtcars` so substitute `mtcars` for `dataset`.
 
 *** =pre_exercise_code
 ```{r}
@@ -40,7 +41,7 @@ mtcars
 
 #Use appropriate function to find last 6 entries of mtcars
 
-#Use appropriate function to find the variables of mtcars
+#Use appropriate function to find the variable names of mtcars
 
 #Use appropriate function to find the dimension of mtcars
 ```
@@ -53,7 +54,7 @@ head(mtcars)
 #Use appropriate function to find last 6 entries of mtcars
 tail(mtcars)
 
-#Use appropriate function to find the variables of mtcars
+#Use appropriate function to find the variable names of mtcars
 names(mtcars)
 
 #Use appropriate function to find the dimension of mtcars
@@ -63,16 +64,16 @@ dim(mtcars)
 *** =sct
 ```{r}
 
-test_function("head", args = "x")
+test_function("head", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the head() function")
 success_msg("Nice job!")
 
-test_function("tail", args = "x")
+test_function("tail", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the tail() function")
 success_msg("Good work!")
 
-test_function("names", args = "x")
+test_function("names", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the names() function")
 success_msg("Good work!")
 
-test_function("dim", args = "x")
+test_function("dim", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the dim() function")
 success_msg("Good work!")
 ```
 
@@ -82,7 +83,9 @@ success_msg("Good work!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:795745ad44
 ## Accessing Specific Variables  using $
 
-In this exercise you will be learning how to access specific variables within a data set by using the format `dataset$variable`.
+In this exercise you will be learning how to access specific variables within a data set by using the format:
+
+`dataset$variable`.
 
 From the previous exercise, we saw that `mtcars` has a *miles per gallon* variable named `mpg`. If we want to look at this variable by itself, we can type `mtcars$mgp` into the R console; this will return a list of *miles per gallon* entries. 
 
@@ -99,6 +102,8 @@ From the previous exercise, we saw that `mtcars` has a *miles per gallon* variab
 *** =sample_code
 ```{r}
 # Access wt from mtcars like we did for the mpg variable
+
+
 ```
 
 *** =solution
@@ -109,7 +114,7 @@ mtcars$wt
 
 *** =sct
 ```{r}
-test_student_typed("mtcars$wt")
+test_student_typed("mtcars$wt", not_typed_msg = "Make sure you follow the format: dataset$variable with the correct data set and variable!")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
@@ -175,7 +180,7 @@ For example, if I wanted to find the total *weight* of the mtcars, I would type 
 *** =instructions
 - the dataset `mtcars` contains the variable `gear` which represents the number of forward gears. Use the `sum()` function to find the total number of gears.
 *** =hint
-
+- To sum over a variable, use the format: `sum(dataset$variable)`.
 *** =pre_exercise_code
 ```{r}
 
@@ -184,16 +189,24 @@ For example, if I wanted to find the total *weight* of the mtcars, I would type 
 *** =sample_code
 ```{r}
 # Find total number of gears using sum() 
+
+
+
 ```
 
 *** =solution
 ```{r}
 # Find total number of gears using sum() 
 sum(mtcars$gear)
+
+
 ```
 
 *** =sct
 ```{r}
+test_function("sum", args = "...", incorrect_msg = "Make sure you use the format: sum(dataset$variable) with the correct data set and variable!")
+
+
 ```
 
 
@@ -209,12 +222,16 @@ We can create *logical* data with comparisons like greater than `>`, less than `
 
 A logical expression using the *greater than* symbol should follow the format:
 
-dataset$var1 > dataset$var2
+`dataset$var1 > dataset$var2`
 
 This command will return a list of `TRUE` and `FALSE` values.
+
+We can save these values in an object `new_var` by typing:
+
+`dataset$new_var <- dataset$var1 > dataset$var2`
 *** =instructions
-- Find which cars in `mtcars` have greater `drat` than `wt`
-- Use the sum() function to evaluate the total number of `TRUE` results
+- Find which cars in `mtcars` have greater `drat` than `wt`, save these values by assigning them to a new variable named `my_var`.
+- Use the sum() function to evaluate the total number of `TRUE` results in `my_var`.
 *** =hint
 
 *** =pre_exercise_code
@@ -224,16 +241,31 @@ This command will return a list of `TRUE` and `FALSE` values.
 
 *** =sample_code
 ```{r}
+# Use the code at the end of the lesson with correct data set and variables
+
+
+# Use the sum() function on my_var to evaluate the number of cars whose drat is greater than weight
+
 
 ```
 
 *** =solution
 ```{r}
+# Use the code at the end of the lesson with correct data set and variables
+mtcars$my_var <- mtcars$drat > mtcars$wt
+
+
+# Use the sum() function on my_var to evaluate the number of cars whose drat is greater than weight
+sum(mtcars$my_var)
 
 ```
 
 *** =sct
 ```{r}
+
+test_student_typed("mtcars$my_var <- mtcars$drat > mtcars$wt", not_typed_msg = "That is not correct. Follow the format in the lesson with 'mtcars' instead of 'dataset', 'my_var' instead of 'new_var', 'drat' instead of 'var1', and 'wt' instead of 'var2'")
+
+test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is 'sum(dataset$variable)'. In this example, the dataset is 'mtcars' and the variable is 'my_var'.")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:f759511088
@@ -273,7 +305,7 @@ summary(mtcars)
 
 *** =sct
 ```{r}
-test_function("summary", args = "object")
+test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' to obtain a summary of the entire data set")
 
 
 ```
@@ -309,13 +341,18 @@ y = *miles per gallon* (mpg)
 
 *** =sample_code
 ```{r}
-#type plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
+# Use the plot() function with x = mtcars$wt and y = mtcars$mpg
+
+
 ```
 
 *** =solution
 ```{r}
-# type plot(x = dataset$var1 , y = dataset$var2) with x = mtcars$wt and y = mtcars$mpg
+# Use the plot() function with x = mtcars$wt and y = mtcars$mpg
+
 plot(x = mtcars$wt, y = mtcars$mpg)
+
+
 ```
 
 *** =sct
@@ -348,7 +385,7 @@ Right now the plot of `mtcars$wt` vs. `mtcars$mpg` has ugly axis names. In this 
 *** =instructions
 - Create the plot from the last exercise `plot(x = mtcars$wt, y = mtcars$mpg)` but this time add axis labels. 
 
-- The new x-axis label should be `"Weight"`, y-axis label should be `"Miles Per Gallon"` and the title should be `"Mtcars: Weight by MPG"`.
+    - The new x-axis label should be `"Weight"`, y-axis label should be `"Miles Per Gallon"` and the title should be `"Mtcars: Weight by MPG"`.
 - Click the 'Submit Answer' button and take a look at the new plot. So much Better!
 
 *** =hint
@@ -373,5 +410,5 @@ plot(x = mtcars$wt , y = mtcars$mpg, xlab = "Weight", ylab = "Miles Per Gallon",
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y", "xlab", "ylab", "main"))
+test_function("plot", args = c("x", "y", "xlab", "ylab", "main"), incorrect_msg = "Use the format in the lesson with the specified lables in the instructions. Make sure you wrap the labels in quotation marks because they are words.")
 ```
