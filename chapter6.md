@@ -162,8 +162,6 @@ Sometimes we a have a one-sided alternative hypothesis (For example, the hypothe
 
 The `t.test()` function can still do this, but we have to specify an additional argument.
 
-$H_0$: $\mu \neq 40$
-
 To specify a one-sided alternative, use the format:
 
 `t.test(x = dataset$variable, mu = null_hyp, alternative = "____")`
@@ -301,7 +299,11 @@ test_function("t.test", args = c("x", "mu", "alternative", "conf.level"), incorr
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
 ## Check for Understanding 2
 
-If I want to construct a 90% confidence interval on the hypothesis in the *plots* panel, what is the correct R command?
+What is the correct R command to construct a 90% confidence interval on the following hypothesis: 
+
+$H_0$: $\mu \= 5$
+
+$H_a$: $\mu \< 5$
 *** =instructions
 - t.test(x = dataset$variable, alternative = "less", conf.level = 0.90)
 - t.test(x = dataset$variable, mu = 5, alternative = "greater")
@@ -313,10 +315,6 @@ Remember, the default settings are to perform a 2-sided alternative hypothesis a
 
 *** =pre_exercise_code
 ```{r}
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 3, expression(paste("Ho:", mu, "=5")), cex = 2)
-text(0, -3, expression(paste("Ha:", mu, "<5")), cex = 2)
-
 
 ```
 
@@ -359,3 +357,20 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 
 
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:7885ffa616
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+```
+
+*** =sct
+```{r}
+
+```

@@ -259,6 +259,9 @@ Finding the sample proportion is okay but adding a margin of error gives us much
 In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the true proportion of children who are allergic to peanuts *(population proportion)*.
 
 Note: The equation in the *plots* panel is the formula for a confidence interval for a population proportion.
+
+$\hat{p} \pm z\ast \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
+
 *** =instructions
 Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data.
 
@@ -272,9 +275,6 @@ Find 'upper bound' and 'lower bound' seperately
 When multiplying two things together use an asterisk (*)
 *** =pre_exercise_code
 ```{r}
-plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 0, expression(hat(p) %+-% z ^ {"*"} * sqrt(frac(hat(p)*(1-hat(p)), n))), cex = 3)
-
 
 
 ```

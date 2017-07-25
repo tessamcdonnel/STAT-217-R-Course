@@ -190,14 +190,13 @@ If I want to take the square root of 9, I would type `sqrt(9)` and it would retu
 
 *** =instructions
 - In the script, use the `sqrt()` function to find the square root of 9659.
-- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate the expression in the upper right hand *plots*. This evaluates to 3.16.
+- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate the expression:
+$\frac{0.6 - 0.5}{\sqrt{0.25 / 1000}}$
 *** =hint
 R uses PEMDAS order of operations like you would use in any math class.
 
 *** =pre_exercise_code
 ```{r}
-plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 0, expression(frac((0.6 - 0.5), sqrt(0.25/1000))), cex = 4)
 
 ```
 
