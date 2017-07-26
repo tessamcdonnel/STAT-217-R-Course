@@ -15,7 +15,7 @@ We'll be using the same dataset from the last lab `cdc`. This data is from a ran
 
 In this exercise, you will be checking the normality assumption for the `age` variable in `cdc`.
 
-*The normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped.*
+*The normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if sample size is greater than 30.*
 
 
 *** =instructions

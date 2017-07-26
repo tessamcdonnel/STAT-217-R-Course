@@ -199,25 +199,25 @@ Finding the sample mean is okay but adding a margin of error gives us much more 
 
 In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the population mean *weight*.
 
-Note: The equation in the *plots* panel is the formula for a confidence interval for a population mean.
+The formula for a confidence interval for a population mean:
+
+$\bar{x} \pm t\ast \frac{s}{\sqrt{n}}$
+
 *** =instructions
 Suppose I sampled 75 of the chicks from `ChickWeight` and found some sample statistics:
 
 * mean weight is 116.2
 * standard deviation is 67.5
-* for n = 75 and alpha = 0.05, the *t* value is 1.99
-    
-    
-Use R as a calculator to find a 95% confidence interval for the population mean *weight* based on this sample data.
+* for n = 75 and alpha = 0.05, the $t\ast$ critical value is 1.99
 
+
+Use R as a calculator to find a 95% confidence interval for the population mean *weight* based on this sample data
 *** =hint
 Use the formula in the *plots* panel with p = 0.15, and n = 50
 
 Find 'upper bound' and 'lower bound' seperately
 *** =pre_exercise_code
 ```{r}
-plot(-1:1, -1:1, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 0, expression(bar(x) %+-% t ^ {"*"} *  frac(s, sqrt(n))), cex = 4)
 
 
 ```

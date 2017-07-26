@@ -26,12 +26,12 @@ In this exercise we'll be using a dataset called `peanut_allergy` which contains
 
 
 *** =instructions
-- take a random sample of 25 from the variable `allergic` in the `peanut_allergy` dataset
-- take a random sample of 50 from the variable `regimen` in the `peanut_allergy` dataset
+- Take a random sample of 25 from the variable `allergic` in the `peanut_allergy` dataset.
+- Take a random sample of 50 from the variable `regimen` in the `peanut_allergy` dataset.
 *** =hint
-For the 1st instruction, follow the format in the lesson but use peanut_allergy$allergic and 25
+For the 1st instruction, follow the format in the lesson but use peanut_allergy$allergic and 25.
 
-For the 2nd instruction, follow the format in the lesson but use peanut_allergy$regimen and 50
+For the 2nd instruction, follow the format in the lesson but use peanut_allergy$regimen and 50.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -59,7 +59,9 @@ sample(peanut_allergy$regimen, 50)
 
 *** =sct
 ```{r}
-test_function("sample", args = c("x", "size"))
+test_function("sample", args = c("x", "size"), index = 1, incorrect_msg = "Follow the format in the lesson with the specified dataset (peanut_allergy), variable (allergic), and number (25)!")
+test_function("sample", args = c("x", "size"), index = 2, incorrect_msg = "Follow the format in the lesson with the specified dataset (peanut_allergy), variable (regimen), and number (50)!")
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:190f70cfa4
@@ -74,7 +76,7 @@ Note: Remember that after we create an object (i.e. sample1 and sample2) we need
 - take another random sample of 20 from the same variable, but assign this sample to `sample2`
 - After clicking 'Submit Answer', look at the contents of `sample1` and `sample2`. Are they the same?
 *** =hint
-
+Make sure you follow the format: `sample(dataset$variable, number)` with specified dataset, variable and number.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -111,7 +113,11 @@ sample2
 
 *** =sct
 ```{r}
-test_function("sample", args = c("x", "size"))
+test_object("sample1", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number.")
+
+test_object("sample2", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number.")
+success_msg("Nice job!")
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:2217632b88

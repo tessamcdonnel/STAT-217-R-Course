@@ -50,7 +50,7 @@ str(cdc)
 
 *** =sct
 ```{r}
-test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with the correct data set!")
+test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with 'cdc' instead of 'dataset'!")
 ```
 
 
@@ -67,7 +67,7 @@ In this exercise we are going to recode the `smoke100` variable from a numeric t
 
 
 *** =instructions
-- Copy this code to your R script: `cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))`
+- The first line of code in your script will recode `smoke100` from 'numeric' to its correct variable type, 'factor'.
 - Use the `str()` function on `cdc` 
 - Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `smoke100` variable was correctly recoded to a factor variable
 *** =hint
@@ -80,7 +80,9 @@ source("https://www.openintro.org/stat/data/cdc.R")
 
 *** =sample_code
 ```{r}
-# Type the code from the 'Instructions' box to change the *smoke100* variable to a factor variable
+# This is the code that will change the *smoke100* variable to a factor variable (DO NOT alter it)
+cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+
 
 # Use the str() function on cdc
 
@@ -89,8 +91,8 @@ source("https://www.openintro.org/stat/data/cdc.R")
 
 *** =solution
 ```{r}
-# Type the code from the 'Instructions' box to change the *smoke100* variable to a factor variable
-cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+# This is the code that will change the *smoke100* variable to a factor variable (DO NOT alter it)
+cdc$smoke100 <- factor(cdc$smoke100, labels = c('no smoke', 'yes smoke'))
 
 # Use the str() function on cdc
 str(cdc)
@@ -98,6 +100,10 @@ str(cdc)
 
 *** =sct
 ```{r}
+msg <- "Do not alter the code that changed 'smoke100' into a factor variable. Press the 'undo' button in your script to get back to the original code."
+
+test_student_typed("cdc$smoke100 <- factor(cdc$smoke100, labels = c('no smoke', 'yes smoke'))", not_typed_msg = msg)
+
 
 test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with the correct data set!")
 ```
@@ -209,7 +215,7 @@ To create a table, use the format:
 `table(dataset$categ_var)`
 
 *** =instructions
-- summarize the `smoke100` variable in the `cdc` data set using the `table()` function.
+- Summarize the `smoke100` variable in the `cdc` data set using the `table()` function.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 Use the format from the lesson with `cdc` instead of dataset, and `smoke100` instead of categ_var.
@@ -235,7 +241,7 @@ table(cdc$smoke100)
 
 *** =sct
 ```{r}
-test_function("table", args = "...")
+test_function("table", args = "...", incorrect_msg = "Follow the format in the lesson with correct dataset (cdc) and categ_var (smoke100).")
 
 ```
 
@@ -461,7 +467,7 @@ boxplot(cdc$weight ~ cdc$smoke100)
 
 *** =sct
 ```{r}
-test_student_typed("boxplot(cdc$weight ~ cdc$smoke100)")
+test_student_typed("boxplot(cdc$weight ~ cdc$smoke100)", not_typed_msg = "Remember, 'weight' is a quantitative variable and 'smoke100' is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
 
 
 ```
