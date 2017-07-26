@@ -329,9 +329,9 @@ Note that the $z\ast$ critical value is 1.96 for a 95% confidence interval.
 
 *** =sct
 ```{r}
-test_output_contains("0.05102485", incorrect_msg = "For the lower confidence bound, subtract the margin of error from the sample proportion. Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function.")
+test_output_contains("0.05102485", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the lower confidence bound, subtract the margin of error from the sample proportion.")
 
-test_output_contains("0.2489751", incorrect_msg = "For the upper confidence bound, add the margin of error to the sample proportion. Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function.")
+test_output_contains("0.2489751", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the upper confidence bound, add the margin of error to the sample proportion.")
 
 
 ```

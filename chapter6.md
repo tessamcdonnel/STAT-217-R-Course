@@ -11,7 +11,7 @@ Before testing a hypothesis with a t-test, we need to make sure that our data me
 * the observations are independent
 * the variable is normally distributed (or large sample size)
 
-We'll be using the same dataset from the last lab `cdc`. This data is from a random sample so the observations can be treated as independent.
+We'll be using the same dataset from Lab 2 called `cdc`. This data is from a random sample so the observations can be treated as independent.
 
 In this exercise, you will be checking the normality assumption for the `age` variable in `cdc`.
 

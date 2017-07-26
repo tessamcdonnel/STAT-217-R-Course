@@ -21,7 +21,7 @@ Remember, to take a random sample and save it to an object, use the format:
 Note: Remember that after we create an object we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 
 *** =instructions
-- take a random sample of 25 from the variable `weight` in the `ChickWeight` dataset, assign this to `sample_wt`.
+- take a random sample of 25 from the variable `weight` in the `ChickWeight` dataset, assign this to `sample_weight`.
 - take a random sample of 50 from the variable `Diet` in the `ChickWeight` dataset, assign this to `sample_diet`
 *** =hint
 - For the 1st instruction, follow the format in the lesson but use ChickWeight$weight and 25
@@ -35,32 +35,59 @@ Note: Remember that after we create an object we need to type the object name to
 *** =sample_code
 ```{r}
 # take a random sample of 25 from the variable weight in ChickWeight dataset
-sample_wt <- 
+sample_weight <- 
 
-sample_wt
+
+
+# Print out the values in sample_weight
+
+sample_weight
+
 
 # take a random sample of 50 from the variable Diet in ChickWeight dataset
 sample_diet <- 
 
+
+
+# Print out the values in sample_diet
+
 sample_diet
+
+
+
 ```
 
 *** =solution
 ```{r}
 # take a random sample of 25 from the variable weight in ChickWeight dataset
-sample_wt <- sample(ChickWeight$weight, 25)
+sample_weight <- sample(ChickWeight$weight, 25)
 
-sample_wt
+# Print out the values in sample_weight
+sample_weight
 
 # take a random sample of 50 from the variable Diet in ChickWeight dataset
 sample_diet <- sample(ChickWeight$Diet, 50)
 
+
+# Print out the values in sample_diet
 sample_diet
+
+
+
 ```
 
 *** =sct
 ```{r}
-test_function("sample", args = c("x", "size"))
+test_object("sample_weight", incorrect_msg = "Make sure you use the sample() function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=25.")
+
+test_output_contains("sample_weight", incorrect_msg = "Do not alter the line of code that says 'sample_weight'. This command will print the results to the R output. You can click the 'reverse' button to get back to the original code.")
+
+
+
+test_object("sample_diet", incorrect_msg = "Make sure you use the sample() function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, Diet variable, and number=50.")
+
+test_output_contains("sample_diet", incorrect_msg = "Do not alter the line of code that says 'sample_diet'. This command will print the results to the R output. You can click the 'reverse' button to get back to the original code.")
+
 
 ```
 
@@ -70,14 +97,14 @@ test_function("sample", args = c("x", "size"))
 ## Population Distribution
 
 
-For this exercise, you are going to find the *population distribution* of the quantitative variable `weight` in dataset `ChickWeight`.
+For this exercise, you are going to find the *population distribution* of the quantitative variable `weight` in the `ChickWeight` data set.
 
-We will treat the `ChickWeight` dataset as the entire population of interest.
+We will treat the `ChickWeight` data set as the entire population of interest.
 
 
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- use the `favstats()` function to get summary statistics of `weight` from the `ChickWeight` dataset.
+- use the `favstats()` function to get summary statistics of `weight` from the `ChickWeight` data set.
 - use the `hist()` function to create a histogram of `weight`.
 - Click the 'Submit Answer' button and look at the R output
 *** =hint
@@ -115,8 +142,11 @@ hist(ChickWeight$weight)
 
 *** =sct
 ```{r}
-test_function("favstats", args = "x")
-test_function("hist", args = "x")
+test_function("favstats", args = "x", incorrect_msg = "Remember, to find summary statistics use format: favstats(dataset$variable) with specified parameters.")
+test_function("hist", args = "x", incorrect_msg = "To create a histogram, use the format: hist(dataset$variable) with the specified variables.")
+
+success_msg("Nice! Now look at the histogram of chick weights. Can you tell which way it is skewed?")
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4face42bf0
@@ -124,7 +154,7 @@ test_function("hist", args = "x")
 
 Most of the time we don't know what the *population mean* is, but we can **estimate** this value with a random sample. 
 
-In this exercise, you will create a random sample of 75 from the `weight` variable in the `ChickWeight` dataset and then compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
+In this exercise, you will create a random sample of 75 from the `weight` variable in the `ChickWeight` data set and then compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
 
 
 *** =instructions
@@ -135,8 +165,9 @@ In this exercise, you will create a random sample of 75 from the `weight` variab
 - click 'Submit Answer' and look at the R output.
 - How do these values compare to the *population mean*?
 *** =hint
-For the first instruction, use the format `sample(dataset$variable, #)`.
+- For the first instruction, use the format `sample(dataset$variable, #)`.
 
+- To find summary statistics of a sample use the format: `favstats(sample.name)`.
 
 
 *** =pre_exercise_code
@@ -181,13 +212,18 @@ hist(my_sample)
 *** =sct
 ```{r}
 
+test_object("my_sample", incorrect_msg = "Make sure you use the sample() function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=75.")
 
 
-test_student_typed("sample(ChickWeight$weight, 75)", not_typed_msg = "To create an object called my_sample, type sample(ChickWeight$weight, 75).")
 
-test_student_typed("favstats(my_sample)", not_typed_msg = "Remember, my_sample is just a sample from the weight variable so to get summary statistics use favstats(my_sample).")
 
-test_student_typed("hist(my_sample)", not_typed_msg = "Remember, my_sample is just a sample from the weight variable so to get a histogram use hist(my_sample).")
+
+test_function("sample", args = c("x", "size"),  incorrect_msg = "To create an object called my_sample, type sample(ChickWeight$weight, 75) on the right side of '<-'.")
+
+test_function("favstats", args = "x", incorrect_msg = "Remember, my_sample is just a sample from the weight variable so to get summary statistics type favstats(my_sample).")
+
+test_function("hist", args = "x", incorrect_msg = "Remember, my_sample is just a sample from the weight variable so to get a histogram type hist(my_sample).")
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d7a8f825e2
@@ -199,7 +235,7 @@ Finding the sample mean is okay but adding a margin of error gives us much more 
 
 In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the population mean *weight*.
 
-The formula for a confidence interval for a population mean:
+Below is the formula for a confidence interval of a population mean.
 
 $\bar{x} \pm t\ast \frac{s}{\sqrt{n}}$
 
@@ -211,11 +247,11 @@ Suppose I sampled 75 of the chicks from `ChickWeight` and found some sample stat
 * for n = 75 and alpha = 0.05, the $t\ast$ critical value is 1.99
 
 
-Use R as a calculator to find a 95% confidence interval for the population mean *weight* based on this sample data
+Use R as a calculator to find a 95% confidence interval for the population mean *weight* based on this sample data (Use the formula in the lesson).
 *** =hint
-Use the formula in the *plots* panel with p = 0.15, and n = 50
+Use the formula in the lesson with $\bar{x}$ = 116.2, $s$ = 67.5, $t\ast$ = 1.99, and n = 75.
 
-Find 'upper bound' and 'lower bound' seperately
+Find 'upper bound' and 'lower bound' seperately.
 *** =pre_exercise_code
 ```{r}
 
@@ -227,6 +263,8 @@ Find 'upper bound' and 'lower bound' seperately
 #Lower confidence bound
 
 #Upper confidence bound
+
+
 ```
 
 *** =solution
@@ -236,9 +274,17 @@ Find 'upper bound' and 'lower bound' seperately
 
 #Upper confidence bound
 116.2 + 1.99 * (67.5/sqrt(75))
+
+
 ```
 
 *** =sct
 ```{r}
+test_output_contains("100.6895", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the lower confidence bound, subtract the margin of error from the sample mean.")
+
+test_output_contains("131.7105", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the upper confidence bound, add the margin of error to the sample mean.")
+
+
+success_msg("Good job. You finished Lab 4b practice course.")
 
 ```
