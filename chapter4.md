@@ -94,6 +94,8 @@ sample1
 sample2 <- 
 
 sample2
+
+
 ```
 
 *** =solution
@@ -109,6 +111,7 @@ sample2 <- sample(peanut_allergy$allergic, 20)
 
 
 sample2
+
 ```
 
 *** =sct
@@ -116,7 +119,7 @@ sample2
 test_object("sample1", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number.")
 
 test_object("sample2", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number.")
-success_msg("Nice job!")
+success_msg("Nice job! Look at the R output in the bottom right panel. Do the contents of sample1 and sample2 match up?.")
 
 ```
 
@@ -127,13 +130,18 @@ You probably noticed that two samples you took (of the same variable and size) w
 
 This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 from `allergic`, the values will be different.
 
-Sometimes we want to keep the **same** random sample because it gets confusing when the values change every time you Knit it. To do this, we use the `set.seed(number)` function. If you type this **before** creating your random sample, your sample will be the same random sample every time you Knit it.
+Sometimes we want to have a *consistent* random sample because it's confusing when the values change every time you Knit a R Markdown document. To do this, we use the `set.seed(number)` function. If you type this **before** creating your random sample, your sample will be the ***same*** random sample every time you Knit the document.
 
-Note: *Any* number can go inside the `set.seed()` function
+Note: Any number can go inside the `set.seed()` function.
 *** =instructions
-- type `set.seed(1234)` in the R Script
-- now, take a random sample of 20 from the `allergic` variable in the `peanut_allergy` dataset
+- Type `set.seed(1234)` in the R Script.
+- Now, use the `sample()` function to get a random sample of 20 from the `allergic` variable in the `peanut_allergy` dataset.
 *** =hint
+- You can copy and paste `set.seed(1234)` or type `set.seed(__)` with any number in the parenthesis.
+
+- To take a random sample of a variable use the format:
+
+`sample(dataset$variable, number)`
 
 *** =pre_exercise_code
 ```{r}
@@ -147,6 +155,9 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 # Type set.seed(1234)
 
 # take a random sample of 20 from the allergic variable 
+
+
+
 ```
 
 *** =solution
@@ -160,9 +171,9 @@ sample(peanut_allergy$allergic, 20)
 
 *** =sct
 ```{r}
-test_function("set.seed", args = "seed")
+test_function("set.seed", args = "seed", eval = NA, incorrect_msg = "Copy and paste the set.seed() function from the first instruction. You can can change the number inside the function if you want; I arbitrarily chose '1234' but any whole number will work.")
 
-test_function("sample", args = c("x", "size"))
+test_function("sample", args = c("x", "size"), incorrect_msg = "Remember, to take a random sample from a variable use the format: sample(dataset$variable, number) with the specified parameters.")
 
 ```
 
@@ -176,14 +187,16 @@ We will treat this data set as the entire population of interest.
 
 
 *** =instructions
-- Use the `table()` function to get an appropriate summary of the `allergic` variable in `peanut_allergy`
-- Click the 'Submit Answer' button and look at the R output
-- Use R as a calculator to find the proportion of children who were allergic to peanuts
+- Use the `table()` function to get an appropriate summary of the `allergic` variable in the `peanut_allergy` data set.
+- Click the 'Submit Answer' button and look at the R output.
+- Use R as a calculator to find the proportion of children who were allergic to peanuts.
 
 *** =hint
-The correct format to summarize a categorical variable is table(dataset$variable).
+The correct format to summarize a categorical variable is:
 
-For the last instruction, divide the number of children who were allergic by the total number of children
+`table(dataset$variable)`.
+
+For the last instruction, divide the number of children who were allergic by the total number of children.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -194,6 +207,8 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 # Create a table of the `allergic` variable in the `peanut_allergy` dataset
 
 # Find the proportion of children who were allergic
+
+
 ```
 
 *** =solution
@@ -207,7 +222,9 @@ table(peanut_allergy$allergic)
 
 *** =sct
 ```{r}
-test_function("table", args = "...")
+test_function("table", args = "...", incorrect_msg = "Remember, the correct format for the table() function is: table(dataset$variable). Create a table with this format using the specified data set and variable.")
+
+success_msg("Nice! Now divide the number of children who were allergic by the total number of children in the data set. This will give you the 'population' proportion of children with a peanut allergy.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:38ce97a2e8
@@ -217,15 +234,15 @@ Most of the time we don't know what the *population proportion* is, but we can e
 
 In this exercise, you will create a random sample of 50 from the `allergic` variable in the dataset `peanut_allergy` and then compare the *sample proportion* of allergic children to the *population proportion* you found in the last exercise.
 *** =instructions
-- use the `sample()` function to create a sample of 50 from the `allergic` variable, assign this to `my_sample`
-- use the `table()` function on `my_sample`
-- click 'Submit Answer' but look at the R output to find how many children were allergic in `my_sample`
-- find the sample proportion of allergic children
+- Use the `sample()` function to create a sample of 50 from the `allergic` variable, assign this to `my_sample`.
+- Use the `table()` function on `my_sample`.
+- Click 'Submit Answer' and look at the R output to find how many children were allergic in `my_sample`.
+- Find the ***sample proportion*** of allergic children.
 - How does this compare to the *population proportion*?
 *** =hint
-For the first instruction, use the format sample(dataset$variable, #)
+For the first instruction, use the format sample(dataset$variable, #).
 
-For the last instruction, divide the number of children who were allergic by the total number of children in the sample
+For the last instruction, divide the number of children who were allergic by the total number of children in the sample.
 
 *** =pre_exercise_code
 ```{r}
@@ -238,7 +255,10 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 # Use the format sample(dataset$variable, #) to get a sample of 50 from the `allergic` variable
 my_sample <- 
 
-# Type table(my_sample) to see how many children were allergic
+# Type table(my_sample) to see how many children were allergic in the sample
+
+
+
 ```
 
 *** =solution
@@ -248,11 +268,15 @@ my_sample <- sample(peanut_allergy$allergic, 50)
 
 # Type table(my_sample) to see how many children were allergic
 table(my_sample)
+
+
+
 ```
 
 *** =sct
 ```{r}
-
+test_object("my_sample", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number, then assign it to my_sample.")
+test_function("sample", args = c("x", "size"), incorrect_msg = "Type table(my_sample) to get a numerical summary of my_sample.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0e23913548
@@ -264,21 +288,19 @@ Finding the sample proportion is okay but adding a margin of error gives us much
 
 In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the true proportion of children who are allergic to peanuts *(population proportion)*.
 
-Note: The equation in the *plots* panel is the formula for a confidence interval for a population proportion.
+Below is the formula to construct a confidence interval for a population proportion.
 
 $\hat{p} \pm z\ast \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
 
 *** =instructions
-Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data.
+Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data (Use the formula in the lesson).
 
-Note that the z* critical value is 1.96 for a 95% confidence interval.
+Note that the $z\ast$ critical value is 1.96 for a 95% confidence interval.
 
 *** =hint
-Use the formula in the *plots* panel with p = 0.15, and n = 50
-
-Find 'upper bound' and 'lower bound' seperately
-
-When multiplying two things together use an asterisk (*)
+- Use the formula in the lesson with $\hat{p}$ = 0.15, and n = 50.
+- Find 'upper bound' and 'lower bound' seperately.
+- When multiplying two things together use an asterisk $\ast$. For example, if we want to multiply 4 and 8 type `4*8`; typing `4(8)` will result in an error.
 *** =pre_exercise_code
 ```{r}
 
@@ -290,19 +312,26 @@ When multiplying two things together use an asterisk (*)
 #Lower confidence bound
 
 #Upper confidence bound
+
+
+
 ```
 
 *** =solution
 ```{r}
 #Lower confidence bound
-0.15 - 1.96 * sqrt((.15*.85)/50)
+0.15 - 1.96 * sqrt(.15*.85/50)
 
 #Upper confidence bound
-0.15 + 1.96 * sqrt((.15*.85)/50)
+0.15 + 1.96 * sqrt(.15*.85/50)
 
 ```
 
 *** =sct
 ```{r}
+test_output_contains("0.05102485", incorrect_msg = "For the lower confidence bound, subtract the margin of error from the sample proportion. Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function.")
+
+test_output_contains("0.2489751", incorrect_msg = "For the upper confidence bound, add the margin of error to the sample proportion. Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function.")
+
 
 ```
