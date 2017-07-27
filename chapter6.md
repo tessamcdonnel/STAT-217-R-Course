@@ -9,49 +9,70 @@ description : One-sample t-test
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe45e251b5
 ## One- Sample t-test
 
+The one sample t-test is used when we want to compare the sample mean to a specific value.
 
+To perform a 1 sample t-test, we'll be using a data set called `HELPrct` which contains data on adult inpatients who were recruited from a detoxification unit. 
+
+- there are 27 variables in this data set
+- there are 453 subjects 
+- `HELPrct` is already in your workspace
+
+`HELPrct` contains a variable called `i1` which reports the average number of drinks consumed per day (within the last month). 
+
+If you want more information about this data set type: `?HELPrct` into the R console.
 *** =instructions
+- Type `HELPrct$i1` in your script and press the 'Submit Answer' button. 
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(mosaicData)
+
 
 ```
 
 *** =sample_code
 ```{r}
+# type the code in the instructions and press 'Submit Answer'
+
 
 ```
 
 *** =solution
 ```{r}
+# type the code in the instructions and press 'Submit Answer'
+HELPrct$i1
+
 
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Good. Now scroll through the R output to see the average number of alcoholic drinks per day for each subject. Do these numbers suprise you?") 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9c0a9256c3
 ## Assumptions of the t-test
+
+According to the *Dietary Guidelines for Americans*, healthy alcohol consumption is defined by having about 2 drinks per day. Suppose we want to test if the average number of drinks `i1` in the `HELPrct` data set is equal to 2.
+
 
 Before testing a hypothesis with a t-test, we need to make sure that our data meets these assumptions:
 
 * the observations are independent
 * the variable is normally distributed (or large sample size)
 
-We'll be using the same dataset from Lab 2 called `cdc`. This data is from a random sample so the observations can be treated as independent.
+`HELPrct` is from a random sample so the observations can be treated as independent.
 
-In this exercise, you will be checking the normality assumption for the `age` variable in `cdc`.
+In this exercise, you will be checking the normality assumption for the `i1` variable in `HELPrct`.
 
 *The normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if sample size is greater than 30.*
 
 
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to examine the distribution of `age`.
-- Use the `hist()` function to make sure `age` follows the *normality* assumption.
+- Use the `favstats()` function to examine the distribution of `i1`.
+- Use the `hist()` function to make sure `i1` follows the *normality* assumption.
 *** =hint
 For the first instruction, use the format `favstats(dataset$variable)`.
 
@@ -61,7 +82,7 @@ To create a histogram, use `hist(dataset$variable)`.
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
+library(mosaicData)
 library(mosaic)
 ```
 
@@ -70,7 +91,7 @@ library(mosaic)
 # Load the mosaic package 
 
 
-# Find the summary statistics of age using the favstats() function
+# Find the summary statistics of 'i1' using the favstats() function
 
 # Check for normallity using the hist() function
 
@@ -82,11 +103,11 @@ library(mosaic)
 # Load the mosaic package
 library(mosaic)
 
-# Find the summary statistics of age using the favstats() function
-favstats(cdc$age)
+# Find the summary statistics of 'i1' using the favstats() function
+favstats(HELPrct$i1)
 
 # Check for normallity using the hist() function
-hist(cdc$age)
+hist(HELPrct$i1)
 
 ```
 
@@ -94,11 +115,14 @@ hist(cdc$age)
 
 *** =sct
 ```{r}
-test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the cdc dataset and 'age' variable")
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
 
-test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the cdc dataset and 'age' variable")
 
-success_msg("Nice! We can see from the histogram that the data is right skewed but since there is a large sample (n=20,000) the normality assumption is met.")
+test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the HELPrct dataset and 'i1' variable")
+
+test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the HELPrct dataset and 'i1' variable")
+
+success_msg("Nice! We can see from the histogram that the data is right skewed but since there is a large sample (n=453) the normality assumption is met.")
 ```
 
 
@@ -107,30 +131,41 @@ success_msg("Nice! We can see from the histogram that the data is right skewed b
 
 Suppose we want to:
 
-* perform a t-test to determine if the population mean `age` differs from 40, and, 
-* build a 95% confidence interval to estimate the true mean `age`. 
+* perform a t-test to determine if the population mean number of drinks per day `i1` differs from 2, and, 
+* build a 95% confidence interval to estimate the true mean number of drinks `i1`. 
 
-We can do this in one step with the `t.test()` function in R.
+We can do this in one step with the `t.test()` function.
 
 The default settings are to test a 2-sided alternative hypothesis and to calculate a 95% confidence interval.
 
 So, to carry out a one sample t-test for a 2-sided alternative and a 95% confidence interval, use the format:
 
-`t.test(x = dataset$variable, mu = null_hyp)`
+`t.test(x = dataset$variable, mu = null.hyp)`
 
 
 
-*Note: null_hyp is a placeholder for our null hypothesis; in this exercise you will replace null_hyp with 40.*
+Our hypotheses are:
+
+$H_0$: $\mu \= 2$
+
+$H_a$: $\mu \neq 2$,  where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
+
+
+
+*Note: null.hyp is a placeholder for our null hypothesis*
+
 
 *** =instructions
-- Use the `t.test()` function to determine if the population mean `age` from the `cdc` data set differs from 40 on average and use a 95% confidence interval to estimate the population mean age.
+- Use the `t.test()` function to test the hypothesis (stated above) and to create a 95% confidence interval to estimate the population mean number of drinks per day `i1` in the `HELPrct` data set.
+
 - click 'Submit Answer' and look at the R output.
 
 *** =hint
-- follow format from lesson with `cdc$age` instead of dataset$variable and  40 instead of null_hyp
+- follow format from lesson with `HELPrct$i1` instead of dataset$variable and  `2` instead of null_hyp
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
+library(mosaicData)
+
 
 ```
 
@@ -145,13 +180,13 @@ source("https://www.openintro.org/stat/data/cdc.R")
 *** =solution
 ```{r}
 # Perform a t-test using the t.test() function 
-t.test(x = cdc$age, mu = 40)
+t.test(x = HELPrct$i1, mu = 2)
 
 ```
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis! In this case we're using the cdc data set, age variable, and null hypothesis equal to 40.")
+test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis! In this case we're using the 'HELPrct' data set, 'i1' variable, and null hypothesis equal to 2.")
 
 
 ```
@@ -188,7 +223,13 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:eeccda0836
 ## One-sided Hypothesis Tests
 
-Sometimes we a have a one-sided alternative hypothesis (For example, the hypothesis in the *Plots* panel is one-sided less than). 
+Sometimes we have a one-sided alternative hypothesis, for example: 
+
+$H_0$: $\mu \= 2$
+
+$H_a$: $\mu \> 2$,  
+where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
+
 
 The `t.test()` function can still do this, but we have to specify an additional argument.
 
@@ -209,35 +250,34 @@ If our alternative hypothesis is *greater than*, use:
 
 
 *** =instructions
-Use the `t.test()` function to carry out a one sample t-test to determine if the population mean `age` is **less** than 40 on average.
+Use the `t.test()` function to carry out a one sample t-test on the `HELPrct` data set to determine if the population mean number of drinks per day `i1` is **greater** than 2 on average.
 *** =hint
-- The code is the same as the last time with the added argument: `alternative = "less"`
+- The code is the same as the last time with the added argument: `alternative = "greater"`
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n', frame = F)
-text(0, 3, expression(paste("Ho:", mu, "=40")), cex = 2)
-text(0, -3, expression(paste("Ha:", mu, "<40")), cex = 2)
+library(mosaicData)
+
+
 ```
 
 *** =sample_code
 ```{r}
-# use the t.test() function to determine if the mean age is significantly less than 40 
+# use the t.test() function to determine if the 'i1' is significantly greater than 2 on average
 
 
 ```
 
 *** =solution
 ```{r}
-# use the t.test() function to determine if the mean age is significantly less than 40 
+# use the t.test() function to determine if the 'i1' is significantly greater than 2 on average
 
-t.test(x = cdc$age, mu = 40, alternative = "less")
+t.test(x = HELPrct$i1, mu = 2, alternative = "greater")
 
 ```
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "alternative", "mu"), incorrect_msg = "Everything is the same as the last exercise except for the added argument. The alternative argument should be equal to 'less'")
+test_function("t.test", args = c("x", "alternative", "mu"), incorrect_msg = "Everything is the same as the last exercise except for the added argument. The alternative argument should be equal to 'greater'")
 
 ```
 
@@ -248,9 +288,9 @@ test_function("t.test", args = c("x", "alternative", "mu"), incorrect_msg = "Eve
 
 We can also change the confidence level by adding the argument: `conf.level = `. 
 
-For example, if I want to test the hypothesis in the *Plots* panel and build a 99% confidence interval for the mean `age`, I would type:
+For example, if I want to test whether the population mean number of drinks per day differs from 2 and build a **99%** confidence interval for the mean, I would type:
 
-`t.test(x = cdc$age, mu = 40, conf.level = 0.99)`
+`t.test(x = HELPrct$i1, mu = 2, conf.level = 0.99)`
 
 
 *** =instructions
@@ -259,11 +299,7 @@ Use the `t.test()` function to carry out a one sample t-test to determine if the
 Make sure you specify the confidence level as a proportion. For example, to do a 80% confidence interval add `conf.level = 0.80`. This exercise is asking you to create a 90% confidence interval.
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 4, expression(H[o]: mu == 40), cex = 2)
-text(0, 1, expression(H[a]: mu[d] != 40), cex = 2)
-
+library(mosaicData)
 ```
 
 
