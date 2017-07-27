@@ -120,6 +120,8 @@ hist(schooldays$absent)
 
 *** =sct
 ```{r}
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
+
 
 test_student_typed("favstats(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: favstats(dataset$quant_var ~ dataset$categ_var) with the correct data set (schooldays), quant_var (absent) and categ_var (race)")
 
@@ -165,7 +167,16 @@ To do this, use the format:
 
 `t.test(dataset$quant_var ~ dataset$categ_var, var.equal = FALSE)`
 
-In this exercise, you will test the hypothesis in the *Plots* panel and create a 95% confidence interval around the true average difference in absent days.
+In this exercise, you will test the hypothesis:
+
+$H_0$: $\mu$
+
+$H_a$: $\mu \neq 2$,  where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
+
+
+
+
+and create a 95% confidence interval around the true average difference in absent days.
 
 *** =instructions
 - Perform use the `t.test()` function to test if the student's number of `absent` days is dependent on their `race`.

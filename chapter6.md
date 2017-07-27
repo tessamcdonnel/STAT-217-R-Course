@@ -288,15 +288,26 @@ test_function("t.test", args = c("x", "alternative", "mu"), incorrect_msg = "Eve
 
 We can also change the confidence level by adding the argument: `conf.level = `. 
 
-For example, if I want to test whether the population mean number of drinks per day differs from 2 and build a **99%** confidence interval for the mean, I would type:
+For example, if I want to test whether the population mean number of drinks per day differs from 2 AND build a **99%** confidence interval for the mean, I would type:
 
 `t.test(x = HELPrct$i1, mu = 2, conf.level = 0.99)`
 
 
 *** =instructions
-Use the `t.test()` function to carry out a one sample t-test to determine if the population mean `age` **differs** from 40 on average and use a **90% confidence interval** to estimate the population mean age.
+Use the `t.test()` function to carry out a one sample t-test to determine if the population mean number of drinks per day `i1` **differs** from 40 on average and use a **90% confidence interval** to estimate the population mean.
+
+
+Our hypotheses are:
+
+$H_0$: $\mu \= 2$
+
+$H_a$: $\mu \neq 2$,  where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
+
 *** =hint
-Make sure you specify the confidence level as a proportion. For example, to do a 80% confidence interval add `conf.level = 0.80`. This exercise is asking you to create a 90% confidence interval.
+Make sure you specify the confidence level as a *proportion*. For example, to do a 80% confidence interval add `conf.level = 0.80`. 
+
+
+This exercise is asking you to create a 90% confidence interval.
 *** =pre_exercise_code
 ```{r}
 library(mosaicData)
@@ -312,12 +323,12 @@ library(mosaicData)
 *** =solution
 ```{r}
 # Carry out a t-test and find a 90% confidence interval
-t.test(x = cdc$age, mu = 40, conf.level = 0.90)
+t.test(x = HELPrct$i1, mu = 2, conf.level = 0.90)
 ```
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.90?")
+test_function("t.test", args = c("x", "mu", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.90? Make sure you follow the t.test() format with 'HELPrct' data set, 'i1' variable, mu equal to 2, and conf.level = 0.90.")
 
 ```
 
