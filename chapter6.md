@@ -3,6 +3,36 @@ title       : Lab 5
 description : One-sample t-test
 
 
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:fe45e251b5
+## One- Sample t-test
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9c0a9256c3
 ## Assumptions of the t-test
 

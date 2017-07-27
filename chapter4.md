@@ -297,10 +297,11 @@ Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 r
 
 Note that the $z\ast$ critical value is 1.96 for a 95% confidence interval.
 
+*Remember, to square a number use the format: `sqrt(number)`*
 *** =hint
-- Use the formula in the lesson with $\hat{p}$ = 0.15, and n = 50.
 - Find 'upper bound' and 'lower bound' seperately.
-- When multiplying two things together use an asterisk $\ast$. For example, if we want to multiply 4 and 8 type `4*8`; typing `4(8)` will result in an error.
+- Use the formula in the lesson with $\hat{p}$ = 0.15, and n = 50.
+- When multiplying two things together use an asterisk $\ast$. For example if we want to multiply 4 and 8, type `4*8`; typing `4(8)` will result in an error.
 *** =pre_exercise_code
 ```{r}
 

@@ -103,13 +103,13 @@ We will treat the `ChickWeight` data set as the entire population of interest.
 
 
 *** =instructions
-- Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- use the `favstats()` function to get summary statistics of `weight` from the `ChickWeight` data set.
-- use the `hist()` function to create a histogram of `weight`.
+- Type `library(mosaic)` to load the *mosaic* package into your workspace. (You need this package to use the `favstats()` function)
+- Use the `favstats()` function to get summary statistics of `weight` from the `ChickWeight` data set.
+- Use the `hist()` function to create a histogram of `weight`.
 - Click the 'Submit Answer' button and look at the R output
 *** =hint
 - Remember, to find summary statistics use format `favstats(dataset$variable)`.
-- To get a histogram, use `hist(dataset$variable)`
+- To get a histogram, use `hist(dataset$variable)`.
 *** =pre_exercise_code
 ```{r}
 library(mosaic)
@@ -142,6 +142,10 @@ hist(ChickWeight$weight)
 
 *** =sct
 ```{r}
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
+
+
+
 test_function("favstats", args = "x", incorrect_msg = "Remember, to find summary statistics use format: favstats(dataset$variable) with specified parameters.")
 test_function("hist", args = "x", incorrect_msg = "To create a histogram, use the format: hist(dataset$variable) with the specified variables.")
 
@@ -154,7 +158,11 @@ success_msg("Nice! Now look at the histogram of chick weights. Can you tell whic
 
 Most of the time we don't know what the *population mean* is, but we can **estimate** this value with a random sample. 
 
-In this exercise, you will create a random sample of 75 from the `weight` variable in the `ChickWeight` data set and then compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
+In this exercise, you will:
+
+* create a random sample of 75 from the `weight` variable in the `ChickWeight` data set, and,
+
+* compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
 
 
 *** =instructions
@@ -165,9 +173,9 @@ In this exercise, you will create a random sample of 75 from the `weight` variab
 - click 'Submit Answer' and look at the R output.
 - How do these values compare to the *population mean*?
 *** =hint
-- For the first instruction, use the format `sample(dataset$variable, #)`.
+- To get a random sample, use the format `sample(dataset$variable, #)` with the specified dataset, variable and number.
 
-- To find summary statistics of a sample use the format: `favstats(sample.name)`.
+- `my_sample` is just a vector of 75 chick weights so to obtain summary statistics, all you need to put in the `favstats()` function is the sample name `my_sample`.
 
 
 *** =pre_exercise_code
@@ -211,8 +219,10 @@ hist(my_sample)
 
 *** =sct
 ```{r}
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
 
-test_object("my_sample", incorrect_msg = "Make sure you use the sample() function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=75.")
+
+test_object("my_sample", incorrect_msg = "Make sure you use the sample(dataset$variable, number) function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=75.")
 
 
 
