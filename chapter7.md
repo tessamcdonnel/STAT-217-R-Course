@@ -169,14 +169,14 @@ To do this, use the format:
 
 In this exercise, you will test the hypothesis:
 
-$H_0$: $\mu$
+$H_0$: $\mu_{aboriginal} \= \mu_{white}$
 
 $H_a$: $\mu \neq 2$,  where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
 
 
 
 
-and create a 95% confidence interval around the true average difference in absent days.
+_and create a_ 95% confidence interval around the true average difference in absent days.
 
 *** =instructions
 - Perform use the `t.test()` function to test if the student's number of `absent` days is dependent on their `race`.

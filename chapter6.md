@@ -250,7 +250,7 @@ If our alternative hypothesis is *greater than*, use:
 
 
 *** =instructions
-Use the `t.test()` function to carry out a one sample t-test on the `HELPrct` data set to determine if the population mean number of drinks per day `i1` is **greater** than 2 on average.
+Use the `t.test()` function to carry out a one sample t-test on the `HELPrct` data set to determine if the population mean number of drinks per day [`i1`] is **greater** than 2 on average.
 *** =hint
 - The code is the same as the last time with the added argument: `alternative = "greater"`
 *** =pre_exercise_code
@@ -301,7 +301,7 @@ Our hypotheses are:
 
 $H_0$: $\mu \= 2$
 
-$H_a$: $\mu \neq 2$,  where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
+$H_a$: $\mu \neq 2$,  where $\mu$ is the true average number of alcoholic drinks per day [`i1`]
 
 *** =hint
 Make sure you specify the confidence level as a *proportion*. For example, to do a 80% confidence interval add `conf.level = 0.80`. 
@@ -330,6 +330,8 @@ t.test(x = HELPrct$i1, mu = 2, conf.level = 0.90)
 ```{r}
 test_function("t.test", args = c("x", "mu", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.90? Make sure you follow the t.test() format with 'HELPrct' data set, 'i1' variable, mu equal to 2, and conf.level = 0.90.")
 
+success_msg("Good job. If you scroll through the R output you'll notice that the p-value is almost zero!")
+
 ```
 
 
@@ -337,40 +339,57 @@ test_function("t.test", args = c("x", "mu", "conf.level"), incorrect_msg = "Have
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5d2e26a906
 ## t.test() Practice
-The `cdc` dataset has a variable called `wtdesire` which records the weight the subjects *wish* they were.
 
-For this exercise, test the hypothesis in the plots panel with mu = mean of `wtdesire`.
+Conclusion from the last exercise:
+
+At  $\alpha$ =  0.05, we would REJECT the null hypothesis and conclude that the true mean number of alcoholic drinks consumed per day is significantly **more** than 2. This makes sense because the data was taken from patients at a rehab facility. 
+
+Here is a more *plausable* hypothesis for this population:
+
+$H_0$: $\mu \= 15$
+
+$H_a$: $\mu \> 15$,  where $\mu$ is the true average number of alcoholic drinks per day [`i1`]
+
+Note: to use the `t.test()` function use format:
+
+`t.test(x = dataset$variable, mu = null.hyp, conf.level = 0.__)`
+
+
 
 *** =instructions
-- Use the `t.test()` function to perform a t-test on `wtdesire` for the hypothesis in the *plots* panel and construct a 99% confidence interval.
+- Use the `t.test()` function to carry out a one sample t-test for the above hypothesis and construct a 99% confidence interval. 
+    - this is a one-sided test so you will need to need to specify `alternative="___"`
+    - for a 99% confidence interval, you need to specify `conf.level = 0.99`
+
+*Remember, the data set is called `HELPrct`.*
 *** =hint
-- This is a one-sided test so `alternative="___"` should be called. 
-- Since we want a 99% confidence interval, we need to specify `conf.level = 0.99`.
+- This is a one-sided **greater** than test, so `alternative="greater"` should be specified in the `t.test()` function. 
+
+- Make sure you specify the confidence level as a *proportion*. For example, to do a 80% confidence interval add `conf.level = 0.80`. 
 *** =pre_exercise_code
 ```{r}
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n')
-text(0, 3, expression(paste("Ho:", mu, "=150")), cex = 2)
-text(0, -3, expression(paste("Ha:", mu, ">150")), cex = 2)
-source("https://www.openintro.org/stat/data/cdc.R")
+library(mosaicData)
+
 
 ```
 
 *** =sample_code
 ```{r}
-# Use t.test to perform a t test on the hypothesis in the plots panel
+# Use t.test to perform a t test on the specified hypothesis
+
+
 
 ```
 
 *** =solution
 ```{r}
-# Use t.test to perform a t test on the hypothesis in the plots panel
-t.test(x = cdc$wtdesire, mu = 150, alternative = "greater", conf.level = 0.99)
+# Use t.test to perform a t test on the specified hypothesis 
+t.test(x = HELPrct, mu = 15, alternative = "greater", conf.level = 0.99)
 
 ```
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu", "alternative", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.99 and alternative equal to 'greater'?")
 
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
@@ -407,7 +426,7 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:45534c5588
 ## Check for Understanding 3
 
-Which argument should we specify in the t.test function to do a one sided Ha in a one sample t-test?
+Which argument should we specify in the t.test function to do a one sided alternative hypothesis in a one sample t-test?
 
 
 
