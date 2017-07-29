@@ -384,7 +384,7 @@ library(mosaicData)
 *** =solution
 ```{r}
 # Use t.test to perform a t test on the specified hypothesis 
-t.test(x = HELPrct, mu = 15, alternative = "greater", conf.level = 0.99)
+t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
 
 ```
 

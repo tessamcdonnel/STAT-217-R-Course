@@ -169,9 +169,9 @@ To do this, use the format:
 
 In this exercise, you will test the hypothesis:
 
-$H_0$: $\mu_{aboriginal} \= \mu_{white}$
+$H_0$: $\mu\ (yes) \= \mu\ {no}$
 
-$H_a$: $\mu \neq 2$,  where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
+$H_a$: $\mu_{yes} \neq \mu_{no}$
 
 
 
