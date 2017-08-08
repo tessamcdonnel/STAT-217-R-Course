@@ -127,7 +127,7 @@ test_student_typed("favstats(schooldays$absent ~ schooldays$race)", not_typed_ms
 
 test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the 'schooldays' dataset and 'absent' variable")
 
-success_msg("Does this data follow the assumptions? Take a look at the R output because you will answer this question in the next exercise.")
+success_msg("Does this data follow the assumptions? Take a look at the R output (especially the sample sizes) because you will answer this question in the next exercise.")
 
 ```
 
@@ -167,29 +167,26 @@ To do this, use the format:
 
 `t.test(dataset$quant_var ~ dataset$categ_var, var.equal = FALSE)`
 
-In this exercise, you will test the hypothesis:
+In this exercise, you will test the null hypothesis that the average number of absent days among aboriginal and non-aboriginal are equal:
 
-$H_0$: $\mu\ (yes) \= \mu\ {no}$
+$H_0: \mu (A) = \mu (NA)$
 
-$H_a$: $\mu_{yes} \neq \mu_{no}$
+$H_a: \mu (A) \neq \mu (NA)$
 
+where A = Aboriginal and NA = Non-Aboriginal
 
-
-
-_and create a_ 95% confidence interval around the true average difference in absent days.
+and create a 95% confidence interval around the true average difference in absent days.
 
 *** =instructions
-- Perform use the `t.test()` function to test if the student's number of `absent` days is dependent on their `race`.
+- Perform use the `t.test()` function to test if the student's number of `absent` days is dependent on their `race` and create a 95% confidence interval around the true average difference in absent days.
 - Click 'Submit Answer' and look at the R output.
 
 *** =hint
-
+Follow the lesson format with the correct variables and dataset. Remember, the categorical variable is `race` and the quantitative variable we're comparing is `absent`. 
 *** =pre_exercise_code
 ```{r}
 library(HSAUR)
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n', frame=F)
-text(0, 3, expression(H[o]: mu[abor] == mu[not_abor]), cex = 3)
-text(0, -3, expression(H[a]: mu[abor] != mu[not_abor]), cex = 3)
+
 ```
 
 *** =sample_code
@@ -208,7 +205,10 @@ t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)
 
 *** =sct
 ```{r}
-test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)", not_typed_msg = "Make sure you follow the format from the lesson with the correct data set (schooldays), quant_var (absent) and categ_var (race)")
+test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)", not_typed_msg = "Make sure you follow the format from the lesson with the correct data set (schooldays), quant_var (absent) and categ_var (race). Don't forget to add 'var.equal = FALSE'")
+
+success_msg("Great! Now look at the p-value from the output. What would your conclusion be for this test?")
+
 ```
 
 
@@ -216,28 +216,30 @@ test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALS
 --- type:NormalExercise lang:r xp:100 skills:1 key:de76ba4b81
 ## Paired t-test
 
-Suppose we want test whether there is a mean difference between 2 *dependent* sets of observations.
+How would we test whether there is a mean difference between 2 *dependent* sets of observations?
 
-This is a paired t-test where each subject or unit is measured twice, resulting in 2 dependent measurements.
+This is a paired t-test where each subject or unit is measured **twice**, resulting in 2 dependent measurements.
 
-To perform a paired t-test, we'll be using a dataset called `anorexia` which contains weight change data on yound female anorexic patients. 
+To perform a paired t-test, we'll be using a data set called `anorexia` which contains weight change data on young female anorexic patients. 
 
 - there are 3 variables in this data set: `Treat`, `Prewt`, and `Postwt`.
 - there are 72 subjects 
 - `anorexia` is already in your workspace
 
-The pre-weight and post-weight of patients are not independent (because it is measuring the same person) so we have to conduct a **paired** t-test.
-
 We want to test whether the patients weights improved between their previous weight `Prewt` and post weight `Postwt`, regardless of their treatment group.
+
+The pre-weight and post-weight of patients are **not** independent (because it is measuring the same person) so we have to conduct a paired t-test.
 
 First we need to create a new variable `diffwt` that measures `Postwt - Prewt`.
 
 *Note: Postwt and Prewt are measured in pounds*
 *** =instructions
-- Copy and paste this code to create `diffwt`: `anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt`.
+- Copy and paste the code below to create the new variable:
+    
+    anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
 
 *** =hint
-
+All you have to do in this exercise is copy and paste the **code** from the instructions box.
 *** =pre_exercise_code
 ```{r}
 library(MASS)
@@ -261,7 +263,9 @@ anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
 
 *** =sct
 ```{r}
+test_student_typed("anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt", not_typed_msg = "For this exericise just copy and paste the code from the Instructions box")
 
+success_msg("Good! The new variable measuring the weight difference has been created.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
 ## Assumptions for Paired t-test
@@ -286,9 +290,10 @@ In this exercise, you will be checking the normality assumption for the the `dif
 - Use the `hist()` function to check if `diffwt` is normally distributed.
 - Click the 'Submit Answer' button and check the output. Are the assumptions met?
 *** =hint
-To create a histogram use the format: `hist(dataset$variable)`
 
-Remember we are using the data set called `anorexia`.
+- Use the format `favstats(dataset$variable)` for the second instruction.
+- To create a histogram use the format: `hist(dataset$variable)`
+- Remember we are using the data set called `anorexia`.
 *** =pre_exercise_code
 ```{r}
 library(mosaic)
@@ -324,11 +329,14 @@ hist(anorexia$diffwt)
 
 *** =sct
 ```{r}
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
 
 test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the anorexia dataset and 'diffwt' variable")
 
 
 test_function("hist", args = "x", incorrect_msg = "Make sure you create a histogram of the diffwt variable from the anorexia data set.")
+
+success_msg("Good! Now look at the output. We can see from the histogram that the distribution of the differences is right skewed HOWEVER the sample size is over 30 so the conditions are satisfied.")
 ```
 
 
@@ -338,11 +346,19 @@ test_function("hist", args = "x", incorrect_msg = "Make sure you create a histog
 
 We can also use the `t.test()` function to perform a paired sample t-test, but the format is a little diffferent.
 
-Our hypothesis (in the *Plots* panel) it to test whether there is a significant difference between the weights.
-
 To conduct a paired t-test, use the format:
 
 `t.test(dataset$variable, mu = 0)`
+
+For this exercise you will test whether there is a significant difference between the pre-weights and post-weights. 
+In other words, test whether the mean difference in weight `diffwt`is equal to zero.
+
+
+$H_0: \mu (d) = 0$
+
+$H_a: \mu (d) \neq 0$
+
+where d = the difference in weight `diffwt`
 
 
 
@@ -356,10 +372,6 @@ Follow the format in the lesson with `anorexia` as the dataset and `diffwt` as t
 *** =pre_exercise_code
 ```{r}
 library(MASS)
-plot(-6:6, -6:6, type = "n", xlab="", ylab="", xaxt = 'n', yaxt = 'n', frame=F)
-text(0, 4, expression(H[o]: mu[d] == 0), cex = 2)
-text(0, 1, expression(H[a]: mu[d] != 0), cex = 2)
-text(0, -4, expression(mu[d] == mu[Post] - mu[pre]), cex = 2)
 anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
 
 ```
@@ -381,7 +393,7 @@ t.test(anorexia$diffwt, mu = 0)
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu"), incorrect_msg = "Did you specify the null hypothesis as mu = 0?")
+test_function("t.test", args = c("x", "mu"), incorrect_msg = "Did you specify the null hypothesis as mu = 0? Make sure you use the correct dataset (anorexia) and variable (diffwt)")
 
 success_msg("Good job! Look at the R output for the t-test and take note of the p-value and 95% confidence interval.")
 ```
@@ -392,12 +404,12 @@ success_msg("Good job! Look at the R output for the t-test and take note of the 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9d5c6fc887
 ## Quick Check 1
 
-The paired t-test from the last exercise gave us a p-value of 0.004 and a 95% confidence interval of (0.8878354 4.6399424).
+The paired t-test from the last exercise gave us a p-value equal to 0.004 and a 95% confidence interval of (0.8878354 4.6399424).
 
 At the alpha = 0.05 significance level, how would we conclude this test?
 
 *** =instructions
-- We would reject the null hypothesis that the average difference in weight between post weight and preweight is equal to zero.
+- We would reject the null hypothesis and conclude that the average difference in weight between post weight and preweight is not equal to zero.
 - We would fail to reject the null hypothesis that the average difference in weight between post weight and preweight is equal to zero.
 *** =hint
 
@@ -416,7 +428,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:5e7f284cfc
 ## ANOVA
 
-We use ANOVA or Analysis of Variance when we want to compare a quantitative response variable in **more than** 2 groups.
+We use ANOVA or Analysis of Variance when we want to compare a quantitative response variable in **more than 2** groups.
 
 The `anorexia` data set we've been working with has a categorical variable named `Treat` with 3 levels:
 
@@ -424,13 +436,13 @@ The `anorexia` data set we've been working with has a categorical variable named
 - `CBT` (Cognitive Behavioural treatment)
 - `FT` (Family Treatment)
 
-Suppose we want to determine if the average patients post weights `Postwt` differs among the three categories of treatment `Treat`.
+Suppose we want to determine if the patients' average post-weights differs among the three categories of treatment.
 
-We can begin by exploring the relationship between treatment and post weights.
+We can begin by exploring the relationship between treatment and post-weights.
 
 Note: The `Postwt` variable is measured in *pounds* and the higher the weight, the healthier the patient.
 *** =instructions
-- Use the `boxplot()` function to compare patients post weights `Postwt` by their treatment `Treat`.
+- Use the `boxplot()` function to compare patients post weights (`Postwt`) by their treatment (`Treat`).
 - Click the 'Submit Answer' button and look at the R output. Do you think this difference is statistically significant?
 
 *** =hint
@@ -479,7 +491,7 @@ Before testing a hypothesis with a 2 sample t-test, we need to make sure that ou
 
 The data set `anorexia` is from a random sample so the observations can be treated as independent.
 
-In this exercise, you will be checking the normality assumption for the `Postwt` variable in `anorexia`.
+In this exercise, you will be checking the normality assumption for the `Postwt` variable in the `anorexia` data set.
 
 *The normality assumption is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample size in each group is larger than 30*
 
@@ -493,8 +505,8 @@ In this exercise, you will be checking the normality assumption for the `Postwt`
 
 
 *** =hint
-- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)`
-- To create a histogram, use the format: `hist(dataset$variable)`.
+- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct dataset, quantitative variable and categorical variable.
+- To create a histogram, use the format: `hist(dataset$variable)` with the correct dataset and variable.
 
 *** =pre_exercise_code
 ```{r}
@@ -559,7 +571,7 @@ ANOVA is appropriate when we want to...
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct."
+msg_bad <- "That is not correct. Remember, the one sample t-test is used to test a single mean, two sample t-test is for comparing two means, and the paired t-test is used when comparing paired measurements. That only leaves one possible option for the ANOVA test!"
 msg_success <- "Exactly!"
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
@@ -570,7 +582,7 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 --- type:NormalExercise lang:r xp:100 skills:1 key:9048bc1deb
 ## Using aov() function to test multiple means
 
-To test if average post-treatment weights `Postwt` differs among the treatment categories, we use the `aov()` function.
+To test if average post-treatment weights `Postwt` differs among the treatment categories, we can use the `aov()` function.
 
 Similar structure to the two sample t-test, we list the quantitative variable first, followed by the categorical. We're going to save these in an object so that we can get a summary of the results.
 
@@ -580,14 +592,15 @@ To do this, follow the format:
 
 `summary(anova.results)`
 
-For this exercise, 
+*Remember, we are still using the `anorexia` data set.*
 *** =instructions
 - Use the format in the lesson to test if there is a difference in mean `Postwt` among the three `Treat` categories, name these results `anova.results`.
 - Use the `summary()` function to examine `anova.results`.
 - Click 'Submit Answer' and look ANOVA results.
 
 *** =hint
-- Follow the lesson format with correct dataset and variables.
+- For the first instruction, follow the lesson format with correct dataset and variables. For this test, the categorical variable is `Treat` and the quantitative variable is `Postwt`.
+- To get a summary of a the results type `summary(anova.results)`
 *** =pre_exercise_code
 ```{r}
 library(MASS)
@@ -609,6 +622,8 @@ summary(anova.results)
 
 *** =sct
 ```{r}
+
+test_function("summary", args = "x", incorrect_msg = "First you need to create 'anova.results' using the lesson format with the correct dataset and variables. Then call the summary() function.")
 success_msg("Great! Now look at the p-value from this test. What is your conclusion?")
 ```
 
@@ -662,9 +677,7 @@ To do this we can use use the `TukeyHSD()` function in the format:
 Note: `anova.results` is already in your workspace
 
 *** =instructions
-- Re-type the code in the lesson to see which population means are significantly different.
-*** =hint
-
+- Copy and paste the code from the lesson to determine *which* pairs of means differ.
 *** =pre_exercise_code
 ```{r}
 library(MASS)
@@ -673,6 +686,9 @@ anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
 
 *** =sample_code
 ```{r}
+# Copy and paste the code from the lesson to determine *which* pairs of means differ.
+
+
 
 ```
 
@@ -681,10 +697,16 @@ anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
 TukeyHSD(anova.results)
 
 plot(TukeyHSD(anova.results))
+
+
 ```
 
 *** =sct
 ```{r}
+test_function("TukeyHSD", args = "x")
+test_function("plot", args = "x")
+
+
 
 ```
 
