@@ -29,7 +29,6 @@ If you want more information about this data set type: `?HELPrct` into the R con
 ```{r}
 library(mosaicData)
 
-
 ```
 
 *** =sample_code
