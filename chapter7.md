@@ -703,9 +703,6 @@ plot(TukeyHSD(anova.results))
 
 *** =sct
 ```{r}
-test_function("TukeyHSD", args = "x")
-test_function("plot", args = "x")
-
 
 
 ```
