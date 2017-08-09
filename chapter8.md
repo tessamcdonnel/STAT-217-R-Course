@@ -63,25 +63,45 @@ Remember, to make a table use the format: `table(dataset$variable)`.
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:5d43584cb1
 ## Using the prop.test() function
 
-Suppose that a previous study estimated the low birthweight to be 10%. In other words, 10% of all births in North Carolina are under weight. 
+A previous study estimated the low birthweight to be 10%. In other words, 10% of all births in North Carolina are under weight. 
 
+If we want to test whether the low birthrate of our population differs from 10%, we can use the `prop.test()` function with the format:
 
-In this exercise you will use the `prop.test()` function to: perform a z-test to determine if our population proportion of `lowbirthweight` differs from .10, and, 
+`prop.test(#yes, #total, p = null_hyp, correct = FALSE)`
+
+We can use the 
+In this exercise you will use the `prop.test()` function to perform a z-test to determine if our population proportion of `lowbirthweight` differs from .10. 
+
+*** =instructions
+Use the `prop.test()` function to perform a z-test to determine if our population proportion of `lowbirthweight` differs from .10.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b187ce8175
+## T
+
 
 *** =instructions
 
