@@ -87,7 +87,7 @@ success_msg("Note that the 'low' birthweight column is on the left. Use this tab
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5d43584cb1
-## Using the prop.test() function
+## Using the prop.test() function for 1 proportion
 
 We can see that the proportion of babies with low birthweights from this data set is around 11%.
 
@@ -176,7 +176,7 @@ To create this contingency table, use the `table()` function with the format:
 
 
 *** =hint
-
+- For the first instruction, follow the format in the lesson with correct dataset (nc), var1 (lowbirthweight) and var2 (habit).
 *** =pre_exercise_code
 ```{r}
 download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
@@ -212,6 +212,198 @@ addmargins(table(nc$lowbirthweight, nc$habit))
 # Use table to find low birthweight proportions of smoking mothers and nonsmoking mothers
 
 
+
+```
+
+*** =sct
+```{r}
+test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the format in the lesson with correct dataset (nc), var1 (lowbirthweight) and var2 (habit).")
+
+test_student_typed("addmargins(table(nc$lowbirthweight, nc$habit))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
+
+success_msg("Good job. From the R output we can see that among the nonsmoking group, 92/873 (or about 10.5%) of babies were born with low birthweight compared to the smoking group where 18/126 (or about 14.3%) of babies had low birthweights. The proportions are different (as expected) but let's see if this difference is statistically significant!")
+
+
+
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a51b77b946
+## Using the prop.test() function for 2 proportions
+
+To test whether there is a significant difference between 2 proportions, we can use the `prop.test()` function with the format:
+
+`prop.test(c(x1, x2), c(n1, n2), correct = FALSE)` with:
+
+* *x1* = number low birthweight babies with smoking mothers (18)
+* *x1* = number low birthweight babies with nonsmoking mothers (92)
+* *n1* = number of smoking mothers (126)
+* *n2* = number of nonsmoking mothers (873)
+
+In this exercise you will perform a 2 sample z-test.
+*** =instructions
+Use the `prop.test()` function to test whether the proportion of low birthweight is significantly different depending on whether the mother smoked . 
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+
+```
+
+*** =sample_code
+```{r}
+# Use the prop.test() function with the format from the lesson to perform a 2 sample z-test
+
+
+
+```
+
+*** =solution
+```{r}
+# Use the prop.test() function with the format from the lesson to perform a 2 sample z-test
+prop.test(c(18, 92), c(126, 873), correct = FALSE)
+
+
+```
+
+*** =sct
+```{r}
+test_function("prop.test", args = c("x", "n", "correct"), args_not_specified_msg = "Make sure you follow the format from the lesson with the correct arguements")
+success_msg("Great! Now look at the R output to see the results of the test.")
+
+
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1d20719892
+## Test conclusion
+
+The 2 sample *z*-test from the last exercise gave us a p-value equal to 0.209 and a 95% confidence interval of (-0.027, 0.102).
+
+At the alpha = 0.05 significance level, how would we conclude this test?
+
+
+*** =instructions
+- We would reject the null hypothesis and conclude that there is a significant difference in the proportion of smokers and nonsmokers with low birthweight births.
+- We would fail to reject the null hypothesis and conclude that there is no significant difference in the proportion of smokers and nonsmokers with low birthweight births.
+
+*** =hint
+
+Remember, if zero is in the confidence interval it is plausible that the true difference in proportions is zero.
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. The p-value is greater than alpha = 0.05 AND the confidence interval contains zero so we would fail to reject the null hypothesis"
+msg_success <- "Exactly!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
+
+```
+
+
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:770e869325
+## Quick Check 1
+
+The two sample z-test is appropriate when we want to:
+*** =instructions
+- examine two paired (dependent) categorical variables
+- compare more than two population proportions
+- compare two population proportions
+- test a single population proportion
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. With a 2 sample z-test we are dealing with 2 independent proportions."
+msg_success <- "Exactly!"
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+
+
+```
+
+
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:cfdac30423
+## Chi-squared test
+
+What if we want to compare proportions of *more than* 2 groups? To do this we can do a chi-squared test of association.
+
+To perform a chi-squared test, we'll be using a data set called `nc` which contains data on the North Carolina birth records from 2004. 
+
+- there are 13 variables in this data set but we will use 
+- there are 1,000 subjects 
+- `nc` is already in your workspace
+
+This data set contains a categorical variable called `lowbirthweight` with 2 levels:
+
+- `low` (low birthweight)
+- `not low` (not low birthweight)
+
+Let's begin by exploring the `lowbirthweight` variable in the `nc` data set.
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:a1e6ca936b
+## Calculating p-values from a z-test statistic
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
 
 ```
 
