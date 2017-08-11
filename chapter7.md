@@ -638,7 +638,7 @@ success_msg("Great! Now look at the p-value from this test. What is your conclus
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:dbcb0c5a29
 ## Quick Check 2
 
-The results from the ANOVA have a p-value = 0.0044. At the alpha = 0.05 level of significance, what is our conclusion?
+The results from the ANOVA have a p-value = 0.0044. At the $\alpha$ = 0.05 level of significance, what is our conclusion?
 
 *** =instructions
 - Reject the null and conclude all of the population means are different.

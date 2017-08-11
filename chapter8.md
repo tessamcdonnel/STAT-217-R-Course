@@ -342,24 +342,13 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:cfdac30423
-## Chi-squared test
 
-What if we want to compare proportions of *more than* 2 groups? To do this we can do a chi-squared test of association.
+--- type:NormalExercise lang:r xp:100 skills:1 key:252ab074b6
+## Using the prop.table() function 
 
-To perform a chi-squared test, we'll be using a data set called `nc` which contains data on the North Carolina birth records from 2004. 
+So far, we've had to create a table and used a calculator to find proportions.
 
-- there are 13 variables in this data set but we will use 
-- there are 1,000 subjects 
-- `nc` is already in your workspace
-
-This data set contains a categorical variable called `lowbirthweight` with 2 levels:
-
-- `low` (low birthweight)
-- `not low` (not low birthweight)
-
-Let's begin by exploring the `lowbirthweight` variable in the `nc` data set.
-
+The `prop.table()` function can quickly obtain proportions from a contingency table
 
 *** =instructions
 
@@ -382,6 +371,230 @@ Let's begin by exploring the `lowbirthweight` variable in the `nc` data set.
 
 *** =sct
 ```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:cfdac30423
+## Chi-squared test
+
+What if we want to compare proportions of *more than* 2 groups? To do this we can do a chi-squared test of association.
+
+To perform a chi-squared test, we'll be using the same data set from Lab 5 called `HELPrct` which contains data on adult inpatients who were recruited from a detoxification unit. 
+
+- there are 27 variables in this data set but we will only use `homeless` and `substance`
+- there are 453 subjects 
+- `HELPrct` is already in your workspace
+
+`homeless` is a categorical variable with 2 levels:
+
+- *homeless* (the patient was homeless before their detoxification stay)
+- *housed* (the patient was housed before their detoxification stay)
+
+`substance` is a categorical variable indicating the patients' primary substance of abuse with 3 levels:
+
+- *alcohol*
+- *cocaine*
+- *heroin*
+
+We want to test whether the homeless rate varies by primary substance type. Now we have **3** groups of interest so we need to perform this test with the chi-squared test of association.
+
+Let's begin by exploring the `homeless` and `substance` variables in the `HELPrct` data set.
+
+
+*** =instructions
+- Use the `table()` function to create a table of `homeless` and `substance` where:
+
+* var1 = `homeless`
+* var2 = `substance`
+
+- Copy and paste the code below to add row/column totals to the table:
+
+`addmargins(table(HELPrct$homeless, HELPrct$substance))`
+
+- Click the 'Submit Answer' button and look at the R output.
+*** =hint
+To create this contingency table, use the `table()` function with the format:
+
+`table(dataset$var1, dataset$var2)`
+
+*** =pre_exercise_code
+```{r}
+library(mosaicData)
+```
+
+*** =sample_code
+```{r}
+# Create a table of homeless and substance using the table() function
+
+
+# Copy and paste the code from the second instruction
+
+
+
+
+# Use table to find the homeless rate for each category of substance abuse
+
+
+
+
+
+```
+
+*** =solution
+```{r}
+# Create a table of homeless and substance using the table() function
+table(HELPrct$homeless, HELPrct$substance)
+
+# Copy and paste the code from the second instruction
+addmargins(table(HELPrct$homeless, HELPrct$substance))
+
+
+
+# Use table to find the homeless rate for each category of substance abuse
+
+```
+
+*** =sct
+```{r}
+test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the format in the lesson with correct dataset (HELPrct), var1 (homeless) and var2 (substance).")
+
+test_student_typed("addmargins(table(HELPrct$homeless, HELPrct$substance))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
+
+success_msg("Good job. From the R output we can see that among the alcohol users, 103/177 (or about 58.2%) were homeless, cocaine users had a homeless rate of 59/152 (or about 38.8%) and as for the heroin group, 47/124 (37.9%) were homeless before coming to the facility. The proportions are different but let's see if this difference is statistically significant!")
+
+
+```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4a650270a2
+## Using the chisq.test() function
+
+To perform a chi-squared test of independence we can use the `chisq.test()` function with the format:
+
+`chisq.test(dataset$var1, dataset$var2, correct=F)`
+
+For this exercise:
+
+* var1 = `homeless`
+* var2 = `substance`
+
+
+*** =instructions
+Use the `chisq.test()` function to test whether the homeless rate differs depending on the patients' primary substance (from the `HELPrct` data set).
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(mosaicData)
+```
+
+*** =sample_code
+```{r}
+# Perform a chi-squared test on homeless rate by substance abuse type using the HELPrct data set
+
+
+
+```
+
+*** =solution
+```{r}
+# Perform a chi-squared test on homeless rate by substance abuse type using the HELPrct data set
+chisq.test(HELPrct$homeless, HELPrct$substance, correct = F)
+
+
+
+```
+
+*** =sct
+```{r}
+test_function("chisq.test", args = c("x", "y", "correct"), args_not_specified_msg = "Make sure you follow the format from the lesson and don't forget to add 'correct = FALSE'")
+
+success_msg("Great! Now look at the R output to see the results of the test.")
+
+```
+
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:11ff8cec19
+## Chi-squared test conclusion
+
+The chi-squared test from the last exercise gave us a p-value equal to 0.0002. At the $\alpha$ = 0.05 level of significance, what is our conclusion?
+
+*** =instructions
+- Reject the null and conclude all of the population means are different.
+- Reject the null and conclude all of the population proportions are different.
+- Reject the null and conclude that at least one of the population means differs from the others.
+- Reject the null and conclude that at least one of the population proportions differs from the others.
+
+*** =hint
+Remember we're testing proportions when we use the chi-squared test of association.
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Remember, when we use the chi-squared test of association we are testing proportions."
+msg_success <- "Exactly!"
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+
+```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:140356f17c
+## Assumptions of the chi-squared test
+
+An assumption of the chi-squared test is that all expected counts are at least 5.
+
+To check this, you will save the chi-squared test results as an object and then use `$` to view the expected cell counts.
+
+*** =instructions
+- Copy and paste the code below to save the test results in the object called `results`.
+
+`results <-chisq.test(HELPrct$homeless, HELPrct$substance,correct=F)`
+
+- View the expected counts by typing `results$expected`.
+
+- Click the 'Submit Answer' button and make sure all of the cell counts are over 5.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(mosaicData)
+```
+
+*** =sample_code
+```{r}
+# Copy and paste the code from the first instruction
+
+
+# Access the expected cell counts by typing 'results$expected'
+
+
+
+```
+
+*** =solution
+```{r}
+# Copy and paste the code from the first instruction
+results <-chisq.test(HELPrct$homeless, HELPrct$substance,correct=F)
+
+# Access the expected cell counts by typing 'results$expected'
+results$expected
+
+
+```
+
+*** =sct
+```{r}
+test_object("results")
+success_msg("Nice job. Since all of the expected counts are at least 5, this condition is satisfied for valid inference.")
+
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:a1e6ca936b
