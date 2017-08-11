@@ -3,7 +3,7 @@ title       : Lab 3
 description : Summarizing and Visualizing Data
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
-## Using the srt() function to reveal Variable Types
+## Using the str() function to reveal variable types
 
 If we want to know the *types of variables* in our data set, we can type the command `str(dataset)` into the R Console.
 
@@ -27,7 +27,7 @@ For this lab, we will use a dataset called `cdc` which contains data on the heal
 Follow the format str(dataset) with `cdc` instead of `dataset`.
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
+source("http://www.openintro.org/stat/data/cdc.R")
 
 ```
 
@@ -41,7 +41,7 @@ source("https://www.openintro.org/stat/data/cdc.R")
 *** =solution
 ```{r}
 # Find the variable types of cdc
-str(cdc)
+
 
 
 ```

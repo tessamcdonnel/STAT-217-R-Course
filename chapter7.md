@@ -623,19 +623,14 @@ summary(anova.results)
 *** =sct
 ```{r}
 
-test_function("summary", args = "x", incorrect_msg = "First you need to create 'anova.results' using the lesson format with the correct dataset and variables. Then call the summary() function.")
+test_function("summary", args = "object", incorrect_msg = "First you need to create 'anova.results' using the lesson format with the correct dataset and variables. Then call the summary() function.")
 success_msg("Great! Now look at the p-value from this test. What is your conclusion?")
 ```
 
 
 
 
-
-
-
-
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:dbcb0c5a29
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:839648c73c
 ## Quick Check 2
 
 The results from the ANOVA have a p-value = 0.0044. At the $\alpha$ = 0.05 level of significance, what is our conclusion?
@@ -660,7 +655,6 @@ msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
-
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ccc0750e37
 ## Tukey's Pairwise Comparisons
@@ -707,7 +701,8 @@ plot(TukeyHSD(anova.results))
 
 ```
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:11685d799c
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:45f88c1a66
 ## Quick Check 3
 
 Examining a histogram of a quantitative variable helps us to determine if a condition is satisfied for valid statistical inference by...
