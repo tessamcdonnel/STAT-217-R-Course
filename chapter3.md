@@ -19,7 +19,8 @@ For this lab, we will use a dataset called `cdc` which contains data on the heal
 
 - there are 9 variables in the data set
 - there are 20,000 subjects
-- this data set is already in your workspace so if you type `cdc` into your console, the data will come up in the output
+- `cdc` is already in your workspace
+
 
 *** =instructions
 
