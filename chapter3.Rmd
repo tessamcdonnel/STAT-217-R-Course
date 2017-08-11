@@ -30,7 +30,8 @@ For this lab, we will use a dataset called `cdc` which contains data on the heal
 Follow the format str(dataset) with `cdc` instead of `dataset`.
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
+load(url("http://assets.datacamp.com/production/Stat217 R Course/cdc.R"))
+
 
 ```
 
