@@ -5,7 +5,9 @@ description : Summarizing and Visualizing Data
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
 ## Using the str() function to reveal variable types
 
-If we want to know the *types of variables* in our data set, we can type the command `str(dataset)` into the R Console.
+If we want to know the *types of variables* in our data set, we can type the `str()` function with the format:
+
+`str(dataset)`
 
 This will return all of the variable names as well as their type (i.e. numeric, factor, integer). 
 
