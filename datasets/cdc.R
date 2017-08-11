@@ -1,1 +1,1 @@
-source(https://www.openintro.org/stat/data/cdc.csv)
+source(https://www.openintro.org/stat/data/cdc.R)
