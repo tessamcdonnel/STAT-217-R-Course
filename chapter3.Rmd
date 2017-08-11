@@ -78,7 +78,7 @@ What is the correct variable type of `smoke100`?
 - integer
 - factor
 - numeric
-- boolean
+- logical
 *** =hint
 
 *** =pre_exercise_code
@@ -238,8 +238,33 @@ test_function("favstats", args = "x", index = 3, incorrect_msg = "Follow the for
 ```
 
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:b15fdcaef0
+## Summarizing quantitative variables by group
 
 
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c7db7fdc55
 ## Summarizing categorical variables
 
