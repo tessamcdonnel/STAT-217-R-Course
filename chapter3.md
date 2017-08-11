@@ -30,7 +30,6 @@ For this lab, we will use a dataset called `cdc` which contains data on the heal
 Follow the format str(dataset) with `cdc` instead of `dataset`.
 *** =pre_exercise_code
 ```{r}
-source("http://www.openintro.org/stat/data/cdc.R")
 
 ```
 
@@ -54,15 +53,46 @@ source("http://www.openintro.org/stat/data/cdc.R")
 *** =sct
 ```{r}
 test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with 'cdc' instead of 'dataset'!")
+
+success_msg("Great! Now look at the R output and find the variable 'smoke100`. What type of variable does R think this is?") 
+
 ```
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:53e494b387
-## Changing Variable Types
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:fdd4d759e9
+## Quick check 1
 
 You may have noticed from the previous exercise that the `smoke100` variable is coded as numeric, but this is incorrect.
 
-`smoke100` only takes on two values *(1 = respondent has smoked at least 100 cigarettes in their life, 0 = otherwise)*. 
+`smoke100` only takes on two values:
+
+* 1 = respondent has smoked at least 100 cigarettes in their life
+* 0 = otherwise 
+
+What is the correct variable type of `smoke100`?
+
+*** =instructions
+- integer
+- factor
+- numeric
+- boolean
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Since 'smoke100' only takes on two values it should be coded as a categorical variable (factor)."
+msg_success <- "Exactly!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:53e494b387
+## Changing variable types
 
 R thinks that the `smoke100` variable is 'numeric' but really it should be coded as 'factor' because it is a **categorical variable**. 
 
@@ -70,9 +100,9 @@ In this exercise we are going to recode the `smoke100` variable from a numeric t
 
 
 *** =instructions
-- The first line of code in your script will recode `smoke100` from 'numeric' to its correct variable type, 'factor'.
+- The first line of code in your script will recode `smoke100` from a 'numeric' variable to its' correct variable type, 'factor'.
 - Use the `str()` function on `cdc` 
-- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `smoke100` variable was correctly recoded to a factor variable
+- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `smoke100` variable was correctly recoded to a factor variable.
 *** =hint
 
 *** =pre_exercise_code
@@ -112,7 +142,7 @@ test_function("str", args = "object", incorrect_msg = "Make sure you follow the 
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ee655438c8
-## Quick Review of Variable Types
+## Quick check 2
 
 Is a `factor` coded variable an example of a *quantitative* variable or a *categorical* variable?
 
@@ -135,7 +165,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
-## Summarizing Quantitative Variables
+## Summarizing quantitative variables
 
 In this exercise, you will practice using the `favstats()` function from the *mosaic* package in R. This function will return the `min`, `max`, `mean`, `sd` and a few other numerical summaries of a quantitative variable.
 
@@ -153,7 +183,7 @@ The data set we've been working with (`cdc`) is already in your workspace.
 - Find summary statistics of the `age` variable in `cdc` using the `favstats()` function.
 
 *** =hint
-Follow the format in the lesson substituting `cdc` for dataset and specified variable for quant_var.
+Follow the format in the lesson substituting `cdc` for dataset and the specified variable for quant_var.
 
 *** =pre_exercise_code
 ```{r}
@@ -209,7 +239,7 @@ test_function("favstats", args = "x", index = 3, incorrect_msg = "Follow the for
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c7db7fdc55
-## Summarizing categorical Variables
+## Summarizing categorical variables
 
 To summarize categorical variables, we can use the `table()` function to see the frequency of occurences at each level of the categorical variable.
 
