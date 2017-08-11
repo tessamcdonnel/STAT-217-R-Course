@@ -6,6 +6,3 @@ difficulty_level: 1
 time_needed: 5 hour
 from: r-base-prod:27
 runtime_config: minimal
-datasets:
-  cdc.csv: Cdc
-  cdc.R: Cdc
