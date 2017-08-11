@@ -241,23 +241,36 @@ test_function("favstats", args = "x", index = 3, incorrect_msg = "Follow the for
 --- type:NormalExercise lang:r xp:100 skills:1 key:b15fdcaef0
 ## Summarizing quantitative variables by group
 
+What if we wanted to determine if `weight` differs depending on whether or not the subject was a smoker (`smoke100`)? To do this, we can summarize `weight` separately for the smokers and non-smokers using `favstats()` function with the format:
 
+`favstats(dataset$quant_var ~ dataset$categ_var)`
+
+*Note: the quantitative variable (`weight`) goes on the left hand side of the tilde, and the categorical grouping variable (`smoke100`) goes on the right hand side.*
 *** =instructions
+Use the `favstats()` function to compare the subjects' `weight` (from the `cdc` data set) by whether or not they are/were a smoker `smoke100`.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+source("https://www.openintro.org/stat/data/cdc.R")
+cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 ```
 
 *** =sample_code
 ```{r}
+# Compare the average weight among smokers and nonsmokers in the cdc data set 
+
 
 ```
 
 *** =solution
 ```{r}
+# Compare the average weight among smokers and nonsmokers in the cdc data set 
+favstats(cdc$weight ~ cdc$smoke100)
+
+
 
 ```
 
@@ -516,6 +529,8 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 *** =sample_code
 ```{r}
 # Create side-by-side boxplots with quant_var = weight and categ_var = smoke100
+
+
 ```
 
 *** =solution
