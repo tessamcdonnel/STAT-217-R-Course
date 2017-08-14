@@ -11,6 +11,7 @@ If we want to know the *types of variables* in our data set, we can type the `st
 
 This will return all of the variable names as well as their type (i.e. numeric, factor, integer). 
 
+
 *Categorical* variables will be will be `factor` variable types.
 
 *Quantitative* variables will be `numeric` and `integer` variable types.
@@ -93,6 +94,9 @@ msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
+
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:53e494b387
 ## Changing variable types
 
@@ -616,4 +620,30 @@ boxplot(cdc$weight ~ cdc$smoke100)
 test_student_typed("boxplot(cdc$weight ~ cdc$smoke100)", not_typed_msg = "Remember, 'weight' is a quantitative variable and 'smoke100' is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
 
 
+```
+
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:e440a25df0
+## Quick check 5
+
+What kind of variable are visualizing when we make a boxplot?
+
+*** =instructions
+- Categorical
+- Quantitative
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That's incorrect. We visualize quantitative variables with boxplots."
+msg_success <- "Good answer!"
+
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 ```
