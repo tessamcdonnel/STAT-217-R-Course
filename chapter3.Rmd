@@ -30,7 +30,7 @@ For this lab, we will use a dataset called `cdc` which contains data on the heal
 Follow the format str(dataset) with `cdc` instead of `dataset`.
 *** =pre_exercise_code
 ```{r}
-load(url("http://assets.datacamp.com/production/Stat217 R Course/cdc.R"))
+source("http://www.openintro.org/stat/data/cdc.R")
 
 
 ```
@@ -45,7 +45,7 @@ load(url("http://assets.datacamp.com/production/Stat217 R Course/cdc.R"))
 *** =solution
 ```{r}
 # Find the variable types of cdc
-
+str(cdc)
 
 
 ```
@@ -103,7 +103,7 @@ In this exercise we are going to recode the `smoke100` variable from a numeric t
 
 *** =instructions
 - The first line of code in your script will recode `smoke100` from a 'numeric' variable to its' correct variable type, 'factor'.
-- Use the `str()` function on `cdc` 
+- Use the `str()` function on `cdc`.
 - Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `smoke100` variable was correctly recoded to a factor variable.
 *** =hint
 
@@ -169,7 +169,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
 ## Summarizing quantitative variables
 
-In this exercise, you will practice using the `favstats()` function from the *mosaic* package in R. This function will return the `min`, `max`, `mean`, `sd` and a few other numerical summaries of a quantitative variable.
+In this exercise, you will practice using the `favstats()` function from the *mosaic* package in R. This function will return the min, max, mean, sd and a few other numerical summaries of a quantitative variable.
 
 To use the `favstats()` function, use the format:
 `favstats(dataset$quant_var)`
@@ -247,19 +247,25 @@ What if we wanted to determine if `weight` differs depending on whether or not t
 
 *Note: the quantitative variable (`weight`) goes on the left hand side of the tilde, and the categorical grouping variable (`smoke100`) goes on the right hand side.*
 *** =instructions
-Use the `favstats()` function to compare the subjects' `weight` (from the `cdc` data set) by whether or not they are/were a smoker `smoke100`.
+- Type `library(mosaic)` to load the *mosaic* package into your workspace.
+- Use the `favstats()` function to compare the subjects' `weight` (from the `cdc` data set) by whether or not they are/were a smoker `smoke100`.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/cdc.R")
+library(mosaic)
 cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 ```
 
 *** =sample_code
 ```{r}
+# Load the mosaic package 
+
+
+
 # Compare the average weight among smokers and nonsmokers in the cdc data set 
 
 
@@ -267,6 +273,10 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 *** =solution
 ```{r}
+# Load the mosaic package 
+library(mosaic)
+
+
 # Compare the average weight among smokers and nonsmokers in the cdc data set 
 favstats(cdc$weight ~ cdc$smoke100)
 
@@ -276,6 +286,35 @@ favstats(cdc$weight ~ cdc$smoke100)
 
 *** =sct
 ```{r}
+test_student_typed("favstats(cdc$weight ~ cdc$smoke100)", not_typed_msg = "Make sure you follow the format in the lesson with correct data set (cdc), quantitative variable (weight) and categorical variable (smoke100).")
+```
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:fd332565c4
+## Quick check 3
+
+When using favstats, the general syntax is:
+
+
+*** =instructions
+- favstats(categorical.variable ~ categorical.variable)
+- favstats(quantitative.variable ~ categorical.variable)
+- favstats(quantitative.variable ~ quantitative.variable)
+- favstats(categorical.variable ~ quantitative.variable)
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct."
+msg_success <- "Exactly!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c7db7fdc55
@@ -321,7 +360,7 @@ test_function("table", args = "...", incorrect_msg = "Follow the format in the l
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9fc43281cb
-## Contingency Tables
+## Contingency tables
 
 A contingency table is used to summarize the relationship betweeen categorical variables. 
 
@@ -364,6 +403,38 @@ table(cdc$genhlth, cdc$smoke100)
 ```{r}
 test_function("table", args = "...", incorrect_msg = "Use the format from the lesson with `cdc` instead of dataset, `genhlth` instead of var1, and `smoke100` instead of var2")
 ```
+
+
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:061eb1811c
+## Quick check 4
+
+Which function summarizes a ***categorical*** variable in R?
+
+*** =instructions
+- table
+- type
+- favstats
+- str
+*** =hint
+Remember, we have to create a table to summarize a categorical variable.
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Remember, we have to create a table to summarize a categorical variable."
+msg_success <- "Exactly!"
+test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+
+```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
 ## Visualizing Quantitative Data in R
 The two main visualizations of quantitative data are:

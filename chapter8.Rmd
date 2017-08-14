@@ -11,29 +11,31 @@ In this course, we will use the one sample *z*-test to test whether a population
 
 To perform a one sample z-test, we'll be using a data set called `nc` which contains data on the North Carolina birth records from 2004. 
 
-- there are 13 variables in this data set but we will use 
+- there are 13 variables in this data set 
 - there are 1,000 subjects 
 - `nc` is already in your workspace
 
-This data set contains a categorical variable called `lowbirthweight` with 2 levels:
+`nc` contains a categorical variable called `lowbirthweight` with 2 levels:
 
 - `low` (low birthweight)
 - `not low` (not low birthweight)
 
+Suppose we are interested in the *proportion* of low birthweights.
+
 Let's begin by exploring the `lowbirthweight` variable in the `nc` data set.
 
 *** =instructions
-- Use the `table()` function to get a summary of the `lowbirthweight` variable.
+- Use the `table()` function to obtain a summary of the `lowbirthweight` variable.
 - Copy and paste the code below to add row/column totals to the table:
 
 `addmargins(table(nc$lowbirthweight))`
 
-- Click the 'Submit Answer' button and then use R (or a hand calculator) to find the proportion of births that were classified as low birthweights.
+- Click the 'Submit Answer' button and then use R as a calculator to find the proportion of births that were classified as low birthweights.
 
 *** =hint
 Remember, to make a table use the format: `table(dataset$variable)`.
 
-R doesn't recognize a comma as part of a number so make sure you type 111/1000 and NOT 111/1,000
+R doesn't recognize a comma as part of a number so make sure you type 111/1000 and NOT 111/1,000.
 *** =pre_exercise_code
 ```{r}
 download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
@@ -91,7 +93,7 @@ success_msg("Note that the 'low' birthweight column is on the left. Use this tab
 
 We can see that the proportion of babies with low birthweights from this data set is around 11%.
 
-However, a previous study estimated the low birthweight rate to be 7%. In other words, 7% of all births in North Carolina are under weight. 
+However, a previous study estimated the low birthweight rate to be 7%. In other words, 7% of all births are under weight. 
 
 If we want to test whether the low birthrate of our population differs from 7%, we can use the `prop.test()` function with the format:
 
@@ -102,12 +104,17 @@ If we want to test whether the low birthrate of our population differs from 7%, 
 * *p* = the proportion from our null hypothesis
 
 
-In this exercise you will use the `prop.test()` function to perform a z-test to determine if the population proportion of `lowbirthweight` differs from 0.07. 
+In this exercise you will use the `prop.test()` function to perform a *z*-test to determine if the population proportion of `lowbirthweight` differs from 7%.
+
+$H_0$: $p \= 0.07$
+
+$H_a$: $p \neq 0.07$
+
 
 Remember, there were 111 babies with low birthweight and 1000 total births in the sample.
 
 *** =instructions
-Use the `prop.test()` function to perform a z-test to determine if the population proportion of `lowbirthweight` from the `nc` data set differs from 0.07 (or 7%).
+Use the `prop.test()` function to perform a *z*-test to determine if the population proportion of `lowbirthweight` from the `nc` data set differs from 0.07 (or 7%).
 
 
 *** =hint
@@ -140,7 +147,7 @@ prop.test(111, 1000, p = 0.07, correct = FALSE)
 *** =sct
 ```{r}
 test_function("prop.test", args = c("x", "n", "p", "correct"))
-success_msg("Great! Now look at the R output. The p-value is almost zero so we can reject the null hypothesis and conclude the proportion of low birthweights is significantly different than 0.07")
+success_msg("Great! Now look at the R output. The p-value is almost zero so we can reject the null hypothesis and conclude the proportion of low birthweights is significantly different than 0.07.")
 
 
 ```
@@ -238,7 +245,7 @@ To test whether there is a significant difference between 2 proportions, we can 
 `prop.test(c(x1, x2), c(n1, n2), correct = FALSE)` with:
 
 * *x1* = number low birthweight babies with smoking mothers (18)
-* *x1* = number low birthweight babies with nonsmoking mothers (92)
+* *x2* = number low birthweight babies with nonsmoking mothers (92)
 * *n1* = number of smoking mothers (126)
 * *n2* = number of nonsmoking mothers (873)
 
@@ -247,7 +254,7 @@ In this exercise you will perform a 2 sample z-test.
 Use the `prop.test()` function to test whether the proportion of low birthweight is significantly different depending on whether the mother smoked . 
 
 *** =hint
-
+Follow the format from the lesson with the correct arguements (x1 = 18, x2 = 92, n1 = 126, n2 = 873).
 *** =pre_exercise_code
 ```{r}
 
@@ -272,7 +279,7 @@ prop.test(c(18, 92), c(126, 873), correct = FALSE)
 
 *** =sct
 ```{r}
-test_function("prop.test", args = c("x", "n", "correct"), args_not_specified_msg = "Make sure you follow the format from the lesson with the correct arguements")
+test_function("prop.test", args = c("x", "n", "correct"))
 success_msg("Great! Now look at the R output to see the results of the test.")
 
 
@@ -308,10 +315,47 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
 ```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:2a5b2a64f5
+## Chi-squared and z-test statistics
+
+You may have noticed that the one and two sample z-tests only provide a *chi-squared* test statistic (and not the *z* statistic) in the R output. 
+
+However, a *z* statistic squared is equivalent to a chi-squared statistic with 1 degree of freedom.
+
+For example, if my chi-squared test statistic is 4, then the z-statistic would be $\sqrt{4} = 2$.
+
+Note: this is true for both one sample *z*-tests and two sample *z*-tests.
+*** =instructions
+The chi-squared statistic from the last exercise was 1.578. Use R as a calculator to find the corresponding *z* statistic.
+
+*Note: use the `sqrt()` function to find the square root of a number.*
+*** =hint
+
+*** =pre_exercise_code
+```{r}
 
 
+```
+
+*** =sample_code
+```{r}
+# Find the corresponding z statistic 
 
 
+```
+
+*** =solution
+```{r}
+# Find the corresponding z statistic 
+sqrt(1.578)
+
+
+```
+
+*** =sct
+```{r}
+test_output_contains("1.256185", incorrect_msg = "Use the sqrt() function to find the square root of 1.578.")
+```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:770e869325
 ## Quick Check 1
 
@@ -340,12 +384,8 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 
 
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:252ab074b6
-## Using the prop.table() function 
-
+## Using the prop.table() function  (maybe delete this?)
 So far, we've had to create a table and used a calculator to find proportions.
 
 The `prop.table()` function can quickly obtain proportions from a contingency table
@@ -598,8 +638,9 @@ success_msg("Nice job. Since all of the expected counts are at least 5, this con
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:a1e6ca936b
-## Calculating p-values from a z-test statistic
+## Calculating p-values from a z-test statistic?
 
+They don't have to do this in the practice so should I leave it out? I feel like it's confusing anyway
 
 *** =instructions
 
