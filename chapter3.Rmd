@@ -5,7 +5,13 @@ description : Summarizing and Visualizing Data
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
 ## Using the str() function to reveal variable types
 
-If we want to know the *types of variables* in our data set, we can type the `str()` function with the format:
+For this lab, we will use a dataset called `cdc` which contains data on the health of people in the United States.
+
+- there are 9 variables in the data set
+- there are 20,000 subjects
+- `cdc` is already in your workspace
+
+If we want to know the *types of variables* in our data set, we can apply the `str()` function with the format:
 
 `str(dataset)`
 
@@ -16,11 +22,6 @@ This will return all of the variable names as well as their type (i.e. numeric, 
 
 *Quantitative* variables will be `numeric` and `integer` variable types.
 
-For this lab, we will use a dataset called `cdc` which contains data on the health of people in the United States.
-
-- there are 9 variables in the data set
-- there are 20,000 subjects
-- `cdc` is already in your workspace
 
 
 *** =instructions
@@ -440,7 +441,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
-## Visualizing Quantitative Data in R
+## Visualizing quantitative data in R
 The two main visualizations of quantitative data are:
 
 *Histogram* - represents the distribution of quantitative data
@@ -483,7 +484,7 @@ test_function("hist", args = "x", incorrect_msg = "Follow the format: hist(datas
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b65646dd8a
-## Visualizing Categorical Data in R
+## Visualizing categorical data in R
 
 The most common way to visualize categorical variables is by creating a *barplot*.
 
@@ -526,7 +527,7 @@ test_student_typed("barplot(table(cdc$smoke100))", not_typed_msg = "Make sure yo
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c6f71ca0bd
-## Visualizing Relationships between 2 Quantitative Variables
+## Visualizing relationships between quantitative variables
 
 If we have two quantitative variables, we can visualize their relationship with the `plot()` function. 
 
@@ -575,7 +576,7 @@ test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow th
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
-## Visualizing Quantitative Variables by Groups
+## Visualizing quantitative variables by groups
 
 Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
 
