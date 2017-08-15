@@ -4,7 +4,7 @@ description : Distribution of Sample Proportions and Confidence Intervals for Po
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1c2ca885bb
-## Taking Random Samples from a Variable 
+## Taking random samples from a variable
 
 In this lab, you are going to learn how to take random samples from a variable using the `sample()` function.
 
@@ -18,7 +18,7 @@ To take a random sample of a variable use the format:
 `sample(dataset$variable, number)`
 
 
-In this exercise we'll be using a dataset called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
+In this exercise we'll be using a data set called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
 
 - there are 3 variables in this data set: `had_early_risk`, `regimen`, and `allergic`.
 - there are 628 subjects 
@@ -46,6 +46,7 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 # take a random sample of 50 from the regimen variable
 
+
 ```
 
 *** =solution
@@ -55,6 +56,7 @@ sample(peanut_allergy$allergic, 25)
 
 # take a random sample of 50 from the regimen variable
 sample(peanut_allergy$regimen, 50)
+
 ```
 
 *** =sct
@@ -65,7 +67,7 @@ test_function("sample", args = c("x", "size"), index = 2, incorrect_msg = "Follo
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:190f70cfa4
-## Random Samples Continued...
+## Random samples cont...
 
 In this exercise, we are going to take two random samples and assign them to object names using the assignment notation `<-`. 
 
@@ -123,6 +125,7 @@ success_msg("Nice job! Look at the R output in the bottom right panel. Do the co
 
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:2217632b88
 ## Using the set.seed() function
 
@@ -177,8 +180,37 @@ test_function("sample", args = c("x", "size"), incorrect_msg = "Remember, to tak
 
 ```
 
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:5b1897d9be
+## Quick check 1
+
+Suppose I want to take a sample of size 35 from the `regimen` variable in the `peanut_allergy` data set, and store those results in an object called mysample.  Which of the following commands is correct?
+
+*** =instructions
+- mysample <- sample(peanut_allergy$regimen, 35)
+- mysample <- sample(regimen, 35)
+- mysample <- sample(35, regimen)
+- sample(peanut_allergy$regimen, 35) <- mysample
+- sample(mysample,35) <- regimen
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Remember, the format to take a sample is sample(dataset$variable, number)."
+msg_success <- "Exactly!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad, msg_bad))
+
+
+```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:b86b269872
-## Population Proportions
+## Population proportions
 
 For this exercise, you are going to find the *population proportion* of children who developed an allergic reation to peanuts.
 
@@ -228,7 +260,7 @@ success_msg("Nice! Now divide the number of children who were allergic by the to
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:38ce97a2e8
-## Sample Proportions
+## Sample proportions
 
 Most of the time we don't know what the *population proportion* is, but we can estimate this value with a random sample. 
 
@@ -280,7 +312,7 @@ test_function("sample", args = c("x", "size"), incorrect_msg = "Type table(my_sa
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0e23913548
-## Confidence Intervals for Population Proportion
+## Confidence intervals for a population proportion
 
 Assume that the population proportion of children with peanut allergies is unknown so we obtained a random sample. 
 
@@ -333,6 +365,35 @@ Note that the $z\ast$ critical value is 1.96 for a 95% confidence interval.
 test_output_contains("0.05102485", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the lower confidence bound, subtract the margin of error from the sample proportion.")
 
 test_output_contains("0.2489751", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the upper confidence bound, add the margin of error to the sample proportion.")
+
+
+```
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:a4477e43a4
+## Quick check 2
+
+Which of the following are valid implementations of the `set.seed()` command?  
+
+
+*** =instructions
+- set.seed("abc")
+- set.seed("1234")
+- set.seed(xyz)
+- set.seed(5678)
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Remember, any number can go in the set.seed() function but there is no quotations."
+msg_success <- "Exactly!"
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 
 ```

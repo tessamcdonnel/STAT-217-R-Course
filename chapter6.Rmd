@@ -17,11 +17,12 @@ To perform a 1 sample t-test, we'll be using a data set called `HELPrct` which c
 - there are 453 subjects 
 - `HELPrct` is already in your workspace
 
-`HELPrct` contains a variable called `i1` which reports the average number of drinks consumed per day (within the last month). 
+`HELPrct` contains a variable called `i1` which reports the average number of alcoholic drinks consumed per day (within the last month). 
 
 If you want more information about this data set type: `?HELPrct` into the R console.
 *** =instructions
-- Type `HELPrct$i1` in your script and press the 'Submit Answer' button. 
+- Type `HELPrct$i1` in your script to view the average number of alcoholic drinks the patients consumed per day before coming to the detox facility.
+- Press the 'Submit Answer' button and take a look at the R output. 
 
 *** =hint
 
@@ -48,6 +49,8 @@ HELPrct$i1
 
 *** =sct
 ```{r}
+test_student_typed("HELPrct$i1", not_typed_msg = "Remember to type HELPrct$i1 in your script.")
+
 success_msg("Good. Now scroll through the R output to see the average number of alcoholic drinks per day for each subject. Do these numbers suprise you?") 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9c0a9256c3
@@ -90,7 +93,7 @@ library(mosaic)
 # Load the mosaic package 
 
 
-# Find the summary statistics of 'i1' using the favstats() function
+# Find the summary statistics of 'i1' in the HELPrct data set using the favstats() function
 
 # Check for normallity using the hist() function
 
@@ -195,7 +198,7 @@ test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you subs
 ## Check for Understanding 1
 
 
-The default settings for a t.test function (eg. `t.test(x = cdc$age, mu = 40`) ) are to  perform a _________ alternative hypothesis and to calculate a ______ confidence interval.
+The default settings for a t.test function (eg. `t.test(x = HELPrct$i1, mu = 2`) ) are to  perform a _________ alternative hypothesis and to calculate a ______ confidence interval.
 
 *** =instructions
 - two-sided, 90%
@@ -249,7 +252,7 @@ If our alternative hypothesis is *greater than*, use:
 
 
 *** =instructions
-Use the `t.test()` function to carry out a one sample t-test on the `HELPrct` data set to determine if the population mean number of drinks per day [`i1`] is **greater** than 2 on average.
+Use the `t.test()` function to carry out a one sample t-test on the `HELPrct` data set to determine if the population mean number of drinks per day (`i1`) is **greater** than 2 on average.
 *** =hint
 - The code is the same as the last time with the added argument: `alternative = "greater"`
 *** =pre_exercise_code
@@ -293,7 +296,7 @@ For example, if I want to test whether the population mean number of drinks per 
 
 
 *** =instructions
-Use the `t.test()` function to carry out a one sample t-test to determine if the population mean number of drinks per day `i1` **differs** from 40 on average and use a **90% confidence interval** to estimate the population mean.
+Use the `t.test()` function to carry out a one sample t-test to determine if the population mean number of drinks per day `i1` *differs* from 40 on average and use a **90% confidence interval** to estimate the population mean.
 
 
 Our hypotheses are:
@@ -358,7 +361,7 @@ Note: to use the `t.test()` function use format:
 *** =instructions
 - Use the `t.test()` function to carry out a one sample t-test for the above hypothesis and construct a 99% confidence interval. 
     - this is a one-sided test so you will need to need to specify `alternative="___"`
-    - for a 99% confidence interval, you need to specify `conf.level = 0.99`
+    - this is **not** a 95% confidence interval, you need to specify `conf.level = 0.__`
 
 *Remember, the data set is called `HELPrct`.*
 *** =hint
@@ -389,6 +392,9 @@ t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
 
 *** =sct
 ```{r}
+test_function("t.test", args = c("x", "mu", "alternative", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.99 and alternative equal to 'greater'? Make sure you follow the format in the lesson with the specified arguements.")
+
+success_msg("Good job. If you scroll through the R output you'll notice that the p-value is almost zero!")
 
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
@@ -453,19 +459,3 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 
 
---- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:7885ffa616
-## <<<New Exercise>>>
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-```
-
-*** =sct
-```{r}
-
-```

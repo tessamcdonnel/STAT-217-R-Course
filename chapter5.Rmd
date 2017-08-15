@@ -4,12 +4,13 @@ description : Population and Sample Means
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:57cc190216
-## Review Random Sampling
+## Review random sampling
 
 In this lab we'll be using another built-in R dataset called `ChickWeight` which contains data from an experiment on the effect of diet on chicks. 
 
-- There are 4 variables in the data set: `weight`, `Time`, `Chick`, and `Diet`.
-- This data set is already in your workspace so if you type  `ChickWeight` into your R console, the entire data will come up in the output.
+- There are 4 variables in the data set: `weight`, `Time`, `Chick`, and `Diet`
+- There are 578 subjects
+- `ChickWeight` is already in your workspace
 
 
 In this exercise we are going take random samples from `ChickWeight` using the `sample()` function.
@@ -21,8 +22,8 @@ Remember, to take a random sample and save it to an object, use the format:
 Note: Remember that after we create an object we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 
 *** =instructions
-- take a random sample of 25 from the variable `weight` in the `ChickWeight` dataset, assign this to `sample_weight`.
-- take a random sample of 50 from the variable `Diet` in the `ChickWeight` dataset, assign this to `sample_diet`
+- Take a random sample of 25 from the variable `weight` in the `ChickWeight` dataset, assign this to `sample_weight`.
+- Take a random sample of 50 from the variable `Diet` in the `ChickWeight` dataset, assign this to `sample_diet`.
 *** =hint
 - For the 1st instruction, follow the format in the lesson but use ChickWeight$weight and 25
 
@@ -94,7 +95,7 @@ test_output_contains("sample_diet", incorrect_msg = "Do not alter the line of co
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7e24794db5
-## Population Distribution
+## Population distribution
 
 
 For this exercise, you are going to find the *population distribution* of the quantitative variable `weight` in the `ChickWeight` data set.
@@ -154,7 +155,7 @@ success_msg("Nice! Now look at the histogram of chick weights. Can you tell whic
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4face42bf0
-## Sample Mean and Distribution
+## Sample mean and distribution
 
 Most of the time we don't know what the *population mean* is, but we can **estimate** this value with a random sample. 
 
@@ -237,7 +238,7 @@ test_function("hist", args = "x", incorrect_msg = "Remember, my_sample is just a
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d7a8f825e2
-## Confidence Interval for Population Mean
+## Confidence interval for a population mean
 
 Assume that the population mean `weight` of chicks is unknown so we obtained a random sample. 
 
