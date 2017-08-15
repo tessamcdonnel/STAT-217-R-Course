@@ -3,11 +3,8 @@ title       : Lab 5
 description : One-sample t-test
 
 
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe45e251b5
-## One- Sample t-test
+## One sample t-test
 
 The one sample t-test is used when we want to compare the sample mean to a specific value.
 
@@ -17,7 +14,7 @@ To perform a 1 sample t-test, we'll be using a data set called `HELPrct` which c
 - there are 453 subjects 
 - `HELPrct` is already in your workspace
 
-`HELPrct` contains a variable called `i1` which reports the average number of alcoholic drinks consumed per day (within the last month). 
+`HELPrct` contains a variable called `i1` which reports the average number of alcoholic drinks consumed ***per day*** (within the last month). 
 
 If you want more information about this data set type: `?HELPrct` into the R console.
 *** =instructions
@@ -128,6 +125,34 @@ success_msg("Nice! We can see from the histogram that the data is right skewed b
 ```
 
 
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:b8967b17fb
+## Quick check 1
+
+Which function in R allows you to simultaneously obtain the mean and standard deviation of quantitative variable?
+
+
+*** =instructions
+- summary()
+- head()
+- favstats()
+- mosaic()
+
+*** =hint
+The summary function gives you the mean but not the standard deviation. Remember, `mosaic` is a package not a function.
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. The summary function gives you the mean but not the standard deviation. Remember, `mosaic` is a package not a function."
+msg_success <- "Exactly!"
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:52ad764c46
 ## Using the t.test() function
 
@@ -189,13 +214,14 @@ t.test(x = HELPrct$i1, mu = 2)
 *** =sct
 ```{r}
 test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis! In this case we're using the 'HELPrct' data set, 'i1' variable, and null hypothesis equal to 2.")
-
+success_msg("Great job! Now look at the R output and find the p-value for the test and the 95% confidence interval for the mean number of alcoholic drinks per day. How would you conclude this test?")
 
 ```
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f14e01c77b
-## Check for Understanding 1
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:d122443eee
+## Quick check 2
 
 
 The default settings for a t.test function (eg. `t.test(x = HELPrct$i1, mu = 2`) ) are to  perform a _________ alternative hypothesis and to calculate a ______ confidence interval.
@@ -206,7 +232,7 @@ The default settings for a t.test function (eg. `t.test(x = HELPrct$i1, mu = 2`)
 - one-sided, 95%
 - one-sided, 90%
 *** =hint
-
+In the last exercise we used the `t.test()` default values.
 *** =pre_exercise_code
 ```{r}
 
@@ -221,9 +247,8 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
 
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:eeccda0836
-## One-sided Hypothesis Tests
+## One-sided hypothesis tests
 
 Sometimes we have a one-sided alternative hypothesis, for example: 
 
@@ -286,7 +311,7 @@ test_function("t.test", args = c("x", "alternative", "mu"), incorrect_msg = "Eve
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:198408a028
-## Specifying Confidence Levels
+## Specifying confidence levels
 
 We can also change the confidence level by adding the argument: `conf.level = `. 
 
@@ -340,7 +365,7 @@ success_msg("Good job. If you scroll through the R output you'll notice that the
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5d2e26a906
-## t.test() Practice
+## t.test() practice
 
 Conclusion from the last exercise:
 
@@ -350,7 +375,7 @@ Here is a more *plausable* hypothesis for this population:
 
 $H_0$: $\mu \= 15$
 
-$H_a$: $\mu \> 15$,  where $\mu$ is the true average number of alcoholic drinks per day [`i1`]
+$H_a$: $\mu \> 15$,  where $\mu$ is the true average number of alcoholic drinks per day (`i1`)
 
 Note: to use the `t.test()` function use format:
 
@@ -394,11 +419,14 @@ t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
 ```{r}
 test_function("t.test", args = c("x", "mu", "alternative", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.99 and alternative equal to 'greater'? Make sure you follow the format in the lesson with the specified arguements.")
 
-success_msg("Good job. If you scroll through the R output you'll notice that the p-value is almost zero!")
 
 ```
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:583cc22e56
-## Check for Understanding 2
+
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:878a231ebf
+## Quick check 3
 
 What is the correct R command to construct a 90% confidence interval on the following hypothesis: 
 
@@ -428,12 +456,11 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 ```
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:45534c5588
-## Check for Understanding 3
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:4579e2c495
+## Quick check 4
 
 Which argument should we specify in the t.test function to do a one sided alternative hypothesis in a one sample t-test?
-
-
 
 *** =instructions
 - conf.level
@@ -454,8 +481,4 @@ msg_success <- "Exactly!"
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
-
-
-
-
 
