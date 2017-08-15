@@ -4,7 +4,7 @@ description : Inference for Quantitative Data
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe4a8241d4
-## Two Sample t-test
+## Two sample t-test
 
 
 The two-sample t-test is used when we want to analyze a quantitative response variable in two groups.
@@ -268,7 +268,7 @@ test_student_typed("anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt", not_ty
 success_msg("Good! The new variable measuring the weight difference has been created.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
-## Assumptions for Paired t-test
+## Assumptions for paired t-test
  
  
 Before we conduct the paired t-test, we need to make sure our data follows these assumptions:
@@ -402,7 +402,7 @@ success_msg("Good job! Look at the R output for the t-test and take note of the 
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9d5c6fc887
-## Quick Check 1
+## Quick check: paired t-test conclusion
 
 The paired t-test from the last exercise gave us a p-value equal to 0.004 and a 95% confidence interval of (0.8878354 4.6399424).
 
@@ -550,7 +550,7 @@ success_msg("We can see from the histogram that the post-treatment weights are a
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:5066cc4f99
-## Quick Check: ANOVA
+## Quick check: ANOVA
 
 ANOVA is appropriate when we want to...
 
@@ -592,7 +592,14 @@ To do this, follow the format:
 
 `summary(anova.results)`
 
+Our hypotheses are:
+
+$H_0: \mu (cont) = \mu (cbt) = \mu (ft)$
+
+$H_a:$ *at least one mean differs*
+
 *Remember, we are still using the `anorexia` data set.*
+
 *** =instructions
 - Use the format in the lesson to test if there is a difference in mean `Postwt` among the three `Treat` categories, name these results `anova.results`.
 - Use the `summary()` function to examine `anova.results`.
@@ -631,7 +638,7 @@ success_msg("Great! Now look at the p-value from this test. What is your conclus
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:839648c73c
-## Quick Check 2
+## Quick check: ANOVA test conclusion
 
 The results from the ANOVA have a p-value = 0.0044. At the $\alpha$ = 0.05 level of significance, what is our conclusion?
 
@@ -642,7 +649,7 @@ The results from the ANOVA have a p-value = 0.0044. At the $\alpha$ = 0.05 level
 - Fail to reject the null and conclude that at least one population mean differs from the others.
 
 *** =hint
-Remember that our null hypothesis is that all of the population means are the same.
+Remember that our null hypothesis is that all of the population means are the same and the alternative is that **at least one** of the means differ from the rest.
 *** =pre_exercise_code
 ```{r}
 
@@ -667,11 +674,17 @@ To do this we can use use the `TukeyHSD()` function in the format:
 
 `plot(TukeyHSD(anova.results))`
 
- 
+
 Note: `anova.results` is already in your workspace
 
 *** =instructions
-- Copy and paste the code from the lesson to determine *which* pairs of means differ.
+Copy and paste the code from the lesson to determine *which* pairs of means differ.
+
+The treatment levels are control, CBT and FT so there are only 3 different pairwise comparisons:
+
+* control vs. CBT
+* control vs. FT
+* CBT vs. FT
 *** =pre_exercise_code
 ```{r}
 library(MASS)
@@ -697,11 +710,41 @@ plot(TukeyHSD(anova.results))
 
 *** =sct
 ```{r}
+test_student_typed("TukeyHSD(anova.results)", not_typed_msg = "Copy and paste the 2 lines of code from the lesson and click the 'Submit Answer' button to see which pairs of means differ")
 
+test_student_typed("plot(TukeyHSD(anova.results))", not_typed_msg = "Copy and paste the 2 lines of code from the lesson and click the 'Submit Answer' button to see which pairs of means differ")
 
+success_msg("Good. Now look at the plot of our anova results.")
 ```
 
 
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4ed770d46e
+## <<<New Exercise>>>.. i'll come back to this later
+
+The *plots* panel contains the same plot from the last exercise. 
+
+The three horizontal lines show 95% confidence intervals for each difference in means. If the confidence interval contains zero, it is plausable that the population means are equal for that that pair. In this exercise only one interval does not contain zero, indicating that the population mean post-weight of patients in __ is significantly greater than 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(MASS)
+anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
+TukeyHSD(anova.results)
+plot(TukeyHSD(anova.results))
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:45f88c1a66
 ## Quick Check 3
 
