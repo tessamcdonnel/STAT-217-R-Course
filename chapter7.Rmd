@@ -724,9 +724,11 @@ success_msg("Good! Now look at the plot of our anova results.")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4ed770d46e
 ## Summarizing Tukey plots
 
-The *plots* panel contains the same plot from the last exercise. 
+The *Plots* panel contains the same plot from the last exercise. 
 
-The three horizontal lines show 95% confidence intervals for each difference in means. If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. In this exercise only **one** interval does not contain zero.
+The horizontal lines show 95% confidence intervals for each difference in means. If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, the two means are significantly different.
+
+In this exercise only **one** interval does not contain zero.
 
 How would we summarize this pair? 
 
@@ -734,7 +736,7 @@ How would we summarize this pair?
 - The population mean post-weight for patients in the CBT (Cognitive Behavioural treatment) group is significantly greater than the population mean post-weight for patients in the Cont (control) group.
 - The population mean post-weight for patients in the Cont (control) group is significantly greater than the population mean post-weight for patients in the FT (family treatment) group.
 - The population mean post-weight for patients in the FT (family treatment) group is significantly greater than the population mean post-weight for patients in the Cont (control) group.
-- The population mean post-weight for patients in the FT (family treatment) group is significantly greater than the population mean post-weight for patients in the CBT (Cognitive Behavioural treatment) group.
+- The population mean post-weight for patients in the FT (family treatment) group is *not* significantly different from the population mean post-weight for patients in the Cont (control) group.
 *** =hint
 
 *** =pre_exercise_code
