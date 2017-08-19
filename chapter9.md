@@ -21,6 +21,7 @@ Use the format `head(dataset)` for the first instruction and `summary(dataset)` 
 *** =pre_exercise_code
 ```{r}
 source("http://www.openintro.org/stat/data/gun_violence_us.R")
+
 ```
 
 *** =sample_code
@@ -137,6 +138,29 @@ cor(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
 test_function("cor", args = c("x", "y"), eval = NA)
 ```
 
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:e07efd5860
+## Quick check 1
+
+Using the command `cor(x, y)` will produce different results than the command `cor(y, x)`.
+*** =instructions
+- TRUE
+- FALSE
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct."
+msg_success <- "Exactly!"
+test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:76ae5ee967
 ## Simple linear regression
 
@@ -192,7 +216,7 @@ success_msg("Good work. Now look at the R output and find the estimate for the i
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:649d942063
-## Quick check 1
+## Quick check 2
 
 In the last exercise, the estimate for the intercept was 4.573 and the estimate for the slope was 20.492.
 
@@ -270,26 +294,29 @@ success_msg("Good job. The p-value for this test is almost zero so we can reject
 --- type:NormalExercise lang:r xp:100 skills:1 key:cded916a25
 ## Add lines to a plot with abline()
 
-The *Plots* panel contains a scatter plot of `ownership_rate` and `mortality_rate` from the `gun_violence_us` data set.
-
 We can add the estimated regression equation to the scatter plot with the `abline()` function with the format:
 
 `abline(model_name)`
 
 *** =instructions
-Use the `abline()` function to add the `gun_model` regression line to the plot.
+- The first line of code creates a scatter plot of `ownership_rate` and `mortality_rate` from the `gun_violence_us` data set. **Do not alter this code.**
+
+- Use the `abline()` function to add the `gun_model` regression line to the plot.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
 source("http://www.openintro.org/stat/data/gun_violence_us.R")
 gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
-plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
 
 ```
 
 *** =sample_code
 ```{r}
+# Code to create a scatter plot of ownership_rate and mortality_rate. Do not change
+plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
+
+
 # Add the gun_model regression line to the scatter plot
 
 
@@ -297,6 +324,10 @@ plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
 
 *** =solution
 ```{r}
+# Code to create a scatter plot of ownership_rate and mortality_rate. Do not change
+plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
+
+
 # Add the gun_model regression line to the scatter plot
 abline(gun_model)
 
@@ -305,5 +336,34 @@ abline(gun_model)
 
 *** =sct
 ```{r}
+test_student_typed("plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)", not_typed_msg = "Do not remove or alter the line of code that plots ownership_rate and mortality_rate. Instead, do the second instruction.")
+
+test_function("abline", args = "a", incorrect_msg = "Make sure to follow the format in the lesson with gun_model instead of model_name.")
+
+```
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:ecd40fc973
+## Quick check 3
+
+Correlation can be used to estimate the strength of association between:
+
+*** =instructions
+- one quantitative variable and $\mu_{0}$
+- two quantitative variables
+- two categorical variables
+- one quantitative and one categorical variable
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. What kind of variables were 'ownership_rate' and 'mortality_rate'?"
+msg_success <- "Exactly!"
+test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
