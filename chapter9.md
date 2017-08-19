@@ -9,11 +9,8 @@ description : Correlation and Simple Linear Regression
 
 In this pre-lab, we'll be using a data set called `gun_violence_us` which contains gun ownership and mortality statistics in the United States.
 
-- there are 3 variables: `state`, `ownership_rate`, `mortality_rate`
+- there are 3 variables in this data set: `state`, `ownership_rate`, `mortality_rate`
 - `gun_violence_us` is already in your workspace
-
-`ownership_rate`: percentage of adults in each state who own a gun
-`mortality_rate`: number of deaths per 100,000 people 
 
 Let's begin by exploring the data set.
 *** =instructions
@@ -59,16 +56,20 @@ test_function("summary", args = "object", incorrect_msg = "Follow the format 'su
 
 Suppose we want to test whether there is a relationship between `ownership_rate` and `mortality_rate` in the `gun_violence_us` data set.
 
+* `ownership_rate`: percentage of adults in each state who own a gun
+
+* `mortality_rate`: number of deaths per 100,000 people 
+
 Let's start by visualizing the relationship between these variables with the `plot()` function.
 
 Remember, to create a scatterplot use the format:
 
-`plot(dataset$var1, dataset$var2)`
+`plot(dataset$x.var, dataset$y.var)`
 *** =instructions
 Use the `plot()` function to visualize the relationship between `ownership_rate` and `mortality_rate` where:
 
-* var1 = `ownership_rate`
-* var2 = `mortality_rate`
+* x.var = `ownership_rate`
+* y.var = `mortality_rate`
 *** =hint
 
 *** =pre_exercise_code
@@ -93,36 +94,96 @@ plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set and variables.")
+test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set (gun_violence_us) and variables.")
 
-success_msg("Nice! Now look at the plot. We can see that as gun ownership rates increase, mortality rates also increase")
+success_msg("Nice! Now look at the plot. We can see that as gun ownership rates increase, mortality rates also increase.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:23b4d73093
 ## Measuring correlation with the cor() function
 
-We can use the `cor()` estimate the correlation between two quantitative variables 
+We can use the `cor()` function to estimate the correlation between two quantitative variables with the format:
+
+`cor(dataset$var1, dataset$var2)`
+
+*Note: the order of var1 and var2 does not matter for the `cor()` function.*
 
 *** =instructions
-
+Use the `cor()` function to estimate the correlation coefficient between `ownership_rate` and `mortality_rate` from the `gun_violence_us` data set.
 *** =hint
-
+Follow the format `cor()` format in the lesson with the `gun_violence_us` data set and `ownership_rate`/`mortality_rate` in any order. 
 *** =pre_exercise_code
 ```{r}
-
+source("http://www.openintro.org/stat/data/gun_violence_us.R")
 ```
 
 *** =sample_code
 ```{r}
+# Estimate the correlation between ownership_rate and mortality_rate
+
 
 ```
 
 *** =solution
 ```{r}
+# Estimate the correlation between ownership_rate and mortality_rate
+cor(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
+
 
 ```
 
 *** =sct
 ```{r}
+test_function("cor", args = c("x", "y"), eval = NA)
+```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:76ae5ee967
+## Simple linear regression
+
+We can learn more about the relationship between two variables by calculating a linear model with the `lm()` function in the format:
+
+`model_name <- lm(dataset$y.var ~ dataset$x.var)`
+
+`summary(model_name)`
+
+
+*** =instructions
+* Use the `lm()` function to calculate a linear model from the `gun_violence_us` data set and store these regression results in an object called `gun_model` where:
+
+    - x.var = `ownership_rate`
+    - y.var = `mortality_rate`
+
+* Summarize `gun_model` using the `summary()` function.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+source("http://www.openintro.org/stat/data/gun_violence_us.R")
+```
+
+*** =sample_code
+```{r}
+# Use the lm() function to calculate a linear model of ownership_rate and mortality_rate
+gun_model <- 
+
+# Use the summary function on gun_model
+
+
+```
+
+*** =solution
+```{r}
+# Use the lm() function to calculate a linear model of ownership_rate and mortality_rate
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
+
+# Use the summary function on gun_model
+summary(gun_model)
+
+
+```
+
+*** =sct
+```{r}
+test_object("gun_model", incorrect_msg = "Use the lm() function on the right side of the tilde with correct data set (gun_violence_us), y.var = mortality_rate and x.var = ownership_rate.")
+test_function("summary", args = "object")
 ```
