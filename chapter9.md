@@ -144,8 +144,9 @@ We can learn more about the relationship between two variables by calculating a 
 
 `model_name <- lm(dataset$y.var ~ dataset$x.var)`
 
-`summary(model_name)`
+`model_name`
 
+Note: Remember that after we create an object we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 
 *** =instructions
 * Use the `lm()` function to calculate a linear model from the `gun_violence_us` data set and store these regression results in an object called `gun_model` where:
@@ -153,7 +154,6 @@ We can learn more about the relationship between two variables by calculating a 
     - x.var = `ownership_rate`
     - y.var = `mortality_rate`
 
-* Summarize `gun_model` using the `summary()` function.
 *** =hint
 
 *** =pre_exercise_code
@@ -166,7 +166,7 @@ source("http://www.openintro.org/stat/data/gun_violence_us.R")
 # Use the lm() function to calculate a linear model of ownership_rate and mortality_rate
 gun_model <- 
 
-# Use the summary function on gun_model
+gun_model
 
 
 ```
@@ -176,6 +176,83 @@ gun_model <-
 # Use the lm() function to calculate a linear model of ownership_rate and mortality_rate
 gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
 
+gun_model
+
+```
+
+*** =sct
+```{r}
+test_object("gun_model", incorrect_msg = "Use the lm() function on the right side of the tilde with correct data set (gun_violence_us), y.var = mortality_rate and x.var = ownership_rate.")
+
+success_msg("Good work. Now look at the R output and find the estimate for the intercept and slope.")
+```
+
+
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:649d942063
+## Quick check 1
+
+In the last exercise, the estimate for the intercept was 4.573 and the estimate for the slope was 20.492.
+
+What is our linear regression model?
+
+*** =instructions
+- $\hat{y} = 4.573 + 20.492x$
+- $\hat{y} = 4.573 + 20.492$
+- $\hat{y} = 20.492 + 4.573x$
+- $\hat{y} = 20.492 + 20.492x$
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct."
+msg_success <- "Exactly!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:3605a42869
+## Testing significance of correlation
+
+Suppose we want to test whether there is a relationship between `ownership_rate` and `mortality_rate` in the `gun_violence_us` data set.
+
+Our hypotheses:
+
+$H_0: \beta = 0$
+
+$H_a: \beta \neq 0$
+
+where $\beta$ = the slope of the regression
+
+*Note: `gun_model` is already in your workspace.*
+*** =instructions
+- Summarize `gun_model` using the `summary()` function.
+- Click the 'Submit Answer' button and look at the p-value of the test.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+source("http://www.openintro.org/stat/data/gun_violence_us.R")
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
+
+```
+
+*** =sample_code
+```{r}
+# Use the summary function on gun_model
+
+
+```
+
+*** =solution
+```{r}
 # Use the summary function on gun_model
 summary(gun_model)
 
@@ -184,6 +261,49 @@ summary(gun_model)
 
 *** =sct
 ```{r}
-test_object("gun_model", incorrect_msg = "Use the lm() function on the right side of the tilde with correct data set (gun_violence_us), y.var = mortality_rate and x.var = ownership_rate.")
 test_function("summary", args = "object")
+success_msg("Good job. The p-value for this test is almost zero so we can reject the null hypothesis and conclude that the slope is significantly greater than zero.")
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:cded916a25
+## Add lines to a plot with abline()
+
+The *Plots* panel contains a scatter plot of `ownership_rate` and `mortality_rate` from the `gun_violence_us` data set.
+
+We can add the estimated regression equation to the scatter plot with the `abline()` function with the format:
+
+`abline(model_name)`
+
+*** =instructions
+Use the `abline()` function to add the `gun_model` regression line to the plot.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+source("http://www.openintro.org/stat/data/gun_violence_us.R")
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
+plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
+
+```
+
+*** =sample_code
+```{r}
+# Add the gun_model regression line to the scatter plot
+
+
+```
+
+*** =solution
+```{r}
+# Add the gun_model regression line to the scatter plot
+abline(gun_model)
+
+
+```
+
+*** =sct
+```{r}
+
 ```
