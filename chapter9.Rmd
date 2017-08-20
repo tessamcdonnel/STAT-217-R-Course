@@ -170,6 +170,10 @@ We can learn more about the relationship between two variables by calculating a 
 
 `model_name`
 
+* y.var = the response variable
+* x.var = the explanatory variable
+
+
 Note: Remember that after we create an object we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 
 *** =instructions
