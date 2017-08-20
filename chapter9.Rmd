@@ -210,7 +210,7 @@ gun_model
 
 *** =sct
 ```{r}
-test_object("gun_model", incorrect_msg = "Use the lm() function on the right side of the tilde with correct data set (gun_violence_us), y.var = mortality_rate and x.var = ownership_rate.")
+test_object("gun_model", incorrect_msg = "Use the lm() function on the right side of the tilde with the correct data set (gun_violence_us), y.var = mortality_rate and x.var = ownership_rate.")
 
 success_msg("Good work. Now look at the R output and find the estimate for the intercept and slope.")
 ```
@@ -294,7 +294,44 @@ success_msg("Good job. The p-value for this test is almost zero so we can reject
 ```
 
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:c7ec6c9c9b
+## Confidence intervals for regression coefficients
 
+To obtain confidence intervals for the regression coefficients, we can use the `confint()` function with the format:
+
+`confint(model_name)`
+
+*** =instructions
+Use the `confint()` function to calculate confidence intervals for the `gun_model` regression coefficients (intercept, slope).
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+source("http://www.openintro.org/stat/data/gun_violence_us.R")
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
+
+```
+
+*** =sample_code
+```{r}
+# Use confint() to obtain a confidence interval for gun_model
+
+
+
+```
+
+*** =solution
+```{r}
+# Use confint() to obtain a confidence interval for gun_model
+confint(gun_model)
+
+
+```
+
+*** =sct
+```{r}
+test_function("confint", args = "object")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:cded916a25
 ## Add lines to a plot with abline()
 
