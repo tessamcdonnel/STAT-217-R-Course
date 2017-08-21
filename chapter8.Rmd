@@ -633,7 +633,7 @@ To check this, you will save the chi-squared test results as an object and then 
 *** =instructions
 - Copy and paste the code below to save the test results in the object called `results`.
 
-`results <-chisq.test(HELPrct$homeless, HELPrct$substance,correct=F)`
+`results <- chisq.test(HELPrct$homeless, HELPrct$substance, correct=F)`
 
 - View the expected counts by typing `results$expected`.
 

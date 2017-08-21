@@ -426,6 +426,34 @@ test_function("t.test", args = c("x", "mu", "alternative", "conf.level"), incorr
 
 
 
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0130fafe7f
+## <<<New Exercise>>>
+
+	One Sample t-test
+
+data:  HELPrct$i1
+t = 3.0908, df = 452, p-value = 0.00106
+alternative hypothesis: true mean is greater than 15
+99 percent confidence interval:
+ 15.71126      Inf
+sample estimates:
+mean of x 
+ 17.90728
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+results <- t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:878a231ebf
 ## Quick check 3
 
@@ -445,6 +473,7 @@ Remember, the default settings are to perform a 2-sided alternative hypothesis a
 
 *** =pre_exercise_code
 ```{r}
+results <- t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
 
 ```
 
