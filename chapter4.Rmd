@@ -10,28 +10,33 @@ In this lab, you are going to learn how to take random samples from a variable u
 
 The `sample()` function takes two arguements:
 
-1) variable that you want to sample
-2) sample size
+1) variable that you want to sample (`x`)
+
+2) sample size (`size`)
 
 To take a random sample of a variable use the format:
 
-`sample(dataset$variable, number)`
+`sample(x = dataset$variable, size = number)`
 
 
 In this exercise we'll be using a data set called `peanut_allergy` which contains data on children involved in a peanut allergy study. 
 
-- there are 3 variables in this data set: `had_early_risk`, `regimen`, and `allergic`.
+- there are 3 variables in this data set: 
+    - `had_early_risk`: indicates whether the child had an early risk of developing a peanut allergy
+    - `regimen`: the peanut regimen assigned to the child; either 'consume' or 'avoid' peanuts
+    - `allergic`: indicates whether the child developed a peanut allergy by the end of the study
 - there are 628 subjects 
 - `peanut_allergy` is already in your workspace
 
+*We will treat this data set as the entire population of interest.*
 
 *** =instructions
 - Take a random sample of 25 from the variable `allergic` in the `peanut_allergy` dataset.
 - Take a random sample of 50 from the variable `regimen` in the `peanut_allergy` dataset.
 *** =hint
-For the 1st instruction, follow the format in the lesson but use peanut_allergy$allergic and 25.
+For the 1st instruction, follow the format in the lesson but use `x = peanut_allergy$allergic` and `size = 25`.
 
-For the 2nd instruction, follow the format in the lesson but use peanut_allergy$regimen and 50.
+For the 2nd instruction, follow the format in the lesson but use `x = peanut_allergy$regimen` and `size = 50`.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -52,10 +57,10 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 *** =solution
 ```{r}
 # take a random sample of 25 from the allergic variable
-sample(peanut_allergy$allergic, 25)
+sample(x = peanut_allergy$allergic, size = 25)
 
 # take a random sample of 50 from the regimen variable
-sample(peanut_allergy$regimen, 50)
+sample(x = peanut_allergy$regimen, size = 50)
 
 ```
 
@@ -74,11 +79,11 @@ In this exercise, we are going to take two random samples and assign them to obj
 
 Note: Remember that after we create an object (i.e. sample1 and sample2) we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 *** =instructions
-- take a random sample of 20 from the variable `allergic` in the `peanut_allergy` dataset, assign this to `sample1`
-- take another random sample of 20 from the same variable, but assign this sample to `sample2`
-- After clicking 'Submit Answer', look at the contents of `sample1` and `sample2`. Are they the same?
+- Take a random sample of 20 from the variable `regimen` in the `peanut_allergy` dataset, assign this to `sample1`.
+- Take another random sample of 20 from the same variable, but assign this sample to `sample2`.
+- Type the command `sample1 == sample2` in your script and click the 'Submit Answer' button.
 *** =hint
-Make sure you follow the format: `sample(dataset$variable, number)` with specified dataset, variable and number.
+Make sure you follow the format: `sample(x = dataset$variable, size = number)` with specified dataset, variable and number.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -87,41 +92,49 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 *** =sample_code
 ```{r}
-# take a random sample of 20 from the variable allergic
+# take a random sample of 20 from the variable regimen
 sample1 <- 
 
 sample1
 
-# take another random sample of 20 from the variable allergic
+# take another random sample of 20 from the variable regimen
 sample2 <- 
 
 sample2
+
+# Type the command 'sample1 == sample2' below to see if the samples are equal
 
 
 ```
 
 *** =solution
 ```{r}
-# take a random sample of 20 from the variable allergic
-sample1 <- sample(peanut_allergy$allergic, 20)
+# take a random sample of 20 from the variable regimen
+sample1 <- sample(peanut_allergy$regimen, 20)
 
 
 sample1
 
-# take another random sample of 20 from the variable allergic
-sample2 <- sample(peanut_allergy$allergic, 20)
+# take another random sample of 20 from the variable regimen
+sample2 <- sample(peanut_allergy$regimen, 20)
 
 
 sample2
+
+# Type the command 'sample1 == sample2' below to see if the samples are equal
+sample1 == sample2
 
 ```
 
 *** =sct
 ```{r}
-test_object("sample1", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number.")
+test_object("sample1", incorrect_msg = "Make sure you follow the format: sample(x = dataset$variable, size = number) with specified dataset, variable and number.")
 
-test_object("sample2", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number.")
-success_msg("Nice job! Look at the R output in the bottom right panel. Do the contents of sample1 and sample2 match up?.")
+test_object("sample2", incorrect_msg = "Make sure you follow the format: sample(x = dataset$variable, size = number) with specified dataset, variable and number.")
+
+test_output_contains("sample1 == sample2", incorrect_msg = "Make sure you type 'sample1 == sample2' in your script before submitting your answer.")
+
+success_msg("Nice job! Look at the R output in the bottom right panel. Do the contents of sample1 and sample2 match up? We can easily answer this by examining the TRUE's and FALSE's from the 'sample1 == sample2' command; if there are FALSEs then we know our samples are not the same.")
 
 ```
 
@@ -131,9 +144,9 @@ success_msg("Nice job! Look at the R output in the bottom right panel. Do the co
 
 You probably noticed that two samples you took (of the same variable and size) were not the same. 
 
-This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 from `allergic`, the values will be different.
+This is because `sample1` and `sample2` are *random* samples; so each time R takes a random sample of 20 from `regimen`, the values will be different.
 
-Sometimes we want to have a *consistent* random sample because it's confusing when the values change every time you Knit a R Markdown document. To do this, we use the `set.seed(number)` function. If you type this **before** creating your random sample, your sample will be the ***same*** random sample every time you Knit the document.
+Sometimes we want to have a *consistent* random sample. To do this, we use the `set.seed(number)` function. If you type this **before** creating your random sample, your sample will be the ***same*** random sample every time you Knit the document.
 
 Note: Any number can go inside the `set.seed()` function.
 *** =instructions
@@ -214,14 +227,14 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad, m
 
 For this exercise, you are going to find the *population proportion* of children who developed an allergic reation to peanuts.
 
-We will treat this data set as the entire population of interest.
+**Remember, we will treat this data set as the entire population of interest.**
 
 
 
 *** =instructions
 - Use the `table()` function to get an appropriate summary of the `allergic` variable in the `peanut_allergy` data set.
+- Type the command `addmargins(table(peanut_allergy$allergic))` to view the table with row/column totals.
 - Click the 'Submit Answer' button and look at the R output.
-- Use R as a calculator to find the proportion of children who were allergic to peanuts.
 
 *** =hint
 The correct format to summarize a categorical variable is:
@@ -238,7 +251,8 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 ```{r}
 # Create a table of the `allergic` variable in the `peanut_allergy` dataset
 
-# Find the proportion of children who were allergic
+# Copy and paste the command in the second instruction to view row/column totals of the table
+
 
 
 ```
@@ -248,7 +262,9 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 # Create a table of the `allergic` variable in the `peanut_allergy` dataset
 table(peanut_allergy$allergic)
 
-# Find the proportion of children who were allergic
+# Copy and paste the command in the second instruction to view row/column totals of the table
+addmargins(table(peanut_allergy$allergic))
+
 
 ```
 
@@ -269,10 +285,8 @@ In this exercise, you will create a random sample of 50 from the `allergic` vari
 - Use the `sample()` function to create a sample of 50 from the `allergic` variable, assign this to `my_sample`.
 - Use the `table()` function on `my_sample`.
 - Click 'Submit Answer' and look at the R output to find how many children were allergic in `my_sample`.
-- Find the ***sample proportion*** of allergic children.
-- How does this compare to the *population proportion*?
 *** =hint
-For the first instruction, use the format sample(dataset$variable, #).
+For the first instruction, use the format `sample(x = dataset$variable, size = number)`.
 
 For the last instruction, divide the number of children who were allergic by the total number of children in the sample.
 
@@ -284,7 +298,7 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 *** =sample_code
 ```{r}
-# Use the format sample(dataset$variable, #) to get a sample of 50 from the `allergic` variable
+# Use the format sample(x = dataset$variable, size = number) to get a sample of 50 from the `allergic` variable
 my_sample <- 
 
 # Type table(my_sample) to see how many children were allergic in the sample
@@ -295,7 +309,7 @@ my_sample <-
 
 *** =solution
 ```{r}
-# Use the format sample(dataset$variable, #) to get a sample of 50 from the `allergic` variable
+# Use the format sample(x = dataset$variable, size = number) to get a sample of 50 from the `allergic` variable
 my_sample <- sample(peanut_allergy$allergic, 50)
 
 # Type table(my_sample) to see how many children were allergic
@@ -307,8 +321,40 @@ table(my_sample)
 
 *** =sct
 ```{r}
-test_object("my_sample", incorrect_msg = "Make sure you follow the format: sample(dataset$variable, number) with specified dataset, variable and number, then assign it to my_sample.")
-test_function("sample", args = c("x", "size"), incorrect_msg = "Type table(my_sample) to get a numerical summary of my_sample.")
+test_object("my_sample", incorrect_msg = "Make sure you follow the format: sample(x = dataset$variable, size = number) with specified dataset, variable and number, then assign it to my_sample.")
+
+test_function("table", args = "...", incorrect_msg = "Type table(my_sample) to get a numerical summary of my_sample.")
+
+success_msg("Nice! Now divide the number of children in your sample (my_sample) who were allergic by the total number of children in your sample. This will give you the 'sample' proportion of children with a peanut allergy. How does this compare to the population proportion?")
+```
+
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:0915d27a1d
+## Quick check 2
+
+Suppose that out of a sample of 50 children, 9 developed an allergy to peanuts. How does this sample proportion compare to the population proportion?
+
+*Remember, 64 children had a peanut allergy out of the 'population' of 628 children.*
+*** =instructions
+- The sample proportion and population proportion are equal.
+- The sample proportion is greater than the population proportion.
+- The sample proportion is less than the population proportion.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct."
+msg_success <- "Exactly!"
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0e23913548
@@ -316,18 +362,16 @@ test_function("sample", args = c("x", "size"), incorrect_msg = "Type table(my_sa
 
 Assume that the population proportion of children with peanut allergies is unknown so we obtained a random sample. 
 
-Finding the sample proportion is okay but adding a margin of error gives us much more insight.
-
 In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the true proportion of children who are allergic to peanuts *(population proportion)*.
 
 Below is the formula to construct a confidence interval for a population proportion.
 
-$\hat{p} \pm z\ast \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
+$\hat{y} \pm z^*\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
 
 *** =instructions
 Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data (Use the formula in the lesson).
 
-Note that the $z\ast$ critical value is 1.96 for a 95% confidence interval.
+Note that the $z^*$ critical value is 1.96 for a 95% confidence interval.
 
 *Remember, to square a number use the format: `sqrt(number)`*
 *** =hint
@@ -372,7 +416,7 @@ test_output_contains("0.2489751", incorrect_msg = "Follow the order of operation
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:a4477e43a4
-## Quick check 2
+## Quick check 3
 
 Which of the following are valid implementations of the `set.seed()` command?  
 
