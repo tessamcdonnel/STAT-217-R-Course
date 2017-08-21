@@ -83,7 +83,7 @@ Note: Remember that after we create an object (i.e. sample1 and sample2) we need
 - Take another random sample of 20 from the same variable, but assign this sample to `sample2`.
 - Type the command `sample1 == sample2` in your script and click the 'Submit Answer' button.
 *** =hint
-Make sure you follow the format: `sample(x = dataset$variable, size = number)` with specified dataset, variable and number.
+Make sure you follow the format `sample(x = dataset$variable, size = number)` with specified dataset, variable and number on the right side of the arrows `<-`.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -151,7 +151,7 @@ Sometimes we want to have a *consistent* random sample. To do this, we use the `
 Note: Any number can go inside the `set.seed()` function.
 *** =instructions
 - Type `set.seed(1234)` in the R Script.
-- Now, use the `sample()` function to get a random sample of 20 from the `allergic` variable in the `peanut_allergy` dataset.
+- Now, use the `sample()` function to get a random sample of 20 from the `regimen` variable in the `peanut_allergy` dataset.
 *** =hint
 - You can copy and paste `set.seed(1234)` or type `set.seed(__)` with any number in the parenthesis.
 
@@ -170,7 +170,7 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 ```{r}
 # Type set.seed(1234)
 
-# take a random sample of 20 from the allergic variable 
+# take a random sample of 20 from the regimen variable 
 
 
 
@@ -181,8 +181,8 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 # Type set.seed(1234)
 set.seed(1234)
 
-# take a random sample of 20 from the allergic variable 
-sample(peanut_allergy$allergic, 20)
+# take a random sample of 20 from the regimen variable 
+sample(peanut_allergy$regimen, 20)
 ```
 
 *** =sct
@@ -197,14 +197,14 @@ test_function("sample", args = c("x", "size"), incorrect_msg = "Remember, to tak
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:5b1897d9be
 ## Quick check 1
 
-Suppose I want to take a sample of size 35 from the `regimen` variable in the `peanut_allergy` data set, and store those results in an object called mysample.  Which of the following commands is correct?
+Suppose I want to take a sample of size 35 from the `allergic` variable in the `peanut_allergy` data set, and store those results in an object called mysample.  Which of the following commands is correct?
 
 *** =instructions
-- mysample <- sample(peanut_allergy$regimen, 35)
-- mysample <- sample(regimen, 35)
-- mysample <- sample(35, regimen)
-- sample(peanut_allergy$regimen, 35) <- mysample
-- sample(mysample,35) <- regimen
+- mysample <- sample(peanut_allergy$allergic, 35)
+- mysample <- sample(allergic, 35)
+- mysample <- sample(35, allergic)
+- sample(peanut_allergy$allergic, 35) <- mysample
+- sample(mysample,35) <- allergic
 
 *** =hint
 
@@ -225,9 +225,12 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad, m
 --- type:NormalExercise lang:r xp:100 skills:1 key:b86b269872
 ## Population proportions
 
-For this exercise, you are going to find the *population proportion* of children who developed an allergic reation to peanuts.
+For this exercise, you are going to find the *population proportion* of children who developed an allergic reation to peanuts with the `table()` function.
 
-**Remember, we will treat this data set as the entire population of interest.**
+Remember, the correct format to summarize a categorical variable is:
+
+`table(dataset$variable)`.
+
 
 
 
@@ -241,7 +244,6 @@ The correct format to summarize a categorical variable is:
 
 `table(dataset$variable)`.
 
-For the last instruction, divide the number of children who were allergic by the total number of children.
 *** =pre_exercise_code
 ```{r}
 source("https://www.openintro.org/stat/data/peanut_allergy.R")
@@ -272,9 +274,43 @@ addmargins(table(peanut_allergy$allergic))
 ```{r}
 test_function("table", args = "...", incorrect_msg = "Remember, the correct format for the table() function is: table(dataset$variable). Create a table with this format using the specified data set and variable.")
 
-success_msg("Nice! Now divide the number of children who were allergic by the total number of children in the data set. This will give you the 'population' proportion of children with a peanut allergy.")
+success_msg("Nice!")
 ```
 
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ac963b0b10
+## Quick check 2
+
+I've saved the table summary from the last exercise to an object called `allergic_table`. 
+
+Type `allergic_table` into your R console and view the results.
+
+Question: What is the *population* proportion of children with a peanut allergy?
+
+***Remember we are treating this entire sample as the population of interest.***
+*** =instructions
+- 0.899
+- 0.102
+- 64
+- 564
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+source("https://www.openintro.org/stat/data/peanut_allergy.R")
+allergic_table <- addmargins(table(peanut_allergy$allergic))
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Divide the number of children who were allergic by the total number of children in the data set. This will give you the 'population' proportion of children with a peanut allergy."
+msg_success <- "Exactly!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success,  msg_bad, msg_bad))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:38ce97a2e8
 ## Sample proportions
 
@@ -329,10 +365,8 @@ success_msg("Nice! Now divide the number of children in your sample (my_sample) 
 ```
 
 
-
-
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:0915d27a1d
-## Quick check 2
+## Quick check 3
 
 Suppose that out of a sample of 50 children, 9 developed an allergy to peanuts. How does this sample proportion compare to the population proportion?
 
@@ -416,7 +450,7 @@ test_output_contains("0.2489751", incorrect_msg = "Follow the order of operation
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:a4477e43a4
-## Quick check 3
+## Quick check 4
 
 **This is the last exercise of Lab 4a**
 

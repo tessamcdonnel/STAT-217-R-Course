@@ -446,6 +446,7 @@ mean of x
 
 *** =pre_exercise_code
 ```{r}
+library(mosaicData)
 results <- t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
 
 ```
@@ -473,7 +474,6 @@ Remember, the default settings are to perform a 2-sided alternative hypothesis a
 
 *** =pre_exercise_code
 ```{r}
-results <- t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
 
 ```
 
