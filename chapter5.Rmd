@@ -8,16 +8,21 @@ description : Population and Sample Means
 
 In this lab we'll be using another built-in R dataset called `ChickWeight` which contains data from an experiment on the effect of diet on chicks. 
 
-- There are 4 variables in the data set: `weight`, `Time`, `Chick`, and `Diet`
-- There are 578 subjects
+- There are 4 variables in the data set: 
+    - `weight`: the chicks body weight in grams
+    - `Time`: when they were weighed
+    - `Chick`: unique identifier for the chick
+    - `Diet`: the treatment diet assigned to the chicks with varying amounts of protein and fat; either Diet 1, 2, 3, or 4
+- There are 578 subjects (chicks)
 - `ChickWeight` is already in your workspace
 
+*We will treat the `ChickWeight` data set as the entire population of interest.*
 
 In this exercise we are going take random samples from `ChickWeight` using the `sample()` function.
 
 Remember, to take a random sample and save it to an object, use the format:
 
-`sample_name <- sample(dataset$variable, number)`.
+`sample_name <- sample(x = dataset$variable, size = number)`.
 
 Note: Remember that after we create an object we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 
@@ -25,9 +30,9 @@ Note: Remember that after we create an object we need to type the object name to
 - Take a random sample of 25 from the variable `weight` in the `ChickWeight` dataset, assign this to `sample_weight`.
 - Take a random sample of 50 from the variable `Diet` in the `ChickWeight` dataset, assign this to `sample_diet`.
 *** =hint
-- For the 1st instruction, follow the format in the lesson but use ChickWeight$weight and 25
+- For the 1st instruction, follow the format in the lesson but use ChickWeight$weight and 25.
 
-- For the 2nd instruction, follow the format in the lesson but use ChickWeight$Diet and 50
+- For the 2nd instruction, follow the format in the lesson but use ChickWeight$Diet and 50.
 *** =pre_exercise_code
 ```{r}
 
@@ -61,13 +66,13 @@ sample_diet
 *** =solution
 ```{r}
 # take a random sample of 25 from the variable weight in ChickWeight dataset
-sample_weight <- sample(ChickWeight$weight, 25)
+sample_weight <- sample(x = ChickWeight$weight, size = 25)
 
 # Print out the values in sample_weight
 sample_weight
 
 # take a random sample of 50 from the variable Diet in ChickWeight dataset
-sample_diet <- sample(ChickWeight$Diet, 50)
+sample_diet <- sample(x = ChickWeight$Diet, size = 50)
 
 
 # Print out the values in sample_diet
@@ -100,7 +105,7 @@ test_output_contains("sample_diet", incorrect_msg = "Do not alter the line of co
 
 For this exercise, you are going to find the *population distribution* of the quantitative variable `weight` in the `ChickWeight` data set.
 
-We will treat the `ChickWeight` data set as the entire population of interest.
+**Remember, we will treat the `ChickWeight` data set as the entire population of interest.**
 
 
 *** =instructions
@@ -150,12 +155,37 @@ test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to
 test_function("favstats", args = "x", incorrect_msg = "Remember, to find summary statistics use format: favstats(dataset$variable) with specified parameters.")
 test_function("hist", args = "x", incorrect_msg = "To create a histogram, use the format: hist(dataset$variable) with the specified variables.")
 
-success_msg("Nice! Now look at the histogram of chick weights. Can you tell which way it is skewed?")
+success_msg("Nice! Now look at the histogram and summary statistics of chick weights.")
 
 ```
 
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:595c851a82
+## Quick check 1
+
+The *Plots* panel contains the histogram of chick weights from the last exercise. How would you classify this distribution?
+*** =instructions
+- Right-skewed
+- Left-skewed
+- Normal
+- Uniform
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+hist(ChickWeight$weight)
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. The histogram is skewed to the right."
+msg_success <- "Exactly!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad, msg_bad))
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:4face42bf0
-## Sample mean and distribution
+## Sample mean and sample distribution
 
 Most of the time we don't know what the *population mean* is, but we can **estimate** this value with a random sample. 
 
@@ -165,16 +195,18 @@ In this exercise, you will:
 
 * compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
 
+Remember, to obtain a random sample use the format:
 
+`sample(x = dataset$variable, size = number)`
 *** =instructions
-- type `library(mosaic)` to load the *mosaic* package into your workspace
-- use `sample()` to take a sample of 75 from the `weight` variable, assign this to `my_sample`
-- use the `favstats()` function to find the mean and standard deviation of `my_sample`
-- use the `hist()` function on `my_sample`
-- click 'Submit Answer' and look at the R output.
+- Type `library(mosaic)` to load the *mosaic* package into your workspace.
+- Use `sample()` to take a sample of 75 from the `weight` variable, assign this to `my_sample`.
+- Use the `favstats()` function to find summary statistics of `my_sample`.
+- Use the `hist()` function on `my_sample`.
+- Click 'Submit Answer' and look at the R output.
 - How do these values compare to the *population mean*?
 *** =hint
-- To get a random sample, use the format `sample(dataset$variable, #)` with the specified dataset, variable and number.
+- To obtain a random sample, use the format `sample(x = dataset$variable, size = number)` with the specified dataset, variable and number.
 
 - `my_sample` is just a vector of 75 chick weights so to obtain summary statistics, all you need to put in the `favstats()` function is the sample name `my_sample`.
 
@@ -190,10 +222,10 @@ library(mosaic)
 # Load the mosaic package
 
 
-# Use the format sample(dataset$variable, #) to get a sample of 75 from the `weight` variable
+# Use the format sample(x = dataset$variable, size = number) to get a sample of 75 from the `weight` variable in the 'ChickWeight' data set
 my_sample <- 
 
-# Find the mean and standard deviation of your new sample with favstats() 
+# Find summary statistics of my_sample with favstats() 
 
 
 
@@ -206,10 +238,10 @@ my_sample <-
 # Load the mosaic package
 library(mosaic)
 
-# Use the format sample(dataset$variable, #) to get a sample of 75 from the `weight` variable
+# Use the format sample(x = dataset$variable, size = number) to get a sample of 75 from the `weight` variable in the 'ChickWeight' data set
 my_sample <- sample(ChickWeight$weight, 75)
 
-# Find the mean and standard deviation of your new sample with favstats() 
+# Find summary statistics of my_sample with favstats() 
 favstats(my_sample)
 
 
@@ -223,10 +255,7 @@ hist(my_sample)
 test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
 
 
-test_object("my_sample", incorrect_msg = "Make sure you use the sample(dataset$variable, number) function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=75.")
-
-
-
+test_object("my_sample", incorrect_msg = "Make sure you use the sample(x = dataset$variable, size = number) function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=75.")
 
 
 test_function("sample", args = c("x", "size"),  incorrect_msg = "To create an object called my_sample, type sample(ChickWeight$weight, 75) on the right side of '<-'.")
@@ -240,27 +269,30 @@ test_function("hist", args = "x", incorrect_msg = "Remember, my_sample is just a
 --- type:NormalExercise lang:r xp:100 skills:1 key:d7a8f825e2
 ## Confidence interval for a population mean
 
-Assume that the population mean `weight` of chicks is unknown so we obtained a random sample. 
+**This is the last exercise of Lab 4b**
 
-Finding the sample mean is okay but adding a margin of error gives us much more insight.
+Assume that the population mean `weight` of chicks is unknown so we obtained a random sample. 
 
 In this exercise, we are going to use R as a calculator to find a 95% confidence interval for the population mean *weight*.
 
 Below is the formula for a confidence interval of a population mean.
 
-$\bar{x} \pm t\ast \frac{s}{\sqrt{n}}$
+$\bar{x} \pm t^*\times \frac{s}{\sqrt{n}}$
 
 *** =instructions
 Suppose I sampled 75 of the chicks from `ChickWeight` and found some sample statistics:
 
-* mean weight is 116.2
-* standard deviation is 67.5
-* for n = 75 and alpha = 0.05, the $t\ast$ critical value is 1.99
+* sample mean weight is 116.2
+* sample standard deviation is 67.5
+* for n = 75 and alpha = 0.05, the $t^*$ critical value is 1.99
 
 
 Use R as a calculator to find a 95% confidence interval for the population mean *weight* based on this sample data (Use the formula in the lesson).
+
+*Remember, to square a number use the format: `sqrt(number)`*
+
 *** =hint
-Use the formula in the lesson with $\bar{x}$ = 116.2, $s$ = 67.5, $t\ast$ = 1.99, and n = 75.
+Use the formula in the lesson with $\bar{x}$ = 116.2, $s$ = 67.5, $t^*$ = 1.99, and n = 75.
 
 Find 'upper bound' and 'lower bound' seperately.
 *** =pre_exercise_code

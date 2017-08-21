@@ -629,6 +629,8 @@ test_student_typed("boxplot(cdc$weight ~ cdc$smoke100)", not_typed_msg = "Rememb
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:e440a25df0
 ## Quick check 5
 
+**This is the last exercise of Lab 3**
+
 What kind of variable are visualizing when we make a boxplot?
 
 *** =instructions
@@ -644,7 +646,7 @@ What kind of variable are visualizing when we make a boxplot?
 *** =sct
 ```{r}
 msg_bad <- "That's incorrect. We visualize quantitative variables with boxplots."
-msg_success <- "Good answer!"
+msg_success <- "Good answer! You finished Lab 3 practice course."
 
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 ```
