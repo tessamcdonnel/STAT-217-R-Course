@@ -231,7 +231,7 @@ favstats(CPS85$age)
 ```{r}
 test_function("favstats", args = "x", index = 1, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
 
-test_function("favstats", args = "x", index = 3, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
+test_function("favstats", args = "x", index = 2, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
 
 
 ```
