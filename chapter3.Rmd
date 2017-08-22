@@ -5,11 +5,11 @@ description : Summarizing and Visualizing Data
 --- type:NormalExercise lang:r xp:100 skills:1 key:fe98ce0ad3
 ## Using the str() function to reveal variable types
 
-For this lab, we will use a dataset called `cdc` which contains data on the health of people in the United States.
+For this lab, we will use a dataset called `CPS85` which contains census data on people in the United States in 1985.
 
-- there are 9 variables in the data set
-- there are 20,000 subjects
-- `cdc` is already in your workspace
+- there are 11 variables in the data set
+- there are 534 subjects
+- `CPS85` is already in your workspace
 
 If we want to know the *types of variables* in our data set, we can apply the `str()` function with the format:
 
@@ -26,28 +26,28 @@ This will return all of the variable names as well as their type (i.e. numeric, 
 
 *** =instructions
 
-- Use the `str()` function to find the variable types of the `cdc` data set.
+- Use the `str()` function to find the variable types of the `CPS85` data set.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-Follow the format str(dataset) with `cdc` instead of `dataset`.
+Follow the format `str(dataset)` with 'CPS85' instead of dataset.
 *** =pre_exercise_code
 ```{r}
-source("http://www.openintro.org/stat/data/cdc.R")
-
+library(mosaicData)
+CPS85$sex <- as.numeric(CPS85$sex)
 
 ```
 
 *** =sample_code
 ```{r}
-# Find the variable types of cdc
+# Find the variable types of CPS85
 
 
 ```
 
 *** =solution
 ```{r}
-# Find the variable types of cdc
-str(cdc)
+# Find the variable types of CPS85
+str(CPS85)
 
 
 ```
@@ -56,9 +56,9 @@ str(cdc)
 
 *** =sct
 ```{r}
-test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with 'cdc' instead of 'dataset'!")
+test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with 'CPS85' instead of 'dataset'!")
 
-success_msg("Great! Now look at the R output and find the variable 'smoke100`. What type of variable does R think this is?") 
+success_msg("Great! Now look at the R output and find the variable 'sex'. What type of variable does R think this is?") 
 
 ```
 
@@ -67,14 +67,14 @@ success_msg("Great! Now look at the R output and find the variable 'smoke100`. W
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:fdd4d759e9
 ## Quick check 1
 
-You may have noticed from the previous exercise that the `smoke100` variable is coded as numeric, but this is incorrect.
+You may have noticed from the previous exercise that the `sex` variable is coded as numeric, but this is incorrect.
 
-`smoke100` only takes on two values:
+`sex` only takes on two values:
 
-* 1 = respondent has smoked at least 100 cigarettes in their life
-* 0 = otherwise 
+* 1 = respondent is female
+* 2 = respondent is male 
 
-What is the correct variable type of `smoke100`?
+What is the correct variable type of `sex`?
 
 *** =instructions
 - integer
@@ -90,7 +90,7 @@ What is the correct variable type of `smoke100`?
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Since 'smoke100' only takes on two values it should be coded as a categorical variable (factor)."
+msg_bad <- "That is not correct. Since 'sex' only takes on two values it should be coded as a categorical variable (factor)."
 msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
@@ -101,48 +101,48 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:53e494b387
 ## Changing variable types
 
-R thinks that the `smoke100` variable is 'numeric' but really it should be coded as 'factor' because it is a **categorical variable**. 
+R thinks that the `sex` variable is 'numeric' but really it should be coded as 'factor' because it is a **categorical variable**. 
 
-In this exercise we are going to recode the `smoke100` variable from a numeric to a factor variable type.
+In this exercise we are going to recode the `sex` variable from a numeric to a factor variable type.
 
 
 *** =instructions
-- The first line of code in your script will recode `smoke100` from a 'numeric' variable to its' correct variable type, 'factor'.
-- Use the `str()` function on `cdc`.
-- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `smoke100` variable was correctly recoded to a factor variable.
+- The first line of code in your script will recode `sex` from a 'numeric' variable to its' correct variable type, 'factor'.
+- Use the `str()` function on `CPS85`.
+- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `sex` variable was correctly recoded to a factor variable.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-
+library(mosaicData)
+CPS85$sex <- as.numeric(CPS85$sex)
 ```
 
 *** =sample_code
 ```{r}
-# This is the code that will change the *smoke100* variable to a factor variable (DO NOT alter it)
-cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+# This is the code that will change the *sex* variable to a factor variable (DO NOT alter it)
+CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 
-# Use the str() function on cdc
+# Use the str() function on CPS85
 
 
 ```
 
 *** =solution
 ```{r}
-# This is the code that will change the *smoke100* variable to a factor variable (DO NOT alter it)
-cdc$smoke100 <- factor(cdc$smoke100, labels = c('no smoke', 'yes smoke'))
+# This is the code that will change the *sex* variable to a factor variable (DO NOT alter it)
+CPS85$sex <- factor(CPS85$sex, labels = c('female', 'male'))
 
-# Use the str() function on cdc
-str(cdc)
+# Use the str() function on CPS85
+str(CPS85)
 ```
 
 *** =sct
 ```{r}
-msg <- "Do not alter the code that changed 'smoke100' into a factor variable. Press the 'undo' button in your script to get back to the original code."
+msg <- "Do not alter the code that changed 'sex' into a factor variable. Press the 'undo' button in your script to get back to the original code."
 
-test_student_typed("cdc$smoke100 <- factor(cdc$smoke100, labels = c('no smoke', 'yes smoke'))", not_typed_msg = msg)
+test_student_typed("CPS85$sex <- factor(CPS85$sex, labels = c('female', 'male'))", not_typed_msg = msg)
 
 
 test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with the correct data set!")
@@ -180,21 +180,21 @@ To use the `favstats()` function, use the format:
 `favstats(dataset$quant_var)`
 
 
-The data set we've been working with (`cdc`) is already in your workspace.
+`CPS85` contains a quantitative variable named `wage` that measures the respondents wage in US dollars per hour.
 
 
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Find summary statistics of the `weight` variable in the `cdc` data set using the `favstats()` function.
-- Find summary statistics of the `height` variable in `cdc` using the `favstats()` function.
-- Find summary statistics of the `age` variable in `cdc` using the `favstats()` function.
+- Find summary statistics of the `wage` variable in the `CPS85` data set using the `favstats()` function.
+- Find summary statistics of the `age` variable in `CPS85` using the `favstats()` function.
 
 *** =hint
-Follow the format in the lesson substituting `cdc` for dataset and the specified variable for quant_var.
+Follow the format in the lesson substituting `CPS85` for dataset and the specified variable for quant_var.
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
+library(mosaicData)
+CPS85$sex <- factor(CPS85$sex, labels = c('female', 'male'))
 library(mosaic)
 ```
 
@@ -203,13 +203,11 @@ library(mosaic)
 # Load the mosaic package 
 
 
-# Use the favstats() function to explore weight in the cdc data set 
+# Use the favstats() function to explore wage in the CPS85 data set 
 
 
-# Use the favstats() function to explore height in the cdc data set 
 
-
-# Use the favstats() function to explore age in the cdc data set 
+# Use the favstats() function to explore age in the CPS85 data set 
 
 
 ```
@@ -219,14 +217,12 @@ library(mosaic)
 # Load the mosaic package 
 library(mosaic)
 
-# Use the favstats() function to explore weight in the cdc data set 
-favstats(cdc$weight)
+# Use the favstats() function to explore wage in the CPS85 data set 
+favstats(CPS85$wage)
 
-# Use the favstats() function to explore height in the cdc data set 
-favstats(cdc$height)
 
-# Use the favstats() function to explore age in the cdc data set 
-favstats(cdc$age)
+# Use the favstats() function to explore age in the CPS85 data set 
+favstats(CPS85$age)
 
 
 ```
@@ -234,8 +230,6 @@ favstats(cdc$age)
 *** =sct
 ```{r}
 test_function("favstats", args = "x", index = 1, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
-
-test_function("favstats", args = "x", index = 2, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
 
 test_function("favstats", args = "x", index = 3, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
 
@@ -246,22 +240,22 @@ test_function("favstats", args = "x", index = 3, incorrect_msg = "Follow the for
 --- type:NormalExercise lang:r xp:100 skills:1 key:b15fdcaef0
 ## Summarizing quantitative variables by group
 
-What if we wanted to determine if `weight` differs depending on whether or not the subject was a smoker (`smoke100`)? To do this, we can summarize `weight` separately for the smokers and non-smokers using `favstats()` function with the format:
+What if we wanted to determine if `wage` differs depending on the respondents sex (`sex`)? To do this, we can summarize `wage` separately for the men and women using `favstats()` function with the format:
 
 `favstats(dataset$quant_var ~ dataset$categ_var)`
 
-*Note: the quantitative variable (`weight`) goes on the left hand side of the tilde, and the categorical grouping variable (`smoke100`) goes on the right hand side.*
+*Note: the quantitative variable (`wage`) goes on the left hand side of the tilde, and the categorical grouping variable (`sex`) goes on the right hand side.*
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to compare the subjects' `weight` (from the `cdc` data set) by whether or not they are/were a smoker `smoke100`.
+- Use the `favstats()` function to compare the subjects' `wage` (from the `CPS85` data set) by their `sex`.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
+library(mosaicData)
 library(mosaic)
-cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 ```
 
@@ -271,7 +265,7 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 
 
-# Compare the average weight among smokers and nonsmokers in the cdc data set 
+# Compare the average wage among men and women in the CPS85 data set 
 
 
 ```
@@ -282,8 +276,8 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 library(mosaic)
 
 
-# Compare the average weight among smokers and nonsmokers in the cdc data set 
-favstats(cdc$weight ~ cdc$smoke100)
+# Compare the average weight among men and women in the CPS85 data set 
+favstats(CPS85$wage ~ CPS85$sex)
 
 
 
@@ -291,7 +285,7 @@ favstats(cdc$weight ~ cdc$smoke100)
 
 *** =sct
 ```{r}
-test_student_typed("favstats(cdc$weight ~ cdc$smoke100)", not_typed_msg = "Make sure you follow the format in the lesson with correct data set (cdc), quantitative variable (weight) and categorical variable (smoke100).")
+test_student_typed("favstats(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Make sure you follow the format in the lesson with correct data set (CPS85), quantitative variable (wage) and categorical variable (sex).")
 ```
 
 
@@ -331,15 +325,16 @@ To create a table, use the format:
 
 `table(dataset$categ_var)`
 
+The `CPS85` data set contains a categorical variable named `married` which indicates whether or not the subject is currently married.
+
 *** =instructions
-- Summarize the `smoke100` variable in the `cdc` data set using the `table()` function.
+- Summarize the `married` variable in the `CPS85` data set using the `table()` function.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-Use the format from the lesson with `cdc` instead of dataset, and `smoke100` instead of categ_var.
+Use the format from the lesson with `CPS85` instead of dataset, and `married` instead of categ_var.
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+library(mosaicData)
 
 ```
 
@@ -353,12 +348,13 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 *** =solution
 ```{r}
 # Type table(dataset$categ_var) with specified data set and variable to get a table summary
-table(cdc$smoke100)
+table(CPS85$married)
+
 ```
 
 *** =sct
 ```{r}
-test_function("table", args = "...", incorrect_msg = "Follow the format in the lesson with correct dataset (cdc) and categ_var (smoke100).")
+test_function("table", args = "...", incorrect_msg = "Follow the format in the lesson with correct dataset (CPS85) and categ_var (married).")
 
 ```
 
@@ -375,38 +371,37 @@ In this exercise we will create a contingency table by cross-classifying two var
 
 Note: The variable listed first (var1) will go along the rows and the variable listed second (var2) will go along the columns.
 
-Note: The variable `genhlth` is a categorical variable indicating general health.
 
 *** =instructions
-- Create a contingency table with variables `genhlth` and `smoke100` from the `cdc` data set.
+- Create a contingency table with variables `married` and `sex` from the `CPS85` data set.
 *** =hint
-Use the format from the lesson with `cdc` instead of dataset, `genhlth` instead of var1, and `smoke100` instead of var2
+Use the format from the lesson with `CPS85` instead of dataset, `married` instead of var1, and `sex` instead of var2.
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+library(mosaicData)
+CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 ```
 
 *** =sample_code
 ```{r}
-# Create contingency table with variables `genhlth` and `smoke100`
+# Create contingency table with variables `married` and `sex`
 
 
 ```
 
 *** =solution
 ```{r}
-# Create contingency table with variables `genhlth` and `smoke100`
-table(cdc$genhlth, cdc$smoke100)
+# Create contingency table with variables `married` and `sex`
+table(CPS85$married, CPS85$sex)
 
 
 ```
 
 *** =sct
 ```{r}
-test_function("table", args = "...", incorrect_msg = "Use the format from the lesson with `cdc` instead of dataset, `genhlth` instead of var1, and `smoke100` instead of var2")
+test_function("table", args = "...", incorrect_msg = "Use the format from the lesson with `CPS85` instead of dataset, `married` instead of var1, and `sex` instead of var2.")
 ```
 
 
@@ -453,28 +448,27 @@ The two main visualizations of quantitative data are:
 - use `boxplot(dataset$variable)` to create a boxplot
 
 *** =instructions
-- Create a histogram of the `weight` variable from the `cdc` data set using the `hist()` function.
+- Create a histogram of the `wage` variable from the `CPS85` data set using the `hist()` function.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-
+library(mosaicData)
 ```
 
 *** =sample_code
 ```{r}
-# Create Histogram of weight variable with hist() function
+# Create Histogram of wage variable with hist() function
 
 
 ```
 
 *** =solution
 ```{r}
-# Create Histogram of weight variable with hist() function
+# Create Histogram of wage variable with hist() function
 
-hist(cdc$weight)
+hist(CPS85$wage)
 ```
 
 *** =sct
@@ -493,20 +487,19 @@ To do this in R, use the format:
 `barplot(table(dataset$categ_var))`
 
 *** =instructions
-- Create a barplot of the categorical variable `smoke100` from the `cdc` data set.
+- Create a barplot of the categorical variable `married` from the `CPS85` data set.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+library(mosaicData)
 
 ```
 
 *** =sample_code
 ```{r}
-# Create barplot of the smoke100 variable in cdc data set
+# Create barplot of the married variable in CPS85 data set
 
 
 
@@ -514,14 +507,14 @@ cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
 
 *** =solution
 ```{r}
-# Create barplot of the smoke100 variable in cdc dataset
+# Create barplot of the married variable in CPS85 dataset
 
-barplot(table(cdc$smoke100))
+barplot(table(CPS85$married))
 ```
 
 *** =sct
 ```{r}
-test_student_typed("barplot(table(cdc$smoke100))", not_typed_msg = "Make sure you follow the format in the lesson with 'cdc' instead of 'dataset' and 'smoke100' instead of 'categ_var'")
+test_student_typed("barplot(table(CPS85$married))", not_typed_msg = "Make sure you follow the format in the lesson with 'CPS85' instead of 'dataset' and 'married' instead of 'categ_var'.")
 ```
 
 
@@ -535,41 +528,41 @@ The format to make a basic scatterplot is:
 
 `plot(x = dataset$var1 , y = dataset$var2)`
 
+`CPS85` contains a quantitative variable named `educ` which measures the respondents number of years of education.
 
-For this exercise, we are going to visualize the relationship between `weight` and `height` in the `cdc` data set:
+For this exercise, we are going to visualize the relationship between `educ` and `wage` in the `CPS85` data set:
 
-x = `weight` 
+x = `educ` 
 
-y = `height`
+y = `wage`
 
 *** =instructions
-- Use the `plot()` function to create a scatterplot of `weight` and `height`.
+- Use the `plot()` function to create a scatterplot of `educ` and `wage`.
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-
+library(mosaicData)
 ```
 
 *** =sample_code
 ```{r}
-# Use plot() to create scatterplot of weight and height
+# Use plot() to create scatterplot of education 'educ' and wage
 
 
 ```
 
 *** =solution
 ```{r}
-# Use plot() to create scatterplot of weight and height
+# Use plot() to create scatterplot of education 'educ' and wage
 
-plot(x = cdc$weight, y = cdc$height)
+plot(x = CPS85$educ, y = CPS85$wage)
 ```
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set and variables")
+test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set and variables.")
 
 ```
 
@@ -577,6 +570,8 @@ test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow th
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
 ## Visualizing quantitative variables by groups
+
+**This is the last exercise for Lab 3**
 
 Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
 
@@ -588,39 +583,37 @@ This will produce side by side boxplots.
 
 *** =instructions
 
-Create side-by-side boxplots to compare the `weight` of respondents in the `cdc` data set by whether or not they are/were a smoker `smoke100`.
-
-
+Create side-by-side boxplots to compare the `wage` of respondents in the `CPS85` data set by whether they are male of female `sex`.
 
 *** =hint
-Use format in the lesson with `weight` = `quant_var`, `cdc` = `dataset`, `smoke100` = `categ_var`
+Use format in the lesson with `wage` = `quant_var`, `CPS85` = `dataset`, `sex` = `categ_var`
 *** =pre_exercise_code
 ```{r}
-source("https://www.openintro.org/stat/data/cdc.R")
-cdc$smoke100 <- factor(cdc$smoke100, labels = c("no smoke", "yes smoke"))
+library(mosaicData)
+CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 
 ```
 
 *** =sample_code
 ```{r}
-# Create side-by-side boxplots with quant_var = weight and categ_var = smoke100
+# Create side-by-side boxplots with quant_var = wage and categ_var = sex
 
 
 ```
 
 *** =solution
 ```{r}
-# Create side-by-side boxplots with quant_var = weight and categ_var = smoke100
+# Create side-by-side boxplots with quant_var = wage and categ_var = sex
 
-boxplot(cdc$weight ~ cdc$smoke100)
+boxplot(CPS85$wage ~ CPS85$sex)
 ```
 
 *** =sct
 ```{r}
-test_student_typed("boxplot(cdc$weight ~ cdc$smoke100)", not_typed_msg = "Remember, 'weight' is a quantitative variable and 'smoke100' is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
+test_student_typed("boxplot(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Remember, 'wage' is a quantitative variable and 'sex' is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
 
-
+success_msg("Great job. You finished Lab 3 practice course.")
 ```
 
 
