@@ -423,8 +423,6 @@ test_student_typed("women$weight", not_typed_msg = "Make sure you follow the for
 --- type:NormalExercise lang:r xp:100 skills:1 key:766b6a5af5
 ## Graphing data in R
 
-**This is the last exercise of Lab 1**
-
 In this exercise, you will practice using simple graphical functions in R to visualize data.
 
 In it's most basic form, the `plot()` function will generate a scatterplot of the x and y values that have been passed through it. 
@@ -467,5 +465,35 @@ plot(x = women$height, y = women$weight)
 ```{r}
 test_function("plot", args = c("x", "y"), incorrect_msg = "In your R script, follow the format: plot(x = dataset$var1 , y = dataset$var2) with the specified arguements. In this case, use `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`.")
 success_msg("Good work! From the plot we can see that as height increases, weight decreases.")
+
+```
+
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:dff314deba
+## Quick check 
+**This is the last exercise of Lab 1**
+
+What is the correct code to access a variable in a data set?
+
+*** =instructions
+- dataset#variable.name
+- dataset&variable.name
+- dataset=variable.name
+- dataset$variable.name
+- dataset%variable.name
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. We use a dollar sign '$' to access variables."
+msg_success <- "Exactly! You finished Lab 1 practice course."
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success, msg_bad))
+
 
 ```
