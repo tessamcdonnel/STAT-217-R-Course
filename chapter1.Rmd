@@ -3,8 +3,11 @@ title       : Lab 1
 description : Introduction to R and RStudio
 
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:10124e5c35
-## What is R ?
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:9707072219
+## Capabilities of R
+
 
 
 What can R be used for?
@@ -35,8 +38,6 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 ```
 
 
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:8902293ef6
 ## How to use DataCamp
 
@@ -53,17 +54,24 @@ Just click 'Submit Answer' to continue to the next exercise.
 
 *** =pre_exercise_code
 ```{r}
-# This is were you will be writing your code
+
+
 ```
 
 *** =sample_code
 ```{r}
 # This is were you will be writing your code
+
+
+
 ```
 
 *** =solution
 ```{r}
 # This is were you will be writing your code
+
+
+
 ```
 
 *** =sct
@@ -71,7 +79,7 @@ Just click 'Submit Answer' to continue to the next exercise.
 
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:77ff5d2cfd
-## Getting Started with R
+## Getting started with R
 
 
 The best way to learn R programming is to actually practice typing yourself. 
@@ -99,7 +107,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
-## Using R as a Calculator
+## Using R as a calculator
 
 
 In this exercise, we'll see how R can be used to perform simple arithmetic tasks.
@@ -118,6 +126,7 @@ Exponentiation: `^`
 
 For example, if I want to cube '4', I would type `4^3` into the console.
 
+Note: When multiplying two things together use an asterisk $\ast$. For example if we want to multiply 4 and 8, type `4*8`; typing `4(8)` will result in an error.
 
 *** =instructions
 - In the script, type `4^3` to calculate four to the power of three.
@@ -180,7 +189,7 @@ success_msg("Awesome! See how the console shows the result of the R code you sub
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b19e862406
-## Using the sqrt() Function
+## Using the sqrt() function
 
 Like any other calculator, R has the ability to take the square root of non-negative numbers.
 
@@ -192,6 +201,8 @@ If I want to take the square root of 9, I would type `sqrt(9)` and it would retu
 - In the script, use the `sqrt()` function to find the square root of 9659.
 - In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate the expression:
 $\frac{0.6 - 0.5}{\sqrt{0.25 / 1000}}$
+
+
 *** =hint
 R uses PEMDAS order of operations like you would use in any math class.
 
@@ -227,7 +238,7 @@ success_msg("Good work!")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6f441f4fb9
-## Basic Data Types in R
+## Basic data types in R
 
 The four basic data types we will be working with in this course are:
 
@@ -259,14 +270,13 @@ If I typed `70.0 + 28.9` into the console, the value that R would return would b
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct, '70.0 + 28.9' does not result in a whole number so the data type must be 'numeric'"
+msg_bad <- "That is not correct, '70.0 + 28.9' does not result in a whole number so the data type must be 'numeric'."
 msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:4ea9b80fa0
 
-
-## Generating Numbers **will most likely delete this
+## Generating numbers **will most likely delete this
 
 We can also use R to generate numbers and lists.
 
@@ -291,6 +301,8 @@ We can also use the `by = ` arguement to get a different sequence. Type `seq(1:2
 
 
 # Generate y = -10, -8, ..., 8, 10 using the seq() function with by = 2.
+
+
 ```
 
 *** =solution
@@ -311,17 +323,78 @@ test_object("y")
 success_msg("Nice!")
 
 
-test_error()
-
 success_msg("Good work!")
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5519a279
-## Variable Assignment
+## Variable assignment
+
+'Variable' is one of the most important concepts in statistics. In R, we can use variables to store values or objects so that we can easily access them in the future.
+
+A simple example of variable assignment is `x <- 5` which assigns a value 5 to a variable named 'x'. We can print the contents of x by typing `x` into the R console.
 
 
 *** =instructions
+- Assign the value 100 to a variable named `my_variable`.
+- Type `my_variable` into your R script to print the contents.
+- Click the 'Submit Answer' button and look through the R output.
 
+*** =hint
+Type '100' on the right side of the assignment command `<-` to assign 100 to `my_variable`.
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# Assign the value 100 to a variable named my_variable
+
+my_variable <- 
+
+
+# Print the value of my_variable
+
+
+```
+
+*** =solution
+```{r}
+# Assign the value 100 to a variable named my_variable
+
+my_variable <- 100
+
+
+# Print the value of my_variable
+my_variable
+
+```
+
+*** =sct
+```{r}
+test_object("my_variable", incorrect_msg = "Make sure you type '100' on the right side of the assignment command `<-` to assign 100 to my_variable.")
+
+test_output_contains("my_variable", incorrect_msg = "Remember to type 'my_variable' to print out the contents of my_variable") 
+
+success_msg("Good! Notice that the value 100 appears when R prints `my_variable`.")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:21fd16b05f
+## Accessing Specific Variables  using $
+R has a built-in dataset called `women` which contains 2 variables (`height` and `weight`) of 15 women. 
+
+This data set is already in your workspace so if you type  `women` into your R console, the data set will come up in the output.
+
+
+In this exercise you will be learning how to access specific variables within a data set by using the format:
+
+`dataset$variable`.
+
+For example, if you want to view the `height` variable by itself, type `women$height` into the R console.
+
+*** =instructions
+Use the format in the lesson to access the `weight` variable in the `women` data set.
 *** =hint
 
 *** =pre_exercise_code
@@ -331,22 +404,26 @@ success_msg("Good work!")
 
 *** =sample_code
 ```{r}
+# Access weight from women like we did for the height variable
+
 
 ```
 
 *** =solution
 ```{r}
-
+# Access weight from women like we did for the height variable
+women$weight
 ```
 
 *** =sct
 ```{r}
-
+test_student_typed("women$weight", not_typed_msg = "Make sure you follow the format: dataset$variable with the correct data set and variable!")
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:766b6a5af5
-
-
 ## Graphing data in R
+
+**This is the last exercise of Lab 1**
 
 In this exercise, you will practice using simple graphical functions in R to visualize data.
 
@@ -354,23 +431,19 @@ In it's most basic form, the `plot()` function will generate a scatterplot of th
 
 The format to make a basic scatterplot is:
 
-`plot(x = dataset$var1 , y = dataset$var2)`
-
-R has a built-in dataset called `women` which contains heights and weights of 15 women. 
-
-This data set is already in your workspace so if you type  `women` into your R console, the entire data will come up in the output.
+`plot(x = dataset$x.var , y = dataset$y.var)`
 
 For this exercise, we are going to visualize the relationship between the two variables in `women`:
 
-x = `height` 
+x.var = `height` 
 
-y = `weight`
+y.var = `weight`
 
 *** =instructions
-- Use the `plot()` function to create a scatterplot of `height` by `weight`.
+- Follow the `plot()` function format from the lesson to create a scatterplot of `height` by `weight` from the `women` data set.
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
-Follow the format in the lesson with `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`
+Follow the format in the lesson with `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`.
 *** =pre_exercise_code
 ```{r}
 
@@ -379,15 +452,20 @@ Follow the format in the lesson with `women` instead of `dataset`, `height` inst
 *** =sample_code
 ```{r}
 # Use plot() to create scatterplot of height by weight
+
+
 ```
 
 *** =solution
 ```{r}
+# Use plot() to create scatterplot of height by weight
+
 plot(x = women$height, y = women$weight)
 ```
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y"))
+test_function("plot", args = c("x", "y"), incorrect_msg = "In your R script, follow the format: plot(x = dataset$var1 , y = dataset$var2) with the specified arguements. In this case, use `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`.")
 success_msg("Good work! From the plot we can see that as height increases, weight decreases.")
+
 ```
