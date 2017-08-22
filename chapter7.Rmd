@@ -667,7 +667,7 @@ summary(anova.results)
 
 *** =sct
 ```{r}
-test_object("anova.results", incorrect_msg = "You need to create 'anova.results' using the lesson format with the correct dataset and variables (if you forgot the variable names type 'names(anorexia)' in your R console. Make sure to use the assignment notation '<-'".)
+test_object("anova.results", incorrect_msg = "You need to create 'anova.results' using the lesson format with the correct dataset and variables- if you forgot the variable names type 'names(anorexia)' in your R console. Make sure to use the assignment notation '<-'.")
 
 test_function("summary", args = "object", incorrect_msg = "First you need to create 'anova.results' then call the summary() function.")
 success_msg("Great! Now look at the p-value from this test. What is your conclusion?")
