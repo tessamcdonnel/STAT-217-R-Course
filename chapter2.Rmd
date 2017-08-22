@@ -3,11 +3,11 @@ title       : Lab 2
 description : Using R to Explore Data Sets
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f8b383874f
-## Getting Started with Data
+## Getting started with data
 
-In this exercise, you will learn how to identify fundamental attributes of a data set.
+For this lab, we will use a dataset called `arbuthnot` which contains data on male and female births in London from 1629-1710.
 
-One of R's built-in data sets is called `mtcars`. This data set is already in your workspace so if you type  `mtcars` into your R console, the entire data will come up in the output.
+- `arbuthnot` is already in your workspace so if you type `arbuthnot` in your console, the data set will print.
 
 Sometimes the data can be very long so instead of viewing the entire thing, we can type:
 
@@ -18,103 +18,145 @@ If we want to know the variable (column) names in the data set, we can type `nam
 
 If we want to know the dimensions of a dataset (ie. how many variables and subjects) use the `dim(dataset)` function.
 
-Note: `dataset` is just a placeholder for the name of the data set you want to explore. In this exercise, you need to substitute `mtcars` for `dataset`.
+Note: `dataset` is just a placeholder for the name of the data set you want to explore. In this exercise, you need to substitute `arbuthnot` for `dataset`.
+
 *** =instructions
-- Use the `head()` function to get the first 6 entries of the mtcars data set
-- Use `tail()` to get the last 6 entries.
+- Use the `head()` function to view the first 6 entries of the `arbuthnot` data set.
+- Use the `tail()` function to view the last 6 entries.
 - Find the variable names by using the `names()` function.
-- Use `dim()` to find the dimensions of mtcars.
-- Click the 'Submit Answer' Button and take a look at the R output in the console.
+- Use `dim()` to find the dimensions of `arbuthnot`.
+- Click the 'Submit Answer' button and take a look at the R output in the console.
 
 
 *** =hint
-The data set is named `mtcars` so substitute `mtcars` for `dataset`.
+The data set is named `arbuthnot` so substitute `arbuthnot` for `dataset`.
 
 *** =pre_exercise_code
 ```{r}
-mtcars
+source("http://www.openintro.org/stat/data/arbuthnot.R")
 ```
 
 *** =sample_code
 ```{r}
-#Use appropriate function to find first 6 entries of mtcars
+#Use appropriate function to find first 6 entries of arbuthnot
 
-#Use appropriate function to find last 6 entries of mtcars
+#Use appropriate function to find last 6 entries of arbuthnot
 
-#Use appropriate function to find the variable names of mtcars
+#Use appropriate function to find the variable names of arbuthnot
 
-#Use appropriate function to find the dimension of mtcars
+#Use appropriate function to find the dimension of arbuthnot
+
+
 ```
 
 *** =solution
 ```{r}
-#Use appropriate function to find first 6 entries of mtcars
-head(mtcars)
+#Use appropriate function to find first 6 entries of arbuthnot
+head(arbuthnot)
 
-#Use appropriate function to find last 6 entries of mtcars
-tail(mtcars)
+#Use appropriate function to find last 6 entries of arbuthnot
+tail(arbuthnot)
 
-#Use appropriate function to find the variable names of mtcars
-names(mtcars)
+#Use appropriate function to find the variable names of arbuthnot
+names(arbuthnot)
 
-#Use appropriate function to find the dimension of mtcars
-dim(mtcars)
+#Use appropriate function to find the dimension of arbuthnot
+dim(arbuthnot)
+
 ```
 
 *** =sct
 ```{r}
 
-test_function("head", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the head() function")
-success_msg("Nice job!")
+test_function("head", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the head() function.")
 
-test_function("tail", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the tail() function")
-success_msg("Good work!")
 
-test_function("names", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the names() function")
-success_msg("Good work!")
+test_function("tail", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the tail() function.")
 
-test_function("dim", args = "x", incorrect_msg = "Make sure to use 'mtcars' instead of 'dataset' inside the dim() function")
-success_msg("Good work!")
+
+test_function("names", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the names() function.")
+
+
+test_function("dim", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the dim() function.")
+
+success_msg("Good work! Now look at the R output, notice how each horizontal row is a different year. We can see from the dim() command that there are 82 years with 3 variables.")
 ```
 
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:795745ad44
-## Accessing Specific Variables  using $
+## Review accessing variables
 
-In this exercise you will be learning how to access specific variables within a data set by using the format:
+Remember, to access specific variables within a data set use the format:
 
 `dataset$variable`.
 
-From the previous exercise, we saw that `mtcars` has a *miles per gallon* variable named `mpg`. If we want to look at this variable by itself, we can type `mtcars$mgp` into the R console; this will return a list of *miles per gallon* entries. 
+You might have seen in the previous exercise that `arbuthnot` has a *number of male births* variable named `boys`. If we want to look at this variable by itself, we can type `arbuthnot$boys` into the R console; this will return the number of male births each year. 
 
 
 *** =instructions
-- The mtcars data set also has the variable *weight* named `wt`. Use `$` to access the `wt` variable from the mtcars data set.
+- The arbuthnot data set also has a *number of female births* variable named `girls`. Use `$` to access the `girls` variable from the `arbuthnot` data set.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+source("http://www.openintro.org/stat/data/arbuthnot.R")
 ```
 
 *** =sample_code
 ```{r}
-# Access wt from mtcars like we did for the mpg variable
+# Access girls from arbuthnot like we did for the boys variable
 
 
 ```
 
 *** =solution
 ```{r}
-# Access wt from mtcars like we did for the mpg variable
-mtcars$wt
+# Access girls from arbuthnot like we did for the boys variable
+arbuthnot$girls
 ```
 
 *** =sct
 ```{r}
-test_student_typed("mtcars$wt", not_typed_msg = "Make sure you follow the format: dataset$variable with the correct data set and variable!")
+test_student_typed("arbuthnot$girls", not_typed_msg = "Make sure you follow the format: dataset$variable with the correct data set and variable!")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:f759511088
+## Using the summary() function
+
+In this exercise, you will learn how to use the R built-in function `summary()` to obtain statistics of your data set. 
+
+`summary(dataset)`: gives a few summary statistics of all variables in dataset
+
+
+`summary(dataset$variable)`: gives a few summary statistics of a specific variable in dataset
+
+The dataset we've been working with `arbuthnot` is already in your workspace.
+
+*** =instructions
+- Use the `summary()` function on the entire `arbuthnot` dataset.
+
+*** =hint
+substitute `arbuthnot` for dataset
+
+*** =pre_exercise_code
+```{r}
+source("http://www.openintro.org/stat/data/arbuthnot.R")
+```
+
+*** =sample_code
+```{r}
+# Use summary() on arbuthnot to get summary statistics of the entire arbuthnot dataset
+```
+
+*** =solution
+```{r}
+# Use summary() on arbuthnot to get summary statistics of the entire arbuthnot dataset
+summary(arbuthnot)
+
+```
+
+*** =sct
+```{r}
+test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' to obtain a summary of the entire data set.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
@@ -126,44 +168,51 @@ For example, if I want to add two variables together, i would type `dataset$var1
 
 If I want to save this sum as a new variable, I would assign it to a name `dataset$newvar <- dataset$var1 + dataset$var2`.
 
-In this exercise, we will be creating a new variable *density of car* named `density`. 
+In this exercise, we will be creating a new variable called `propBoys` which measures the proportion of male births each year.
 
-The mtcars data set is alrady in your work space. The variables you will need to access to create a *density* variable are *displacement* named `disp` and *weight* named `wt`.
+*propBoys <- #boys/#total*
 
-For simplicity, we will let:
+To do this, we will use the formula:
 
-*density = weight/displacement*
+`dataset$newvar <- dataset$var1 / (dataset$var1 + dataset$var2)`
+
 
 *** =instructions
-- Use the formula `dataset$density <- dataset$var1 / dataset$var2` to create a density variable.
-- Use the `names()` function on `mtcars` to make sure that `density` was added to the variables.
+- Use the formula above to create the `propBoys` variable where:
+    - dataset = `arbuthnot`
+    - newvar = `propBoys`
+    - var1 = `boys`
+    - var2 = `girls`
+- Use the `names()` function on `arbuthnot` to make sure that `propBoys` was added to the variables.
 *** =hint
-substitute `mtcars` for dataset
+Follow the formula in the instructions with specified variables and data set (start typing on the right side of `<-`.
 *** =pre_exercise_code
 ```{r}
-mtcars
+source("http://www.openintro.org/stat/data/arbuthnot.R")
 ```
 
 *** =sample_code
 ```{r}
-# Create *density* variable for mtcars
-mtcars$density <- 
+# Create propBoys variable for arbuthnot
+arbuthnot$propBoys <- 
 
-# Use names() to check if *density* was added
+# Use names() to check if propBoys was added
+
+
 ```
 
 *** =solution
 ```{r}
-# Create *density* variable for mtcars
-mtcars$density <- mtcars$wt / mtcars$disp
+# Create propBoys variable for arbuthnot
+arbuthnot$propBoys <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 
-# Use names() to check if *density* was added
-names(mtcars)
+# Use names() on arbuthnot to check if propBoys was added
+names(arbuthnot)
 ```
-
 *** =sct
 ```{r}
 
+success_msg("Great. Now look at the output and make sure that `propBoys` was added to the variables.")
 ```
 
 
@@ -175,20 +224,22 @@ Another useful built-in function that R has is the `sum()` function.
 
 The `sum()` function adds what you put into the parenthesis.
 
-For example, if I wanted to find the total *weight* of the mtcars, I would type `sum(mtcars$wt)`.
+For example, to add a column in a data set use the format:
+
+`sum(dataset$variable)`
 
 *** =instructions
-- the dataset `mtcars` contains the variable `gear` which represents the number of forward gears. Use the `sum()` function to find the total number of gears.
+Use the `sum()` function to find the total number of male births `boys` in `arbuthnot`.
 *** =hint
 - To sum over a variable, use the format: `sum(dataset$variable)`.
 *** =pre_exercise_code
 ```{r}
-
+source("http://www.openintro.org/stat/data/arbuthnot.R")
 ```
 
 *** =sample_code
 ```{r}
-# Find total number of gears using sum() 
+# Find total number of boys using the sum() function
 
 
 
@@ -196,8 +247,8 @@ For example, if I wanted to find the total *weight* of the mtcars, I would type 
 
 *** =solution
 ```{r}
-# Find total number of gears using sum() 
-sum(mtcars$gear)
+# Find total number of boys using the sum() function
+sum(arbuthnot$boys)
 
 
 ```
@@ -230,13 +281,13 @@ We can save these values in an object `new_var` by typing:
 
 `dataset$new_var <- dataset$var1 > dataset$var2`
 *** =instructions
-- Find which cars in `mtcars` have greater `drat` than `wt`, save these values by assigning them to a new variable named `my_var`.
+- Find which years in `arbuthnot` had greater male births `boys` than female births `girls`, save these values by assigning them to a new variable named `my_var`.
 - Use the sum() function to evaluate the total number of `TRUE` results in `my_var`.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+source("http://www.openintro.org/stat/data/arbuthnot.R")
 ```
 
 *** =sample_code
@@ -244,7 +295,7 @@ We can save these values in an object `new_var` by typing:
 # Use the code at the end of the lesson with correct data set and variables
 
 
-# Use the sum() function on my_var to evaluate the number of cars whose drat is greater than weight
+# Use the sum() function on my_var to find how many years there were more male births than female births
 
 
 ```
@@ -252,63 +303,24 @@ We can save these values in an object `new_var` by typing:
 *** =solution
 ```{r}
 # Use the code at the end of the lesson with correct data set and variables
-mtcars$my_var <- mtcars$drat > mtcars$wt
+arbuthnot$my_var <- arbuthnot$boys > arbuthnot$girls
 
 
-# Use the sum() function on my_var to evaluate the number of cars whose drat is greater than weight
-sum(mtcars$my_var)
-
-```
-
-*** =sct
-```{r}
-
-test_student_typed("mtcars$my_var <- mtcars$drat > mtcars$wt", not_typed_msg = "That is not correct. Follow the format in the lesson with 'mtcars' instead of 'dataset', 'my_var' instead of 'new_var', 'drat' instead of 'var1', and 'wt' instead of 'var2'")
-
-test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is 'sum(dataset$variable)'. In this example, the dataset is 'mtcars' and the variable is 'my_var'.")
-
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:f759511088
-## Using the summary() function
-
-In this exercise, you will learn how to use the R built-in function `summary()` to obtain statistics of your data set. 
-
-`summary(dataset)`: gives a few summary statistics of all variables in dataset
-
-
-`summary(dataset$variable)`: gives a few summary statistics of a specific variable in dataset
-
-The dataset we've been working with `mtcars` is already in your workspace.
-
-*** =instructions
-- Use the `summary()` function on the entire `mtcars` dataset.
-
-*** =hint
-substitute `mtcars` for dataset
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-# Use summary() on mtcars to get summary statistics of the entire mtcars dataset
-```
-
-*** =solution
-```{r}
-# Use summary() on mtcars to get summary statistics of the entire mtcars dataset
-summary(mtcars)
+# Use the sum() function on my_var to find how many years there were more male births than female births
+sum(arbuthnot$my_var)
 
 ```
 
 *** =sct
 ```{r}
-test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' to obtain a summary of the entire data set")
 
+test_student_typed("arbuthnot$my_var <- arbuthnot$boys > arbuthnot$girls", not_typed_msg = "That is not correct. Follow the format in the lesson with 'arbuthnot' instead of 'dataset', 'my_var' instead of 'new_var', 'boys' instead of 'var1', and 'girls' instead of 'var2'")
+
+test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is 'sum(dataset$variable)'. In this example, the dataset is 'arbuthnot' and the variable is 'my_var'.")
 
 ```
+
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6bc90b9c68
 ## Graphing Data: the Basics
@@ -319,16 +331,16 @@ To create a basic plot in R, use the `plot()` function in the format:
 
 `plot(x = dataset$var1 , y = dataset$var2)`
 
-For this exercise, we are going to visualize the relationship between two variables in `mtcars`:
+For this exercise, we are going to visualize the relationship between two variables in `arbuthnot`:
 
-x = *weight* of car (wt) 
+x = year (`year`) 
 
-y = *miles per gallon* (mpg)
+y = proportion of male births (`propBoys`)
 
 
 
 *** =instructions
-- Use the `plot()` function to create a scatterplot of `wt` by `mpg`.
+- Use the `plot()` function to create a scatterplot of `propBoys` by `year` from the `arbuthnot` data set.
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 
 
@@ -336,29 +348,31 @@ y = *miles per gallon* (mpg)
 
 *** =pre_exercise_code
 ```{r}
+source("http://www.openintro.org/stat/data/arbuthnot.R")
+arbuthnot$propBoys <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 
 ```
 
 *** =sample_code
 ```{r}
-# Use the plot() function with x = mtcars$wt and y = mtcars$mpg
+# Use the plot() function with x = arbuthnot$year and y = arbuthnot$propBoys
 
 
 ```
 
 *** =solution
 ```{r}
-# Use the plot() function with x = mtcars$wt and y = mtcars$mpg
+# Use the plot() function with x = arbuthnot$year and y = arbuthnot$propBoys
 
-plot(x = mtcars$wt, y = mtcars$mpg)
+plot(x = arbuthnot$year, y = arbuthnot$propBoys)
 
 
 ```
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y"))
-success_msg("Good work! From the plot we can see that as weight increases, mpg decreases. This makes sense because bigger cars usually have less miles to the gallon.")
+test_function("plot", args = c("x", "y"), incorrect_msg = "Make sure you follow the formula in the lesson with the correct data set and variables!")
+success_msg("Good work!")
 
 
 
@@ -380,35 +394,43 @@ To add labels to a plot use the format:
 
 `plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title")`
 
-Right now the plot of `mtcars$wt` vs. `mtcars$mpg` has ugly axis names. In this exercise, we will change the axis names so the plot looks less messy.
+Right now the plot of `arbuthnot$year` vs. `arbuthnot$propBoys` has ugly axis names. In this exercise, we will change the axis names so the plot looks less messy.
 
 *** =instructions
-- Create the plot from the last exercise `plot(x = mtcars$wt, y = mtcars$mpg)` but this time add axis labels. 
+- Create the plot from the last exercise `plot(x = arbuthnot$year, y = arbuthnot$propBoys)` but this time add axis labels. 
 
-    - The new x-axis label should be `"Weight"`, y-axis label should be `"Miles Per Gallon"` and the title should be `"Mtcars: Weight by MPG"`.
+    - The new x-axis label should be `"Year"`, y-axis label should be `"Proportion of Male Births"` and the title should be `"Arbuthnot: Boys by Year"`.
 - Click the 'Submit Answer' button and take a look at the new plot. So much Better!
 
 *** =hint
 Make sure to wrap the labels in "" because they are words.
 *** =pre_exercise_code
 ```{r}
-mtcars
-plot(x = mtcars$wt, y = mtcars$mpg)
+source("http://www.openintro.org/stat/data/arbuthnot.R")
+arbuthnot$propBoys <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
+
+plot(x = arbuthnot$year, y = arbuthnot$propBoys)
 ```
 
 *** =sample_code
 ```{r}
 # Use plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title") with specified labels
+
+
+
 ```
 
 *** =solution
 ```{r}
 # Use plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title") with specified labels
 
-plot(x = mtcars$wt , y = mtcars$mpg, xlab = "Weight", ylab = "Miles Per Gallon", main = "Mtcars: Weight by PMG")
+plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = "Year", ylab = "Proportion of Male Births", main = "Arbuthnot: Boys by Year")
+
+
 ```
 
 *** =sct
 ```{r}
 test_function("plot", args = c("x", "y", "xlab", "ylab", "main"), incorrect_msg = "Use the format in the lesson with the specified lables in the instructions. Make sure you wrap the labels in quotation marks because they are words.")
+success_msg("Look how much better the graph looks now that we have labels! You have completed the Lab 2 practice course.")
 ```
