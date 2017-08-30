@@ -7,22 +7,22 @@ description : Inference for Quantitative Data
 ## Two sample t-test
 
 
-The two-sample t-test is used when we want to compare a quantitative response variable in two groups based on sample data.
+The two-sample t-test is used when we want to compare two population means based on sample data. The data you have will typically contain a quantitative response variable and a categorical variable defining your two groups of interest.
 
-To perform a two sample t-test, we'll be using a dataset called `schooldays` which contains data on Australian children involved in a sociological study about factors that effect school attendence. 
+To perform a two sample t-test, we'll be using a dataset called `schooldays` which contains data on Australian children involved in a sociological study about factors that affect school attendance. 
 
 - there are 5 variables in this data set: `race`, `sex`, `school`, `learner` and `absent`.
 - there are 154 subjects 
 - `schooldays` is already in your workspace
 
-Suppose we are interested in whether the students' number of absent days is dependent on their race. 
+Suppose we are interested in whether the students' number of absent days is related to their race. 
 
 We can begin by exploring the relationship between `absent` and `race`.
 
 - `race` is a categorical variable with 2 levels (aboriginal and non-aboriginal)
 - `absent` is a quantitative variable measuring the number of days absent from school
 *** =instructions
-- Use the `boxplot()` function to compare the groups in `schooldays` with the format below:
+- Create a side by side boxplot to examine the distribution of absent days by race in the `schooldays` data set. Recall that the syntax for a boxplot is:
     `boxplot(dataset$quant_var ~ dataset$categ_var)`
 
 - Click the 'Submit Answer' button and look at the R output. Do you think this difference is statistically significant?
@@ -38,15 +38,16 @@ library(HSAUR)
 
 *** =sample_code
 ```{r}
+# Create a boxplot of number absent days by race
 
-# Create a boxplot of #absent days by race
 
 ```
 
 *** =solution
 ```{r}
-# Create a boxplot of #absent days by race
+# Create a boxplot of number absent days by race
 boxplot(schooldays$absent ~ schooldays$race)
+
 
 ```
 
@@ -65,18 +66,17 @@ success_msg("Good work! It looks like Aboriginal students were absent more days.
 Before conducting a two sample t-test, we need to make sure that our data meets these 2 conditions:
 
 * the observations are independent
-* the quantitative variable is normally distributed (or sample sizes are greater than 30)
+* the quantitative variable is normally distributed (or sample sizes are greater than 30 in each group)
 
 
 It is reasonable to assume that the student's number of absent days are not related to each other, so the observations are independent.
 
 In this exercise, you will be checking the normality assumption for the `absent` variable in `schooldays`.
 
-*The second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample sizes are larger than 30.*
 
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to examine the distribution of `absent` by `race` with the format:
+- Use the `favstats()` function to examine summary statistics of `absent` by `race` with the format:
     `favstats(dataset$quant_var ~ dataset$categ_var)`
 - Use the `hist()` function on the `absent` variable in `schooldays`.
 - Click the 'Submit Answer' button and look at the R output. Does this distribution look normal to you?
@@ -143,7 +143,7 @@ The `favstats()` results from the last exercise are stored in an object called `
 
 Question: Does the `absent` days variable from `schooldays` follow the second condition?
 
-*Remember, the second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if sample sizes in each group are greater than 30.*
+*Remember, the second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if sample sizes in each group are greater than 30 in each group.*
 *** =instructions
 - No, because the histogram is right-skewed and the sample sizes for each group are too small.
 - Yes, the histogram is right-skewed but the sample sizes are over 30. 
@@ -166,7 +166,7 @@ msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:0bbf6fec44
-## two sample t-test with t.test()
+## Two sample t-test with t.test()
 
 We can use the same `t.test()` function from last week to perform a two sample t-test.
 
@@ -174,7 +174,7 @@ To do this, use the format:
 
 `t.test(dataset$quant_var ~ dataset$categ_var, var.equal = FALSE)`
 
-In this exercise, you will test the null hypothesis that the average number of absent days among aboriginal and non-aboriginal are equal:
+In this exercise, you will test the null hypothesis that the average number of absent days among aboriginal and non-aboriginal students in the population are equal:
 
 $H_0: \mu (A) = \mu (NA)$
 
@@ -185,7 +185,7 @@ A = Aboriginal and NA = Non-Aboriginal
 and create a 95% confidence interval around the true average difference in absent days.
 
 *** =instructions
-- Perform use the `t.test()` function to test if the student's number of `absent` days is dependent on their `race` and create a 95% confidence interval around the true average difference in absent days.
+- Use the `t.test()` function to test if the students' number of `absent` days is dependent on their `race` and create a 95% confidence interval around the true average difference in absent days.
 - Click 'Submit Answer' and look at the R output.
 
 *** =hint
