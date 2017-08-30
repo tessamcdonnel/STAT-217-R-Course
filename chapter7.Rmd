@@ -185,7 +185,7 @@ A = Aboriginal and NA = Non-Aboriginal
 and create a 95% confidence interval around the true average difference in absent days.
 
 *** =instructions
-- Use the `t.test()` function to test if the students' number of `absent` days is dependent on their `race` and create a 95% confidence interval around the true average difference in absent days.
+- Use the `t.test()` function to test if the students' population average number of `absent` days differs by `race` and create a 95% confidence interval for the difference in population means. Remember, the data set we are using is called `schooldays`.
 - Click 'Submit Answer' and look at the R output.
 
 *** =hint
@@ -198,14 +198,14 @@ library(HSAUR)
 
 *** =sample_code
 ```{r}
-# Test whether number of absent days is dependent on race.
+# Perform two sample t-test
 
 
 ```
 
 *** =solution
 ```{r}
-# Test whether number of absent days is dependent on race.
+# Perform two sample t-test
 t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)
 
 ```
@@ -229,9 +229,15 @@ The two sample t-test results from the last exercise are stored in an object cal
 
 At the $\alpha = 0.05$ level of significance, how would we conclude this t-test?
 
+Recall the hypotheses:
+
+$H_0: \mu (A) = \mu (NA)$
+
+$H_a: \mu (A) \neq \mu (NA)$
+
 *** =instructions
-- Reject the null hypothesis and conclude that the mean number of absent days among Aboriginal and non-Aboriginal students is significantly different.
-- Fail to reject the null hypothesis and conclude that the mean number of absent days among Aboriginal and non-Aboriginal students is NOT significantly different.
+- Reject the null hypothesis and conclude that the population mean number of absent days among Aboriginal and non-Aboriginal students is significantly different.
+- Fail to reject the null hypothesis and conclude that the population mean number of absent days among Aboriginal and non-Aboriginal students is NOT significantly different.
 
 *** =hint
 Type `test_results` and find the p-value for this test. If it is less than 0.05 then we would REJECT the null hypothesis. 
@@ -374,7 +380,7 @@ test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the 
 
 test_function("hist", args = "x", incorrect_msg = "Make sure you create a histogram of the diffwt variable from the anorexia data set.")
 
-success_msg("Good! Now look at the output. We can see from the histogram that the distribution of the differences is right skewed HOWEVER the sample size is over 30 so the conditions are satisfied.")
+success_msg("Good! Now look at the output. We can see from the histogram that the distribution of the differences is not perfectly normal HOWEVER the sample size is over 30 so the conditions are satisfied.")
 ```
 
 
@@ -382,28 +388,28 @@ success_msg("Good! Now look at the output. We can see from the histogram that th
 --- type:NormalExercise lang:r xp:100 skills:1 key:a852975de3
 ## Paired tests using t.test()
 
-We can also use the `t.test()` function to perform a paired sample t-test, but the format is a little different.
+We can also use the `t.test()` function to perform a paired t-test, but the format is a little different.
 
 To conduct a paired t-test, use the format:
 
 `t.test(dataset$diff_variable, mu = 0)`
 
-For this exercise you will test whether there is a significant difference between the pre-weights and post-weights. 
-In other words, test whether the mean difference in weight `diffwt`is equal to zero.
+For this exercise you will test whether there is a significant difference between the population mean pre-weights and post-weights. 
+In other words, test whether the population mean difference in weight is equal to zero.
 
 
 $H_0: \mu (d) = 0$
 
 $H_a: \mu (d) \neq 0$
 
-where $\mu (d) \=$ the difference in weight 
+where $\mu (d) \=$ the mean difference in weight 
 
 
 
 
 *** =instructions
-- Perform a paired t-test to test whether the mean difference in weight `diffwt` (Post weight - Pre weight) is equal to zero. 
-- Click 'Submit Answer' and look at the R output. Is the difference between patients post-weight and pre-weight significant?
+- Perform a paired t-test to test whether the mean difference in weight `diffwt` (Post weight - Pre weight) is equal to zero. Remember we are using a data set called `anorexia`.
+- Click 'Submit Answer' and examine the R output.
 
 *** =hint
 Follow the format in the lesson with `anorexia` as the dataset and `diffwt` as the variable.
@@ -446,9 +452,17 @@ The paired t-test results from the last exercise are stored in an object called 
 
 At the $\alpha = 0.05$ level of significance, how would we conclude this t-test?
 
+Recall our hypotheses:
+
+$H_0: \mu (d) = 0$
+
+$H_a: \mu (d) \neq 0$
+
+where $\mu (d) \=$ the mean difference in weight 
+
 *** =instructions
-- We would reject the null hypothesis and conclude that the average difference in weight between post-weight and pre-weight is not equal to zero.
-- We would fail to reject the null hypothesis that the average difference in weight between post-weight and pre-weight is equal to zero.
+- We would reject the null hypothesis and conclude that the population average difference in weight between post-weight and pre-weight is not equal to zero.
+- We would fail to reject the null hypothesis that the population average difference in weight between post-weight and pre-weight is equal to zero.
 *** =hint
 
 *** =pre_exercise_code
