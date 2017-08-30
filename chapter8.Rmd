@@ -97,7 +97,7 @@ However, a previous study estimated the low birthweight rate to be 7%. In other 
 
 If we want to test whether the low birthrate of our population differs from 7%, we can use the `prop.test()` function with the format:
 
-`prop.test(#yes, #total, p = null_hyp, correct = FALSE)`
+`prop.test(x = #yes, n = #total, p = null_hyp, correct = FALSE)`
 
 * *#yes* = number of births classified as low birthweight
 * *#total* = total number of births in the sample
@@ -140,7 +140,7 @@ load("nc.RData")
 *** =solution
 ```{r}
 # use the prop.test() function with the format from the lesson to test if the the population proportion differs from 0.07.
-prop.test(111, 1000, p = 0.07, correct = FALSE)
+prop.test(x = 111, n = 1000, p = 0.07, correct = FALSE)
 
 
 ```
