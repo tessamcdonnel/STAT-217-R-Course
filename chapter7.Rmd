@@ -482,7 +482,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:5e7f284cfc
 ## ANOVA
 
-We use ANOVA or Analysis of Variance when we want to compare a quantitative response variable in **more than 2** groups.
+We use ANOVA or Analysis of Variance when we want to compare population means in **more than 2** groups.
 
 The `anorexia` data set we've been working with has a categorical variable named `Treat` with 3 levels:
 
@@ -490,7 +490,7 @@ The `anorexia` data set we've been working with has a categorical variable named
 - `CBT` (Cognitive Behavioural treatment)
 - `FT` (Family Treatment)
 
-Suppose we want to determine if the patients' average post-weights differs among the three categories of treatment.
+Suppose we want to determine if the population average post-weights differ among the three categories of treatment.
 
 We can begin by exploring the relationship between treatment `Treat` and post-weights `Postwt`.
 
@@ -529,7 +529,7 @@ boxplot(anorexia$Postwt ~ anorexia$Treat)
 
 test_student_typed("boxplot(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: boxplot(dataset$quant_var ~ dataset$categ_var) with the correct data set (anorexia), quant_var (Postwt) and categ_var (Treat)")
 
-success_msg("Good work! It looks like the post-treatment weights were much higher in the family treatment (FT) group. Let's see if it is significant!")
+success_msg("Good work! It looks like the post-treatment weights were much higher in the family treatment (FT) group. Is the difference observed meaningful beyond random chance?")
 
 ```
 
@@ -546,12 +546,12 @@ Before conducting an ANOVA test, we need to make sure that our data meets these 
 
 It is reasonable to assume that patients are not related to each other, so the observations are independent.
 
-In this exercise, you will be checking the normality assumption for the `Postwt` variable in the `anorexia` data set.
+In this exercise, you will be checking the second condition for the `Postwt` variable in the `anorexia` data set.
 
 *The second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample size in each group is larger than 30*
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to examine the distribution of post weights by treatment in the `anorexia` data set.
+- Use the `favstats()` function to examine the distribution of post weights by treatment `Treat` in the `anorexia` data set.
 - Use the `hist()` function to check if `Postwt` is normally distributed.
 - Click the 'Submit Answer' button and check the output. Are the assumptions met?
 
@@ -594,7 +594,7 @@ test_student_typed("favstats(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg =
 
 test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the 'anorexia' dataset and 'Postwt' variable")
 
-success_msg("We can see from the histogram that the post-treatment weights are a little skewed and the sample sizes in each group is less than 30 but for the purposes of this demonstration, we'll conclude that the assumptions are met.")
+success_msg("The post-treatment weights appear to be slightly skewed and the sample sizes in each group is less than 30, so the second condition is not satisfied. However, we will continue to demonstrate how to execute ANOVA in R.")
 ```
 
 
@@ -634,9 +634,9 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 --- type:NormalExercise lang:r xp:100 skills:1 key:9048bc1deb
 ## Using aov() function to test multiple means
 
-To test if average post-treatment weight differs among the treatment categories, we can use the `aov()` function.
+To test if the population average post-treatment weight differs among the treatment categories, we can use the `aov()` function.
 
-Similar structure to the two sample t-test, we list the quantitative variable first, followed by the categorical. We're going to save these in an object so that we can get a summary of the results.
+Similar in structure to the two sample t-test, we list the quantitative variable first, followed by the categorical. We're going to save these in an object so that we can get a summary of the results.
 
 To do this, follow the format: 
 
@@ -653,7 +653,7 @@ $H_a:$ at least one mean differs
 *Remember, we are still using the `anorexia` data set.*
 
 *** =instructions
-- Use the format in the lesson to test if there is a difference in average post weights among the three treatment categories, name these results `anova.results`.
+- Use the format in the lesson to test if there is a difference in average post weights among the three treatment categories, name these results `anova.results`. Remember, the categorical variable is `Treat` and the quantitative variable is `Postwt`.
 - Use the `summary()` function to examine `anova.results`.
 - Click 'Submit Answer' and look ANOVA results.
 
@@ -779,7 +779,7 @@ success_msg("Good! Now look at the plot of our anova results.")
 
 The *Plots* panel contains the same plot from the last exercise. 
 
-The horizontal lines show 95% confidence intervals for each difference in means. If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, the two means are significantly different.
+The horizontal lines show 95% confidence intervals for each difference in pairs of means. If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, we have evidence that the two population means are different.
 
 In this exercise only **one** interval does not contain zero.
 
