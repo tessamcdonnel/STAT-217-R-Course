@@ -45,7 +45,7 @@ load("nc.RData")
 
 *** =sample_code
 ```{r}
-# Type table(dataset$categ_var) with specified data set and variable to get a table summary
+# Type table(dataset$categ_var) with specified data set and variable to obtain a table summary
 
 
 # Copy and paste addmargins(table(nc$lowbirthweight)) to get margin totals
@@ -58,7 +58,7 @@ load("nc.RData")
 
 *** =solution
 ```{r}
-# Type table(dataset$categ_var) with specified data set and variable to get a table summary
+# Type table(dataset$categ_var) with specified data set and variable to obtain a table summary
 
 table(nc$lowbirthweight)
 
