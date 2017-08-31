@@ -176,9 +176,9 @@ To do this, use the format:
 
 In this exercise, you will test the null hypothesis that the average number of absent days among aboriginal and non-aboriginal students in the population are equal:
 
-$H_0: \mu (A) = \mu (NA)$
+$H\_0$: $\mu\_{A} = \mu\_{NA}$
 
-$H_a: \mu (A) \neq \mu (NA)$
+$H\_a$: $\mu\_{A} \neq \mu\_{NA}$
 
 A = Aboriginal and NA = Non-Aboriginal
 
