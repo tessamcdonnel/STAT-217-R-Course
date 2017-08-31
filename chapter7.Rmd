@@ -779,7 +779,7 @@ success_msg("Good! Now look at the plot of our anova results.")
 
 The *Plots* panel contains the same plot from the last exercise. 
 
-The horizontal lines show 95% confidence intervals for each difference in pairs of means. If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, we have evidence that the two population means are different.
+The horizontal lines show 95% confidence intervals for each difference in pairs of means. For example...... If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, we have evidence that the two population means are different.
 
 In this exercise only **one** interval does not contain zero.
 
