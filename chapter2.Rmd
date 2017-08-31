@@ -160,7 +160,7 @@ test_function("summary", args = "object", incorrect_msg = "Follow the format 'su
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
-## Working with Variables **this needs work
+## Working with variables 
 
 We can also use arithetic operators on variables. 
 
@@ -373,8 +373,6 @@ plot(x = arbuthnot$year, y = arbuthnot$propBoys)
 ```{r}
 test_function("plot", args = c("x", "y"), incorrect_msg = "Make sure you follow the formula in the lesson with the correct data set and variables!")
 success_msg("Good work!")
-
-
 
 ```
 

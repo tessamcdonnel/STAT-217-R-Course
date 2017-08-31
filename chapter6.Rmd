@@ -450,7 +450,7 @@ $H_a$: $\mu \> 15$,  where $\mu$ is the population average number of alcoholic d
 
 Note: to use the `t.test()` function use format:
 
-`t.test(x = dataset$variable, mu = null.hyp, conf.level = 0.__)`
+`t.test(x = dataset$variable, mu = null.hyp, alternative = "__", conf.level = 0.__)`
 
 
 

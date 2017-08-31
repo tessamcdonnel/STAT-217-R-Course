@@ -274,57 +274,6 @@ msg_bad <- "That is not correct, '70.0 + 28.9' does not result in a whole number
 msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:4ea9b80fa0
-
-## Generating numbers **will most likely delete this
-
-We can also use R to generate numbers and lists.
-
-The `seq()` function generates a sequence of numbers. If I want a sequence of number 1 through 20, I can type `seq(1, 20)` into my console. Try this.
-
-We can also use the `by = ` arguement to get a different sequence. Type `seq(1:20, by = 0.5)` and notice how the output has changed.
-
-*** =instructions
-- Use the `seq()` function to generate of list of numbers from -10 to 10, increasing by 1. Assign this vector to `x`.
-- Create another sequence of numbers -10 to 10 but this time, increment by 2. Assign this vector to `y`. 
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-# Generate x = -10, -9, ..., 9, 10 using the seq() function
-
-
-# Generate y = -10, -8, ..., 8, 10 using the seq() function with by = 2.
-
-
-```
-
-*** =solution
-```{r}
-# Generate x = -10, -9, ..., 9, 10 using the seq() function
-
-x <- seq(-10, 10)
-
-# Generate y = -10, -8, ..., 8, 10 using the seq() function with by = 2.
-
-y <- seq(-10, 10, by = 2)
-```
-
-*** =sct
-```{r}
-test_object("x")
-test_object("y")
-success_msg("Nice!")
-
-
-success_msg("Good work!")
-```
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5519a279
@@ -381,7 +330,7 @@ success_msg("Good! Notice that the value 100 appears when R prints `my_variable`
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:21fd16b05f
-## Accessing Specific Variables  using $
+## Accessing specific variables using $
 R has a built-in dataset called `women` which contains 2 variables (`height` and `weight`) of 15 women. 
 
 This data set is already in your workspace so if you type  `women` into your R console, the data set will come up in the output.

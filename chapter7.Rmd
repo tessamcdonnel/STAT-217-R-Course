@@ -143,7 +143,7 @@ The `favstats()` results from the last exercise are stored in an object called `
 
 Question: Does the `absent` days variable from `schooldays` follow the second condition?
 
-*Remember, the second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if sample sizes in each group are greater than 30 in each group.*
+*Remember, the second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if sample sizes in each group are greater than 30.*
 *** =instructions
 - No, because the histogram is right-skewed and the sample sizes for each group are too small.
 - Yes, the histogram is right-skewed but the sample sizes are over 30. 
