@@ -51,7 +51,7 @@ load("nc.RData")
 # Copy and paste addmargins(table(nc$lowbirthweight)) to get margin totals
 
 
-# Click the 'Submit Answer' button and then use R as a calculator to find the proportion of births that were classified as low birthweights.
+# Click the 'Submit Answer' button and then find the proportion of births that were classified as low birthweights.
 
 
 ```
@@ -66,9 +66,7 @@ table(nc$lowbirthweight)
 
 addmargins(table(nc$lowbirthweight))
 
-# Click the 'Submit Answer' button and then use R as a calculator to find the proportion of births that were classified as low birthweights.
 
-111/1000
 
 ```
 
@@ -79,8 +77,6 @@ test_function("table", args = "...", incorrect_msg = "Follow the format in the l
 
 test_student_typed("addmargins(table(nc$lowbirthweight))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
 
-
-test_output_contains("0.111", incorrect_msg = "R doesn't recognize a comma as part of a number so make sure you type 111/1000 and NOT 111/1,000")
 
 success_msg("Note that the 'low' birthweight column is on the left. Use the table from the output to find the proportion of low birthweights by dividing the number of low birthweights by the sum.")
 
@@ -148,7 +144,7 @@ prop.test(x = 111, n = 1000, p = 0.07, correct = FALSE)
 *** =sct
 ```{r}
 test_function("prop.test", args = c("x", "n", "p", "correct"))
-success_msg("Great! Now look at the R output. The p-value is almost zero so we can reject the null hypothesis and conclude the proportion of low birthweights is significantly different than 0.07.")
+success_msg("Great! Now examine the R output. The p-value is almost zero so we can reject the null hypothesis and conclude the proportion of low birthweights is significantly different than 0.07.")
 
 
 ```
@@ -229,7 +225,7 @@ test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the fo
 
 test_student_typed("addmargins(table(nc$lowbirthweight, nc$habit))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
 
-success_msg("Good job. From the R output we can see that among the nonsmoking group, 92/873 (or about 10.5%) of babies were born with low birthweight compared to the smoking group where 18/126 (or about 14.3%) of babies had low birthweights. The proportions are different (as expected) but let's see if this difference is statistically significant!")
+success_msg("Good job. From the R output we can see that among the nonsmoking group, 92/873 (or about 10.5%) of babies were born with low birthweight compared to the smoking group where 18/126 (or about 14.3%) of babies had low birthweights. The proportions are different (as expected) but let's see if this difference meaningful beyond random chance!")
 
 
 
@@ -251,6 +247,16 @@ To test whether there is a significant difference between 2 proportions, we can 
 * *n2* = number of nonsmoking mothers (873)
 
 In this exercise you will perform a 2 sample z-test.
+
+Our hypotheses are:
+
+$H\_0$: $p\_{yes} = p\_{no}$
+
+$H\_a$: $p\_{yes} \neq p\_{no}$
+
+* $p\_{yes}$ = proportion of low birthweight babies with smoking mothers
+* $p\_{no}$ = proportion of low birthweight babies with nonsmoking mothers
+
 *** =instructions
 Use the `prop.test()` function to test whether the proportion of low birthweight is significantly different depending on whether the mother smoked. 
 
@@ -290,10 +296,15 @@ success_msg("Great! Now look at the R output to see the results of the test.")
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1d20719892
 ## Test conclusion
 
-The 2 sample *z*-test from the last exercise gave us a p-value equal to 0.209 and a 95% confidence interval of (-0.027, 0.102).
+The 2 sample *z*-test from the last exercise are stored in an object called `test_results`; in your R console type `test_results` to view these.
 
 At the alpha = 0.05 significance level, how would we conclude this test?
 
+Recall our hypotheses are:
+
+$H\_0$: $p\_{yes} = p\_{no}$
+
+$H\_a$: $p\_{yes} \neq p\_{no}$
 
 *** =instructions
 - We would reject the null hypothesis and conclude that there is a significant difference in the proportion of smokers and nonsmokers with low birthweight births.
@@ -305,7 +316,7 @@ Remember, if zero is in the confidence interval it is plausible that the true di
 
 *** =pre_exercise_code
 ```{r}
-
+test_results <- prop.test(c(18, 92), c(126, 873), correct = FALSE)
 ```
 
 *** =sct
@@ -318,7 +329,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:c971d0fe82
-## Quick check 1
+## Quick check 1 If this lab is too long we can cut this
 
 Suppose I get a random sample of 200 Cal Poly students, and I find that there are 40 athletes and 160 non-athletes. Among the 40 athletes, 15 were on the Dean's List. Among the 160 non-athletes, 33 were on the Dean's List. I want to use this data to test if the population proportion of all Cal Poly athletes that are on the Dean's List differs from the population proportion of all Cal Poly non-athletes that are on the Dean's List.
 
@@ -586,18 +597,19 @@ success_msg("Great! Now look at the R output to see the results of the test.")
 
 
 
---- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:11ff8cec19
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ca5a31f85a
 ## Chi-squared test conclusion
 
 Our hypotheses for the last exercise:
 
 $H_0$: Being homeless is independent of primary substance.
 
-$H_a$: Being homeless is dependent of primary substance.
+$H_a$: Being homeless is related of primary substance.
 
 
 
-The chi-squared test from the last exercise gave us a p-value equal to 0.0002. At the $\alpha$ = 0.05 level of significance, what is our conclusion?
+The chi-squared test from the last exercise re stored in an object called `chisq_results`; in your R console type `chisq_results` to view these.
 
 *** =instructions
 - Reject the null and conclude all of the population proportions are different.
@@ -609,7 +621,8 @@ The chi-squared test from the last exercise gave us a p-value equal to 0.0002. A
 
 *** =pre_exercise_code
 ```{r}
-
+library(mosaicData)
+chisq_results <- chisq.test(HELPrct$homeless, HELPrct$substance, correct = F)
 ```
 
 *** =sct
@@ -619,7 +632,6 @@ msg_success <- "Exactly!"
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
-
 
 
 
