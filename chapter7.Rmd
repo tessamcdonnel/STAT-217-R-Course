@@ -231,9 +231,9 @@ At the $\alpha = 0.05$ level of significance, how would we conclude this t-test?
 
 Recall the hypotheses:
 
-$H_0: \mu (A) = \mu (NA)$
+$H\_0$: $\mu\_{A} = \mu\_{NA}$
 
-$H_a: \mu (A) \neq \mu (NA)$
+$H\_a$: $\mu\_{A} \neq \mu\_{NA}$
 
 *** =instructions
 - Reject the null hypothesis and conclude that the population mean number of absent days among Aboriginal and non-Aboriginal students is significantly different.
@@ -397,12 +397,11 @@ To conduct a paired t-test, use the format:
 For this exercise you will test whether there is a significant difference between the population mean pre-weights and post-weights. 
 In other words, test whether the population mean difference in weight is equal to zero.
 
+$H\_0$: $\mu\_{diff} = 0$
 
-$H_0: \mu (d) = 0$
+$H\_a$: $\mu\_{diff} \neq 0$
 
-$H_a: \mu (d) \neq 0$
-
-where $\mu (d) \=$ the mean difference in weight 
+where $\mu_{diff} \=$ the mean difference in weight 
 
 
 
@@ -454,11 +453,11 @@ At the $\alpha = 0.05$ level of significance, how would we conclude this t-test?
 
 Recall our hypotheses:
 
-$H_0: \mu (d) = 0$
+$H\_0$: $\mu\_{diff} = 0$
 
-$H_a: \mu (d) \neq 0$
+$H\_a$: $\mu\_{diff} \neq 0$
 
-where $\mu (d) \=$ the mean difference in weight 
+where $\mu_{diff} \=$ the mean difference in weight 
 
 *** =instructions
 - We would reject the null hypothesis and conclude that the population average difference in weight between post-weight and pre-weight is not equal to zero.
@@ -646,9 +645,10 @@ To do this, follow the format:
 
 Our hypotheses are:
 
-$H_0: \mu (cont) = \mu (cbt) = \mu (ft)$
+$H\_0$: $\mu\_{cont} = \mu\_{cbt} = \mu\_{ft}$
 
-$H_a:$ at least one mean differs
+
+$H\_a:$ at least one mean differs
 
 *Remember, we are still using the `anorexia` data set.*
 
@@ -779,7 +779,7 @@ success_msg("Good! Now look at the plot of our anova results.")
 
 The *Plots* panel contains the same plot from the last exercise. 
 
-The horizontal lines show 95% confidence intervals for each difference in pairs of means. For example...... If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, we have evidence that the two population means are different.
+The horizontal lines show 95% confidence intervals for each difference in pairs of means. For example, the bottom line `FT - Cont` corresponds to $\mu\_{ft} - \mu\_{Cont}$. If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, we have evidence that the two population means are different.
 
 In this exercise only **one** interval does not contain zero.
 
