@@ -543,9 +543,35 @@ success_msg("Good job. From the R output we can see that among the alcohol users
 
 ```
 
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:87d9297923
+## Sample proportions
 
+The contingency table from the last exercise is stored in an object called `my_table`; type `my_table` in your R script to view it.
 
+Which group has the highest homeless rate?
 
+*Note: you can use R to calculate the proportions.*
+*** =instructions
+- heroin users
+- cocaine users
+- alcohol users
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(mosaicData)
+my_table <- addmargins(table(HELPrct$homeless, HELPrct$substance))
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct."
+msg_success <- "Exactly!"
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:4a650270a2
 ## Using the chisq.test() function
 
