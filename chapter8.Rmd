@@ -25,7 +25,7 @@ Suppose we are interested in the *proportion* of low birthweights.
 Let's begin by exploring the `lowbirthweight` variable in the `nc` data set.
 
 *** =instructions
-- Use the `table()` function to obtain a summary of the `lowbirthweight` variable.
+- Use the `table()` function to obtain a summary of the `lowbirthweight` variable in the `nc` data set.
 - Copy and paste the code below to add row/column totals to the table:
 
 `addmargins(table(nc$lowbirthweight))`
@@ -35,7 +35,6 @@ Let's begin by exploring the `lowbirthweight` variable in the `nc` data set.
 *** =hint
 Remember, to make a table use the format: `table(dataset$variable)`.
 
-R doesn't recognize a comma as part of a number so make sure you type 111/1000 and NOT 111/1,000.
 *** =pre_exercise_code
 ```{r}
 download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")

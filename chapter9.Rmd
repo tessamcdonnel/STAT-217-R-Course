@@ -158,7 +158,7 @@ Using the command `cor(x, y)` will produce different results than the command `c
 ```{r}
 msg_bad <- "That is not correct."
 msg_success <- "Exactly!"
-test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success))
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:76ae5ee967
@@ -253,11 +253,11 @@ Suppose we want to test whether there is a relationship between `ownership_rate`
 
 Our hypotheses:
 
-$H_0: \beta = 0$
+$H\_0:$ $\beta\_{1} = 0$
 
-$H_a: \beta \neq 0$
+$H\_a:$ $\beta\_{1} \neq 0$
 
-where $\beta$ = the slope of the regression
+where $\beta\_{1}$ = the slope of the regression
 
 *Note: `gun_model` is already in your workspace.*
 *** =instructions
