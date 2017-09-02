@@ -7,7 +7,7 @@ description : Correlation and Simple Linear Regression
 --- type:NormalExercise lang:r xp:100 skills:1 key:283c94164f
 ## Gun violence data
 
-In this pre-lab, we'll be using a data set called `gun_violence_us` which contains gun ownership and mortality statistics in the United States.
+In this pre-lab, we'll be using a data set called `gun_violence_us` which contains gun ownership and mortality statistics in the United States in 2014.
 
 - there are 3 variables in this data set: `state`, `ownership_rate`, `mortality_rate`
 - `gun_violence_us` is already in your workspace
@@ -55,7 +55,7 @@ test_function("summary", args = "object", incorrect_msg = "Follow the format 'su
 --- type:NormalExercise lang:r xp:100 skills:1 key:b81533a6c6
 ## Correlation
 
-Suppose we want to test whether there is a relationship between `ownership_rate` and `mortality_rate` in the `gun_violence_us` data set.
+Suppose we want to test whether there is a relationship between `ownership_rate` and `mortality_rate`.
 
 * `ownership_rate`: percentage of adults in each state who own a gun
 
@@ -65,12 +65,12 @@ Let's start by visualizing the relationship between these variables with the `pl
 
 Remember, to create a scatterplot use the format:
 
-`plot(dataset$x.var, dataset$y.var)`
+`plot(x = dataset$var1, y = dataset$var2)`
 *** =instructions
-Use the `plot()` function to visualize the relationship between `ownership_rate` and `mortality_rate` where:
+Use the `plot()` function to visualize the relationship between `ownership_rate` and `mortality_rate` in the `gun_violence_us` data set.
 
-* x.var = `ownership_rate`
-* y.var = `mortality_rate`
+* `ownership_rate` should be on the x-axis
+* `mortality_rate` should be on the y-axis
 *** =hint
 
 *** =pre_exercise_code
@@ -88,7 +88,7 @@ source("http://www.openintro.org/stat/data/gun_violence_us.R")
 *** =solution
 ```{r}
 # Use the `plot()` function to visualize the relationship between `ownership_rate` and `mortality_rate`
-plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
+plot(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)
 
 
 ```
@@ -105,14 +105,14 @@ success_msg("Nice! Now look at the plot. We can see that as gun ownership rates 
 
 We can use the `cor()` function to estimate the correlation between two quantitative variables with the format:
 
-`cor(dataset$var1, dataset$var2)`
+`cor(x = dataset$var1, y = dataset$var2)`
 
 *Note: the order of var1 and var2 does not matter for the `cor()` function.*
 
 *** =instructions
 Use the `cor()` function to estimate the correlation coefficient between `ownership_rate` and `mortality_rate` from the `gun_violence_us` data set.
 *** =hint
-Follow the format `cor()` format in the lesson with the `gun_violence_us` data set and `ownership_rate`/`mortality_rate` in any order. 
+Follow the `cor()` format in the lesson with the `gun_violence_us` data set and `ownership_rate`/`mortality_rate` in any order. 
 *** =pre_exercise_code
 ```{r}
 source("http://www.openintro.org/stat/data/gun_violence_us.R")
@@ -128,14 +128,14 @@ source("http://www.openintro.org/stat/data/gun_violence_us.R")
 *** =solution
 ```{r}
 # Estimate the correlation between ownership_rate and mortality_rate
-cor(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
+cor(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)
 
 
 ```
 
 *** =sct
 ```{r}
-test_function("cor", args = c("x", "y"), eval = NA)
+test_function("cor", args = c("x", "y"), eval = F, incorrect_msg = "Make sure to follow the format: cor(x = dataset$var1, y = dataset$var2) with the correct data set and variables.")
 ```
 
 
@@ -143,10 +143,11 @@ test_function("cor", args = c("x", "y"), eval = NA)
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:e07efd5860
 ## Quick check 1
 
-Using the command `cor(x, y)` will produce different results than the command `cor(y, x)`.
+Using the command `cor(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)` will produce the same results as the command `cor(x = gun_violence_us$mortality_rate, y = gun_violence_us$ownership_rate)`.
+
 *** =instructions
-- TRUE
 - FALSE
+- TRUE
 *** =hint
 
 *** =pre_exercise_code
@@ -156,7 +157,7 @@ Using the command `cor(x, y)` will produce different results than the command `c
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct."
+msg_bad <- "That is not correct, the order of var1 and var2 does not matter for the `cor()` function."
 msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
@@ -166,15 +167,15 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
 We can learn more about the relationship between two variables by calculating a linear model with the `lm()` function in the format:
 
-`model_name <- lm(dataset$y.var ~ dataset$x.var)`
+`model1 <- lm(dataset$y.var ~ dataset$x.var)`
 
-`model_name`
+`model1`
 
 * y.var = the response variable
 * x.var = the explanatory variable
 
 
-Note: Remember that after we create an object we need to type the object name to view it *(I have already typed this for you in the R Script)*.
+We are saving the linear model results as an object called `model1`. Remember, we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 
 *** =instructions
 * Use the `lm()` function to calculate a linear model from the `gun_violence_us` data set and store these regression results in an object called `gun_model` where:
@@ -212,6 +213,8 @@ gun_model
 ```{r}
 test_object("gun_model", incorrect_msg = "Use the lm() function on the right side of the tilde with the correct data set (gun_violence_us), y.var = mortality_rate and x.var = ownership_rate.")
 
+test_student_typed("gun_model", not_typed_msg = "Do not remove or alter the line of code that prints the contents of gun_model.") 
+
 success_msg("Good work. Now look at the R output and find the estimate for the intercept and slope.")
 ```
 
@@ -219,10 +222,11 @@ success_msg("Good work. Now look at the R output and find the estimate for the i
 
 
 
---- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:649d942063
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9fc077c265
 ## Quick check 2
 
-In the last exercise, the estimate for the intercept was 4.573 and the estimate for the slope was 20.492.
+The regression model from the last exercise `gun_model` is stored in your workspace; type `gun_model` in your R script to view it.
 
 What is our linear regression model?
 
@@ -236,6 +240,8 @@ What is our linear regression model?
 
 *** =pre_exercise_code
 ```{r}
+source("http://www.openintro.org/stat/data/gun_violence_us.R")
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
 
 ```
 
@@ -246,10 +252,11 @@ msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:3605a42869
-## Testing significance of correlation
 
-Suppose we want to test whether there is a relationship between `ownership_rate` and `mortality_rate` in the `gun_violence_us` data set.
+--- type:NormalExercise lang:r xp:100 skills:1 key:3605a42869
+## Testing if the population slope is non-zero
+
+Suppose we want to test whether there is a linear association between `ownership_rate` and `mortality_rate` in the `gun_violence_us` data set.
 
 Our hypotheses:
 
@@ -294,6 +301,45 @@ success_msg("Good job. The p-value for this test is almost zero so we can reject
 ```
 
 
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d94f04f494
+## Quick check 3
+
+The test results from the last exercise are stored in an object called `test_results`; in your R console type `test_results` to view these.
+
+At the alpha = 0.05 significance level, how would we conclude this test?
+
+Recall our hypotheses are:
+
+$H\_0:$ $\beta\_{1} = 0$
+
+$H\_a:$ $\beta\_{1} \neq 0$
+
+where $\beta\_{1}$ = the slope of the regression
+
+
+*** =instructions
+- reject the null hypothesis and conclude that the slope is significantly less than zero
+- fail to reject the null hypothesis and conclude that the slope is significantly greater than zero
+- fail to reject the null hypothesis and conclude that the slope is significantly less than zero
+- reject the null hypothesis and conclude that the slope is significantly greater than zero
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+source("http://www.openintro.org/stat/data/gun_violence_us.R")
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
+test_results <- summary(gun_model)
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. The p-value is almost zero so we would reject- we can see that ownership rate and mortality rate have a positive linear association so the slope is greater than zero."
+msg_success <- "Exactly!"
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c7ec6c9c9b
 ## Confidence intervals for regression coefficients
 
@@ -406,6 +452,6 @@ Correlation can be used to estimate the strength of association between:
 ```{r}
 msg_bad <- "That is not correct. What kind of variables were 'ownership_rate' and 'mortality_rate'?"
 msg_success <- "Exactly! You have completed Lab 8 practice course."
-test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
