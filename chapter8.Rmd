@@ -5,7 +5,7 @@ description : Inference for Categorical Data
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:616c48f5cf
-## One sample z-test
+## Exploring a single categorical variable
 
 In this course, we will use the one sample *z*-test to test whether a population **proportion** differs from a specific value.
 
@@ -30,8 +30,7 @@ Let's begin by exploring the `lowbirthweight` variable in the `nc` data set.
 
 `addmargins(table(nc$lowbirthweight))`
 
-- Click the 'Submit Answer' button and then use R as a calculator to find the proportion of births that were classified as low birthweights.
-
+- Click 'Submit Answer' and use the table to find the proportion of low birthweights.
 *** =hint
 Remember, to make a table use the format: `table(dataset$variable)`.
 
@@ -49,8 +48,6 @@ load("nc.RData")
 
 # Copy and paste addmargins(table(nc$lowbirthweight)) to get margin totals
 
-
-# Click the 'Submit Answer' button and then find the proportion of births that were classified as low birthweights.
 
 
 ```
@@ -84,7 +81,7 @@ success_msg("Note that the 'low' birthweight column is on the left. Use the tabl
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5d43584cb1
-## Using the prop.test() function for 1 proportion
+## One sample z-test with prop.test()
 
 We can see that the proportion of babies with low birthweights from this data set is around 11%.
 
@@ -96,7 +93,7 @@ If we want to test whether the low birthrate of our population differs from 7%, 
 
 * *#yes* = number of births classified as low birthweight
 * *#total* = total number of births in the sample
-* *p* = the proportion from our null hypothesis
+* *null_hyp* = the proportion from our null hypothesis
 
 
 Our hypotheses are:
@@ -110,7 +107,8 @@ where $p$ = true proportion of low birthweight births
 Remember, there were 111 babies with low birthweight and 1000 total births in the sample.
 
 *** =instructions
-Use the `prop.test()` function to perform a *z*-test to determine if the population proportion of `lowbirthweight` from the `nc` data set differs from 0.07 (or 7%).
+Use the `prop.test()` function to perform a *z*-test to determine if the population low birthweight rate differs from 0.07 (or 7%).
+Remember, we are using the `nc` data set and `lowbirthweight` variable.
 
 
 *** =hint
@@ -143,13 +141,13 @@ prop.test(x = 111, n = 1000, p = 0.07, correct = FALSE)
 *** =sct
 ```{r}
 test_function("prop.test", args = c("x", "n", "p", "correct"))
-success_msg("Great! Now examine the R output. The p-value is almost zero so we can reject the null hypothesis and conclude the proportion of low birthweights is significantly different than 0.07.")
+success_msg("Great! Now examine the R output. The p-value is small so we can reject the null hypothesis and conclude the proportion of low birthweights is significantly different than 0.07.")
 
 
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b187ce8175
-## Two Sample z-test
+## Two-way contingency table
 
 The `nc` data set also contains a categorical variable called `habit` with 2 levels:
 
@@ -195,11 +193,6 @@ load("nc.RData")
 # Copy and paste the code from the second instruction
 
 
-
-
-# Use table to find low birthweight proportions of smoking mothers and nonsmoking mothers
-
-
 ```
 
 *** =solution
@@ -212,10 +205,6 @@ table(nc$lowbirthweight, nc$habit)
 addmargins(table(nc$lowbirthweight, nc$habit))
 
 
-# Use table to find low birthweight proportions of smoking mothers and nonsmoking mothers
-
-
-
 ```
 
 *** =sct
@@ -224,24 +213,49 @@ test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the fo
 
 test_student_typed("addmargins(table(nc$lowbirthweight, nc$habit))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
 
-success_msg("Good job. From the R output we can see that among the nonsmoking group, 92/873 (or about 10.5%) of babies were born with low birthweight compared to the smoking group where 18/126 (or about 14.3%) of babies had low birthweights. The proportions are different (as expected) but let's see if this difference meaningful beyond random chance!")
-
-
-
+success_msg("Good job.")
 
 ```
 
 
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:c371bb4088
+## Quick check 1
 
+The contingency table from the last exercise is stored in an object called `table1`; type `table1` in your R script to view it.
+
+What is the low birthweight rate among smoking mothers in this sample?
+
+*** =instructions
+- 16.4%
+- 10.5%
+- 14.3%
+- 85.7%
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
+load("nc.RData")
+
+table1 <- addmargins(table(nc$lowbirthweight, nc$habit))
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Use 'table1' to find the proportion of low birthweights by dividing the number of low birthweights among smoking mothers by the total number of smoking mothers."
+msg_success <- "Exactly! The low birthweight rate is higher among smoking mothers (as expected) but let's see if this difference is meaningful beyond random chance!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:a51b77b946
-## Using the prop.test() function for 2 proportions
+## Two sample z-test with prop.test()
 
-To test whether there is a significant difference between 2 proportions, we can use the `prop.test()` function with the format:
+To test whether there is a significant difference between 2 population proportions, we can use the `prop.test()` function with the format:
 
 `prop.test(c(x1, x2), c(n1, n2), correct = FALSE)` with:
 
-* *x1* = number low birthweight babies with smoking mothers (18)
-* *x2* = number low birthweight babies with nonsmoking mothers (92)
+* *x1* = number low birthweight babies among smoking mothers (18)
+* *x2* = number low birthweight babies among nonsmoking mothers (92)
 * *n1* = number of smoking mothers (126)
 * *n2* = number of nonsmoking mothers (873)
 
@@ -249,15 +263,15 @@ In this exercise you will perform a 2 sample z-test.
 
 Our hypotheses are:
 
-$H\_0$: $p\_{yes} = p\_{no}$
+$H\_0$: $p\_{smoker} = p\_{nonsmoker}$
 
-$H\_a$: $p\_{yes} \neq p\_{no}$
+$H\_a$: $p\_{smoker} \neq p\_{nonsmoker}$
 
-* $p\_{yes}$ = proportion of low birthweight babies with smoking mothers
-* $p\_{no}$ = proportion of low birthweight babies with nonsmoking mothers
+* $p\_{smoker}$ = proportion of low birthweight babies among smoking mothers
+* $p\_{nonsmoker}$ = proportion of low birthweight babies among nonsmoking mothers
 
 *** =instructions
-Use the `prop.test()` function to test whether the proportion of low birthweight is significantly different depending on whether the mother smoked. 
+Use the `prop.test()` function to test whether the population proportion of low birthweight babies differs by mother's smoking status. 
 
 *** =hint
 Follow the format from the lesson with the correct arguements (x1 = 18, x2 = 92, n1 = 126, n2 = 873).
@@ -301,13 +315,13 @@ At the alpha = 0.05 significance level, how would we conclude this test?
 
 Recall our hypotheses are:
 
-$H\_0$: $p\_{yes} = p\_{no}$
+$H\_0$: $p\_{smoker} = p\_{nonsmoker}$
 
-$H\_a$: $p\_{yes} \neq p\_{no}$
+$H\_a$: $p\_{smoker} \neq p\_{nonsmoker}$
 
 *** =instructions
 - We would reject the null hypothesis and conclude that there is a significant difference in the proportion of smokers and nonsmokers with low birthweight births.
-- We would fail to reject the null hypothesis and conclude that there is no significant difference in the proportion of smokers and nonsmokers with low birthweight births.
+- We would fail to reject the null hypothesis and conclude that there is no evidence of a difference in the proportion of smokers and nonsmokers with low birthweight babies.
 
 *** =hint
 
@@ -320,7 +334,7 @@ test_results <- prop.test(c(18, 92), c(126, 873), correct = FALSE)
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. The p-value is greater than alpha = 0.05 AND the confidence interval contains zero so we would fail to reject the null hypothesis"
+msg_bad <- "That is not correct. The p-value is greater than alpha = 0.05 AND the confidence interval contains zero so we would fail to reject the null hypothesis."
 msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
@@ -328,7 +342,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:c971d0fe82
-## Quick check 1 If this lab is too long we can cut this
+## Quick check 2
 
 Suppose I get a random sample of 200 Cal Poly students, and I find that there are 40 athletes and 160 non-athletes. Among the 40 athletes, 15 were on the Dean's List. Among the 160 non-athletes, 33 were on the Dean's List. I want to use this data to test if the population proportion of all Cal Poly athletes that are on the Dean's List differs from the population proportion of all Cal Poly non-athletes that are on the Dean's List.
 
@@ -354,49 +368,9 @@ msg_success <- "Exactly!"
 test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:2a5b2a64f5
-## Chi-squared and z-test statistics
 
-You may have noticed that the one and two sample z-tests only provide a *chi-squared* test statistic (and not the *z* statistic) in the R output. 
-
-However, a *z* statistic squared is equivalent to a chi-squared statistic with 1 degree of freedom.
-
-For example, if my chi-squared test statistic is 4, then the z-statistic would be $\sqrt{4} = 2$.
-
-Note: this is true for both one sample *z*-tests and two sample *z*-tests.
-*** =instructions
-The chi-squared statistic from the last exercise was 1.578. Use R as a calculator to find the corresponding *z* statistic.
-
-*Note: use the `sqrt()` function to find the square root of a number.*
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-
-```
-
-*** =sample_code
-```{r}
-# Find the corresponding z statistic 
-
-
-```
-
-*** =solution
-```{r}
-# Find the corresponding z statistic 
-sqrt(1.578)
-
-
-```
-
-*** =sct
-```{r}
-test_output_contains("1.256185", incorrect_msg = "Use the sqrt() function to find the square root of 1.578.")
-```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:770e869325
-## Quick Check 2
+## Quick Check 3
 
 The two sample z-test is appropriate when we want to:
 *** =instructions
@@ -423,37 +397,9 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:252ab074b6
-## Using the prop.table() function  (maybe delete this?)
-So far, we've had to create a table and used a calculator to find proportions.
 
-The `prop.table()` function can quickly obtain proportions from a contingency table
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
 --- type:NormalExercise lang:r xp:100 skills:1 key:cfdac30423
-## Chi-squared test
+## Exploring two categorical variables 
 
 What if we want to compare proportions of *more than* 2 groups? To do this we can do a chi-squared test of association.
 
@@ -508,14 +454,6 @@ library(mosaicData)
 # Copy and paste the code from the second instruction
 
 
-
-
-# Use table to find the homeless rate for each category of substance abuse
-
-
-
-
-
 ```
 
 *** =solution
@@ -527,9 +465,6 @@ table(HELPrct$homeless, HELPrct$substance)
 addmargins(table(HELPrct$homeless, HELPrct$substance))
 
 
-
-# Use table to find the homeless rate for each category of substance abuse
-
 ```
 
 *** =sct
@@ -538,7 +473,7 @@ test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the fo
 
 test_student_typed("addmargins(table(HELPrct$homeless, HELPrct$substance))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
 
-success_msg("Good job. From the R output we can see that among the alcohol users, 103/177 (or about 58.2%) were homeless, cocaine users had a homeless rate of 59/152 (or about 38.8%) and as for the heroin group, 47/124 (37.9%) were homeless before coming to the facility. The proportions are different but let's see if this difference is statistically significant!")
+success_msg("Good work.")
 
 
 ```
@@ -567,15 +502,15 @@ my_table <- addmargins(table(HELPrct$homeless, HELPrct$substance))
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct."
-msg_success <- "Exactly!"
+msg_bad <- "That is not correct. Find the homeless rates by dividing the number of homeless people in each substance group by the total number of people in that substance group."
+msg_success <- "Exactly. The proportions are different but let's see if the difference is statistically significant!"
 test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success))
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:4a650270a2
-## Using the chisq.test() function
+## Chi-squared test
 
-To perform a chi-squared test of independence we can use the `chisq.test()` function with the format:
+To perform a chi-squared test of association we can use the `chisq.test()` function with the format:
 
 `chisq.test(dataset$var1, dataset$var2, correct=F)`
 
@@ -628,19 +563,21 @@ success_msg("Great! Now look at the R output to see the results of the test.")
 
 Our hypotheses for the last exercise:
 
-$H_0$: Being homeless is independent of primary substance.
+$H_0$: Homelessness is not associated with primary substance.
 
-$H_a$: Being homeless is related of primary substance.
-
+$H_a$: Homelessness is associated with primary substance.
 
 
 The chi-squared test from the last exercise re stored in an object called `chisq_results`; in your R console type `chisq_results` to view these.
 
+At $\alpha$ = 0.05, we ______ the null hypothesis and conclude that we ____ have evidence of an association between homelessness and primary substance.
+
+
 *** =instructions
-- Reject the null and conclude all of the population proportions are different.
-- Reject the null and conclude that being homeless is independent of primary substance.
-- Reject the null and conclude that at least one of the population proportions differs from the others.
-- Reject the null and conclude that there is a relationship between homeless and substance.
+- reject / do
+- reject / do not
+- fail to reject / do
+- fail to reject / do not
 
 *** =hint
 
@@ -654,7 +591,7 @@ chisq_results <- chisq.test(HELPrct$homeless, HELPrct$substance, correct = F)
 ```{r}
 msg_bad <- "That is not correct."
 msg_success <- "Exactly!"
-test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 
 ```
 
@@ -665,7 +602,7 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 An assumption of the chi-squared test is that all expected counts are at least 5.
 
-To check this, you will save the chi-squared test results as an object and then use `$` to view the expected cell counts.
+To check this, you will save the chi-squared test results as an object and then use `$expected` to view the expected cell counts.
 
 *** =instructions
 - Copy and paste the code below to save the test results in the object called `results`.
@@ -715,7 +652,7 @@ success_msg("Nice job. Since all of the expected counts are at least 5, this con
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:5cefd02043
-## Quick check 3
+## Quick check 4
 **This is the last exercise of Lab 7**
 
 When we do the one sample z-test or the two sample z-test we are interested in doing statistical inference about
@@ -740,31 +677,4 @@ msg_success <- "Exactly! You have completed Lab 7 practice course."
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:a1e6ca936b
-## Calculating p-values from a z-test statistic?
 
-They don't have to do this in the practice so should I leave it out? I feel like it's confusing anyway
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
