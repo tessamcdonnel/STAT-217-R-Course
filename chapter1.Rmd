@@ -5,39 +5,6 @@ description : Introduction to R and RStudio
 
 
 
---- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:9707072219
-## Capabilities of R
-
-
-
-What can R be used for?
-
-*** =instructions
-- Graphing data
-- Analyzing data
-- Calculations
-- All of the above
-
-*** =hint
-R software can be used for all of these things.
-
-*** =pre_exercise_code
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
-
-```
-
-*** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-msg_bad <- "That is not correct"
-msg_success <- "Exactly! R can do all of these things."
-test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
-```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:8902293ef6
 ## How to use DataCamp
 
@@ -199,9 +166,10 @@ If I want to take the square root of 9, I would type `sqrt(9)` and it would retu
 
 *** =instructions
 - In the script, use the `sqrt()` function to find the square root of 9659.
-- In the script, use the `sqrt()` function and arithmetic operators (from last exercise) to evaluate the expression:
+- In the script, use the `sqrt()` function and arithmetic operators (from the last exercise) to evaluate the expression:
 $\frac{0.6 - 0.5}{\sqrt{0.25 / 1000}}$
 
+*Note: R uses PEMDAS order of operations like you would use in any math class (Parentheses - exponents/square roots - multiplication - ...).*
 
 *** =hint
 R uses PEMDAS order of operations like you would use in any math class.
@@ -224,23 +192,25 @@ R uses PEMDAS order of operations like you would use in any math class.
 # Find the square root of 9659 using sqrt()
 sqrt(9659)
 
-# Evaluate the expression in the plots panel 
+# Evaluate the expression in the instructions 
 (0.6-0.5) / sqrt(0.25/1000)
 ```
 
 *** =sct
 ```{r}
-test_function("sqrt", args = "x")
+test_function("sqrt", args = "x", incorrect_msg = "Type 'sqrt(9659)' below the first comment in the R script panel.")
 
-test_output_contains("(0.6-0.5) / sqrt(0.25/1000)", incorrect_msg = "That is incorrect. Type (0.6-0.5) / sqrt(0.25/1000) to evaluate the expression in the Plots panel.")
+test_output_contains("(0.6-0.5) / sqrt(0.25/1000)", incorrect_msg = "That is incorrect. Type (0.6-0.5) / sqrt(0.25/1000) to evaluate the expression.")
 
 success_msg("Good work!")
 ```
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6f441f4fb9
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:d6699314d9
 ## Basic data types in R
 
-The four basic data types we will be working with in this course are:
+Some data types we will be working with in this course are:
 
 Numeric: numbers with decimals like `3.1` or `22.0`
 
@@ -275,22 +245,21 @@ msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
 
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5519a279
-## Variable assignment
+## Object assignment
 
-'Variable' is one of the most important concepts in statistics. In R, we can use variables to store values or objects so that we can easily access them in the future.
+R is what we call an *object oriented language*. In R, we can use objects to store values, data frames,or even results from statistical analysis.
 
-A simple example of variable assignment is `x <- 5` which assigns a value 5 to a variable named 'x'. We can print the contents of x by typing `x` into the R console.
+A simple example of object assignment is `x <- 5` which assigns a value 5 to an object named 'x'. We can print the contents of x by typing `x` into the R console.
 
 
 *** =instructions
-- Assign the value 100 to a variable named `my_variable`.
-- Type `my_variable` into your R script to print the contents.
+- Assign the value 100 to a variable named `my_object`.
+- Type `my_object` into your R script to print the contents.
 - Click the 'Submit Answer' button and look through the R output.
 
 *** =hint
-Type '100' on the right side of the assignment command `<-` to assign 100 to `my_variable`.
+Type '100' on the right side of the assignment command `<-` to assign 100 to `my_object`.
 *** =pre_exercise_code
 ```{r}
 
@@ -298,39 +267,65 @@ Type '100' on the right side of the assignment command `<-` to assign 100 to `my
 
 *** =sample_code
 ```{r}
-# Assign the value 100 to a variable named my_variable
+# Assign the value 100 to an object named my_object
 
-my_variable <- 
+my_object <- 
 
 
-# Print the value of my_variable
+# Print the value of my_object
 
 
 ```
 
 *** =solution
 ```{r}
-# Assign the value 100 to a variable named my_variable
+# Assign the value 100 to an object named my_object
 
-my_variable <- 100
+my_object <- 100
 
 
-# Print the value of my_variable
-my_variable
+# Print the value of my_object
+my_object
 
 ```
 
 *** =sct
 ```{r}
-test_object("my_variable", incorrect_msg = "Make sure you type '100' on the right side of the assignment command `<-` to assign 100 to my_variable.")
+test_object("my_object", incorrect_msg = "Make sure you type '100' on the right side of the assignment command `<-` to assign 100 to my_object.")
 
-test_output_contains("my_variable", incorrect_msg = "Remember to type 'my_variable' to print out the contents of my_variable") 
+test_output_contains("my_object", incorrect_msg = "Remember to type 'my_object' to print out the contents of my_object") 
 
-success_msg("Good! Notice that the value 100 appears when R prints `my_variable`.")
+success_msg("Good! Notice that the value 100 appears when R prints `my_object`.")
 ```
 
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:8404e9b4ff
+## Quick check 1
+
+Which of the following commands will correctly assign the numbers 1,2,3,4 to an object named 'my_vector'?
+
+*** =instructions
+- my_vector = c(1, 2, 3, 4)
+- my_vector <- c(1, 2, 3, 4)
+- my_vector -> c(1, 2, 3, 4)
+- c(1, 2, 3, 4) <- my_vector
+- c(1, 2, 3, 4) -> my_vector
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. Review the last exercise."
+msg_success <- "Exactly!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad, msg_bad))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:21fd16b05f
-## Accessing specific variables using $
+## Viewing data
 R has a built-in dataset called `women` which contains 2 variables (`height` and `weight`) of 15 women. 
 
 This data set is already in your workspace so if you type  `women` into your R console, the data set will come up in the output.
@@ -343,7 +338,8 @@ In this exercise you will be learning how to access specific variables within a 
 For example, if you want to view the `height` variable by itself, type `women$height` into the R console.
 
 *** =instructions
-Use the format in the lesson to access the `weight` variable in the `women` data set.
+- Type `women` in the R script to print the entire data set.
+- Use the `$` notation presented in the lesson to only view the `weight` variable in the `women` data set.
 *** =hint
 
 *** =pre_exercise_code
@@ -353,6 +349,9 @@ Use the format in the lesson to access the `weight` variable in the `women` data
 
 *** =sample_code
 ```{r}
+# Print the entire data set by typing 'women'
+
+
 # Access weight from women like we did for the height variable
 
 
@@ -360,15 +359,62 @@ Use the format in the lesson to access the `weight` variable in the `women` data
 
 *** =solution
 ```{r}
+# Print the entire data set by typing 'women'
+women
+
 # Access weight from women like we did for the height variable
 women$weight
 ```
 
 *** =sct
 ```{r}
-test_student_typed("women$weight", not_typed_msg = "Make sure you follow the format: dataset$variable with the correct data set and variable!")
+test_output_contains("women", incorrect_msg = "Type 'women' in your R script (under the first comment) to print the entire data set.")
+
+test_output_contains("women$weight", incorrect_msg = "Make sure you follow the format: dataset$variable with the correct data set (women) and variable (weight)!")
+
 ```
 
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:1ae116e9d3
+## Using the summary() function
+
+In this exercise, you will learn how to use the R built-in function `summary()` to obtain statistics of your data set. 
+
+`summary(dataset)`: gives a few summary statistics of all variables in the data set
+
+The dataset we've been working with `women` is already in your workspace.
+
+*** =instructions
+- Use the `summary()` function to obtain summary statistics of the `women` data set.
+
+*** =hint
+substitute `women` for dataset
+
+*** =pre_exercise_code
+```{r}
+```
+
+*** =sample_code
+```{r}
+# Use summary() on women to get summary statistics of the entire dataset
+
+
+
+```
+
+*** =solution
+```{r}
+# Use summary() on women to get summary statistics of the entire dataset
+summary(women)
+
+
+```
+
+*** =sct
+```{r}
+test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' with 'women' instead of dataset to obtain a summary of the entire data set.")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:766b6a5af5
 ## Graphing data in R
 
@@ -380,14 +426,14 @@ The format to make a basic scatterplot is:
 
 `plot(x = dataset$x.var , y = dataset$y.var)`
 
-For this exercise, we are going to visualize the relationship between the two variables in `women`:
+For this exercise, we are going to visualize the relationship between the two variables in `women`.
 
-x.var = `height` 
-
-y.var = `weight`
 
 *** =instructions
 - Follow the `plot()` function format from the lesson to create a scatterplot of `height` by `weight` from the `women` data set.
+    * `height` should be on the x-axis
+    * `weight` should be on the y-axis
+
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
 Follow the format in the lesson with `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`.
@@ -417,10 +463,40 @@ success_msg("Good work! From the plot we can see that as height increases, weigh
 
 ```
 
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:9707072219
+## Quick check 1
+
+What can R be used for?
+
+*** =instructions
+- Graphing data
+- Analyzing data
+- Calculations
+- All of the above
+
+*** =hint
+R software can be used for all of these things.
+
+*** =pre_exercise_code
+```{r}
+# The pre exercise code runs code to initialize the user's workspace.
+# You can use it to load packages, initialize datasets and draw a plot in the viewer
+
+```
+
+*** =sct
+```{r}
+# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+
+msg_bad <- "That is not correct"
+msg_success <- "Exactly! R can do all of these things."
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+```
+
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:dff314deba
-## Quick check 
+## Quick check 2
 **This is the last exercise of Lab 1**
 
 What is the correct code to access a variable in a data set?
