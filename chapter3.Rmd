@@ -18,9 +18,9 @@ If we want to know the *types of variables* in our data set, we can apply the `s
 This will return all of the variable names as well as their type (i.e. numeric, factor, integer). 
 
 
-*Categorical* variables will be will be `factor` variable types.
+*Categorical* variables can be `factor` or `character` variable types.
 
-*Quantitative* variables will be `numeric` and `integer` variable types.
+*Quantitative* variables can be `numeric` or `integer` variable types.
 
 
 
@@ -67,20 +67,12 @@ success_msg("Great! Now look at the R output and find the variable 'sex'. What t
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:fdd4d759e9
 ## Quick check 1
 
-You may have noticed from the previous exercise that the `sex` variable is coded as numeric, but this is incorrect.
-
-`sex` only takes on two values:
-
-* 1 = respondent is female
-* 2 = respondent is male 
-
-What is the correct variable type of `sex`?
-
+The sex variable represents a _______ variable in reality; in R, this variable should be defined as a ______ variable.
 *** =instructions
-- integer
-- factor
-- numeric
-- logical
+- quantitative, numeric
+- quantitative, factor
+- categorical, numeric
+- categorical, factor
 *** =hint
 
 *** =pre_exercise_code
@@ -92,7 +84,7 @@ What is the correct variable type of `sex`?
 ```{r}
 msg_bad <- "That is not correct. Since 'sex' only takes on two values it should be coded as a categorical variable (factor)."
 msg_success <- "Exactly!"
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
 
@@ -148,37 +140,14 @@ test_student_typed("CPS85$sex <- factor(CPS85$sex, labels = c('female', 'male'))
 test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with the correct data set!")
 ```
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ee655438c8
-## Quick check 2
-
-Is a `factor` coded variable an example of a *quantitative* variable or a *categorical* variable?
-
-*** =instructions
-- Quantitative
-- Categorical
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-msg_bad <- "That's incorrect. A factor variable is a categorical variable!"
-msg_success <- "Good answer!"
-
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
-```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
 ## Summarizing quantitative variables
 
-In this exercise, you will practice using the `favstats()` function from the *mosaic* package in R. This function will return the min, max, mean, sd and a few other numerical summaries of a quantitative variable.
+Previously, we used the summary() function to summarize data; however, this function does not produce standard deviation.  In order to get all of our standard summary statistics simultaneously, we will use the favstats() function from the mosaic package.
 
-To use the `favstats()` function, use the format:
-`favstats(dataset$quant_var)`
-
+* First, to access a particular package, we need to load the package with the `library(packagename)` command.
+* Next, to use the `favstats()` function, use the format: `favstats(dataset$quant_var)`.
 
 `CPS85` contains a quantitative variable named `wage` that measures the respondents wage in US dollars per hour.
 
@@ -237,6 +206,35 @@ test_function("favstats", args = "x", index = 2, incorrect_msg = "Follow the for
 ```
 
 
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:10bdedd6ea
+## Quick check 2
+
+The `favstats()` results of `age` from the last exercise are stored in an object called `age_results`; in your R console type `age_results` to view these.
+
+How old was the oldest respondent in the data set?
+
+*** =instructions
+- 28
+- 64
+- 35
+- 44
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(mosaic)
+library(mosaicData)
+age_results <- favstats(CPS85$age)
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not correct. The oldest person will be the 'max' of age in the data set."
+msg_success <- "Exactly!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:b15fdcaef0
 ## Summarizing quantitative variables by group
 
@@ -526,14 +524,10 @@ The format to make a basic scatterplot is:
 
 `CPS85` contains a quantitative variable named `educ` which measures the respondents number of years of education.
 
-For this exercise, we are going to visualize the relationship between `educ` and `wage` in the `CPS85` data set:
-
-x = `educ` 
-
-y = `wage`
+For this exercise, we are going to visualize the relationship between `educ` and `wage` in the `CPS85` data set. Plot `educ` on the x-axis and `wage` on the y-axis.
 
 *** =instructions
-- Use the `plot()` function to create a scatterplot of `educ` and `wage`.
+- Use the `plot()` function to create a scatterplot of `educ` and `wage` from the `CPS85` data set.
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
 
@@ -544,14 +538,14 @@ library(mosaicData)
 
 *** =sample_code
 ```{r}
-# Use plot() to create scatterplot of education 'educ' and wage
+# Use plot() to create scatterplot of education (educ) and wage
 
 
 ```
 
 *** =solution
 ```{r}
-# Use plot() to create scatterplot of education 'educ' and wage
+# Use plot() to create scatterplot of education (educ) and wage
 
 plot(x = CPS85$educ, y = CPS85$wage)
 ```
@@ -567,7 +561,7 @@ test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow th
 --- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
 ## Visualizing quantitative variables by groups
 
-**This is the last exercise for Lab 3**
+**This is the last exercise for Lab 3.**
 
 Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
 
@@ -579,10 +573,10 @@ This will produce side by side boxplots.
 
 *** =instructions
 
-Create side-by-side boxplots to compare the `wage` of respondents in the `CPS85` data set by whether they are male of female `sex`.
+Create side-by-side boxplots to compare the `wage` of respondents in the `CPS85` data set by whether they are male or female (`sex`).
 
 *** =hint
-Use format in the lesson with `wage` = `quant_var`, `CPS85` = `dataset`, `sex` = `categ_var`
+Use format in the lesson with `wage` instead of `quant_var`, `CPS85` instead of `dataset`, `sex` instead of `categ_var`.
 *** =pre_exercise_code
 ```{r}
 library(mosaicData)
@@ -615,27 +609,3 @@ success_msg("Great job. You finished Lab 3 practice course.")
 
 
 
---- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:e440a25df0
-## Quick check 5
-
-**This is the last exercise of Lab 3**
-
-What kind of variable are visualizing when we make a boxplot?
-
-*** =instructions
-- Categorical
-- Quantitative
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-msg_bad <- "That's incorrect. We visualize quantitative variables with boxplots."
-msg_success <- "Good answer! You finished Lab 3 practice course."
-
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
-```
