@@ -16,7 +16,7 @@ Sometimes the data can be very long so instead of viewing the entire thing, we c
 
 If we want to know the variable (column) names in the data set, we can type `names(dataset)` into the console.
 
-If we want to know the dimensions of a dataset (ie. how many variables and subjects) use the `dim(dataset)` function.
+If we want to know the dimensions of a dataset (ie. how many variables and observations) use the `dim(dataset)` function.
 
 Note: `dataset` is just a placeholder for the name of the data set you want to explore. In this exercise, you need to substitute `arbuthnot` for `dataset`.
 
@@ -144,19 +144,21 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =sample_code
 ```{r}
-# Use summary() on arbuthnot to get summary statistics of the entire arbuthnot dataset
+# Use summary() on arbuthnot to obtain summary statistics of the entire arbuthnot dataset
+
+
 ```
 
 *** =solution
 ```{r}
-# Use summary() on arbuthnot to get summary statistics of the entire arbuthnot dataset
+# Use summary() on arbuthnot to obtain summary statistics of the entire arbuthnot dataset
 summary(arbuthnot)
 
 ```
 
 *** =sct
 ```{r}
-test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' to obtain a summary of the entire data set.")
+test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' with arbuthnot instead of 'dataset' to obtain a summary of the entire data set.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
@@ -166,26 +168,27 @@ We can also use arithetic operators on variables.
 
 For example, if I want to add two variables together, i would type `dataset$var1 + dataset$var2`. 
 
-If I want to save this sum as a new variable, I would assign it to a name `dataset$newvar <- dataset$var1 + dataset$var2`.
+If I want to save this sum as a new variable, I would assign it to a new variable name as `dataset$newvar <- dataset$var1 + dataset$var2`.
 
 In this exercise, we will be creating a new variable called `propBoys` which measures the proportion of male births each year.
 
-*propBoys <- #boys/#total*
+$\text{proportion of boy births} = \frac{\text{number of boy births}}{\text{number of boy births} +\text{number of girl births} }$
 
-To do this, we will use the formula:
+To do this, we will use the syntax:
 
 `dataset$newvar <- dataset$var1 / (dataset$var1 + dataset$var2)`
 
 
 *** =instructions
-- Use the formula above to create the `propBoys` variable where:
-    - dataset = `arbuthnot`
-    - newvar = `propBoys`
-    - var1 = `boys`
-    - var2 = `girls`
-- Use the `names()` function on `arbuthnot` to make sure that `propBoys` was added to the variables.
+- Use the syntax above to calculate the proportion of boy births for each year in the data set. Name this new variable `propBoys`.
+- Recall that:
+    - the dataset is `arbuthnot`
+    - the number of boy births is given by `boys`
+    - the number of girl births is given by `girls`
+- Use the `head()` function on `arbuthnot` to verify that `propBoys` was added to the data set.
 *** =hint
-Follow the formula in the instructions with specified variables and data set (start typing on the right side of `<-`.
+- Follow the formula in the instructions with specified variables and data set.
+- Start typing on the right side of `<-`.
 *** =pre_exercise_code
 ```{r}
 source("http://www.openintro.org/stat/data/arbuthnot.R")
@@ -196,7 +199,7 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 # Create propBoys variable for arbuthnot
 arbuthnot$propBoys <- 
 
-# Use names() to check if propBoys was added
+# Use head() to check if propBoys was added
 
 
 ```
@@ -206,13 +209,14 @@ arbuthnot$propBoys <-
 # Create propBoys variable for arbuthnot
 arbuthnot$propBoys <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 
-# Use names() on arbuthnot to check if propBoys was added
-names(arbuthnot)
+# Use head() on arbuthnot to check if propBoys was added
+head(arbuthnot)
 ```
 *** =sct
 ```{r}
-
-success_msg("Great. Now look at the output and make sure that `propBoys` was added to the variables.")
+test_data_frame("arbuthnot", columns = "propBoys", incorrect_msg = "Make sure to follow the format in the lesson with correct data set and variables.")
+test_function("head", args = "x")
+success_msg("Great. Now look at the output and verify that `propBoys` was added to the variables.")
 ```
 
 
@@ -220,16 +224,14 @@ success_msg("Great. Now look at the output and make sure that `propBoys` was add
 --- type:NormalExercise lang:r xp:100 skills:1 key:59b987e2d7
 ## Using the sum() function
 
-Another useful built-in function that R has is the `sum()` function. 
+Another useful built-in function that R has is the `sum()` function, which simply sums all values.
 
-The `sum()` function adds what you put into the parenthesis.
-
-For example, to add a column in a data set use the format:
+For example, to sum the values of a variable in a data set use the format:
 
 `sum(dataset$variable)`
 
 *** =instructions
-Use the `sum()` function to find the total number of male births `boys` in `arbuthnot`.
+Use the `sum()` function to find the total number of male births `boys` in `arbuthnot` over the years in the data set (1629 - 1710).
 *** =hint
 - To sum over a variable, use the format: `sum(dataset$variable)`.
 *** =pre_exercise_code
@@ -263,28 +265,33 @@ test_function("sum", args = "...", incorrect_msg = "Make sure you use the format
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:938ccd0b92
-## Creating Logical Data
+## Evaluating logical expressions
 
 Recall in Lab 1 when we reviewed the different types of data.
 
 *Logical* data only takes on two values (TRUE or FALSE) where `TRUE` has the value of 1 and `FALSE` has the value of 0.
 
-We can create *logical* data with comparisons like greater than `>`, less than `<`, and inequallity `!=`
+We can evaluate *logical* expressions with comparison operators like
 
-A logical expression using the *greater than* symbol should follow the format:
+* greater than `>`
+* less than `<`
+* equal to `==`
+* not equal to `!=`
+
+For example, a logical expression using the *greater than* symbol should follow the format:
 
 `dataset$var1 > dataset$var2`
 
-This command will return a list of `TRUE` and `FALSE` values.
+This command will return a list of `TRUE` and `FALSE` values for each element evaluated.
 
 We can save these values in an object `new_var` by typing:
 
 `dataset$new_var <- dataset$var1 > dataset$var2`
 *** =instructions
-- Find which years in `arbuthnot` had greater male births `boys` than female births `girls`, save these values by assigning them to a new variable named `my_var`.
-- Use the sum() function to evaluate the total number of `TRUE` results in `my_var`.
+- Create a logical expression for which years where boy births `boys` exceeds girl births `girls` results in TRUE, and otherwise FALSE.  Assign this result to the variable `my_var` in the `arbuthnot` data set.
+ - Use the sum() function to evaluate the total number of `TRUE` results in `my_var`.
 *** =hint
-
+Remember, the format for finding the sum of a variable is 'sum(dataset$variable)'.
 *** =pre_exercise_code
 ```{r}
 source("http://www.openintro.org/stat/data/arbuthnot.R")
@@ -292,7 +299,7 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =sample_code
 ```{r}
-# Use the code at the end of the lesson with correct data set and variables
+# Create a logical expression using the syntax from the lesson 
 
 
 # Use the sum() function on my_var to find how many years there were more male births than female births
@@ -302,7 +309,7 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =solution
 ```{r}
-# Use the code at the end of the lesson with correct data set and variables
+# Create a logical expression using the syntax from the lesson 
 arbuthnot$my_var <- arbuthnot$boys > arbuthnot$girls
 
 
@@ -314,7 +321,7 @@ sum(arbuthnot$my_var)
 *** =sct
 ```{r}
 
-test_student_typed("arbuthnot$my_var <- arbuthnot$boys > arbuthnot$girls", not_typed_msg = "That is not correct. Follow the format in the lesson with 'arbuthnot' instead of 'dataset', 'my_var' instead of 'new_var', 'boys' instead of 'var1', and 'girls' instead of 'var2'")
+test_student_typed("arbuthnot$my_var <- arbuthnot$boys > arbuthnot$girls", not_typed_msg = "That is not correct. Follow the format in the lesson with 'arbuthnot' instead of 'dataset', 'my_var' instead of 'new_var', 'boys' instead of 'var1', and 'girls' instead of 'var2'.")
 
 test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is 'sum(dataset$variable)'. In this example, the dataset is 'arbuthnot' and the variable is 'my_var'.")
 
@@ -323,20 +330,13 @@ test_function("sum", args = "...", incorrect_msg = "Remember, the format for fin
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6bc90b9c68
-## Graphing Data: the Basics
-
-Numeric summaries like the mean and standard deviation are helpful when trying to understand a dataset but a visual display can provide more insight. 
+## Graphing data: the basics
 
 To create a basic plot in R, use the `plot()` function in the format:
 
 `plot(x = dataset$var1 , y = dataset$var2)`
 
-For this exercise, we are going to visualize the relationship between two variables in `arbuthnot`:
-
-x = year (`year`) 
-
-y = proportion of male births (`propBoys`)
-
+For this exercise, plot `year` on the x-axis and proportion of male births `propBoys` on the y-axis.
 
 
 *** =instructions
@@ -355,14 +355,14 @@ arbuthnot$propBoys <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 
 *** =sample_code
 ```{r}
-# Use the plot() function with x = arbuthnot$year and y = arbuthnot$propBoys
+# Create a scatterplot with `year` on the x-axis and proportion of male births `propBoys` on the y-axis.
 
 
 ```
 
 *** =solution
 ```{r}
-# Use the plot() function with x = arbuthnot$year and y = arbuthnot$propBoys
+# Create a scatterplot with `year` on the x-axis and proportion of male births `propBoys` on the y-axis.
 
 plot(x = arbuthnot$year, y = arbuthnot$propBoys)
 
@@ -378,11 +378,9 @@ success_msg("Good work!")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d0401021d4
-## Adding axis labels to graphs 
+## Adding labels to graphs 
 
-In this exercise, you will learn how to clean up a graph by adding axis labels and a title.
-
-Some arguements to specify in the `plot()` function:
+Some arguments to specify in the `plot()` function:
 
 - `xlab = "x"` : labels the x-axis "x"
 - `ylab = "y"` : labels the y-axis "y"
@@ -392,10 +390,10 @@ To add labels to a plot use the format:
 
 `plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title")`
 
-Right now the plot of `arbuthnot$year` vs. `arbuthnot$propBoys` has ugly axis names. In this exercise, we will change the axis names so the plot looks less messy.
+Currently, the plot of year versus proportion of boys has the default axis names. In this exercise, we will change the axis names and add a title to the graph.
 
 *** =instructions
-- Create the plot from the last exercise `plot(x = arbuthnot$year, y = arbuthnot$propBoys)` but this time add axis labels. 
+- Create the plot from the last exercise `plot(x = arbuthnot$year, y = arbuthnot$propBoys)` but this time add axis labels and a title. 
 
     - The new x-axis label should be `"Year"`, y-axis label should be `"Proportion of Male Births"` and the title should be `"Arbuthnot: Boys by Year"`.
 - Click the 'Submit Answer' button and take a look at the new plot. So much Better!
@@ -412,15 +410,15 @@ plot(x = arbuthnot$year, y = arbuthnot$propBoys)
 
 *** =sample_code
 ```{r}
-# Use plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title") with specified labels
-
+# Fill in the blanks to add axis labels and a title to the plot
+plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = ____ , ylab = ____, main = ____)
 
 
 ```
 
 *** =solution
 ```{r}
-# Use plot(x = dataset$var1 , y = dataset$var2, xlab = "x", ylab = "y", main = "title") with specified labels
+# Fill in the blanks to add axis labels and a title to the plot
 
 plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = "Year", ylab = "Proportion of Male Births", main = "Arbuthnot: Boys by Year")
 
