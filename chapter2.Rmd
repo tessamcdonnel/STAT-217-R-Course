@@ -419,7 +419,6 @@ plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = ____ , ylab = ____, mai
 *** =solution
 ```{r}
 # Fill in the blanks to add axis labels and a title to the plot
-
 plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = "Year", ylab = "Proportion of Male Births", main = "Arbuthnot: Boys by Year")
 
 
