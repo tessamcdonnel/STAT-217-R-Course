@@ -329,6 +329,34 @@ test_function("sum", args = "...", incorrect_msg = "Remember, the format for fin
 
 
 
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:c36eae3a47
+## Quick check 1
+
+Suppose I have a variable called GPA in my students data set. What do you think will happen if I enter the following expression?
+
+`sum(students$GPA>3.5)`
+
+*** =instructions
+- it will return the sum of all of the GPAs that are greater than 3.5
+- there will be an error
+- it will return the number of students who have a GPA greater than 3.5
+- it will return the number of students who have a GPA less than 3.5
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That's incorrect."
+msg_success <- "Good answer!"
+
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:6bc90b9c68
 ## Graphing data: the basics
 
@@ -427,5 +455,33 @@ plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = "Year", ylab = "Proport
 *** =sct
 ```{r}
 test_function("plot", args = c("x", "y", "xlab", "ylab", "main"), incorrect_msg = "Use the format in the lesson with the specified lables in the instructions. Make sure you wrap the labels in quotation marks because they are words.")
-success_msg("Look how much better the graph looks now that we have labels! You have completed the Lab 2 practice course.")
+success_msg("Look how much better the graph looks now that we have labels!")
+```
+
+
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:1037bb100a
+## Quick check 2
+
+**This is the last exercise in Lab 2 practice course.**
+
+Which one of the following commands would you use to view the first six entries in a data set?
+*** =instructions
+- tail()
+- summary()
+- dim()
+- head()
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "That's incorrect."
+msg_success <- "Good answer! You have completed the Lab 2 practice course."
+
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+
 ```
