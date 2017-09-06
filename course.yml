@@ -4,3 +4,4 @@ description: This is an automatically generated demo course which will help you 
 university: Cal Poly SLO, Stat 217
 difficulty_level: 1
 time_needed: 5 hour
+from: r-base-prod:27
