@@ -458,7 +458,7 @@ plot(x = women$height, y = women$weight)
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y"), incorrect_msg = "In your R script, follow the format: plot(x = dataset$var1 , y = dataset$var2) with the specified arguements. In this case, use `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`.")
+test_function("plot", args = c("x", "y"), incorrect_msg = "In your R script, follow the format: `plot(x = dataset$var1 , y = dataset$var2`) with the specified arguements. In this case, use women instead of dataset, height instead of var1 and weight instead of var2.")
 success_msg("Good work! From the plot we can see that as height increases, weight decreases.")
 
 ```

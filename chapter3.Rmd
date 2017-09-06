@@ -25,11 +25,10 @@ This will return all of the variable names as well as their type (i.e. numeric, 
 
 
 *** =instructions
-
 - Use the `str()` function to find the variable types of the `CPS85` data set.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
 *** =hint
-Follow the format `str(dataset)` with 'CPS85' instead of dataset.
+Follow the format `str(dataset)` with CPS85 instead of dataset.
 *** =pre_exercise_code
 ```{r}
 library(mosaicData)
@@ -56,9 +55,9 @@ str(CPS85)
 
 *** =sct
 ```{r}
-test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with 'CPS85' instead of 'dataset'!")
+test_function("str", args = "object", incorrect_msg = "Make sure you follow the format `str(dataset)` with CPS85 instead of dataset!")
 
-success_msg("Great! Now look at the R output and find the variable 'sex'. What type of variable does R think this is?") 
+success_msg("Great! Now look at the R output and find the variable `sex`. What type of variable does R think this is?") 
 
 ```
 
@@ -82,7 +81,7 @@ The sex variable represents a _______ variable in reality; in R, this variable s
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Since 'sex' only takes on two values it should be coded as a categorical variable (factor)."
+msg_bad <- "That is not correct. Since `sex` only takes on two values it should be coded as a categorical variable (factor)."
 msg_success <- "Exactly!"
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
@@ -112,7 +111,7 @@ CPS85$sex <- as.numeric(CPS85$sex)
 
 *** =sample_code
 ```{r}
-# This is the code that will change the *sex* variable to a factor variable (DO NOT alter it)
+# This is the code that will change the sex variable to a factor variable (DO NOT alter it)
 CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 
@@ -123,7 +122,7 @@ CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 *** =solution
 ```{r}
-# This is the code that will change the *sex* variable to a factor variable (DO NOT alter it)
+# This is the code that will change the sex variable to a factor variable (DO NOT alter it)
 CPS85$sex <- factor(CPS85$sex, labels = c('female', 'male'))
 
 # Use the str() function on CPS85
@@ -132,19 +131,19 @@ str(CPS85)
 
 *** =sct
 ```{r}
-msg <- "Do not alter the code that changed 'sex' into a factor variable. Press the 'undo' button in your script to get back to the original code."
+msg <- "Do not alter the code that changed `sex` into a factor variable. Press the 'undo' button in your script to get back to the original code."
 
 test_student_typed("CPS85$sex <- factor(CPS85$sex, labels = c('female', 'male'))", not_typed_msg = msg)
 
 
-test_function("str", args = "object", incorrect_msg = "Make sure you follow the format str(dataset) with the correct data set!")
+test_function("str", args = "object", incorrect_msg = "Make sure you follow the format `str(dataset)` with the correct data set!")
 ```
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
 ## Summarizing quantitative variables
 
-Previously, we used the summary() function to summarize data; however, this function does not produce standard deviation.  In order to get all of our standard summary statistics simultaneously, we will use the favstats() function from the mosaic package.
+Previously, we used the `summary()` function to summarize data; however, this function does not produce standard deviation.  In order to get all of our standard summary statistics simultaneously, we will use the `favstats()` function from the mosaic package.
 
 * First, to access a particular package, we need to load the package with the `library(packagename)` command.
 * Next, to use the `favstats()` function, use the format: `favstats(dataset$quant_var)`.
@@ -230,7 +229,7 @@ age_results <- favstats(CPS85$age)
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. The oldest person will be the 'max' of age in the data set."
+msg_bad <- "That is not correct. The oldest person will be the `max` of age in the data set."
 msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
@@ -283,7 +282,7 @@ favstats(CPS85$wage ~ CPS85$sex)
 
 *** =sct
 ```{r}
-test_student_typed("favstats(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Make sure you follow the format in the lesson with correct data set (CPS85), quantitative variable (wage) and categorical variable (sex).")
+test_student_typed("favstats(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Make sure you follow the format in the lesson with correct data set (`CPS85`), quantitative variable (`wage`) and categorical variable (`sex`).")
 ```
 
 
@@ -352,7 +351,7 @@ table(CPS85$married)
 
 *** =sct
 ```{r}
-test_function("table", args = "...", incorrect_msg = "Follow the format in the lesson with correct dataset (CPS85) and categ_var (married).")
+test_function("table", args = "...", incorrect_msg = "Follow the format in the lesson with correct dataset (`CPS85`) and categ_var (`married`).")
 
 ```
 
@@ -384,14 +383,14 @@ CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 *** =sample_code
 ```{r}
-# Create contingency table with variables `married` and `sex`
+# Create contingency table with variables married and sex
 
 
 ```
 
 *** =solution
 ```{r}
-# Create contingency table with variables `married` and `sex`
+# Create contingency table with variables married and sex
 table(CPS85$married, CPS85$sex)
 
 
@@ -471,7 +470,7 @@ hist(CPS85$wage)
 
 *** =sct
 ```{r}
-test_function("hist", args = "x", incorrect_msg = "Follow the format: hist(dataset$variable) with specified dataset and variable.")
+test_function("hist", args = "x", incorrect_msg = "Follow the format: `hist(dataset$variable)` with specified dataset and variable.")
 ```
 
 
@@ -509,7 +508,7 @@ barplot(table(CPS85$married))
 
 *** =sct
 ```{r}
-test_function("barplot", args = "height", incorrect_msg = "Make sure you follow the format in the lesson with 'CPS85' instead of 'dataset' and 'married' instead of 'categ_var'.")
+test_function("barplot", args = "height", incorrect_msg = "Make sure you follow the format in the lesson with `CPS85` instead of dataset and `married` instead of categ_var.")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c6f71ca0bd
@@ -586,21 +585,21 @@ CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 *** =sample_code
 ```{r}
-# Create side-by-side boxplots with quant_var = wage and categ_var = sex
+# Create side-by-side boxplots where wage is the quantitative variable and sex is categorical
 
 
 ```
 
 *** =solution
 ```{r}
-# Create side-by-side boxplots with quant_var = wage and categ_var = sex
+# Create side-by-side boxplots where wage is the quantitative variable and sex is categorical
 
 boxplot(CPS85$wage ~ CPS85$sex)
 ```
 
 *** =sct
 ```{r}
-test_student_typed("boxplot(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Remember, 'wage' is a quantitative variable and 'sex' is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
+test_student_typed("boxplot(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Remember, `wage` is a quantitative variable and 'sex' is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
 
 success_msg("Great job. You finished Lab 3 practice course.")
 ```
