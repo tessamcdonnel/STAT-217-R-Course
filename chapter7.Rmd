@@ -25,10 +25,10 @@ We can begin by exploring the relationship between `absent` and `race`.
 - Create a side by side boxplot to examine the distribution of absent days by race in the `schooldays` data set. Recall that the syntax for a boxplot is:
     `boxplot(dataset$quant_var ~ dataset$categ_var)`
 
-- Click the 'Submit Answer' button and look at the R output. Do you think this difference is statistically significant?
+- Click the 'Submit Answer' button and examine the R output. 
 
 *** =hint
-- To make a boxplot, use the format: `boxplot(dataset$quant_var ~ dataset$categ_var)`. In this exercise, the data set is called 'schooldays', the quantitative variable is 'absent' and the categorical variable is 'race'.
+- To make a boxplot, use the format: `boxplot(dataset$quant_var ~ dataset$categ_var)`. In this exercise, the data set is called `schooldays`, the quantitative variable is `absent` and the categorical variable is `race`.
 
 *** =pre_exercise_code
 ```{r}
@@ -54,7 +54,7 @@ boxplot(schooldays$absent ~ schooldays$race)
 *** =sct
 ```{r}
 
-test_student_typed("boxplot(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: boxplot(dataset$quant_var ~ dataset$categ_var) with the correct data set (schooldays), quant_var (absent) and categ_var (race)")
+test_student_typed("boxplot(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: `boxplot(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`schooldays`), quant_var (`absent`) and categ_var (`race`).")
 
 success_msg("Good work! It looks like Aboriginal students were absent more days. Let's see if it is significant!")
 
@@ -71,7 +71,7 @@ Before conducting a two sample t-test, we need to make sure that our data meets 
 
 It is reasonable to assume that the student's number of absent days are not related to each other, so the observations are independent.
 
-In this exercise, you will be checking the normality assumption for the `absent` variable in `schooldays`.
+In this exercise, you will be checking the second condition for the `absent` variable in `schooldays`.
 
 
 *** =instructions
@@ -83,7 +83,7 @@ In this exercise, you will be checking the normality assumption for the `absent`
 
 
 *** =hint
-For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with specified data set and variables. Remember, the quantitative variable is 'absent' and the categorical variable is 'race'.
+For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with specified data set and variables. Remember, the quantitative variable is `absent` and the categorical variable is `race`.
 
 To create a histogram use the format: `hist(dataset$variable)`
 *** =pre_exercise_code
@@ -96,7 +96,7 @@ library(mosaic)
 ```{r}
 # Load the mosaic package 
 
-# Examine the distribution of # absent days by race
+# Use favstats() to examine summary statistics of absent days by race
 
 
 # Create a histogram of number of absent days
@@ -109,7 +109,7 @@ library(mosaic)
 # Load the mosaic package 
 library(mosaic)
 
-# Examine the distribution of # absent days by race
+# Use favstats() to examine summary statistics of absent days by race
 favstats(schooldays$absent ~ schooldays$race)
 
 
@@ -121,12 +121,12 @@ hist(schooldays$absent)
 
 *** =sct
 ```{r}
-test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type `library(mosaic)` to load the mosaic package.")
 
 
-test_student_typed("favstats(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: favstats(dataset$quant_var ~ dataset$categ_var) with the correct data set (schooldays), quant_var (absent) and categ_var (race).")
+test_student_typed("favstats(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`schooldays`), quant_var (`absent`) and categ_var (`race`).")
 
-test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the 'schooldays' dataset and 'absent' variable.")
+test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format `hist(dataset$variable)` with the `schooldays` data set and `absent` variable.")
 
 success_msg("Nice job. Look at the R output, do you think this data meets the second condition?")
 
@@ -212,7 +212,7 @@ t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)
 
 *** =sct
 ```{r}
-test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)", not_typed_msg = "Make sure you follow the format from the lesson with the correct data set (schooldays), quant_var (absent) and categ_var (race). Don't forget to add 'var.equal = FALSE'")
+test_student_typed("t.test(schooldays$absent ~ schooldays$race, var.equal = FALSE)", not_typed_msg = "Make sure you follow the format from the lesson with the correct data set (`schooldays`), quant_var (`absent`) and categ_var (`race`). Don't forget to add 'var.equal = FALSE'.")
 
 success_msg("Great!")
 
@@ -322,21 +322,21 @@ Before we conduct the paired t-test, we need to make sure our data follows these
  
 The independence assumption is met because it is reasonable to assume that the *patients* are independent of one another.
 
-In this exercise, you will be checking the normality assumption for the the `diffwt` variable in the `anorexia` data set.
+In this exercise, you will be checking the second condition for the the `diffwt` variable in the `anorexia` data set.
 
 
-*Remember, the second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample size is larger than 30*
+*Remember, the second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample size is larger than 30.*
 
 
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use `favstats()` to explore your new variable `diffwt`.
+- Use `favstats()` to explore your new variable `diffwt` from the `anorexia` data set.
 - Use the `hist()` on `diffwt` from the `anorexia` data set.
 - Click the 'Submit Answer' button and check the output. Are the assumptions met?
 *** =hint
 
 - Use the format `favstats(dataset$variable)` for the second instruction.
-- To create a histogram use the format: `hist(dataset$variable)`
+- To create a histogram use the format: `hist(dataset$variable)`.
 - Remember we are using the data set called `anorexia`.
 *** =pre_exercise_code
 ```{r}
@@ -348,9 +348,9 @@ anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
 
 *** =sample_code
 ```{r}
-# load the mosaic package 
+# Load the mosaic package 
 
-# explore diffwt with the favstats() function
+# Explore diffwt with the favstats() function
 
 # Create a histogram of diffwt
 
@@ -359,10 +359,10 @@ anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
 
 *** =solution
 ```{r}
-# load the mosaic package 
+# Load the mosaic package 
 library(mosaic)
 
-# explore diffwt with the favstats() function
+# Explore diffwt with the favstats() function
 favstats(anorexia$diffwt)
 
 # Create a histogram of diffwt
@@ -373,12 +373,12 @@ hist(anorexia$diffwt)
 
 *** =sct
 ```{r}
-test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type `library(mosaic)` to load the mosaic package.")
 
-test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the anorexia dataset and 'diffwt' variable")
+test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format `favstats(dataset$variable)` with the `anorexia` data set and `diffwt` variable.")
 
 
-test_function("hist", args = "x", incorrect_msg = "Make sure you create a histogram of the diffwt variable from the anorexia data set.")
+test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format `hist(dataset$variable)` to create a histogram of the `diffwt` variable from the `anorexia` data set.")
 
 success_msg("Good! Now look at the output. We can see from the histogram that the distribution of the differences is not perfectly normal HOWEVER the sample size is over 30 so the conditions are satisfied.")
 ```
@@ -421,14 +421,14 @@ anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
 
 *** =sample_code
 ```{r}
-# use t.test() to conduct a paired t-test
+# Use t.test() to conduct a paired t-test
 
 
 ```
 
 *** =solution
 ```{r}
-# use t.test() to conduct a paired t-test
+# Use t.test() to conduct a paired t-test
 t.test(anorexia$diffwt, mu = 0)
 
 
@@ -436,7 +436,7 @@ t.test(anorexia$diffwt, mu = 0)
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu"), incorrect_msg = "Did you specify the null hypothesis as mu = 0? Make sure you use the correct dataset (anorexia) and variable (diffwt)")
+test_function("t.test", args = c("x", "mu"), incorrect_msg = "Did you specify the null hypothesis as mu = 0? Make sure you use the correct data set (`anorexia`) and variable (`diffwt`).")
 
 success_msg("Good job! Look at the R output for the t-test and take note of the p-value and 95% confidence interval.")
 ```
@@ -489,7 +489,7 @@ The `anorexia` data set we've been working with has a categorical variable named
 - `CBT` (Cognitive Behavioural treatment)
 - `FT` (Family Treatment)
 
-Suppose we want to determine if the population average post-weights differ among the three categories of treatment.
+Suppose we want to determine if the population average post-weights differs among the three categories of treatment.
 
 We can begin by exploring the relationship between treatment `Treat` and post-weights `Postwt`.
 
@@ -526,9 +526,9 @@ boxplot(anorexia$Postwt ~ anorexia$Treat)
 *** =sct
 ```{r}
 
-test_student_typed("boxplot(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: boxplot(dataset$quant_var ~ dataset$categ_var) with the correct data set (anorexia), quant_var (Postwt) and categ_var (Treat)")
+test_student_typed("boxplot(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: `boxplot(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`anorexia`), quant_var (`Postwt`) and categ_var (`Treat`).")
 
-success_msg("Good work! It looks like the post-treatment weights were much higher in the family treatment (FT) group. Is the difference observed meaningful beyond random chance?")
+success_msg("Good work! It looks like the post-treatment weights were much higher in the family treatment (`FT`) group. Is the difference observed meaningful beyond random chance?")
 
 ```
 
@@ -550,14 +550,14 @@ In this exercise, you will be checking the second condition for the `Postwt` var
 *The second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample size in each group is larger than 30*
 *** =instructions
 - Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to examine the distribution of post weights by treatment `Treat` in the `anorexia` data set.
-- Use the `hist()` function to check if `Postwt` is normally distributed.
+- Use the `favstats()` function to examine summary statistics of post weights `Postwt` by treatment `Treat` in the `anorexia` data set.
+- Use the `hist()` function to obtain a histogram of `Postwt`.
 - Click the 'Submit Answer' button and check the output. Are the assumptions met?
 
 
 *** =hint
-- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct data set (anorexia), quantitative variable (Postwt) and categorical variable (Treat).
-- To create a histogram, use the format: `hist(dataset$variable)` with the correct dataset and variable.
+- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`anorexia`), quantitative variable (`Postwt`) and categorical variable (`Treat`).
+- To create a histogram, use the format: `hist(dataset$variable)` with the correct data set and variable.
 
 *** =pre_exercise_code
 ```{r}
@@ -569,9 +569,11 @@ library(mosaic)
 ```{r}
 # load the mosaic package 
 
-# explore relationship between treatment and post weights with the format: `favstats(dataset$quant_var ~ dataset$categ_var)`
+# Explore relationship between treatment and post weights. Recall the syntax: favstats(dataset$quant_var ~ dataset$categ_var)
+
 
 # Create a histogram of post-treatment weights
+
 
 ```
 
@@ -580,18 +582,20 @@ library(mosaic)
 # load the mosaic package 
 library(mosaic)
 
-# explore relationship between treatment and post weights with favstats()
+# Explore relationship between treatment and post weights. Recall the syntax: favstats(dataset$quant_var ~ dataset$categ_var)
 favstats(anorexia$Postwt ~ anorexia$Treat)
+
 
 # Create a histogram of post-treatment weights
 hist(anorexia$Postwt)
+
 ```
 
 *** =sct
 ```{r}
-test_student_typed("favstats(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: favstats(dataset$quant_var ~ dataset$categ_var) with the correct data set (anorexia), quant_var (Postwt) and categ_var (Treat)")
+test_student_typed("favstats(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`anorexia`), quant_var (`Postwt`) and categ_var (`Treat`).")
 
-test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the 'anorexia' dataset and 'Postwt' variable")
+test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format `hist(dataset$variable)` with the `anorexia` data set and `Postwt` variable.")
 
 success_msg("The post-treatment weights appear to be slightly skewed and the sample sizes in each group is less than 30, so the second condition is not satisfied. However, we will continue to demonstrate how to execute ANOVA in R.")
 ```
@@ -658,8 +662,8 @@ $H\_a:$ at least one mean differs
 - Click 'Submit Answer' and look ANOVA results.
 
 *** =hint
-- For the first instruction, follow the lesson format with correct dataset and variables. For this test, the categorical variable is `Treat` and the quantitative variable is `Postwt`.
-- To get a summary of a the results type `summary(anova.results)`
+- For the first instruction, follow the lesson format with correct data set and variables. For this test, the categorical variable is `Treat` and the quantitative variable is `Postwt`.
+- To obtain a summary of a the results type `summary(anova.results)`
 *** =pre_exercise_code
 ```{r}
 library(MASS)
@@ -667,23 +671,29 @@ library(MASS)
 
 *** =sample_code
 ```{r}
-# Use aov() and summary() to carry out an ANOVA
+# Conduct an ANOVA test with aov()
+
+
+# Obtain a summary of the results with the summary() function
 
 
 ```
 
 *** =solution
 ```{r}
-# Use aov() and summary() to carry out an ANOVA
+# Conduct an ANOVA test with aov()
 anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
+
+# Obtain a summary of the results with the summary() function
 summary(anova.results)
+
 ```
 
 *** =sct
 ```{r}
-test_object("anova.results", incorrect_msg = "You need to create 'anova.results' using the lesson format with the correct dataset and variables- if you forgot the variable names type 'names(anorexia)' in your R console. Make sure to use the assignment notation '<-'.")
+test_object("anova.results", incorrect_msg = "You need to create `anova.results` using the lesson format with the correct dataset and variables--> if you forgot the variable names type `names(anorexia)` in your R console. Make sure to use the assignment notation `<-`.")
 
-test_function("summary", args = "object", incorrect_msg = "First you need to create 'anova.results' then call the summary() function.")
+test_function("summary", args = "object", incorrect_msg = "First you need to create `anova.results` then call the `summary()` function.")
 success_msg("Great! Now look at the p-value from this test. What is your conclusion?")
 ```
 
@@ -746,7 +756,7 @@ anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
 
 *** =sample_code
 ```{r}
-# Copy and paste the code from the lesson to determine *which* pairs of means differ.
+# Copy and paste the code from the lesson to determine which pairs of means differ
 
 
 
@@ -754,6 +764,8 @@ anova.results <- aov(anorexia$Postwt ~ anorexia$Treat)
 
 *** =solution
 ```{r}
+# Copy and paste the code from the lesson to determine which pairs of means differ
+
 TukeyHSD(anova.results)
 
 plot(TukeyHSD(anova.results))
@@ -763,9 +775,9 @@ plot(TukeyHSD(anova.results))
 
 *** =sct
 ```{r}
-test_student_typed("TukeyHSD(anova.results)", not_typed_msg = "Copy and paste the 2 lines of code from the lesson and click the 'Submit Answer' button to see which pairs of means differ")
+test_student_typed("TukeyHSD(anova.results)", not_typed_msg = "Copy and paste the 2 lines of code from the lesson and click the 'Submit Answer' button to see which pairs of means differ.")
 
-test_student_typed("plot(TukeyHSD(anova.results))", not_typed_msg = "Copy and paste the 2 lines of code from the lesson and click the 'Submit Answer' button to see which pairs of means differ")
+test_student_typed("plot(TukeyHSD(anova.results))", not_typed_msg = "Copy and paste the 2 lines of code from the lesson and click the 'Submit Answer' button to see which pairs of means differ.")
 
 success_msg("Good! Now look at the plot of our anova results.")
 ```
@@ -803,7 +815,7 @@ plot(TukeyHSD(anova.results))
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. The only pair that is significantly different is FT and Cont; this difference in means is measured by FT-Cont."
+msg_bad <- "That is not correct. The only pair that is significantly different is `FT` and `Cont`; this difference in means is measured by FT-Cont."
 msg_success <- "Exactly!"
 test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
