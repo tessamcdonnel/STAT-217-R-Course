@@ -149,7 +149,7 @@ hist(ChickWeight$weight)
 *** =sct
 ```{r}
 
-test_function("library", args = "package", incorrect_msg = "Type `library(mosaic)` below the first comment to load the mosaic package.")
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
 
 test_function("favstats", args = "x", incorrect_msg = "Remember, to find summary statistics use format: `favstats(dataset$variable)` with specified parameters.")
 test_function("hist", args = "x", incorrect_msg = "To create a histogram, use the format: `hist(dataset$variable)` with the specified parameters.")
@@ -252,7 +252,7 @@ hist(my_sample)
 
 *** =sct
 ```{r}
-test_function("library", args = "package", incorrect_msg = "Type `library(mosaic)` below the first comment to load the mosaic package.")
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type `library(mosaic)` to load the mosaic package.")
 
 
 test_object("my_sample", incorrect_msg = "Make sure you use follow the syntax: `sample(x = dataset$variable, size = number)` on the right side of '<-' with the specified parameters; in this case we're using the `ChickWeight` dataset, `weight` variable, and a sample size of 75.")
@@ -392,7 +392,7 @@ success_msg("Good job!")
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:ba8db091cd
 ## Quick check 4
-**This is the last exercise of Lab 4b**
+**This is the last exercise of Lab 4b practice course**
 
 Which of the following commands would be most useful to examine the **shape** of a quantitative variable?
 

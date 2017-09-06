@@ -559,7 +559,7 @@ test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow th
 --- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
 ## Visualizing quantitative variables by groups
 
-**This is the last exercise for Lab 3.**
+**This is the last exercise for Lab 3 practice course**
 
 Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
 

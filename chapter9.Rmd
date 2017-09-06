@@ -431,7 +431,7 @@ test_function("abline", args = "a", incorrect_msg = "Make sure to follow the for
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:ecd40fc973
 ## Quick check 4
-**This is the last exercise of Lab 8**
+**This is the last exercise of Lab 8 practice course**
 
 Correlation can be used to estimate the strength of association between:
 

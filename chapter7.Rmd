@@ -811,7 +811,7 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:45f88c1a66
 ## Quick Check 3
 
-**This is the last exercise of Lab 6**
+**This is the last exercise of Lab 6 practice course**
 
 Examining a histogram of a quantitative variable helps us to determine if a condition is satisfied for valid statistical inference by...
 

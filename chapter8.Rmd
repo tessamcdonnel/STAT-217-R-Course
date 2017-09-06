@@ -653,7 +653,7 @@ success_msg("Nice job. Since all of the expected counts are at least 5, this con
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:5cefd02043
 ## Quick check 4
-**This is the last exercise of Lab 7**
+**This is the last exercise of Lab 7 practice course**
 
 When we do the one sample z-test or the two sample z-test we are interested in doing statistical inference about
 

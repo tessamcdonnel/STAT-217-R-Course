@@ -32,14 +32,14 @@ library(mosaicData)
 
 *** =sample_code
 ```{r}
-# type the code in the instructions and press 'Submit Answer'
+# Type the code in the instructions and press Submit Answer
 
 
 ```
 
 *** =solution
 ```{r}
-# type the code in the instructions and press 'Submit Answer'
+# Type the code in the instructions and press Submit Answer
 HELPrct$i1
 
 
@@ -47,7 +47,7 @@ HELPrct$i1
 
 *** =sct
 ```{r}
-test_student_typed("HELPrct$i1", not_typed_msg = "Remember to type HELPrct$i1 in your script.")
+test_student_typed("HELPrct$i1", not_typed_msg = "Remember to type `HELPrct$i1` in your R script.")
 
 success_msg("Good. Now scroll through the R output to see the average number of alcoholic drinks per day for each subject. Do these numbers suprise you?") 
 ```
@@ -91,7 +91,7 @@ library(mosaic)
 # Load the mosaic package 
 
 
-# Find the summary statistics of 'i1' in the HELPrct data set using the favstats() function
+# Find the summary statistics of i1 in the HELPrct data set using the favstats() function
 
 # Check for normality using the hist() function
 
@@ -103,7 +103,7 @@ library(mosaic)
 # Load the mosaic package
 library(mosaic)
 
-# Find the summary statistics of 'i1' using the favstats() function
+# Find the summary statistics of i1 using the favstats() function
 favstats(HELPrct$i1)
 
 # Check for normality using the hist() function
@@ -115,12 +115,12 @@ hist(HELPrct$i1)
 
 *** =sct
 ```{r}
-test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
+test_student_typed("library(mosaic)",  not_typed_msg =  "Type `library(mosaic)` to load the mosaic package.")
 
 
-test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format favstats(dataset$variable) with the HELPrct dataset and 'i1' variable.")
+test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format `favstats(dataset$variable)` with the HELPrct dataset and i1 variable.")
 
-test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format hist(dataset$variable) with the HELPrct dataset and 'i1' variable.")
+test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format `hist(dataset$variable)` with the HELPrct dataset and i1 variable.")
 
 success_msg("Nice!")
 ```
@@ -157,7 +157,7 @@ results <- favstats(HELPrct$i1)
 ```{r}
 msg_bad <- "That is not correct. The tail of the distribution is on the right side so it is right-skewed BUT the sample size is 453."
 msg_success <- "Exactly! Now that we know the conditions are satisfied, we can conduct a one sample t-test."
-test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:b8967b17fb
@@ -246,7 +246,7 @@ t.test(x = HELPrct$i1, mu = 2)
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis! In this case we're using the 'HELPrct' data set, 'i1' variable, and null hypothesis equal to 2.")
+test_function("t.test", args = c("x", "mu"), incorrect_msg = "Make sure you substitute the correct dataset, variable and null hypothesis! In this case we're using the `HELPrct` data set, `i1` variable, and null hypothesis equal to 2.")
 success_msg("Great job! Now look at the R output and find the p-value for the test and the 95% confidence interval for the mean number of alcoholic drinks per day. How would you conclude this test?")
 
 ```
@@ -357,14 +357,14 @@ library(mosaicData)
 
 *** =sample_code
 ```{r}
-# use the t.test() function to determine if the 'i1' is significantly greater than 2 on average
+# Use the t.test() function to determine if the i1 variable is significantly greater than 2 on average
 
 
 ```
 
 *** =solution
 ```{r}
-# use the t.test() function to determine if the 'i1' is significantly greater than 2 on average
+# Use the t.test() function to determine if the i1 variable is significantly greater than 2 on average
 
 t.test(x = HELPrct$i1, mu = 2, alternative = "greater")
 
@@ -422,11 +422,12 @@ library(mosaicData)
 ```{r}
 # Carry out a t-test and find a 90% confidence interval
 t.test(x = HELPrct$i1, mu = 2, conf.level = 0.90)
+
 ```
 
 *** =sct
 ```{r}
-test_function("t.test", args = c("x", "mu", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.90? Make sure you follow the t.test() format with 'HELPrct' data set, 'i1' variable, mu equal to 2, and conf.level = 0.90.")
+test_function("t.test", args = c("x", "mu", "conf.level"), incorrect_msg = "Have you set the conf.level equal to 0.90? Make sure you follow the `t.test()` format with `HELPrct` data set, `i1` variable, mu equal to 2, and `conf.level = 0.90`.")
 
 success_msg("Good job. If you scroll through the R output you'll notice that the p-value is almost zero!")
 
@@ -473,7 +474,7 @@ library(mosaicData)
 
 *** =sample_code
 ```{r}
-# Use t.test to perform a t test on the specified hypothesis
+# Use t.test() to perform a t-test on the specified hypothesis
 
 
 
@@ -481,7 +482,7 @@ library(mosaicData)
 
 *** =solution
 ```{r}
-# Use t.test to perform a t test on the specified hypothesis 
+# Use t.test() to perform a t-test on the specified hypothesis 
 t.test(x = HELPrct$i1, mu = 15, alternative = "greater", conf.level = 0.99)
 
 ```
@@ -498,7 +499,7 @@ success_msg("Great!")
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:878a231ebf
 ## Quick check 5
 
-What is the correct R command to construct a 90% confidence interval on the following hypothesis: 
+What is the correct R command to construct a **90%** confidence interval on the following hypothesis: 
 
 $H_0$: $\mu \= 5$
 
@@ -519,7 +520,7 @@ Remember, the default settings are to perform a 2-sided alternative hypothesis a
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Select the option that tests for a one-sided 'greater than' hypothesis and confidence level of 0.90"
+msg_bad <- "That is not correct. Select the option that tests for a one-sided 'greater than' hypothesis and confidence level of 0.90."
 msg_success <- "Exactly!"
 test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
@@ -530,7 +531,7 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:4579e2c495
 ## Quick check 6
 
-**This is the last exercise of Lab 5**
+**This is the last exercise of Lab 5 practice course**
 
 
 Which argument should we specify in the t.test function to do a one sided alternative hypothesis in a one sample t-test?

@@ -494,7 +494,7 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:dff314deba
 ## Quick check 3
-**This is the last exercise of Lab 1.**
+**This is the last exercise of Lab 1 practice course**
 
 What is the correct code to access a variable in a data set?
 
