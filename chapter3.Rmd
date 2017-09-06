@@ -511,7 +511,6 @@ barplot(table(CPS85$married))
 ```{r}
 test_function("barplot", args = "height", incorrect_msg = "Make sure you follow the format in the lesson with 'CPS85' instead of 'dataset' and 'married' instead of 'categ_var'.")
 
-
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c6f71ca0bd
 ## Visualizing relationships between quantitative variables
