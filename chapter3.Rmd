@@ -98,9 +98,9 @@ In this exercise we are going to recode the `sex` variable from a numeric to a f
 
 
 *** =instructions
-- The first line of code in your script will recode `sex` from a 'numeric' variable to its' correct variable type, 'factor'.
+- The first line of code in your script will recode `sex` from a numeric variable to its' correct variable type, *factor*. **Do not remove or alter this line of code.**
 - Use the `str()` function on `CPS85`.
-- Click the 'Submit Answer' Button and take a look at the R output in the console. Make sure the `sex` variable was correctly recoded to a factor variable.
+- Click the 'Submit Answer' Button and verify that `sex` was correctly recoded to a factor variable.
 *** =hint
 
 *** =pre_exercise_code
@@ -143,10 +143,10 @@ test_function("str", args = "object", incorrect_msg = "Make sure you follow the 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b715998152
 ## Summarizing quantitative variables
 
-Previously, we used the `summary()` function to summarize data; however, this function does not produce standard deviation.  In order to get all of our standard summary statistics simultaneously, we will use the `favstats()` function from the mosaic package.
+Previously, we used the `summary()` function to summarize data; however, this function does not produce standard deviation.  In order to get all of our standard summary statistics simultaneously, we will use the `favstats()` function from the *mosaic* package.
 
 * First, to access a particular package, we need to load the package with the `library(packagename)` command.
-* Next, to use the `favstats()` function, use the format: `favstats(dataset$quant_var)`.
+* Next, use the `favstats()` function in the format: `favstats(dataset$quant_var)`.
 
 `CPS85` contains a quantitative variable named `wage` that measures the respondents wage in US dollars per hour.
 
@@ -599,7 +599,7 @@ boxplot(CPS85$wage ~ CPS85$sex)
 
 *** =sct
 ```{r}
-test_student_typed("boxplot(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Remember, `wage` is a quantitative variable and 'sex' is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
+test_student_typed("boxplot(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Remember, `wage` is a quantitative variable and `sex` is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
 
 success_msg("Great job. You finished Lab 3 practice course.")
 ```
