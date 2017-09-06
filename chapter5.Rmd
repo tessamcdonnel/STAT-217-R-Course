@@ -20,19 +20,19 @@ In this lab we'll be using another built-in R dataset called `ChickWeight` which
 
 In this exercise we are going take random samples from `ChickWeight` using the `sample()` function.
 
-Remember, to take a random sample and save it to an object, use the format:
+Recall the syntax to take a random sample and save it to an object:
 
 `sample_name <- sample(x = dataset$variable, size = number)`.
 
 Note: Remember that after we create an object we need to type the object name to view it *(I have already typed this for you in the R Script)*.
 
 *** =instructions
-- Take a random sample of 25 from the variable `weight` in the `ChickWeight` dataset, assign this to `sample_weight`.
-- Take a random sample of 50 from the variable `Diet` in the `ChickWeight` dataset, assign this to `sample_diet`.
+- Take a random sample of 25 from the variable `weight` in the `ChickWeight` data set, assign this to `sample_weight`.
+- Take a random sample of 50 from the variable `Diet` in the `ChickWeight` data set, assign this to `sample_diet`.
 *** =hint
-- For the 1st instruction, follow the format in the lesson but use ChickWeight$weight and 25.
+- For the 1st instruction, follow the format in the lesson but use `ChickWeight$weight` and `25`.
 
-- For the 2nd instruction, follow the format in the lesson but use ChickWeight$Diet and 50.
+- For the 2nd instruction, follow the format in the lesson but use `ChickWeight$Diet` and `50`.
 *** =pre_exercise_code
 ```{r}
 
@@ -40,7 +40,7 @@ Note: Remember that after we create an object we need to type the object name to
 
 *** =sample_code
 ```{r}
-# take a random sample of 25 from the variable weight in ChickWeight dataset
+# Take a random sample of 25 from the variable weight in ChickWeight data set
 sample_weight <- 
 
 
@@ -50,7 +50,7 @@ sample_weight <-
 sample_weight
 
 
-# take a random sample of 50 from the variable Diet in ChickWeight dataset
+# Take a random sample of 50 from the variable Diet in ChickWeight data set
 sample_diet <- 
 
 
@@ -65,13 +65,13 @@ sample_diet
 
 *** =solution
 ```{r}
-# take a random sample of 25 from the variable weight in ChickWeight dataset
+# Take a random sample of 25 from the variable weight in ChickWeight data set
 sample_weight <- sample(x = ChickWeight$weight, size = 25)
 
 # Print out the values in sample_weight
 sample_weight
 
-# take a random sample of 50 from the variable Diet in ChickWeight dataset
+# Take a random sample of 50 from the variable Diet in ChickWeight data set
 sample_diet <- sample(x = ChickWeight$Diet, size = 50)
 
 
@@ -84,15 +84,15 @@ sample_diet
 
 *** =sct
 ```{r}
-test_object("sample_weight", incorrect_msg = "Make sure you use the sample() function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=25.")
+test_object("sample_weight", incorrect_msg = "Make sure you use the `sample()` function on the right side of '<-' with the specified parameters; in this case we're using the `ChickWeight` dataset, `weight` variable, and `25` as the sample size.")
 
-test_output_contains("sample_weight", incorrect_msg = "Do not alter the line of code that says 'sample_weight'. This command will print the results to the R output. You can click the 'reverse' button to get back to the original code.")
+test_output_contains("sample_weight", incorrect_msg = "Do not alter the line of code that says `sample_weight`. This command will print the results to the R output. You can click the 'undo' button to get back to the original code.")
 
 
 
-test_object("sample_diet", incorrect_msg = "Make sure you use the sample() function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, Diet variable, and number=50.")
+test_object("sample_diet", incorrect_msg = "Make sure you use the `sample()` function on the right side of '<-' with the specified parameters; in this case we're using the `ChickWeight` dataset, `Diet` variable, and `50` as the sample size.")
 
-test_output_contains("sample_diet", incorrect_msg = "Do not alter the line of code that says 'sample_diet'. This command will print the results to the R output. You can click the 'reverse' button to get back to the original code.")
+test_output_contains("sample_diet", incorrect_msg = "Do not alter the line of code that says `sample_diet`. This command will print the results to the R output. You can click the 'undo` button to get back to the original code.")
 
 
 ```
@@ -109,13 +109,13 @@ For this exercise, you are going to find the *population distribution* of the qu
 
 
 *** =instructions
-- Type `library(mosaic)` to load the *mosaic* package into your workspace. (You need this package to use the `favstats()` function)
+- Type `library(mosaic)` to load the *mosaic* package into your workspace (You need this package to use the `favstats()` function).
 - Use the `favstats()` function to get summary statistics of `weight` from the `ChickWeight` data set.
 - Use the `hist()` function to create a histogram of `weight`.
-- Click the 'Submit Answer' button and look at the R output
+- Click the 'Submit Answer' button and look at the R output.
 *** =hint
-- Remember, to find summary statistics use format `favstats(dataset$variable)`.
-- To get a histogram, use `hist(dataset$variable)`.
+- Remember, to find summary statistics use the syntax: `favstats(dataset$variable)`.
+- To create a histogram, use the syntax: `hist(dataset$variable)`.
 *** =pre_exercise_code
 ```{r}
 library(mosaic)
@@ -148,12 +148,11 @@ hist(ChickWeight$weight)
 
 *** =sct
 ```{r}
-test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
 
+test_function("library", args = "package", incorrect_msg = "Type `library(mosaic)` below the first comment to load the mosaic package.")
 
-
-test_function("favstats", args = "x", incorrect_msg = "Remember, to find summary statistics use format: favstats(dataset$variable) with specified parameters.")
-test_function("hist", args = "x", incorrect_msg = "To create a histogram, use the format: hist(dataset$variable) with the specified variables.")
+test_function("favstats", args = "x", incorrect_msg = "Remember, to find summary statistics use format: `favstats(dataset$variable)` with specified parameters.")
+test_function("hist", args = "x", incorrect_msg = "To create a histogram, use the format: `hist(dataset$variable)` with the specified parameters.")
 
 success_msg("Nice! Now look at the histogram and summary statistics of chick weights.")
 
@@ -195,7 +194,7 @@ In this exercise, you will:
 
 * compare the *sample mean* `weight` of chicks to the *population mean* you found in the last exercise.
 
-Remember, to obtain a random sample use the format:
+Recall the syntax to obtain a random sample:
 
 `sample(x = dataset$variable, size = number)`
 *** =instructions
@@ -222,7 +221,7 @@ library(mosaic)
 # Load the mosaic package
 
 
-# Use the format sample(x = dataset$variable, size = number) to get a sample of 75 from the `weight` variable in the 'ChickWeight' data set
+# Use the format sample(x = dataset$variable, size = number) with the specified arguments and the ChickWeight data set
 my_sample <- 
 
 # Find summary statistics of my_sample with favstats() 
@@ -238,7 +237,8 @@ my_sample <-
 # Load the mosaic package
 library(mosaic)
 
-# Use the format sample(x = dataset$variable, size = number) to get a sample of 75 from the `weight` variable in the 'ChickWeight' data set
+# Use the format sample(x = dataset$variable, size = number) with the specified arguments and the ChickWeight data set
+
 my_sample <- sample(ChickWeight$weight, 75)
 
 # Find summary statistics of my_sample with favstats() 
@@ -252,17 +252,17 @@ hist(my_sample)
 
 *** =sct
 ```{r}
-test_student_typed("library(mosaic)",  not_typed_msg =  "Type library(mosaic) to load the mosaic package.")
+test_function("library", args = "package", incorrect_msg = "Type `library(mosaic)` below the first comment to load the mosaic package.")
 
 
-test_object("my_sample", incorrect_msg = "Make sure you use the sample(x = dataset$variable, size = number) function on the right side of '<-' with the specified parameters; in this case we're using the ChickWeight dataset, weight variable, and number=75.")
+test_object("my_sample", incorrect_msg = "Make sure you use follow the syntax: `sample(x = dataset$variable, size = number)` on the right side of '<-' with the specified parameters; in this case we're using the `ChickWeight` dataset, `weight` variable, and a sample size of 75.")
 
 
-test_function("sample", args = c("x", "size"),  incorrect_msg = "To create an object called my_sample, type sample(x = ChickWeight$weight, size = 75) on the right side of '<-'.")
+test_function("sample", args = c("x", "size"),  incorrect_msg = "To create an object called `my_sample`, type sample(x = ChickWeight$weight, size = 75) on the right side of '<-'.")
 
-test_function("favstats", args = "x", incorrect_msg = "Remember, my_sample is just a sample from the weight variable so to get summary statistics type favstats(my_sample).")
+test_function("favstats", args = "x", incorrect_msg = "Remember, `my_sample` is just a sample from the `weight` variable. To obtain  summary statistics type `favstats(my_sample)`.")
 
-test_function("hist", args = "x", incorrect_msg = "Remember, my_sample is just a sample from the weight variable so to get a histogram type hist(my_sample).")
+test_function("hist", args = "x", incorrect_msg = "Remember, `my_sample` is just a sample from the weight variable so to get a histogram type `hist(my_sample)`.")
 
 ```
 
@@ -272,11 +272,11 @@ test_function("hist", args = "x", incorrect_msg = "Remember, my_sample is just a
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:281452fdca
 ## Quick check 2
 
-Suppose that in *my* sample, the sample mean chick weight was 125.65.
+Suppose that in *my* sample, the mean chick weight was 125.65 grams.
 
 How does this compare to the **population mean**?
 
-The population `favstats()` results are stored in an object called `pop_results`; in your R console type `pop_results` to view.
+The `favstats()` results for the population (entire data set) are stored in an object called `pop_results`; in your R console type `pop_results` to view.
 
 
 *** =instructions
@@ -296,11 +296,10 @@ pop_results <- favstats(ChickWeight$weight)
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Type 'pop_results' to view the population mean."
+msg_bad <- "That is not correct. Type `pop_results` to view the population mean."
 msg_success <- "Exactly!"
-test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_bad, msg_success))
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
-```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:8c66be93ac
 ## Quick check 3
 
