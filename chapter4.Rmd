@@ -46,28 +46,28 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 *** =sample_code
 ```{r}
-# take a random sample of 25 from the allergic variable
+# Take a random sample of 25 from the allergic variable
 
 
-# take a random sample of 50 from the regimen variable
+# Take a random sample of 50 from the regimen variable
 
 
 ```
 
 *** =solution
 ```{r}
-# take a random sample of 25 from the allergic variable
+# Take a random sample of 25 from the allergic variable
 sample(x = peanut_allergy$allergic, size = 25)
 
-# take a random sample of 50 from the regimen variable
+# Take a random sample of 50 from the regimen variable
 sample(x = peanut_allergy$regimen, size = 50)
 
 ```
 
 *** =sct
 ```{r}
-test_function("sample", args = c("x", "size"), index = 1, incorrect_msg = "Follow the format in the lesson with the specified dataset (peanut_allergy), variable (allergic), and number (25)!")
-test_function("sample", args = c("x", "size"), index = 2, incorrect_msg = "Follow the format in the lesson with the specified dataset (peanut_allergy), variable (regimen), and number (50)!")
+test_function("sample", args = c("x", "size"), index = 1, incorrect_msg = "Follow the format in the lesson with the specified dataset (`peanut_allergy`), variable (`allergic`), and number (`25`)!")
+test_function("sample", args = c("x", "size"), index = 2, incorrect_msg = "Follow the format in the lesson with the specified dataset (`peanut_allergy`), variable (`regimen`), and number (`50`)!")
 
 ```
 
@@ -92,15 +92,19 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 *** =sample_code
 ```{r}
-# take a random sample of 20 from the variable regimen
+# Take a random sample of 20 from the variable regimen
 sample1 <- 
 
+# Print contents of sample1 (DO NOT alter this line of code)
 sample1
+
 
 # take another random sample of 20 from the variable regimen
 sample2 <- 
 
+# Print contents of sample2 (DO NOT alter this line of code)
 sample2
+
 
 # Type the command 'sample1 == sample2' below to see if the samples are equal
 
@@ -112,14 +116,16 @@ sample2
 # take a random sample of 20 from the variable regimen
 sample1 <- sample(peanut_allergy$regimen, 20)
 
-
+# Print contents of sample1 (DO NOT alter this line of code)
 sample1
+
 
 # take another random sample of 20 from the variable regimen
 sample2 <- sample(peanut_allergy$regimen, 20)
 
-
+# Print contents of sample2 (DO NOT alter this line of code)
 sample2
+
 
 # Type the command 'sample1 == sample2' below to see if the samples are equal
 sample1 == sample2
@@ -128,11 +134,11 @@ sample1 == sample2
 
 *** =sct
 ```{r}
-test_object("sample1", incorrect_msg = "Make sure you follow the format: sample(x = dataset$variable, size = number) with specified dataset, variable and number.")
+test_object("sample1", incorrect_msg = "Make sure you follow the format: `sample(x = dataset$variable, size = number)` with specified dataset, variable and number.")
 
-test_object("sample2", incorrect_msg = "Make sure you follow the format: sample(x = dataset$variable, size = number) with specified dataset, variable and number.")
+test_object("sample2", incorrect_msg = "Make sure you follow the format:`sample(x = dataset$variable, size = number)` with specified dataset, variable and number.")
 
-test_output_contains("sample1 == sample2", incorrect_msg = "Make sure you type 'sample1 == sample2' in your script before submitting your answer.")
+test_output_contains("sample1 == sample2", incorrect_msg = "Make sure you type `sample1 == sample2` in your script before submitting your answer.")
 
 success_msg("Nice job! Look at the R output in the bottom right panel. Do the contents of sample1 and sample2 match up? We can easily answer this by examining the TRUE's and FALSE's from the 'sample1 == sample2' command; if there are FALSEs then we know our samples are not the same.")
 
@@ -170,7 +176,7 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 ```{r}
 # Type set.seed(1234)
 
-# take a random sample of 20 from the regimen variable 
+# Take a random sample of 20 from the regimen variable 
 
 
 
@@ -181,15 +187,16 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 # Type set.seed(1234)
 set.seed(1234)
 
-# take a random sample of 20 from the regimen variable 
+# Take a random sample of 20 from the regimen variable 
 sample(peanut_allergy$regimen, 20)
+
 ```
 
 *** =sct
 ```{r}
-test_function("set.seed", args = "seed", eval = NA, incorrect_msg = "Copy and paste the set.seed() function from the first instruction. You can can change the number inside the function if you want; I arbitrarily chose '1234' but any whole number will work.")
+test_function("set.seed", args = "seed", eval = NA, incorrect_msg = "Copy and paste the `set.seed()` function from the first instruction. You can can change the number inside the function if you want; I arbitrarily chose 1234 but any whole number will work.")
 
-test_function("sample", args = c("x", "size"), incorrect_msg = "Remember, to take a random sample from a variable use the format: sample(dataset$variable, number) with the specified parameters.")
+test_function("sample", args = c("x", "size"), incorrect_msg = "Remember, to take a random sample from a variable use the format: `sample(dataset$variable, number)` with the specified parameters.")
 
 ```
 
@@ -197,7 +204,7 @@ test_function("sample", args = c("x", "size"), incorrect_msg = "Remember, to tak
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:5b1897d9be
 ## Quick check 1
 
-Suppose I want to take a sample of size 35 from the `allergic` variable in the `peanut_allergy` data set, and store those results in an object called mysample.  Which of the following commands is correct?
+Suppose I want to take a sample of size 35 from the `allergic` variable in the `peanut_allergy` data set, and store those results in an object called `mysample`.  Which of the following commands is correct?
 
 *** =instructions
 - mysample <- sample(peanut_allergy$allergic, 35)
@@ -215,7 +222,7 @@ Suppose I want to take a sample of size 35 from the `allergic` variable in the `
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Remember, the format to take a sample is sample(dataset$variable, number)."
+msg_bad <- "That is not correct. Remember, the format to take a sample is `sample(dataset$variable, number)`."
 msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad, msg_bad))
 
@@ -251,7 +258,7 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 *** =sample_code
 ```{r}
-# Create a table of the `allergic` variable in the `peanut_allergy` dataset
+# Create a table of the allergic variable in the peanut_allergy dataset
 
 # Copy and paste the command in the second instruction to view row/column totals of the table
 
@@ -261,7 +268,7 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 *** =solution
 ```{r}
-# Create a table of the `allergic` variable in the `peanut_allergy` dataset
+# Create a table of the allergic variable in the peanut_allergy dataset
 table(peanut_allergy$allergic)
 
 # Copy and paste the command in the second instruction to view row/column totals of the table
@@ -272,7 +279,7 @@ addmargins(table(peanut_allergy$allergic))
 
 *** =sct
 ```{r}
-test_function("table", args = "...", incorrect_msg = "Remember, the correct format for the table() function is: table(dataset$variable). Create a table with this format using the specified data set and variable.")
+test_function("table", args = "...", incorrect_msg = "Remember, the correct format for the table() function is: `table(dataset$variable)`. Create a table with this format using the specified data set and variable.")
 
 success_msg("Nice!")
 ```
@@ -306,7 +313,7 @@ allergic_table <- addmargins(table(peanut_allergy$allergic))
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Divide the number of children who were allergic by the total number of children in the data set. This will give you the 'population' proportion of children with a peanut allergy."
+msg_bad <- "That is not correct. Divide the number of children who were allergic by the total number of children in the data set. This will give you the population proportion of children with a peanut allergy."
 msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success,  msg_bad, msg_bad))
 
@@ -322,7 +329,7 @@ In this exercise, you will create a random sample of 50 from the `allergic` vari
 - Use the `table()` function on `my_sample`.
 - Click 'Submit Answer' and look at the R output to find how many children were allergic in `my_sample`.
 *** =hint
-For the first instruction, use the format `sample(x = dataset$variable, size = number)`.
+For the first instruction, use the format `sample(x = dataset$variable, size = number)` after the assignment command `<-`.
 
 For the last instruction, divide the number of children who were allergic by the total number of children in the sample.
 
@@ -334,7 +341,7 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 
 *** =sample_code
 ```{r}
-# Use the format sample(x = dataset$variable, size = number) to get a sample of 50 from the `allergic` variable
+# Use the format sample(x = dataset$variable, size = number) with specified arguments
 my_sample <- 
 
 # Type table(my_sample) to see how many children were allergic in the sample
@@ -345,7 +352,7 @@ my_sample <-
 
 *** =solution
 ```{r}
-# Use the format sample(x = dataset$variable, size = number) to get a sample of 50 from the `allergic` variable
+# Use the format sample(x = dataset$variable, size = number) with specified arguments
 my_sample <- sample(peanut_allergy$allergic, 50)
 
 # Type table(my_sample) to see how many children were allergic
@@ -357,11 +364,11 @@ table(my_sample)
 
 *** =sct
 ```{r}
-test_object("my_sample", incorrect_msg = "Make sure you follow the format: sample(x = dataset$variable, size = number) with specified dataset, variable and number, then assign it to my_sample.")
+test_object("my_sample", incorrect_msg = "Make sure you follow the format: `sample(x = dataset$variable, size = number)` with specified dataset, variable and number, then assign it to `my_sample`.")
 
-test_function("table", args = "...", incorrect_msg = "Type table(my_sample) to get a numerical summary of my_sample.")
+test_function("table", args = "...", incorrect_msg = "Type `table(my_sample)` to get a numerical summary of `my_sample`.")
 
-success_msg("Nice! Now divide the number of children in your sample (my_sample) who were allergic by the total number of children in your sample. This will give you the 'sample' proportion of children with a peanut allergy. How does this compare to the population proportion?")
+success_msg("Nice! Now divide the number of children in your sample (`my_sample`) who were allergic by the total number of children in your sample. This will give you the sample proportion of children with a peanut allergy. How does this compare to the population proportion?")
 ```
 
 
@@ -420,9 +427,9 @@ Note that the $z^*$ critical value is 1.96 for a 95% confidence interval.
 
 *** =sample_code
 ```{r}
-#Lower confidence bound
+# Lower confidence bound
 
-#Upper confidence bound
+# Upper confidence bound
 
 
 
@@ -430,19 +437,19 @@ Note that the $z^*$ critical value is 1.96 for a 95% confidence interval.
 
 *** =solution
 ```{r}
-#Lower confidence bound
+# Lower confidence bound
 0.15 - 1.96 * sqrt(.15*.85/50)
 
-#Upper confidence bound
+# Upper confidence bound
 0.15 + 1.96 * sqrt(.15*.85/50)
 
 ```
 
 *** =sct
 ```{r}
-test_output_contains("0.05102485", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the lower confidence bound, subtract the margin of error from the sample proportion.")
+test_output_contains("0.05102485", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the  `sqrt()` function. For the lower confidence bound, subtract the margin of error from the sample proportion.")
 
-test_output_contains("0.2489751", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the sqrt() function. For the upper confidence bound, add the margin of error to the sample proportion.")
+test_output_contains("0.2489751", incorrect_msg = "Follow the order of operations from your high school algebra class 'PEMDAS' and remember, when you want to square something in R, use the `sqrt()` function. For the upper confidence bound, add the margin of error to the sample proportion.")
 
 
 ```
@@ -471,7 +478,7 @@ Which of the following are valid implementations of the `set.seed()` command?
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Remember, any number can go in the set.seed() function but there is no quotations."
+msg_bad <- "That is not correct. Remember, any number can go in the `set.seed()` function but there is no quotations."
 msg_success <- "Exactly! You finished Lab 4a practice course."
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
