@@ -26,29 +26,29 @@ source("http://www.openintro.org/stat/data/gun_violence_us.R")
 
 *** =sample_code
 ```{r}
-# Use the `head()` function on `gun_violence_us` to view the first six observations.
+# Use the head() function on gun_violence_us to view the first six observations
 
 
-# Use the `summary()` function on `gun_violence_us` to obtain summary statistics for each variable.
+# Use the summary() function on gun_violence_us to obtain summary statistics for each variable
 
 
 ```
 
 *** =solution
 ```{r}
-# Use the `head()` function on `gun_violence_us` to view the first six observations.
+# Use the head() function on gun_violence_us to view the first six observations
 head(gun_violence_us)
 
-# Use the `summary()` function on `gun_violence_us` to obtain summary statistics for each variable.
+# Use the summary() function on gun_violence_us to obtain summary statistics for each variable
 summary(gun_violence_us)
 
 ```
 
 *** =sct
 ```{r}
-test_function("head", args = "x", incorrect_msg = "Make sure to use 'gun_violence_us' instead of 'dataset' inside the head() function.")
+test_function("head", args = "x", incorrect_msg = "Make sure to use `gun_violence_us` instead of 'dataset' inside the `head()` function.")
 
-test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' with the specified data set to obtain a summary of the entire data set.")
+test_function("summary", args = "object", incorrect_msg = "Follow the format `summary(dataset)` with the specified data set to obtain a summary of the entire data set.")
 
 ```
 
@@ -80,14 +80,14 @@ source("http://www.openintro.org/stat/data/gun_violence_us.R")
 
 *** =sample_code
 ```{r}
-# Use the `plot()` function to visualize the relationship between `ownership_rate` and `mortality_rate`
+# Use the plot() function to visualize the relationship between ownership_rate and mortality_rate
 
 
 ```
 
 *** =solution
 ```{r}
-# Use the `plot()` function to visualize the relationship between `ownership_rate` and `mortality_rate`
+# Use the plot() function to visualize the relationship between ownership_rate and mortality_rate
 plot(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)
 
 
@@ -95,7 +95,7 @@ plot(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set (gun_violence_us) and variables.")
+test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set (`gun_violence_us`) and variables.")
 
 success_msg("Nice! Now look at the plot. We can see that as gun ownership rates increase, mortality rates also increase.")
 ```
@@ -135,7 +135,7 @@ cor(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)
 
 *** =sct
 ```{r}
-test_function("cor", args = c("x", "y"), eval = F, incorrect_msg = "Make sure to follow the format: cor(x = dataset$var1, y = dataset$var2) with the correct data set and variables.")
+test_function("cor", args = c("x", "y"), eval = F, incorrect_msg = "Make sure to follow the format: `cor(x = dataset$var1, y = dataset$var2)` with the correct data set and variables.")
 ```
 
 
@@ -143,7 +143,13 @@ test_function("cor", args = c("x", "y"), eval = F, incorrect_msg = "Make sure to
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:e07efd5860
 ## Quick check 1
 
-Using the command `cor(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)` will produce the same results as the command `cor(x = gun_violence_us$mortality_rate, y = gun_violence_us$ownership_rate)`.
+Using the command:
+
+`cor(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)` 
+
+will produce the same results as the command: 
+
+`cor(x = gun_violence_us$mortality_rate, y = gun_violence_us$ownership_rate)`.
 
 *** =instructions
 - FALSE
@@ -211,9 +217,9 @@ gun_model
 
 *** =sct
 ```{r}
-test_object("gun_model", incorrect_msg = "Use the lm() function on the right side of the tilde with the correct data set (gun_violence_us), y.var = mortality_rate and x.var = ownership_rate.")
+test_object("gun_model", incorrect_msg = "Use the `lm()` function on the right side of the tilde with the correct data set (`gun_violence_us`), y.var  (`mortality_rate`) and x.var  (`ownership_rate`).")
 
-test_student_typed("gun_model", not_typed_msg = "Do not remove or alter the line of code that prints the contents of gun_model.") 
+test_student_typed("gun_model", not_typed_msg = "Do not remove or alter the line of code that prints the contents of `gun_model`.") 
 
 success_msg("Good work. Now look at the R output and find the estimate for the intercept and slope.")
 ```
@@ -281,14 +287,14 @@ gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
 
 *** =sample_code
 ```{r}
-# Use the summary function on gun_model
+# Use the summary() function on gun_model
 
 
 ```
 
 *** =solution
 ```{r}
-# Use the summary function on gun_model
+# Use the summary() function on gun_model
 summary(gun_model)
 
 
@@ -296,7 +302,7 @@ summary(gun_model)
 
 *** =sct
 ```{r}
-test_function("summary", args = "object")
+test_function("summary", args = "object", incorrect_msg = "Type: `summary(gun_model)` below the first comment.")
 success_msg("Good job. The p-value for this test is almost zero so we can reject the null hypothesis and conclude that the slope is significantly greater than zero.")
 ```
 
@@ -376,7 +382,7 @@ confint(gun_model)
 
 *** =sct
 ```{r}
-test_function("confint", args = "object")
+test_function("confint", args = "object", incorrect_msg = "Make sure to follow the format in the lesson with `gun_model` instead of `model_name`.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:cded916a25
 ## Add lines to a plot with abline()
@@ -423,9 +429,9 @@ abline(gun_model)
 
 *** =sct
 ```{r}
-test_student_typed("plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)", not_typed_msg = "Do not remove or alter the line of code that plots ownership_rate and mortality_rate. Instead, do the second instruction.")
+test_student_typed("plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)", not_typed_msg = "Do not remove or alter the line of code that plots `ownership_rate` and `mortality_rate`. Instead, do the second instruction.")
 
-test_function("abline", args = "a", incorrect_msg = "Make sure to follow the format in the lesson with gun_model instead of model_name.")
+test_function("abline", args = "a", incorrect_msg = "Make sure to follow the format in the lesson with `gun_model` instead of `model_name`.")
 
 ```
 
@@ -450,7 +456,7 @@ Correlation can be used to estimate the strength of association between:
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. What kind of variables were 'ownership_rate' and 'mortality_rate'?"
+msg_bad <- "That is not correct. What kind of variables were `ownership_rate` and `mortality_rate`?"
 msg_success <- "Exactly! You have completed Lab 8 practice course."
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
