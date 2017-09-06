@@ -16,7 +16,7 @@ Sometimes the data can be very long so instead of viewing the entire thing, we c
 
 If we want to know the variable (column) names in the data set, we can type `names(dataset)` into the console.
 
-If we want to know the dimensions of a dataset (ie. how many variables and observations) use the `dim(dataset)` function.
+If we want to know the dimensions of a data set (ie. how many variables and observations) use the `dim(dataset)` function.
 
 Note: `dataset` is just a placeholder for the name of the data set you want to explore. In this exercise, you need to substitute `arbuthnot` for `dataset`.
 
@@ -38,29 +38,29 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =sample_code
 ```{r}
-#Use appropriate function to find first 6 entries of arbuthnot
+# Use appropriate function to find first 6 entries of arbuthnot
 
-#Use appropriate function to find last 6 entries of arbuthnot
+# Use appropriate function to find last 6 entries of arbuthnot
 
-#Use appropriate function to find the variable names of arbuthnot
+# Use appropriate function to find the variable names of arbuthnot
 
-#Use appropriate function to find the dimension of arbuthnot
+# Use appropriate function to find the dimension of arbuthnot
 
 
 ```
 
 *** =solution
 ```{r}
-#Use appropriate function to find first 6 entries of arbuthnot
+# Use appropriate function to find first 6 entries of arbuthnot
 head(arbuthnot)
 
-#Use appropriate function to find last 6 entries of arbuthnot
+# Use appropriate function to find last 6 entries of arbuthnot
 tail(arbuthnot)
 
-#Use appropriate function to find the variable names of arbuthnot
+# Use appropriate function to find the variable names of arbuthnot
 names(arbuthnot)
 
-#Use appropriate function to find the dimension of arbuthnot
+# Use appropriate function to find the dimension of arbuthnot
 dim(arbuthnot)
 
 ```
@@ -68,18 +68,18 @@ dim(arbuthnot)
 *** =sct
 ```{r}
 
-test_function("head", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the head() function.")
+test_function("head", args = "x", incorrect_msg = "Make sure to use `arbuthnot` instead of `dataset` inside the head() function.")
 
 
-test_function("tail", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the tail() function.")
+test_function("tail", args = "x", incorrect_msg = "Make sure to use `arbuthnot` instead of `dataset` inside the tail() function.")
 
 
-test_function("names", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the names() function.")
+test_function("names", args = "x", incorrect_msg = "Make sure to use `arbuthnot` instead of `dataset` inside the names() function.")
 
 
-test_function("dim", args = "x", incorrect_msg = "Make sure to use 'arbuthnot' instead of 'dataset' inside the dim() function.")
+test_function("dim", args = "x", incorrect_msg = "Make sure to use `arbuthnot` instead of `dataset` inside the dim() function.")
 
-success_msg("Good work! Now look at the R output, notice how each horizontal row is a different year. We can see from the dim() command that there are 82 years with 3 variables.")
+success_msg("Good work! Now look at the R output, notice how each horizontal row is a different year. We can see from the `dim()` command that there are 82 years with 3 variables.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:795745ad44
@@ -158,7 +158,7 @@ summary(arbuthnot)
 
 *** =sct
 ```{r}
-test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' with arbuthnot instead of 'dataset' to obtain a summary of the entire data set.")
+test_function("summary", args = "object", incorrect_msg = "Follow the format `summary(dataset)` with `arbuthnot` instead of `dataset` to obtain a summary of the entire data set.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
@@ -166,7 +166,7 @@ test_function("summary", args = "object", incorrect_msg = "Follow the format 'su
 
 We can also use arithetic operators on variables. 
 
-For example, if I want to add two variables together, i would type `dataset$var1 + dataset$var2`. 
+For example, if I want to add two variables together, I would type `dataset$var1 + dataset$var2`. 
 
 If I want to save this sum as a new variable, I would assign it to a new variable name as `dataset$newvar <- dataset$var1 + dataset$var2`.
 
@@ -216,7 +216,7 @@ head(arbuthnot)
 ```{r}
 test_data_frame("arbuthnot", columns = "propBoys", incorrect_msg = "Make sure to follow the format in the lesson with correct data set and variables.")
 test_function("head", args = "x")
-success_msg("Great. Now look at the output and verify that `propBoys` was added to the variables.")
+success_msg("Great. Now look at the output and verify that `propBoys` was added to the data set.")
 ```
 
 
@@ -289,9 +289,9 @@ We can save these values in an object `new_var` by typing:
 `dataset$new_var <- dataset$var1 > dataset$var2`
 *** =instructions
 - Create a logical expression for which years where boy births `boys` exceeds girl births `girls` results in TRUE, and otherwise FALSE.  Assign this result to the variable `my_var` in the `arbuthnot` data set.
- - Use the sum() function to evaluate the total number of `TRUE` results in `my_var`.
+ - Use the sum() function to evaluate the total number of TRUE results in `my_var`.
 *** =hint
-Remember, the format for finding the sum of a variable is 'sum(dataset$variable)'.
+Remember, the format for finding the sum of a variable is `sum(dataset$variable)`.
 *** =pre_exercise_code
 ```{r}
 source("http://www.openintro.org/stat/data/arbuthnot.R")
@@ -321,9 +321,11 @@ sum(arbuthnot$my_var)
 *** =sct
 ```{r}
 
-test_student_typed("arbuthnot$my_var <- arbuthnot$boys > arbuthnot$girls", not_typed_msg = "That is not correct. Follow the format in the lesson with 'arbuthnot' instead of 'dataset', 'my_var' instead of 'new_var', 'boys' instead of 'var1', and 'girls' instead of 'var2'.")
+test_data_frame("arbuthnot", columns = "my_var", incorrect_msg = "Follow the format in the lesson with `arbuthnot` instead of 'dataset', `my_var` instead of 'new_var', `boys` instead of 'var1', and `girls` instead of 'var2'.")
 
-test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is 'sum(dataset$variable)'. In this example, the dataset is 'arbuthnot' and the variable is 'my_var'.")
+
+
+test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is `sum(dataset$variable)`. In this example, the dataset is `arbuthnot` and the variable is `my_var`.")
 
 ```
 
@@ -383,14 +385,14 @@ arbuthnot$propBoys <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 
 *** =sample_code
 ```{r}
-# Create a scatterplot with `year` on the x-axis and proportion of male births `propBoys` on the y-axis.
+# Create a scatterplot with year on the x-axis and proportion of male births propBoys on the y-axis
 
 
 ```
 
 *** =solution
 ```{r}
-# Create a scatterplot with `year` on the x-axis and proportion of male births `propBoys` on the y-axis.
+# Create a scatterplot with year on the x-axis and proportion of male births propBoys on the y-axis
 
 plot(x = arbuthnot$year, y = arbuthnot$propBoys)
 
