@@ -99,7 +99,7 @@ Note: When multiplying two things together use an asterisk $\ast$. For example i
 - In the script, type `4^3` to calculate four to the power of three.
 - Click the 'Submit Answer' Button and take a look at the R output in the console (bottom right panel).
 *** =hint
-- Type your code in the upper right box
+- Type your code in the upper right box.
 
 
 *** =pre_exercise_code
@@ -110,7 +110,6 @@ Note: When multiplying two things together use an asterisk $\ast$. For example i
 
 *** =sample_code
 ```{r}
-
 # Example of Addition
 5 + 10
 
@@ -127,7 +126,6 @@ Note: When multiplying two things together use an asterisk $\ast$. For example i
 
 *** =solution
 ```{r}
-
 # Example of Addition
 5 + 10
 
@@ -143,10 +141,10 @@ Note: When multiplying two things together use an asterisk $\ast$. For example i
 
 *** =sct
 ```{r}
-test_output_contains("15", incorrect_msg = "Do not remove the line of R code that calculates the sum of 5 and 10. Instead, just do the last question")
+test_output_contains("15", incorrect_msg = "Do not remove the line of R code that calculates the sum of 5 and 10. Instead, just do the last question.")
 
 
-test_output_contains("2.5", incorrect_msg = "Do not remove the line of R code that calculates (10 - 5) / 2. Instead, just do the last question")
+test_output_contains("2.5", incorrect_msg = "Do not remove the line of R code that calculates (10 - 5) / 2. Instead, just do the last question.")
 
 test_output_contains("64", incorrect_msg = "Make sure to add a line of R code, that calculates 4 to the power of 3. Do not start the line with a `#`, otherwise, your R code will not be executed!")
 
@@ -185,6 +183,7 @@ R uses PEMDAS order of operations like you would use in any math class.
 
 # Evaluate the expression in the plots panel 
 
+
 ```
 
 *** =solution
@@ -194,13 +193,14 @@ sqrt(9659)
 
 # Evaluate the expression in the instructions 
 (0.6-0.5) / sqrt(0.25/1000)
+
 ```
 
 *** =sct
 ```{r}
-test_function("sqrt", args = "x", incorrect_msg = "Type 'sqrt(9659)' below the first comment in the R script panel.")
+test_function("sqrt", args = "x", incorrect_msg = "Type `sqrt(9659)` below the first comment in the R script panel.")
 
-test_output_contains("(0.6-0.5) / sqrt(0.25/1000)", incorrect_msg = "That is incorrect. Type (0.6-0.5) / sqrt(0.25/1000) to evaluate the expression.")
+test_output_contains("(0.6-0.5) / sqrt(0.25/1000)", incorrect_msg = "That is incorrect. Type `(0.6-0.5) / sqrt(0.25/1000)` below the second comment to evaluate the expression.")
 
 success_msg("Good work!")
 ```
@@ -240,7 +240,7 @@ If I typed `70.0 + 28.9` into the console, the value that R would return would b
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct, '70.0 + 28.9' does not result in a whole number so the data type must be 'numeric'."
+msg_bad <- "That is not correct, `70.0 + 28.9` does not result in a whole number so the data type must be numeric."
 msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
@@ -248,7 +248,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5519a279
 ## Object assignment
 
-R is what we call an *object oriented language*. In R, we can use objects to store values, data frames,or even results from statistical analysis.
+R is what we call an *object oriented language*. In R, we can use objects to store values, data frames, or even results from statistical analysis.
 
 A simple example of object assignment is `x <- 5` which assigns a value 5 to an object named 'x'. We can print the contents of x by typing `x` into the R console.
 
@@ -291,9 +291,9 @@ my_object
 
 *** =sct
 ```{r}
-test_object("my_object", incorrect_msg = "Make sure you type '100' on the right side of the assignment command `<-` to assign 100 to my_object.")
+test_object("my_object", incorrect_msg = "Make sure you type '100' on the right side of the assignment command `<-` to assign 100 to `my_object`.")
 
-test_output_contains("my_object", incorrect_msg = "Remember to type 'my_object' to print out the contents of my_object") 
+test_output_contains("my_object", incorrect_msg = "Remember to type `my_object` to print out the contents of the object.") 
 
 success_msg("Good! Notice that the value 100 appears when R prints `my_object`.")
 ```
@@ -302,7 +302,7 @@ success_msg("Good! Notice that the value 100 appears when R prints `my_object`."
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:8404e9b4ff
 ## Quick check 1
 
-Which of the following commands will correctly assign the numbers 1,2,3,4 to an object named 'my_vector'?
+Which of the following commands will correctly assign the numbers 1,2,3,4 to an object named `my_vector`?
 
 *** =instructions
 - my_vector = c(1, 2, 3, 4)
@@ -349,7 +349,7 @@ For example, if you want to view the `height` variable by itself, type `women$he
 
 *** =sample_code
 ```{r}
-# Print the entire data set by typing 'women'
+# Print the entire data set by typing women
 
 
 # Access weight from women like we did for the height variable
@@ -359,7 +359,7 @@ For example, if you want to view the `height` variable by itself, type `women$he
 
 *** =solution
 ```{r}
-# Print the entire data set by typing 'women'
+# Print the entire data set by typing women
 women
 
 # Access weight from women like we did for the height variable
@@ -368,9 +368,9 @@ women$weight
 
 *** =sct
 ```{r}
-test_output_contains("women", incorrect_msg = "Type 'women' in your R script (under the first comment) to print the entire data set.")
+test_output_contains("women", incorrect_msg = "Type `women` in your R script (under the first comment) to print the entire data set.")
 
-test_output_contains("women$weight", incorrect_msg = "Make sure you follow the format: dataset$variable with the correct data set (women) and variable (weight)!")
+test_output_contains("women$weight", incorrect_msg = "Make sure you follow the format: dataset$variable with the correct data set (`women`) and variable (`weight`)!")
 
 ```
 
@@ -413,7 +413,7 @@ summary(women)
 
 *** =sct
 ```{r}
-test_function("summary", args = "object", incorrect_msg = "Follow the format 'summary(dataset)' with 'women' instead of dataset to obtain a summary of the entire data set.")
+test_function("summary", args = "object", incorrect_msg = "Follow the format `summary(dataset)` with `women` instead of dataset to obtain a summary of the entire data set.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:766b6a5af5
 ## Graphing data in R
@@ -479,14 +479,11 @@ R software can be used for all of these things.
 
 *** =pre_exercise_code
 ```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
 
 ```
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
 msg_bad <- "That is not correct"
 msg_success <- "Exactly! R can do all of these things."
@@ -516,7 +513,7 @@ What is the correct code to access a variable in a data set?
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. We use a dollar sign '$' to access variables."
+msg_bad <- "That is not correct. We use a dollar sign `$` to access variables."
 msg_success <- "Exactly! You finished Lab 1 practice course."
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success, msg_bad))
 
