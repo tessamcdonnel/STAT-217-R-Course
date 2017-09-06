@@ -69,7 +69,7 @@ addmargins(table(nc$lowbirthweight))
 *** =sct
 ```{r}
 
-test_function("table", args = "...", incorrect_msg = "Follow the format in the lesson with correct dataset (nc) and categ_var (lowbirthweight).")
+test_function("table", args = "...", incorrect_msg = "Follow the format in the lesson with correct data set (`nc`) and categ_var (`lowbirthweight`).")
 
 test_student_typed("addmargins(table(nc$lowbirthweight))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
 
@@ -173,11 +173,11 @@ To create this contingency table, use the `table()` function with the format:
 
 `addmargins(table(nc$lowbirthweight, nc$habit))`
 
-- Click the 'Submit Answer' button and then use R (or a hand calculator) to find the proportion of low birthweight births in the `smoker` category **AND** the proportion of low birthweights in the `nonsmoker` category.
+- Click the 'Submit Answer' button.
 
 
 *** =hint
-- For the first instruction, follow the format in the lesson with correct dataset (nc), var1 (lowbirthweight) and var2 (habit).
+- For the first instruction, follow the format in the lesson with correct data set (`nc`), var1 (`lowbirthweight`) and var2 (`habit`).
 *** =pre_exercise_code
 ```{r}
 download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
@@ -209,7 +209,7 @@ addmargins(table(nc$lowbirthweight, nc$habit))
 
 *** =sct
 ```{r}
-test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the format in the lesson with correct dataset (nc), var1 (lowbirthweight) and var2 (habit).")
+test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the format in the lesson with correct dataset (`nc`), var1 (`lowbirthweight`) and var2 (`habit`).")
 
 test_student_typed("addmargins(table(nc$lowbirthweight, nc$habit))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
 
@@ -242,9 +242,9 @@ table1 <- addmargins(table(nc$lowbirthweight, nc$habit))
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. Use 'table1' to find the proportion of low birthweights by dividing the number of low birthweights among smoking mothers by the total number of smoking mothers."
+msg_bad <- "That is not correct. Use `table1` to find the proportion of low birthweights by dividing the number of low birthweights among smoking mothers by the total number of smoking mothers."
 msg_success <- "Exactly! The low birthweight rate is higher among smoking mothers (as expected) but let's see if this difference is meaningful beyond random chance!"
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:a51b77b946
@@ -266,9 +266,10 @@ Our hypotheses are:
 $H\_0$: $p\_{smoker} = p\_{nonsmoker}$
 
 $H\_a$: $p\_{smoker} \neq p\_{nonsmoker}$
+****
+$p\_{smoker}$ = proportion of low birthweight babies among smoking mothers
 
-* $p\_{smoker}$ = proportion of low birthweight babies among smoking mothers
-* $p\_{nonsmoker}$ = proportion of low birthweight babies among nonsmoking mothers
+$p\_{nonsmoker}$ = proportion of low birthweight babies among nonsmoking mothers
 
 *** =instructions
 Use the `prop.test()` function to test whether the population proportion of low birthweight babies differs by mother's smoking status. 
@@ -311,7 +312,7 @@ success_msg("Great! Now look at the R output to see the results of the test.")
 
 The 2 sample *z*-test from the last exercise are stored in an object called `test_results`; in your R console type `test_results` to view these.
 
-At the alpha = 0.05 significance level, how would we conclude this test?
+At the $\alpha = 0.05$ significance level, how would we conclude this test?
 
 Recall our hypotheses are:
 
@@ -334,7 +335,7 @@ test_results <- prop.test(c(18, 92), c(126, 873), correct = FALSE)
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. The p-value is greater than alpha = 0.05 AND the confidence interval contains zero so we would fail to reject the null hypothesis."
+msg_bad <- "That is not correct. The p-value is greater than 0.05 AND the confidence interval contains zero so we would fail to reject the null hypothesis."
 msg_success <- "Exactly!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 
@@ -469,7 +470,7 @@ addmargins(table(HELPrct$homeless, HELPrct$substance))
 
 *** =sct
 ```{r}
-test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the format in the lesson with correct dataset (HELPrct), var1 (homeless) and var2 (substance).")
+test_function("table", args = "...", eval = TRUE, incorrect_msg = "Follow the format in the lesson with correct dataset (`HELPrct`), var1 (`homeless`) and var2 (`substance`).")
 
 test_student_typed("addmargins(table(HELPrct$homeless, HELPrct$substance))", not_typed_msg = "Don't forget to copy and paste the code from the 2nd instruction!")
 
@@ -503,7 +504,7 @@ my_table <- addmargins(table(HELPrct$homeless, HELPrct$substance))
 *** =sct
 ```{r}
 msg_bad <- "That is not correct. Find the homeless rates by dividing the number of homeless people in each substance group by the total number of people in that substance group."
-msg_success <- "Exactly. The proportions are different but let's see if the difference is statistically significant!"
+msg_success <- "Exactly!"
 test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success))
 
 ```
@@ -512,7 +513,7 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success))
 
 To perform a chi-squared test of association we can use the `chisq.test()` function with the format:
 
-`chisq.test(dataset$var1, dataset$var2, correct=F)`
+`chisq.test(dataset$var1, dataset$var2, correct = FALSE)`
 
 For this exercise:
 
@@ -531,7 +532,7 @@ library(mosaicData)
 
 *** =sample_code
 ```{r}
-# Perform a chi-squared test on homeless rate by substance abuse type using the HELPrct data set
+# Perform a chi-squared test on homeless rate by substance 
 
 
 
@@ -539,7 +540,7 @@ library(mosaicData)
 
 *** =solution
 ```{r}
-# Perform a chi-squared test on homeless rate by substance abuse type using the HELPrct data set
+# Perform a chi-squared test on homeless rate by substance 
 chisq.test(HELPrct$homeless, HELPrct$substance, correct = F)
 
 
@@ -548,7 +549,7 @@ chisq.test(HELPrct$homeless, HELPrct$substance, correct = F)
 
 *** =sct
 ```{r}
-test_function("chisq.test", args = c("x", "y", "correct"), args_not_specified_msg = "Make sure you follow the format from the lesson and don't forget to add 'correct = FALSE'")
+test_function("chisq.test", args = c("x", "y", "correct"), args_not_specified_msg = "Make sure you follow the format from the lesson and don't forget to add 'correct = FALSE'. Remember, the data set we are using is called `HELPrct`.")
 
 success_msg("Great! Now look at the R output to see the results of the test.")
 
