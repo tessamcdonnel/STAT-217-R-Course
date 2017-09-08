@@ -59,78 +59,6 @@ test_student_typed("boxplot(schooldays$absent ~ schooldays$race)", not_typed_msg
 success_msg("Good work! It looks like Aboriginal students were absent more days. Let's see if it is significant!")
 
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:79a37231a2
-## Assumptions for a two sample t-test
-
-
-Before conducting a two sample t-test, we need to make sure that our data meets these 2 conditions:
-
-* the observations are independent
-* the quantitative variable is normally distributed (or sample sizes are greater than 30 in each group)
-
-
-It is reasonable to assume that the student's number of absent days are not related to each other, so the observations are independent.
-
-In this exercise, you will be checking the second condition for the `absent` variable in `schooldays`.
-
-
-*** =instructions
-- Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to examine summary statistics of `absent` by `race`. Recall the syntax: `favstats(dataset$quant_var ~ dataset$categ_var)`
-- Use the `hist()` function on the `absent` variable in `schooldays`.
-- Click the 'Submit Answer' button and look at the R output. Does this distribution look normal to you?
-
-
-*** =hint
-For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with specified data set and variables. Remember, the quantitative variable is `absent` and the categorical variable is `race`.
-
-To create a histogram use the format: `hist(dataset$variable)`
-*** =pre_exercise_code
-```{r}
-library(HSAUR)
-library(mosaic)
-```
-
-*** =sample_code
-```{r}
-# Load the mosaic package 
-
-# Use favstats() to examine summary statistics of absent days by race
-
-
-# Create a histogram of number of absent days
-
-
-```
-
-*** =solution
-```{r}
-# Load the mosaic package 
-library(mosaic)
-
-# Use favstats() to examine summary statistics of absent days by race
-favstats(schooldays$absent ~ schooldays$race)
-
-
-# Create a histogram of number of absent days
-hist(schooldays$absent)
-
-
-```
-
-*** =sct
-```{r}
-test_student_typed("library(mosaic)",  not_typed_msg =  "Type `library(mosaic)` to load the mosaic package.")
-
-
-test_student_typed("favstats(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`schooldays`), quant_var (`absent`) and categ_var (`race`).")
-
-test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format `hist(dataset$variable)` with the `schooldays` data set and `absent` variable.")
-
-success_msg("Nice job. Look at the R output, do you think this data meets the second condition?")
-
-```
-
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0bbf6fec44
@@ -190,7 +118,7 @@ success_msg("Great!")
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:764cc3e3b2
-## Quick check 2
+## Quick check 1
 
 
 The two sample t-test results from the last exercise are stored in an object called `test_results`; in your R console type `test_results` to view these.
@@ -279,79 +207,6 @@ test_student_typed("anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt", not_ty
 
 success_msg("Good! The new variable measuring the weight difference has been created.")
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:34994f646a
-## Assumptions for paired t-test
- 
- 
-Before we conduct the paired t-test, we need to make sure our data follows these assumptions:
-
-* independent observations
-* difference in weights are normally distributed (or large sample size)
- 
-The independence assumption is met because it is reasonable to assume that the *patients* are independent of one another.
-
-In this exercise, you will be checking the second condition for the the `diffwt` variable in the `anorexia` data set.
-
-
-*Remember, the second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample size is larger than 30.*
-
-
-*** =instructions
-- Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use `favstats()` to explore your new variable `diffwt` from the `anorexia` data set.
-- Use the `hist()` on `diffwt` from the `anorexia` data set.
-- Click the 'Submit Answer' button and check the output. Are the assumptions met?
-*** =hint
-
-- Use the format `favstats(dataset$variable)` for the second instruction.
-- To create a histogram use the format: `hist(dataset$variable)`.
-- Remember we are using the data set called `anorexia`.
-*** =pre_exercise_code
-```{r}
-library(mosaic)
-library(MASS)
-anorexia$diffwt <- anorexia$Postwt - anorexia$Prewt
-
-```
-
-*** =sample_code
-```{r}
-# Load the mosaic package 
-
-# Explore diffwt with the favstats() function
-
-# Create a histogram of diffwt
-
-
-```
-
-*** =solution
-```{r}
-# Load the mosaic package 
-library(mosaic)
-
-# Explore diffwt with the favstats() function
-favstats(anorexia$diffwt)
-
-# Create a histogram of diffwt
-hist(anorexia$diffwt)
-
-
-```
-
-*** =sct
-```{r}
-test_student_typed("library(mosaic)",  not_typed_msg =  "Type `library(mosaic)` to load the mosaic package.")
-
-test_function("favstats", args = "x", incorrect_msg = "Make sure you follow the format `favstats(dataset$variable)` with the `anorexia` data set and `diffwt` variable.")
-
-
-test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format `hist(dataset$variable)` to create a histogram of the `diffwt` variable from the `anorexia` data set.")
-
-success_msg("Good! Now look at the output. We can see from the histogram that the distribution of the differences is not perfectly normal HOWEVER the sample size is over 30 so the conditions are satisfied.")
-```
-
-
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:a852975de3
 ## Paired tests using t.test()
@@ -413,7 +268,7 @@ success_msg("Good job! Look at the R output for the t-test and take note of the 
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:9d5c6fc887
-## Quick check 3
+## Quick check 2
 
 The paired t-test results from the last exercise are stored in an object called `paired_test`; in your R console type `paired_test` to view these.
 
@@ -500,80 +355,8 @@ success_msg("Good work! It looks like the post-treatment weights were much highe
 
 ```
 
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:8a95e5e62d
-## Assumptions of ANOVA
-
-Before conducting an ANOVA test, we need to make sure that our data meets these 2 assumptions:
-
-* the observations are independent
-* the quantitative variable is normally distributed (or sample sizes in each group are greater than 30)
-
-
-It is reasonable to assume that patients are not related to each other, so the observations are independent.
-
-In this exercise, you will be checking the second condition for the `Postwt` variable in the `anorexia` data set.
-
-*The second condition is met if a histogram of the variable looks approximately symmetric and bell-shaped OR if the sample size in each group is larger than 30*
-*** =instructions
-- Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to examine summary statistics of post weights `Postwt` by treatment `Treat` in the `anorexia` data set.
-- Use the `hist()` function to obtain a histogram of `Postwt`.
-- Click the 'Submit Answer' button and check the output. Are the assumptions met?
-
-
-*** =hint
-- For the second instruction, use the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`anorexia`), quantitative variable (`Postwt`) and categorical variable (`Treat`).
-- To create a histogram, use the format: `hist(dataset$variable)` with the correct data set and variable.
-
-*** =pre_exercise_code
-```{r}
-library(MASS)
-library(mosaic)
-```
-
-*** =sample_code
-```{r}
-# load the mosaic package 
-
-# Explore relationship between treatment and post weights. Recall the syntax: favstats(dataset$quant_var ~ dataset$categ_var)
-
-
-# Create a histogram of post-treatment weights
-
-
-```
-
-*** =solution
-```{r}
-# load the mosaic package 
-library(mosaic)
-
-# Explore relationship between treatment and post weights. Recall the syntax: favstats(dataset$quant_var ~ dataset$categ_var)
-favstats(anorexia$Postwt ~ anorexia$Treat)
-
-
-# Create a histogram of post-treatment weights
-hist(anorexia$Postwt)
-
-```
-
-*** =sct
-```{r}
-test_student_typed("favstats(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: `favstats(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`anorexia`), quant_var (`Postwt`) and categ_var (`Treat`).")
-
-test_function("hist", args = "x", incorrect_msg = "Make sure you follow the format `hist(dataset$variable)` with the `anorexia` data set and `Postwt` variable.")
-
-success_msg("The post-treatment weights appear to be slightly skewed and the sample sizes in each group is less than 30, so the second condition is not satisfied. However, we will continue to demonstrate how to execute ANOVA in R.")
-```
-
-
-
-
-
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:5066cc4f99
-## Quick check: ANOVA
+## Quick check 3
 
 ANOVA is appropriate when we want to...
 
@@ -669,7 +452,7 @@ success_msg("Great! Now look at the p-value from this test. What is your conclus
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:839648c73c
-## Quick check: ANOVA test conclusion
+## Quick check 4
 
 The results from the ANOVA have a p-value = 0.0044. At the $\alpha$ = 0.05 level of significance, what is our conclusion?
 
@@ -789,7 +572,7 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 ```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:45f88c1a66
-## Quick Check 3
+## Quick Check 5
 
 **This is the last exercise of Lab 6 practice course**
 
