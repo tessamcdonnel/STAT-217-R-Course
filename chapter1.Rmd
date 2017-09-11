@@ -422,7 +422,7 @@ In it's most basic form, the `plot()` function will generate a scatterplot of th
 
 The format to make a basic scatterplot is:
 
-`plot(x = dataset$x.var , y = dataset$y.var)`
+`plot(x = dataset$x_var , y = dataset$y_var)`
 
 For this exercise, we are going to visualize the relationship between the two variables in `women`.
 
@@ -434,7 +434,7 @@ For this exercise, we are going to visualize the relationship between the two va
 
 - After clicking 'Submit Answer', look at the plot in the output. Is there any pattern?
 *** =hint
-Follow the format in the lesson with `women` instead of `dataset`, `height` instead of `var1` and `weight` instead of `var2`.
+Follow the format in the lesson with `dataset$variable` where you use `women` instead of `dataset`, `height` instead of `x_var` and `weight` instead of `y_var`.  
 *** =pre_exercise_code
 ```{r}
 
@@ -457,7 +457,7 @@ plot(x = women$height, y = women$weight)
 *** =sct
 ```{r}
 test_function("plot", args = c("x", "y"), incorrect_msg = "In your R script, follow the format: `plot(x = dataset$var1 , y = dataset$var2`) with the specified arguements. In this case, use women instead of dataset, height instead of var1 and weight instead of var2.")
-success_msg("Good work! From the plot we can see that as height increases, weight decreases.")
+success_msg("Good work! From the plot we can see that as height increases, weight also increases.")
 
 ```
 
@@ -497,11 +497,11 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 What is the correct code to access a variable in a data set?
 
 *** =instructions
-- dataset#variable.name
-- dataset&variable.name
-- dataset=variable.name
-- dataset$variable.name
-- dataset%variable.name
+- `dataset#variable`
+- `dataset&variable`
+- `dataset=variable`
+- `dataset$variable`
+- `dataset%variable`
 *** =hint
 
 *** =pre_exercise_code
@@ -512,36 +512,10 @@ What is the correct code to access a variable in a data set?
 *** =sct
 ```{r}
 msg_bad <- "That is not correct. We use a dollar sign `$` to access variables."
-msg_success <- "Exactly! You finished Lab 1 practice course."
+msg_success <- "Exactly! You finished the Lab 1 lesson.  Congratualations!"
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success, msg_bad))
 
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:df5e834522
-## <<<New Exercise>>>
 
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
