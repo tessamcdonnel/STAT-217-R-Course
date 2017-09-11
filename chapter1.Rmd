@@ -165,7 +165,7 @@ If I want to take the square root of 9, I would type `sqrt(9)` and it would retu
 *** =instructions
 - In the script, use the `sqrt()` function to find the square root of 9659.
 - In the script, use the `sqrt()` function and arithmetic operators (from the last exercise) to evaluate the expression:
-$\frac{0.6 - 0.5}{\sqrt{0.25 / 1000}}$
+$\displaystyle \frac{0.6 - 0.5}{\sqrt{0.25 / 1000}}$
 
 *Note: R uses PEMDAS order of operations like you would use in any math class (Parentheses - exponents/square roots - multiplication - ...).*
 
@@ -212,16 +212,14 @@ success_msg("Good work!")
 
 Some data types we will be working with in this course are:
 
-Numeric: numbers with decimals like `3.1` or `22.0`
-
-Integers: natural numbers like `-9` and `4`, integers are also numeric data.
+Numeric: numbers like `3.1` or `-9`
 
 Logical: boolean values (`TRUE` or `FALSE`)
 
-Character: texts and words ("this is character data")
+Character: texts and words `"this is character data"`
 
 
-Note: all character data should be wrapped in "".
+_Note: all character data should be wrapped in ""._
 
 If I typed `70.0 + 28.9` into the console, the value that R would return would be what type of data?
 
@@ -229,7 +227,6 @@ If I typed `70.0 + 28.9` into the console, the value that R would return would b
 - numeric
 - character
 - logical
-- integer
 
 *** =hint
 
@@ -240,7 +237,7 @@ If I typed `70.0 + 28.9` into the console, the value that R would return would b
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct, `70.0 + 28.9` does not result in a whole number so the data type must be numeric."
+msg_bad <- "That is not correct, `70.0 + 28.9` results in a number so the data type must be numeric."
 msg_success <- "Exactly!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
@@ -250,7 +247,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 
 R is what we call an *object oriented language*. In R, we can use objects to store values, data frames, or even results from statistical analysis.
 
-A simple example of object assignment is `x <- 5` which assigns a value 5 to an object named 'x'. We can print the contents of x by typing `x` into the R console.
+A simple example of object assignment is `x <- 5` which assigns the value `5` to an object named `x`. We can print the contents of `x` by typing `x` into the R console.
 
 
 *** =instructions
@@ -302,15 +299,16 @@ success_msg("Good! Notice that the value 100 appears when R prints `my_object`."
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:8404e9b4ff
 ## Quick check 1
 
-Which of the following commands will correctly assign the numbers 1,2,3,4 to an object named `my_vector`?
+Which of the following commands will correctly assigns the number `2` to an object named `z`?
 
 *** =instructions
-- my_vector = c(1, 2, 3, 4)
-- my_vector <- c(1, 2, 3, 4)
-- my_vector -> c(1, 2, 3, 4)
-- c(1, 2, 3, 4) <- my_vector
-- c(1, 2, 3, 4) -> my_vector
+- z -> 2 
+- z <- 2
+- 2 <- z
+- z == 2
+
 *** =hint
+Pay attention to what is on the left/right side of the arrow and the direction of the arrow.
 
 *** =pre_exercise_code
 ```{r}
