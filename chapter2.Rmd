@@ -103,14 +103,14 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =sample_code
 ```{r}
-# Access girls from arbuthnot like we did for the boys variable
+# Access the girls variable from arbuthnot
 
 
 ```
 
 *** =solution
 ```{r}
-# Access girls from arbuthnot like we did for the boys variable
+# Access the girls variable from arbuthnot
 arbuthnot$girls
 ```
 
@@ -124,15 +124,15 @@ test_student_typed("arbuthnot$girls", not_typed_msg = "Make sure you follow the 
 
 In this exercise, you will learn how to use the R built-in function `summary()` to obtain statistics of your data set. 
 
-`summary(dataset)`: gives a few summary statistics of all variables in dataset
+`summary(dataset)` gives a few summary statistics of all variables in dataset
 
 
-`summary(dataset$variable)`: gives a few summary statistics of a specific variable in dataset
+`summary(dataset$variable)` gives a few summary statistics of a specific variable in dataset
 
 The dataset we've been working with `arbuthnot` is already in your workspace.
 
 *** =instructions
-- Use the `summary()` function on the entire `arbuthnot` dataset.
+- Use the `summary()` function on the `arbuthnot` dataset.
 
 *** =hint
 substitute `arbuthnot` for dataset
@@ -144,14 +144,14 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =sample_code
 ```{r}
-# Use summary() on arbuthnot to obtain summary statistics of the entire arbuthnot dataset
+# Use summary() on arbuthnot to obtain summary statistics of the arbuthnot dataset
 
 
 ```
 
 *** =solution
 ```{r}
-# Use summary() on arbuthnot to obtain summary statistics of the entire arbuthnot dataset
+# Use summary() on arbuthnot to obtain summary statistics of the arbuthnot dataset
 summary(arbuthnot)
 
 ```
@@ -164,15 +164,15 @@ test_function("summary", args = "object", incorrect_msg = "Follow the format `su
 --- type:NormalExercise lang:r xp:100 skills:1 key:15bd840872
 ## Working with variables 
 
-We can also use arithetic operators on variables. 
+We can also use arithmetic operators on variables. 
 
 For example, if I want to add two variables together, I would type `dataset$var1 + dataset$var2`. 
 
-If I want to save this sum as a new variable, I would assign it to a new variable name as `dataset$newvar <- dataset$var1 + dataset$var2`.
+If I want to save this sum as a new variable in the data set, I would assign it by `dataset$newvar <- dataset$var1 + dataset$var2`.
 
-In this exercise, we will be creating a new variable called `propBoys` which measures the proportion of male births each year.
+In this exercise, we will be creating a new variable called `propBoys` which calculates the proportion of male births each year.
 
-$\text{proportion of boy births} = \frac{\text{number of boy births}}{\text{number of boy births} +\text{number of girl births} }$
+$\text{proportion of boy births} = \frac{\displaystyle \text{number of boy births}}{\displaystyle \text{number of boy births} + \text{number of girl births} }$
 
 To do this, we will use the syntax:
 
@@ -241,7 +241,7 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =sample_code
 ```{r}
-# Find total number of boys using the sum() function
+# Find total number of boy births using the sum() function
 
 
 
@@ -249,7 +249,7 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =solution
 ```{r}
-# Find total number of boys using the sum() function
+# Find total number of boy births using the sum() function
 sum(arbuthnot$boys)
 
 
@@ -288,8 +288,8 @@ We can save these values in an object `new_var` by typing:
 
 `dataset$new_var <- dataset$var1 > dataset$var2`
 *** =instructions
-- Create a logical expression for which years where boy births `boys` exceeds girl births `girls` results in TRUE, and otherwise FALSE.  Assign this result to the variable `my_var` in the `arbuthnot` data set.
- - Use the sum() function to evaluate the total number of TRUE results in `my_var`.
+- Utilize a logical expression to identify which years boy births (`boys`) exceeds girl births (`girls`).  Assign this result to the variable `my_var` in the `arbuthnot` data set.
+ - Use the sum() function to evaluate the total number of TRUE results in `my_var`; that is, the total number of years in which boy births exceed girl births.
 *** =hint
 Remember, the format for finding the sum of a variable is `sum(dataset$variable)`.
 *** =pre_exercise_code
@@ -299,10 +299,10 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 
 *** =sample_code
 ```{r}
-# Create a logical expression using the syntax from the lesson 
+# Create my_var to identify years where boy births exceed girl births
 
 
-# Use the sum() function on my_var to find how many years there were more male births than female births
+# Use the sum() function on my_var to find the total number of years in which boy births exceed girl births
 
 
 ```
@@ -410,11 +410,11 @@ success_msg("Good work!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:d0401021d4
 ## Adding labels to graphs 
 
-Some arguments to specify in the `plot()` function:
+You can specify additional arguments in the `plot()` function:
 
-- `xlab = "x"` : labels the x-axis "x"
-- `ylab = "y"` : labels the y-axis "y"
-- `main = "title"` : gives a title to the entire plot "title"
+- `xlab = "x"` labels the x-axis "x"
+- `ylab = "y"` labels the y-axis "y"
+- `main = "title"` gives a title to the entire plot "title"
 
 To add labels to a plot use the format:
 
