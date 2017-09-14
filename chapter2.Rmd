@@ -482,8 +482,15 @@ Which one of the following commands would you use to view the first six entries 
 *** =sct
 ```{r}
 msg_bad <- "That's incorrect."
-msg_success <- "Good answer! You have completed the Lab 2 practice course."
+msg_success <- "Good answer! You have completed the Lab 2 practice course. STOP HERE."
 
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
+
+
+
+
+
+
+
