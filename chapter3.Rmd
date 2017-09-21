@@ -194,9 +194,6 @@ favstats(CPS85$wage)
 ```{r}
 test_function("favstats", args = "x", index = 1, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
 
-test_function("favstats", args = "x", index = 2, incorrect_msg = "Follow the format in the lesson with correct dataset and variable!")
-
-
 ```
 
 
@@ -236,10 +233,10 @@ What if we wanted to determine if `wage` differs depending on the respondents se
 
 `favstats(dataset$quant_var ~ dataset$categ_var)`
 
-*Note: the quantitative variable (`wage`) goes on the left hand side of the tilde, and the categorical grouping variable (`sex`) goes on the right hand side.*
+*Note: the quantitative variable goes on the left hand side of the tilde, and the categorical grouping variable goes on the right hand side.*
 *** =instructions
-- Type `library(mosaic)` to load the *mosaic* package into your workspace.
-- Use the `favstats()` function to compare the subjects' `wage` (from the `CPS85` data set) by their `sex`.
+- The `mosaic` package is already loaded in you workspace, so you **do not** need to re-submit the `library(mosaic)` command.
+- Use the `favstats()` function to compare the subjects' `wage` by their `sex` in the `CPS85` data set).
 
 *** =hint
 
@@ -253,10 +250,6 @@ CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 *** =sample_code
 ```{r}
-# Load the mosaic package 
-
-
-
 # Compare the average wage among men and women in the CPS85 data set 
 
 
@@ -264,10 +257,6 @@ CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
 
 *** =solution
 ```{r}
-# Load the mosaic package 
-library(mosaic)
-
-
 # Compare the average weight among men and women in the CPS85 data set 
 favstats(CPS85$wage ~ CPS85$sex)
 
@@ -281,7 +270,35 @@ test_student_typed("favstats(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Make sur
 ```
 
 
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a2c68527ae
+## Interpret the results
 
+The results from your previous exercise have been stored in your workspace as `results`.  Submit `results` in the console to review the output. Note that `wage` represents dollars per hour.
+
+There are `_____` males in the study than females; on average, males earned `______` dollars per hour than females.
+
+*** =instructions
+- more, more
+- more, less
+- less, more
+- less, less
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(mosaicData)
+library(mosaic)
+CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
+results <- favstats(CPS85$wage ~ CPS85$sex)
+```
+
+*** =sct
+```{r}
+msg_bad <- "That is not quite correct. Review the output of `results` carefully."
+msg_success <- "Exactly!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
+```
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:fd332565c4
 ## Quick check 3
 
@@ -289,10 +306,10 @@ When using favstats, the general syntax is:
 
 
 *** =instructions
-- favstats(categorical.variable ~ categorical.variable)
-- favstats(quantitative.variable ~ categorical.variable)
-- favstats(quantitative.variable ~ quantitative.variable)
-- favstats(categorical.variable ~ quantitative.variable)
+- `favstats(categorical_variable ~ categorical_variable)`
+- `favstats(quantitative_variable ~ categorical_variable)`
+- `favstats(quantitative_variable ~ quantitative_variable)`
+- `favstats(categorical_variable ~ quantitative_variable)`
 
 *** =hint
 
@@ -365,7 +382,7 @@ Note: The variable listed first (var1) will go along the rows and the variable l
 
 
 *** =instructions
-- Create a contingency table with variables `married` and `sex` from the `CPS85` data set.
+- Create a contingency table with variables `married` on the rows and `sex` on the columns from the `CPS85` data set.
 *** =hint
 Use the format from the lesson with `CPS85` instead of dataset, `married` instead of var1, and `sex` instead of var2.
 
@@ -422,22 +439,18 @@ Remember, we have to create a table to summarize a categorical variable.
 ```{r}
 msg_bad <- "That is not correct. Remember, we have to create a table to summarize a categorical variable."
 msg_success <- "Exactly!"
-test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 
 ```
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
 ## Visualizing quantitative data in R
-The two main visualizations of quantitative data are:
+The two main visualizations of quantitative data are *histograms* and *boxplots*.
 
-*Histogram* - represents the distribution of quantitative data
+- use `hist(dataset$quant_var)` to create a histogram
 
-- use `hist(dataset$variable)` to create a histogram
-
-*Boxplot* - used to visualize the variation of quantitative data
-
-- use `boxplot(dataset$variable)` to create a boxplot
+- use `boxplot(dataset$quant_var)` to create a boxplot
 
 *** =instructions
 - Create a histogram of the `wage` variable from the `CPS85` data set using the `hist()` function.
@@ -469,10 +482,58 @@ test_function("hist", args = "x", incorrect_msg = "Follow the format: `hist(data
 ```
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
+## Visualizing quantitative variables by groups
+
+Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
+
+To do this, we can use the `boxplot()` function of the format:
+
+`boxplot(dataset$quant_var ~ dataset$categ_var)`
+
+This will produce side by side boxplots.
+
+*** =instructions
+
+Create side-by-side boxplots to compare the `wage` of respondents in the `CPS85` data set by whether they are male or female (`sex`).
+
+*** =hint
+Use format in the lesson with `wage` instead of `quant_var`, `CPS85` instead of `dataset`, `sex` instead of `categ_var`.
+*** =pre_exercise_code
+```{r}
+library(mosaicData)
+CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
+
+
+```
+
+*** =sample_code
+```{r}
+# Create side-by-side boxplots where wage is the quantitative variable and sex is categorical
+
+
+```
+
+*** =solution
+```{r}
+# Create side-by-side boxplots where wage is the quantitative variable and sex is categorical
+
+boxplot(CPS85$wage ~ CPS85$sex)
+```
+
+*** =sct
+```{r}
+test_student_typed("boxplot(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Remember, `wage` is a quantitative variable and `sex` is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
+
+success_msg("Great job. You finished Lab 3 practice course.")
+```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:b65646dd8a
 ## Visualizing categorical data in R
 
-The most common way to visualize categorical variables is by creating a *barplot*.
+One way visualize a categorical variable is with a a *barplot*.
 
 To do this in R, use the format:
 
@@ -551,54 +612,36 @@ test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow th
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:fca8885b03
-## Visualizing quantitative variables by groups
 
-**This is the last exercise for Lab 3 practice course**
 
-Sometimes we want to compare a quantitative variable across the different groups of a categorical variable. 
 
-To do this, we can use the `boxplot()` function of the format:
 
-`boxplot(dataset$quant_var ~ dataset$categ_var)`
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:5c4f336256
+## LAST EXERCISE OF LAB 3
 
-This will produce side by side boxplots.
+**This is the last exercice of Lab 3.**
+
+Based on the scatterplot, what do you think is the general relationship between years of education and hourly wage?
 
 *** =instructions
-
-Create side-by-side boxplots to compare the `wage` of respondents in the `CPS85` data set by whether they are male or female (`sex`).
+- no association
+- a positive association
+- a negative association
 
 *** =hint
-Use format in the lesson with `wage` instead of `quant_var`, `CPS85` instead of `dataset`, `sex` instead of `categ_var`.
+
 *** =pre_exercise_code
 ```{r}
 library(mosaicData)
+library(mosaic)
 CPS85$sex <- factor(CPS85$sex, labels = c("female", "male"))
-
-
-```
-
-*** =sample_code
-```{r}
-# Create side-by-side boxplots where wage is the quantitative variable and sex is categorical
-
-
-```
-
-*** =solution
-```{r}
-# Create side-by-side boxplots where wage is the quantitative variable and sex is categorical
-
-boxplot(CPS85$wage ~ CPS85$sex)
+plot(x = CPS85$educ, y = CPS85$wage)
 ```
 
 *** =sct
 ```{r}
-test_student_typed("boxplot(CPS85$wage ~ CPS85$sex)", not_typed_msg = "Remember, `wage` is a quantitative variable and `sex` is a categorical variable. Make sure you type these in the correct order to make the boxplot.")
+msg_bad <- "That is not quite correct. It generally appears that as years of education increases, so does hourly wage.  This indicates a positive association."
+msg_success <- "Exactly!  You have completed Lab 3."
+test_mc(correct = 2, feedback_msgs = c(msg_bad,msg_success, msg_bad))
 
-success_msg("Great job. You finished Lab 3 practice course.")
 ```
-
-
-
-
