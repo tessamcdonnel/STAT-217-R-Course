@@ -66,7 +66,7 @@ success_msg("Great! Now look at the R output and find the variable `sex`. What t
 ## Quick check 1
 Recall from your previous output that the `sex` variable is coded as `1` and `2`, which represents males and females.
 
-The `sex` variable represents a `______` variable in reality; in R, this variable *should be* defined as a `______` variable.
+In *reality*, the `sex` variable represents a `______` variable; in *R*, this variable should be defined as a `______` variable.
 *** =instructions
 - quantitative, numeric
 - quantitative, factor
@@ -464,14 +464,14 @@ library(mosaicData)
 
 *** =sample_code
 ```{r}
-# Create Histogram of wage variable with hist() function
+# Create histogram of wage variable with hist() function
 
 
 ```
 
 *** =solution
 ```{r}
-# Create Histogram of wage variable with hist() function
+# Create histogram of wage variable with hist() function
 
 hist(CPS85$wage)
 ```
