@@ -7,7 +7,7 @@ description : Inference for Quantitative Data
 ## Two sample t-test
 
 
-The two-sample t-test is used when we want to compare two population means based on sample data. The data you have will typically contain a quantitative response variable and a categorical variable defining your two groups of interest.
+The two-sample t-test is used to compare two population means. The data you have will typically contain a quantitative response variable and a categorical variable defining your two groups of interest.
 
 To perform a two sample t-test, we'll be using a dataset called `schooldays` which contains data on Australian children involved in a sociological study about factors that affect school attendance. 
 
@@ -22,7 +22,7 @@ We can begin by exploring the relationship between `absent` and `race`.
 - `race` is a categorical variable with 2 levels (aboriginal and non-aboriginal)
 - `absent` is a quantitative variable measuring the number of days absent from school
 *** =instructions
-- Create a side by side boxplot to examine the distribution of absent days by race in the `schooldays` data set. Recall that the syntax for a boxplot is:
+- Create a side by side boxplot to examine the distribution of `absent` days by `race` in the `schooldays` data set. Recall that the syntax for a boxplot is:
     `boxplot(dataset$quant_var ~ dataset$categ_var)`
 
 - Click the 'Submit Answer' button and examine the R output. 
@@ -56,7 +56,7 @@ boxplot(schooldays$absent ~ schooldays$race)
 
 test_student_typed("boxplot(schooldays$absent ~ schooldays$race)", not_typed_msg = "Make sure you follow the format: `boxplot(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`schooldays`), quant_var (`absent`) and categ_var (`race`).")
 
-success_msg("Good work! It looks like Aboriginal students were absent more days. Let's see if it is significant!")
+success_msg("Good work! It looks like Aboriginal students tended to be absent more days in this sample.")
 
 ```
 
@@ -70,7 +70,7 @@ To do this, use the format:
 
 `t.test(dataset$quant_var ~ dataset$categ_var, var.equal = FALSE)`
 
-In this exercise, you will test the null hypothesis that the average number of absent days among aboriginal and non-aboriginal students in the population are equal:
+In this exercise, you will test the hypothesis that the population average number of absent days among aboriginal and non-aboriginal students differs:
 
 $H\_0$: $\mu\_{A} = \mu\_{NA}$
 
@@ -78,7 +78,7 @@ $H\_a$: $\mu\_{A} \neq \mu\_{NA}$
 
 A = Aboriginal and NA = Non-Aboriginal
 
-and create a 95% confidence interval around the true average difference in absent days.
+and create a 95% confidence interval for the difference of population mean absent days among the two groups.
 
 *** =instructions
 - Use the `t.test()` function to test if the students' population average number of `absent` days differs by `race` and create a 95% confidence interval for the difference in population means. Remember, the data set we are using is called `schooldays`.
@@ -123,7 +123,7 @@ success_msg("Great!")
 
 The two sample t-test results from the last exercise are stored in an object called `test_results`; in your R console type `test_results` to view these.
 
-At the $\alpha = 0.05$ level of significance, how would we conclude this t-test?
+At the $\alpha = 0.05$ level of significance, what is our conclusion?
 
 Recall the hypotheses:
 
@@ -131,9 +131,13 @@ $H\_0$: $\mu\_{A} = \mu\_{NA}$
 
 $H\_a$: $\mu\_{A} \neq \mu\_{NA}$
 
+`______` the null hypothesis;  we  `______` have evidence that the population mean number of absent days differs among Aboriginal and non-Aboriginal students.
+
 *** =instructions
-- Reject the null hypothesis and conclude that the population mean number of absent days among Aboriginal and non-Aboriginal students is significantly different.
-- Fail to reject the null hypothesis and conclude that the population mean number of absent days among Aboriginal and non-Aboriginal students is NOT significantly different.
+- Reject; do
+- Fail to reject; do
+- Reject; do not
+- Fail to reject; do not
 
 *** =hint
 Type `test_results` and find the p-value for this test. If it is less than 0.05 then we would REJECT the null hypothesis. 
@@ -153,9 +157,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:de76ba4b81
 ## Paired t-test
 
-How would we test whether there is a mean difference between 2 *dependent* sets of observations?
-
-This is a paired t-test where each subject or unit is measured **twice**, resulting in 2 dependent measurements.
+A paired t-test is appropriate when each subject or unit is measured **twice**, resulting in 2 dependent and quantitative measurements.  The paired t-test assesses if there is a population mean change between the two sets measurements.
 
 To perform a paired t-test, we'll be using a data set called `anorexia` which contains weight change data on young female anorexic patients. 
 
@@ -211,26 +213,25 @@ success_msg("Good! The new variable measuring the weight difference has been cre
 --- type:NormalExercise lang:r xp:100 skills:1 key:a852975de3
 ## Paired tests using t.test()
 
-We can also use the `t.test()` function to perform a paired t-test, but the format is a little different.
+We can continue to use the `t.test()` function to perform a paired t-test.
 
 To conduct a paired t-test, use the format:
 
 `t.test(dataset$diff_variable, mu = 0)`
 
-For this exercise you will test whether there is a significant difference between the population mean pre-weights and post-weights. 
-In other words, test whether the population mean difference in weight is equal to zero.
+The hypotheses are:
 
 $H\_0$: $\mu\_{diff} = 0$
 
 $H\_a$: $\mu\_{diff} \neq 0$
 
-where $\mu_{diff} \=$ the mean difference in weight 
+where $\mu_{diff} \=$ the population mean difference between post weight and pre weight
 
 
 
 
 *** =instructions
-- Perform a paired t-test to test whether the mean difference in weight `diffwt` (Post weight - Pre weight) is equal to zero. Remember we are using a data set called `anorexia`.
+- Perform a paired t-test to test if the population mean difference in weight `diffwt` (Post weight - Pre weight) differs from zero. Remember we are using a data set called `anorexia`.
 - Click 'Submit Answer' and examine the R output.
 
 *** =hint
@@ -280,11 +281,17 @@ $H\_0$: $\mu\_{diff} = 0$
 
 $H\_a$: $\mu\_{diff} \neq 0$
 
-where $\mu_{diff} \=$ the mean difference in weight 
+where $\mu_{diff} \=$ the population mean difference between post weight and pre weight
+
+`______` the null hypothesis;  we  `______` have evidence that the population mean difference between post and pre weight differs from 0.
+
 
 *** =instructions
-- We would reject the null hypothesis and conclude that the population average difference in weight between post-weight and pre-weight is not equal to zero.
-- We would fail to reject the null hypothesis that the population average difference in weight between post-weight and pre-weight is equal to zero.
+- Reject; do
+- Fail to reject; do
+- Reject; do not
+- Fail to reject; do not
+
 *** =hint
 
 *** =pre_exercise_code
@@ -351,7 +358,7 @@ boxplot(anorexia$Postwt ~ anorexia$Treat)
 
 test_student_typed("boxplot(anorexia$Postwt ~ anorexia$Treat)", not_typed_msg = "Make sure you follow the format: `boxplot(dataset$quant_var ~ dataset$categ_var)` with the correct data set (`anorexia`), quant_var (`Postwt`) and categ_var (`Treat`).")
 
-success_msg("Good work! It looks like the post-treatment weights were much higher in the family treatment (`FT`) group. Is the difference observed meaningful beyond random chance?")
+success_msg("Good work! It looks like the post-treatment weights tended to be higher in the family treatment (`FT`) group. Is the difference observed meaningful beyond random chance?")
 
 ```
 
@@ -388,9 +395,9 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 --- type:NormalExercise lang:r xp:100 skills:1 key:9048bc1deb
 ## Using aov() function to test multiple means
 
-To test if the population average post-treatment weight differs among the treatment categories, we can use the `aov()` function.
+To test if the population average post-treatment weight differs among the treatment categories, we can use the `aov()` function to execute Analysis of Variance (ANOVA).
 
-Similar in structure to the two sample t-test, we list the quantitative variable first, followed by the categorical. We're going to save these in an object so that we can get a summary of the results.
+For this analysis, we have to save the test resutls in an object so that we can get a summary of the results.
 
 To do this, follow the format: 
 
@@ -400,15 +407,14 @@ To do this, follow the format:
 
 Our hypotheses are:
 
-$H\_0$: $\mu\_{cont} = \mu\_{cbt} = \mu\_{ft}$
+$H\_0$: $\mu\_{Cont} = \mu\_{CBT} = \mu\_{FT}$
 
-
-$H\_a:$ at least one mean differs
+$H\_a:$ at least one population mean differs
 
 *Remember, we are still using the `anorexia` data set.*
 
 *** =instructions
-- Use the format in the lesson to test if there is a difference in average post weights among the three treatment categories, name these results `anova.results`. Remember, the categorical variable is `Treat` and the quantitative variable is `Postwt`.
+- Use ANOVA to assess if there is evidence of a difference in population mean post weight among treatment groups - save these results to an object named `anova.results`. Remember, the categorical variable is `Treat` and the quantitative variable is `Postwt`.
 - Use the `summary()` function to examine `anova.results`.
 - Click 'Submit Answer' and look ANOVA results.
 
@@ -456,14 +462,21 @@ success_msg("Great! Now look at the p-value from this test. What is your conclus
 
 The results from the ANOVA have a p-value = 0.0044. At the $\alpha$ = 0.05 level of significance, what is our conclusion?
 
+Recall the hypotheses:
+
+$H\_0$: $\mu\_{Cont} = \mu\_{CBT} = \mu\_{FT}$
+
+$H\_a:$ at least one population mean differs
+
 *** =instructions
-- Reject the null and conclude all of the population means are different.
-- Reject the null and conclude that at least one population mean differs from the others.
-- Fail to reject the null and conclude all of the population means are different.
-- Fail to reject the null and conclude that at least one population mean differs from the others.
+- Reject the null; we have evidence that all of the population means are different.
+- Reject the null; we have evidence that at least one population mean differs from the others.
+- Fail to reject the null; we have evidence that all of the population means are different.
+- Fail to reject the null; we have evidence that at least one population mean differs from the others.
+- Fail to reject the null; we have evidence that all population means are equal.
 
 *** =hint
-Remember that our null hypothesis is that all of the population means are the same and the alternative is that **at least one** of the means differ from the rest.
+Remember that when the p-value is less than 0.05, we should reject the null hypothesis.
 *** =pre_exercise_code
 ```{r}
 
@@ -542,17 +555,14 @@ success_msg("Good! Now look at the plot of our anova results.")
 
 The *Plots* panel contains the same plot from the last exercise. 
 
-The horizontal lines show 95% confidence intervals for each difference in pairs of means. For example, the bottom line `FT - Cont` corresponds to $\mu\_{ft} - \mu\_{Cont}$. If the confidence interval contains zero, it is plausable that the population means are *equal* for that that pair. If the interval does not contain zero, we have evidence that the two population means are different.
+The horizontal lines show 95% confidence intervals for each difference in pairs of population means. For example, the bottom line `FT - Cont` corresponds to $\mu\_{FT} - \mu\_{Cont}$. If the confidence interval contains zero, it is plausible that the population means are *equal* for that that pair. If the interval does not contain zero, we have evidence that the two population means are different.
 
-In this exercise only **one** interval does not contain zero.
-
-How would we summarize this pair? 
+Examine the `FT - Cont` pair (bottom line).  This provides evidence that the population mean post-weight for patients in the FT (family treatment) group is `______` the population mean post-weight for patients in the Cont (control) group
 
 *** =instructions
-- The population mean post-weight for patients in the CBT (Cognitive Behavioural treatment) group is significantly greater than the population mean post-weight for patients in the Cont (control) group.
-- The population mean post-weight for patients in the Cont (control) group is significantly greater than the population mean post-weight for patients in the FT (family treatment) group.
-- The population mean post-weight for patients in the FT (family treatment) group is significantly greater than the population mean post-weight for patients in the Cont (control) group.
-- The population mean post-weight for patients in the FT (family treatment) group is *not* significantly different from the population mean post-weight for patients in the Cont (control) group.
+- equal to
+- less than
+- greater than
 *** =hint
 
 *** =pre_exercise_code
@@ -566,7 +576,7 @@ plot(TukeyHSD(anova.results))
 
 *** =sct
 ```{r}
-msg_bad <- "That is not correct. The only pair that is significantly different is `FT` and `Cont`; this difference in means is measured by FT-Cont."
+msg_bad <- "That is not correct. Note the 95% CI for $\mu\_{FT} - \mu\_{Cont}$ is about (4, 15).  Because this interval is positive, this implies that $\mu\_{FT} > \mu\_{Cont}$ "
 msg_success <- "Exactly!"
 test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
