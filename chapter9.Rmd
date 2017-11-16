@@ -53,9 +53,9 @@ test_function("summary", args = "object", incorrect_msg = "Follow the format `su
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b81533a6c6
-## Correlation
+## Scatter plot review
 
-Suppose we want to test whether there is a relationship between `ownership_rate` and `mortality_rate`.
+Suppose we want to assess if there is a relationship between `ownership_rate` and `mortality_rate`.
 
 * `ownership_rate`: percentage of adults in each state who own a gun
 
@@ -97,7 +97,7 @@ plot(x = gun_violence_us$ownership_rate, y = gun_violence_us$mortality_rate)
 ```{r}
 test_function("plot", args = c("x", "y"), incorrect_msg = "Remember to follow the format in the lesson with the specified data set (`gun_violence_us`) and variables.")
 
-success_msg("Nice! Now look at the plot. We can see that as gun ownership rates increase, mortality rates also increase.")
+success_msg("Nice! What trend do you observe in the plot?")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:23b4d73093
@@ -171,23 +171,23 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success))
 --- type:NormalExercise lang:r xp:100 skills:1 key:76ae5ee967
 ## Simple linear regression
 
-We can learn more about the relationship between two variables by calculating a linear model with the `lm()` function in the format:
+We can learn more about the relationship between two quantitative variables by estimating a simple linear regression model with the `lm()` function in the format:
 
-`model1 <- lm(dataset$y.var ~ dataset$x.var)`
+`model1 <- lm(dataset$y_var ~ dataset$x_var)`
 
 `model1`
 
-* y.var = the response variable
-* x.var = the explanatory variable
+* `y_var` = the response variable
+* `x_var` = the explanatory variable
 
 
-We are saving the linear model results as an object called `model1`. Remember, we need to type the object name to view it *(I have already typed this for you in the R Script)*.
+We are saving the model results as an object called `model1`. Remember, we need to type the object name to view it.
 
 *** =instructions
-* Use the `lm()` function to calculate a linear model from the `gun_violence_us` data set and store these regression results in an object called `gun_model` where:
+* Use the `lm()` function to estimate a linear regression model from the `gun_violence_us` data set and store these regression results in an object called `gun_model` where:
 
-    - x.var = `ownership_rate`
-    - y.var = `mortality_rate`
+    - `y_var` = `mortality_rate`
+    - `x_var` = `ownership_rate`
 
 *** =hint
 
@@ -201,7 +201,8 @@ source("http://www.openintro.org/stat/data/gun_violence_us.R")
 # Use the lm() function to calculate a linear model of ownership_rate and mortality_rate
 gun_model <- 
 
-gun_model
+# Type the name of the model (gun_model) to view the results
+
 
 
 ```
@@ -211,6 +212,7 @@ gun_model
 # Use the lm() function to calculate a linear model of ownership_rate and mortality_rate
 gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
 
+# Type the name of the model (gun_model) to view the results
 gun_model
 
 ```
@@ -234,7 +236,7 @@ success_msg("Good work. Now look at the R output and find the estimate for the i
 
 The regression model from the last exercise `gun_model` is stored in your workspace; type `gun_model` in your R script to view it.
 
-What is our linear regression model?
+What is the estimated regression equation?
 
 *** =instructions
 - $\hat{y} = 4.573 + 20.492x$
@@ -262,18 +264,30 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:3605a42869
 ## Testing if the population slope is non-zero
 
+To view more comprehensive regression model results, produce a `summary` of the model.  For example, if we had executed
+
+`model1 <- lm(dataset$y_var ~ dataset$x_var)`
+
+then 
+
+`summary(model1)` would produce more comprehensive regression results.
+
+
 Suppose we want to test whether there is a linear association between `ownership_rate` and `mortality_rate` in the `gun_violence_us` data set.
 
-Our hypotheses:
+Our hypotheses are:
 
 $H\_0:$ $\beta\_{1} = 0$
 
 $H\_a:$ $\beta\_{1} \neq 0$
 
-where $\beta\_{1}$ = the slope of the regression
+where $\beta\_{1}$ = the population slope of the regression line.
 
-*Note: `gun_model` is already in your workspace.*
+These results can be obtained with the `summary` function.
+
+
 *** =instructions
+- *Note: `gun_model` is already in your workspace.*
 - Summarize `gun_model` using the `summary()` function.
 - Click the 'Submit Answer' button and look at the p-value of the test.
 *** =hint
@@ -303,7 +317,7 @@ summary(gun_model)
 *** =sct
 ```{r}
 test_function("summary", args = "object", incorrect_msg = "Type: `summary(gun_model)` below the first comment.")
-success_msg("Good job. The p-value for this test is almost zero so we can reject the null hypothesis and conclude that the slope is significantly greater than zero.")
+success_msg("Good job.")
 ```
 
 
@@ -311,7 +325,7 @@ success_msg("Good job. The p-value for this test is almost zero so we can reject
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d94f04f494
 ## Quick check 3
 
-The test results from the last exercise are stored in an object called `test_results`; in your R console type `test_results` to view these.
+The results from the last exercise are stored in an object called `model_results`; in your R console type `model_results` to view these.
 
 At the alpha = 0.05 significance level, how would we conclude this test?
 
@@ -323,12 +337,13 @@ $H\_a:$ $\beta\_{1} \neq 0$
 
 where $\beta\_{1}$ = the slope of the regression
 
+Based on the p-value of `_____`, `_____` the null hypothesis.  We `_____` have evidence that the population slope differs from zero.
 
 *** =instructions
-- reject the null hypothesis and conclude that the slope is significantly less than zero
-- fail to reject the null hypothesis and conclude that the slope is significantly greater than zero
-- fail to reject the null hypothesis and conclude that the slope is significantly less than zero
-- reject the null hypothesis and conclude that the slope is significantly greater than zero
+- 0.00022; reject; do
+- 0.00022; fail to reject; do not
+- 6.24e-08; reject; do
+- 6.24e-08; fail to reject; do not
 
 *** =hint
 
@@ -336,14 +351,14 @@ where $\beta\_{1}$ = the slope of the regression
 ```{r}
 source("http://www.openintro.org/stat/data/gun_violence_us.R")
 gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
-test_results <- summary(gun_model)
+model_results <- summary(gun_model)
 ```
 
 *** =sct
 ```{r}
 msg_bad <- "That is not correct. The p-value is almost zero so we would reject- we can see that ownership rate and mortality rate have a positive linear association so the slope is greater than zero."
 msg_success <- "Exactly!"
-test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c7ec6c9c9b
@@ -366,7 +381,7 @@ gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
 
 *** =sample_code
 ```{r}
-# Use confint() to obtain a confidence interval for gun_model
+# Use confint() to obtain a confidence interval for the gun_model regression coefficients
 
 
 
@@ -374,7 +389,7 @@ gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
 
 *** =solution
 ```{r}
-# Use confint() to obtain a confidence interval for gun_model
+# Use confint() to obtain a confidence interval for the gun_model regression coefficients
 confint(gun_model)
 
 
@@ -387,9 +402,22 @@ test_function("confint", args = "object", incorrect_msg = "Make sure to follow t
 --- type:NormalExercise lang:r xp:100 skills:1 key:cded916a25
 ## Add lines to a plot with abline()
 
-We can add the estimated regression equation to the scatter plot with the `abline()` function with the format:
+Follow the subsequent steps to add an estimated regression equation line to a scatter plot:
+
+First, estimate the regression equation:
+
+`model_name <- lm(dataset$y_var ~ dataset$x_var)`
+    
+Second, produce the scatterplot:
+
+`plot(x = dataset$x_var, y = dataset$y_var)`
+
+Third, use the `abline()` function with the following format to add the estimated regression line to the plot:
 
 `abline(model_name)`
+
+
+
 
 *** =instructions
 - The first line of code creates a scatter plot of `ownership_rate` and `mortality_rate` from the `gun_violence_us` data set. **Do not alter this code.**
@@ -400,13 +428,15 @@ We can add the estimated regression equation to the scatter plot with the `ablin
 *** =pre_exercise_code
 ```{r}
 source("http://www.openintro.org/stat/data/gun_violence_us.R")
-gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
 
 ```
 
 *** =sample_code
 ```{r}
-# Code to create a scatter plot of ownership_rate and mortality_rate. Do not change
+# Code to estimate the regression equation.  Do not change.
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
+
+# Code to create a scatter plot of ownership_rate and mortality_rate. Do not change.
 plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
 
 
@@ -417,7 +447,10 @@ plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
 
 *** =solution
 ```{r}
-# Code to create a scatter plot of ownership_rate and mortality_rate. Do not change
+# Code to estimate the regression equation.  Do not change.
+gun_model <- lm(gun_violence_us$mortality_rate ~ gun_violence_us$ownership_rate)
+
+# Code to create a scatter plot of ownership_rate and mortality_rate. Do not change.
 plot(gun_violence_us$ownership_rate, gun_violence_us$mortality_rate)
 
 
@@ -436,10 +469,11 @@ test_function("abline", args = "a", incorrect_msg = "Make sure to follow the for
 ```
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:ecd40fc973
-## Quick check 4
-**This is the last exercise of Lab 8 practice course**
+## LAST EXERCISE OF LAB 8
 
-Correlation can be used to estimate the strength of association between:
+**This is the last exercice of Lab 8.**
+
+Correlation can be used to estimate the strength of the linear association between:
 
 *** =instructions
 - one quantitative variable and $\mu_{0}$
