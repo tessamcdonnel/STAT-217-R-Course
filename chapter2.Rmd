@@ -462,9 +462,9 @@ success_msg("Look how much better the graph looks now that we have labels!")
 
 
 --- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:1037bb100a
-## Quick check 2
+## LAST EXERCISE OF LAB 2
 
-**This is the last exercise in Lab 2 practice course.**
+**This is the last exercice of Lab 2.**
 
 Which one of the following commands would you use to view the first six entries in a data set?
 *** =instructions
