@@ -199,7 +199,7 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 # Create propBoys variable for arbuthnot
 arbuthnot$propBoys <- 
 
-# Use head() to check if propBoys was added
+# Use head() on arbuthnot to check if your new variable was added
 
 
 ```
@@ -209,7 +209,7 @@ arbuthnot$propBoys <-
 # Create propBoys variable for arbuthnot
 arbuthnot$propBoys <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 
-# Use head() on arbuthnot to check if propBoys was added
+# Use head() on arbuthnot to check if your new variable was added
 head(arbuthnot)
 ```
 *** =sct
