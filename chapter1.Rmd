@@ -181,7 +181,7 @@ R uses PEMDAS order of operations like you would use in any math class.
 ```{r}
 # Find the square root of 9659 using sqrt()
 
-# Evaluate the expression in the plots panel 
+# Evaluate the expression in the instructions panel 
 
 
 ```
@@ -191,7 +191,7 @@ R uses PEMDAS order of operations like you would use in any math class.
 # Find the square root of 9659 using sqrt()
 sqrt(9659)
 
-# Evaluate the expression in the instructions 
+# Evaluate the expression in the instructions panel 
 (0.6-0.5) / sqrt(0.25/1000)
 
 ```
