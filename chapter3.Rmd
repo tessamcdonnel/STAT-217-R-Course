@@ -446,7 +446,8 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4fea2da0
 ## Visualizing quantitative data in R
-The two main visualizations of quantitative data are *histograms* and *boxplots*.
+
+We can visualize quantitative data with a *histogram*.
 
 - use `hist(dataset$quant_var)` to create a histogram
 
