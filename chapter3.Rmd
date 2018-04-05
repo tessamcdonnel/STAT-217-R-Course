@@ -450,8 +450,6 @@ The two main visualizations of quantitative data are *histograms* and *boxplots*
 
 - use `hist(dataset$quant_var)` to create a histogram
 
-- use `boxplot(dataset$quant_var)` to create a boxplot
-
 *** =instructions
 - Create a histogram of the `wage` variable from the `CPS85` data set using the `hist()` function.
 - Click the 'Submit Answer' Button and take a look at the R output in the console.
