@@ -45,14 +45,15 @@ Just click 'Submit Answer' to continue to the next exercise.
 ```{r}
 
 ```
+
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:77ff5d2cfd
 ## Getting started with R
-
 
 The best way to learn R programming is to actually practice typing yourself. 
 So, lets start coding!
 
-Are you excited to dive into the exhilarating world of R Programming?!
+Are you excited to dive into the exhilarating world of R programming?!
 
 *** =instructions
 - Yes
@@ -60,6 +61,7 @@ Are you excited to dive into the exhilarating world of R Programming?!
 
 *** =hint
 You should be very excited!
+
 *** =pre_exercise_code
 ```{r}
 
