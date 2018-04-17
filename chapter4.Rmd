@@ -72,9 +72,13 @@ test_function("sample", args = c("x", "size"), index = 2, incorrect_msg = "Follo
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:190f70cfa4
-## Random samples cont...
+## Random samples continued
 
 In this exercise, we are going to take two random samples and assign them to object names using the assignment notation `<-`. 
+
+Recall, to take a random sample of a variable use the format:
+
+`sample(x = dataset$variable, size = number)`
 
 
 Note: Remember that after we create an object (i.e. sample1 and sample2) we need to type the object name to view it *(I have already typed this for you in the R Script)*.
@@ -93,14 +97,14 @@ source("https://www.openintro.org/stat/data/peanut_allergy.R")
 *** =sample_code
 ```{r}
 # Take a random sample of 20 from the variable regimen
-sample1 <- 
+sample1 <- sample(x = ____, size = _____)
 
 # Print contents of sample1 (DO NOT alter this line of code)
 sample1
 
 
 # take another random sample of 20 from the variable regimen
-sample2 <- 
+sample2 <- sample(x = ____, size = _____)
 
 # Print contents of sample2 (DO NOT alter this line of code)
 sample2
@@ -409,10 +413,21 @@ Below is the formula to construct a confidence interval for a population proport
 
 $\hat{p} \pm z^*\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
 
-*** =instructions
-Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data (Use the formula in the lesson).
+The lower confidence bound is:
 
-Note that the $z^*$ critical value is 1.96 for a 95% confidence interval.
+$\hat{p} - z^*\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
+
+And the upper confidence bound is:
+
+$\hat{p} + z^*\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
+
+*** =instructions
+Suppose I sampled 50 of the children from `peanut_allergy` and found that 0.15 reported *yes* to having a peanut allergy. Use R as a calculator to find a 95% confidence interval for the population proportion based on this sample data.
+
+Note that 
+- $n=50$
+- $\hat{p}=0.15$
+- $z^* = 1.96$ for a 95% confidence interval.
 
 *Remember, to square root a number use the format: `sqrt(number)`; to multiply two numbers together `5(3)` does NOT work, `5*3` does work.*
 *** =hint

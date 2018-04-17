@@ -104,16 +104,20 @@ $H_a$: $p \neq 0.07$
 
 where $p$ = true proportion of low birthweight births
 
-Remember, there were 111 babies with low birthweight and 1000 total births in the sample.
 
 *** =instructions
 Use the `prop.test()` function to perform a *z*-test to determine if the population low birthweight rate differs from 0.07 (or 7%).
-Remember, we are using the `nc` data set and `lowbirthweight` variable.
+Remember, there were 111 babies with low birthweight and 1000 total births in the sample.
 
 
 *** =hint
 
-Remember to set p = sample proportion (in this case `p = 0.07`).
+Remember to set 
+* p = proportion from null hypothesis (in this case `p = 0.07`).
+* x = #yes  (in this case `x = 111`)
+* n = #total (in this case `n = 1000`)
+* 
+And don't forget to use the `correct = FALSE` option.
 
 *** =pre_exercise_code
 ```{r}
@@ -124,7 +128,7 @@ load("nc.RData")
 
 *** =sample_code
 ```{r}
-# use the prop.test() function with the format from the lesson to test if the the population proportion differs from 0.07.
+# use the prop.test() function to test if the population proportion differs from 0.07.
 
 
 
@@ -132,7 +136,7 @@ load("nc.RData")
 
 *** =solution
 ```{r}
-# use the prop.test() function with the format from the lesson to test if the the population proportion differs from 0.07.
+# use the prop.test() function to test if the population proportion differs from 0.07.
 prop.test(x = 111, n = 1000, p = 0.07, correct = FALSE)
 
 

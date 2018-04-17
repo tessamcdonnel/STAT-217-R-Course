@@ -323,11 +323,11 @@ sum(arbuthnot$boys_gt_girls)
 *** =sct
 ```{r}
 
-test_data_frame("arbuthnot", columns = "my_var", incorrect_msg = "Follow the format in the lesson with `arbuthnot` instead of 'dataset', `my_var` instead of 'new_var', `boys` instead of 'var1', and `girls` instead of 'var2'.")
+test_data_frame("arbuthnot", columns = "boys_gt_girls", incorrect_msg = "Follow the format in the lesson with `arbuthnot` instead of 'dataset', `boys_gt_girls` instead of 'new_var', `boys` instead of 'var1', and `girls` instead of 'var2'.")
 
 
 
-test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is `sum(dataset$variable)`. In this example, the dataset is `arbuthnot` and the variable is `my_var`.")
+test_function("sum", args = "...", incorrect_msg = "Remember, the format for finding the sum of a variable is `sum(dataset$variable)`. In this example, the dataset is `arbuthnot` and the variable is `boys_gt_girls`.")
 
 ```
 

@@ -75,6 +75,24 @@ msg_success <- "Good answer!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 ```
 
+--- type:PureMultipleChoiceExercise xp:50 skills:1 key:14796fff56
+## Author of course
+
+Who do you think wrote this DataCamp course?
+
+
+*** =possible_answers
+- [Dr. Pileggi]
+- DataCamp
+
+*** =hint
+It was your professor!
+
+*** =feedback
+- That is correct!  Dr. Pileggi custom-wrote this course just for you.
+- That is not correct.  Try again.
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:dbdb4a1084
 ## Using R as a calculator
 
@@ -152,8 +170,6 @@ test_output_contains("64", incorrect_msg = "Make sure to add a line of R code, t
 
 success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
 ```
-
-
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b19e862406
 ## Using the sqrt() function

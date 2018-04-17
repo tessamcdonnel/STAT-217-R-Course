@@ -325,15 +325,22 @@ Below is the formula for a confidence interval of a population mean.
 
 $\displaystyle \bar{x} \pm t^* \frac{s}{\sqrt{n}}$
 
+The lower confidence bound is:
+
+$\displaystyle \bar{x} - t^* \frac{s}{\sqrt{n}}$
+
+The upper confidence bound is:
+
+$\displaystyle \bar{x} + t^* \frac{s}{\sqrt{n}}$
+
+
 *** =instructions
-Suppose I sampled 75 of the chicks from `ChickWeight` and found some sample statistics:
+Suppose I sampled 75 of the chicks from `ChickWeight`.  Use R as a calculator to find a 95% confidence interval for the population mean *weight* based on the results below.
 
-* sample mean weight is 116.2
-* sample standard deviation is 67.5
-* for n = 75 and alpha = 0.05, the $t^*$ critical value is 1.99
-
-
-Use R as a calculator to find a 95% confidence interval for the population mean *weight* based on this sample data (use the formula in the lesson).
+* $n=75$
+* $\bar{x} = 116.2$
+* $s = 67.5$
+* $t^* = 1.99$ for n = 75 and 95% confidence 
 
 *Remember, to square root a number use the format: `sqrt(number)`; to multiply two numbers together `5(3)` does NOT work, `5*3` does work.*
 

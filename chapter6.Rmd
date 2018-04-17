@@ -434,26 +434,29 @@ success_msg("Good job!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:5d2e26a906
 ## t.test() practice
 
-Conclusion from the last exercise:
-
-At  $\alpha$ =  0.05, we would REJECT the null hypothesis and conclude that we have evidence that the population mean number of alcoholic drinks consumed per day is **greater** than 2. This makes sense because the data was taken from patients at a rehab facility. 
-
-Here is a different hypothesis for this population:
+Now let's test a different hypothesis for this population:
 
 $H_0$: $\mu \= 15$
 
-$H_a$: $\mu \> 15$,  where $\mu$ is the population average number of alcoholic drinks per day. 
+$H_a$: $\mu \> 15$
+
+where $\mu$ is the population average number of alcoholic drinks per day. 
 
 Note: to use the `t.test()` function use format:
 
 `t.test(x = dataset$variable, mu = null.hyp, alternative = "__", conf.level = 0.__)`
 
+Recall the alternative option can take values of:
+* `alternative = "less"`
 
+* `alternative = "greater"`
 
+* `alternative = "two.sided"`
+* 
 *** =instructions
 - Use the `t.test()` function to carry out a one sample t-test for the above hypothesis and construct a 99% confidence interval. 
-    - this is a one-sided test so you need to need to specify `alternative="___"`
-    - this is a 99% confidence interval, so you need to specify `conf.level = 0.__`
+- This is a one-sided test so you need to need to specify `alternative="___"`
+- This is a 99% confidence interval, so you need to specify `conf.level = 0.__`
 
 *Remember, we are using the `i1` variable from the `HELPrct` data set.*
 *** =hint
