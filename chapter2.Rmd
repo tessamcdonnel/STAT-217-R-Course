@@ -288,8 +288,8 @@ We can save these values in an object `new_var` by typing:
 
 `dataset$new_var <- dataset$var1 > dataset$var2`
 *** =instructions
-- Utilize a logical expression to identify which years boy births (`boys`) exceeds girl births (`girls`).  Assign this result to the variable `my_var` in the `arbuthnot` data set.
- - Use the sum() function to evaluate the total number of TRUE results in `my_var`; that is, the total number of years in which boy births exceed girl births.
+- Utilize a logical expression to identify which years boy births (`boys`) exceeds girl births (`girls`).  Assign this result to the variable `boys_gt_girls` in the `arbuthnot` data set.
+ - Use the sum() function to evaluate the total number of TRUE results in `boys_gt_girls`; that is, the total number of years in which boy births exceed girl births.
 *** =hint
 Remember, the format for finding the sum of a variable is `sum(dataset$variable)`.
 *** =pre_exercise_code
@@ -300,21 +300,23 @@ source("http://www.openintro.org/stat/data/arbuthnot.R")
 *** =sample_code
 ```{r}
 # Create my_var to identify years where boy births exceed girl births
+arbuthnot$boys_gt_girls <-
 
-
-# Use the sum() function on my_var to find the total number of years in which boy births exceed girl births
-
+# Use the sum() function on boys_gt_girls to find the total number of years in which boy births exceed girl births
+# This has been completed for you
+sum(arbuthnot$boys_gt_girls)
 
 ```
 
 *** =solution
 ```{r}
 # Create a logical expression using the syntax from the lesson 
-arbuthnot$my_var <- arbuthnot$boys > arbuthnot$girls
+arbuthnot$boys_gt_girls <- arbuthnot$boys > arbuthnot$girls
 
 
 # Use the sum() function on my_var to find how many years there were more male births than female births
-sum(arbuthnot$my_var)
+# This has been completed for you
+sum(arbuthnot$boys_gt_girls)
 
 ```
 
@@ -441,7 +443,7 @@ plot(x = arbuthnot$year, y = arbuthnot$propBoys)
 *** =sample_code
 ```{r}
 # Fill in the blanks to add axis labels and a title to the plot
-plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = ____ , ylab = ____, main = ____)
+plot(x = arbuthnot$year , y = arbuthnot$propBoys, xlab = "____" , ylab = "____", main = "____")
 
 
 ```
